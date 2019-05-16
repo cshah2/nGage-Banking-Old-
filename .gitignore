@@ -1,0 +1,14 @@
+/bin/
+
+/Libs/
+
+/.settings/
+
+/.classpath
+.svn/
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
