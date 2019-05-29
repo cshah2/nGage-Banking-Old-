@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>ddOption_Customer</name>
+   <name>select_StateOrRegion</name>
    <tag></tag>
-   <elementGuidId>d92dee2c-b64a-4a1b-a895-877dc68dbd89</elementGuidId>
+   <elementGuidId>d9d360eb-9a53-4915-a666-c6df0de8c512</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
+         <value></value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[contains(@id,'_wtSearchBar')]//div[contains(@class,'DropdownMenu') and contains(@id,'_wtMenu')]//a[text()='Customer']</value>
+         <value>//div[contains(@id,'wtAddress') and contains(@id,'wtSectionExpandableArea')]//label[text()='State/Region']/../select</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

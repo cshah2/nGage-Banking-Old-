@@ -15,6 +15,7 @@ import com.kms.katalon.core.testdata.TestData
 import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.common.WebUiCommonHelper
+import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import internal.GlobalVariable
@@ -22,8 +23,21 @@ import static constants.common.*
 
 public class common {
 
+	//Open browser if not already opened
+	private void openBrowser() {
+		try {
+			DriverFactory.getWebDriver()
+		}
+		catch(Exception e) {
+			WebUI.openBrowser('')
+		}
+	}
+	
 	@Keyword
 	def login() {
+
+		//Open browser if not already opened
+		openBrowser()		
 		
 		//Delete all cookies
 		WebUI.deleteAllCookies()

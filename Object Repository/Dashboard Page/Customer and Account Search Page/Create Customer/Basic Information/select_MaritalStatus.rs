@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>ddOption_Customer</name>
+   <name>select_MaritalStatus</name>
    <tag></tag>
-   <elementGuidId>d92dee2c-b64a-4a1b-a895-877dc68dbd89</elementGuidId>
+   <elementGuidId>ddaa0f1b-4298-40f9-96b3-6789523f9af3</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
+         <value></value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[contains(@id,'_wtSearchBar')]//div[contains(@class,'DropdownMenu') and contains(@id,'_wtMenu')]//a[text()='Customer']</value>
+         <value>//div[contains(@id,'wtBasicInformation') and contains(@id,'wtSectionExpandableArea')]//label[text()='Marital Status']/../select</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
