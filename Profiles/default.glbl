@@ -6,12 +6,12 @@
    <defaultProfile>true</defaultProfile>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://savosqa.savanainc.com'</initValue>
+      <initValue>'https://savossit.savanainc.com'</initValue>
       <name>BASE_URL</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'cshah@savana-int.dev'</initValue>
+      <initValue>'cshah@savsit.ee'</initValue>
       <name>USERNAME</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>

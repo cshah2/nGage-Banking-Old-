@@ -32,35 +32,35 @@ public class common {
 			WebUI.openBrowser('')
 		}
 	}
-	
+
 	@Keyword
 	def login() {
 
 		//Open browser if not already opened
-		openBrowser()		
-		
+		openBrowser()
+
 		//Delete all cookies
 		WebUI.deleteAllCookies()
-		
+
 		//'Navigate to login page url'
 		WebUI.navigateToUrl(loginUrl)
-		
+
 		//Check if User is on Login page or not
 		if(WebUI.getUrl().contains('Login.aspx')) {
-			
+
 			//Verify login page is loaded
 			WebUI.verifyElementVisible(findTestObject('Login Page/lbl_Heading'))
-			
+
 			//Enter username
 			WebUI.sendKeys(findTestObject('Login Page/input_UserName'), username)
-			
+
 			//Enter password
 			WebUI.sendKeys(findTestObject('Login Page/input_Password'), password)
-			
+
 			//Click on Login button
 			WebUI.click(findTestObject('Login Page/btn_Login'))
 		}
-		
+
 		//Verify user is on dashboard page
 		WebUI.verifyMatch(WebUI.getUrl(), dashboardUrl, false)
 	}

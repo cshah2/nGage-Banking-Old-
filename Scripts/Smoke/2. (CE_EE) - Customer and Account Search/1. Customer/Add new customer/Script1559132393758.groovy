@@ -32,87 +32,111 @@ WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account 
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/icon_CreateCustomer'))
 
 'Wait for Create customer page to be visible'
-WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Basic Information/input_FirstName'), GlobalVariable.TIMEOUT)
+WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_FirstName'), GlobalVariable.TIMEOUT)
 
 'Enter First name'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Basic Information/input_FirstName'), 'Chintan')
+WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_FirstName'), 'Amol')
 
 'Enter Middle name'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Basic Information/input_MiddleName'), 'Deepak')
+WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_MiddleName'), 'Ashok')
 
 'Enter Last name'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Basic Information/input_LastName'), 'Shah')
+WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_LastName'), 'Patil')
 
 'Enter Date of birth'
-CustomKeywords.'actions.javaScript.setText'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Basic Information/input_DOB'), '1985-09-01')
+CustomKeywords.'actions.javaScript.setText'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_DOB'), '1985-09-01')
 
 'Enter Tax ID'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Basic Information/input_TaxID'), '91178123')
+WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_TaxID'), '91178123')
 
 'Select Country of residency'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Basic Information/select_CountryOfResidence'), 'United States of America', false)
+WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/select_CountryOfResidence'), 'United States of America', false)
 
 'Select Residency status'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Basic Information/select_ResidencyStatus'), 'Resident', false)
+WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/select_ResidencyStatus'), 'Resident', false)
 
-'Select Country of Citizenship'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Basic Information/select_CountryOfCitizenship'), 'United States of America', false)
+//Field Removed in latest build
+//'Select Country of Citizenship'
+//WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/select_CountryOfCitizenship'), 'United States of America', false)
 
 'Select Marital status'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Basic Information/select_MaritalStatus'), 'Single', false)
+WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/select_MaritalStatus'), 'Single', false)
 
 'Click on Next button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Basic Information/btn_Next'))
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/btn_Next'))
 
 'Wait for Location information fields to be visible'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Location Information/input_Street'), GlobalVariable.TIMEOUT)
+CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_Street'), GlobalVariable.TIMEOUT)
 
 'Enter Street'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Location Information/input_Street'), '29 May Street')
+WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_Street'), '31 May Street')
 
 'Enter City'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Location Information/input_City'), 'Philadelphia PA')
+WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_City'), 'Philadelphia PA')
 
 'Select Country'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Location Information/select_Country'), 'United States of America', false)
+WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/select_Country'), 'United States of America', false)
 
 'Select State/Region'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Location Information/select_StateOrRegion'), 'Pennsylvania', false)
+WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/select_StateOrRegion'), 'Pennsylvania', false)
 
 'Enter Zip/Postal Code'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Location Information/input_ZipOrPostalCode'), '15006')
+WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_ZipOrPostalCode'), '15006')
 
 'Select Address Type'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Location Information/select_AddressType'), 'Residence', false)
+WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/select_AddressType'), 'Residence', false)
 
 'Enter Address Label'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Location Information/input_AddressLabel'), 'HOME')
+WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_AddressLabel'), 'HOME')
 
 'Click on Next button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Location Information/btn_Next'))
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/btn_Next'))
 
 'Wait for Contact information fields to be visible'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Contact Information/input_PhoneNumber'), GlobalVariable.TIMEOUT)
+CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/input_PhoneNumber'), GlobalVariable.TIMEOUT)
 
 'Enter Phone number'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Contact Information/input_PhoneNumber'), '+17814484359')
+WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/input_PhoneNumber'), '+17814484359')
 
 'Select Phone type'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Contact Information/select_PhoneType'), 'Home', false)
+WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/select_PhoneType'), 'Home', false)
 
 'Enter Email'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Contact Information/input_Email'), 'cshah@savanainc.com')
+WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/input_Email'), 'apatil@savanainc.com')
 
 'Select Email type'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Contact Information/select_EmailType'), 'Personal', false)
+WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/select_EmailType'), 'Personal', false)
 
 'Select Preferred language'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Contact Information/select_PreferredLanguage'), 'English - United States', false)
+WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/select_PreferredLanguage'), 'English - United States', false)
 
 'Select Preferred contact method'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Contact Information/select_PreferredContactMethod'), 'Email', false)
+WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/select_PreferredContactMethod'), 'Email', false)
 
 'Click on Next button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer/Contact Information/btn_Next'))
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/btn_Next'))
 
+'Wait for review page to load'
+CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Contact Information/btn_Next'), GlobalVariable.TIMEOUT)
 //Verify customer information review page.
+//TODO: Cannot create test objects BUG - 25416 https://corp.savanainc.com/Gemini6/workspace/0/item/25416
+
+'Click on Next button'
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Contact Information/btn_Next'))
+
+'Wait for next page to load'
+CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Customer Information/input_MemberId'), GlobalVariable.TIMEOUT)
+
+'Enter Member ID'
+WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Customer Information/input_MemberId'), 'MEMID_10000')
+
+'Select Party or Customer Group'
+WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Customer Information/select_PartyorCustomerGroup'), 'Banking Customer', false)
+
+'Click on Create button'
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Customer Information/btn_Create'))
+
+'Wait for Customer details page to load'
+WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/lbl_CustomerName'), GlobalVariable.TIMEOUT)
+
+WebUI.delay(10) 
