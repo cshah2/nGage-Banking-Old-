@@ -1,4 +1,4 @@
-package enums
+package constants
 
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
@@ -16,42 +16,15 @@ import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
+import enums.Fields
 import internal.GlobalVariable
+import utils.RandomUtil
 
-public enum Fields {
+public class Data {
 	
-	CUST_FIRST_NAME,
-	CUST_MIDDLE_NAME,
-	CUST_LAST_NAME,
-	CUST_NAME_VIEW,
-	CUST_DOB,
-	CUST_TAX_ID,
-	CUST_COUNTRY_OF_RESIDENCE,
-	CUST_RESIDENCY_STATUS,
-	CUST_MARITAL_STATUS,
-	CUST_MEMBER_ID,
-	CUST_CUSTOMER_GROUP,
-	ADDR_STREET,
-	ADDR_CITY,
-	ADDR_COUNTY,
-	ADDR_STATE,
-	ADDR_ZIPCODE,
-	ADDR_VERIFIED_DATE,
-	ADDR_VALID_FROM,
-	ADDR_VALID_UNTIL,
-	ADDR_ADDRESS_TYPE,
-	ADDR_ADDRESS_LABEL,
-	ADDR_VIEW,
-	CT_PHONE_NUMBER,
-	CT_PHONE_VERIFIED_DATE,
-	CT_PHONE_VALID_FROM,
-	CT_PHONE_VALID_UNTIL,
-	CT_PHONE_TYPE,
-	CT_EMAIL,
-	CT_EMAIL_VERIFIED_DATE,
-	CT_EMAIL_VALID_FROM,
-	CT_EMAIL_VALID_UNTIL,
-	CT_EMAIL_TYPE,
-	CT_PREFERRED_LANGUAGE,
-	CT_PREFERRED_CONTACT_METHOD
+	public static final Map<Fields, String> CUSTOMER_001;
+	static {
+		CUSTOMER_001 = new HashMap<Fields, String>()
+		RandomUtil.generateRandomCustomerData(CUSTOMER_001)
+	}
 }

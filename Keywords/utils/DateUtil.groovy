@@ -1,4 +1,4 @@
-package enums
+package utils
 
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
@@ -18,40 +18,16 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import internal.GlobalVariable
 
-public enum Fields {
+public class DateUtil {
+
+	public static String convert(String date, String currFormat, String expFormat) {
+
+		def currFormatDate = new Date().parse(currFormat,date)
+		return currFormatDate.format(expFormat)
+	}
 	
-	CUST_FIRST_NAME,
-	CUST_MIDDLE_NAME,
-	CUST_LAST_NAME,
-	CUST_NAME_VIEW,
-	CUST_DOB,
-	CUST_TAX_ID,
-	CUST_COUNTRY_OF_RESIDENCE,
-	CUST_RESIDENCY_STATUS,
-	CUST_MARITAL_STATUS,
-	CUST_MEMBER_ID,
-	CUST_CUSTOMER_GROUP,
-	ADDR_STREET,
-	ADDR_CITY,
-	ADDR_COUNTY,
-	ADDR_STATE,
-	ADDR_ZIPCODE,
-	ADDR_VERIFIED_DATE,
-	ADDR_VALID_FROM,
-	ADDR_VALID_UNTIL,
-	ADDR_ADDRESS_TYPE,
-	ADDR_ADDRESS_LABEL,
-	ADDR_VIEW,
-	CT_PHONE_NUMBER,
-	CT_PHONE_VERIFIED_DATE,
-	CT_PHONE_VALID_FROM,
-	CT_PHONE_VALID_UNTIL,
-	CT_PHONE_TYPE,
-	CT_EMAIL,
-	CT_EMAIL_VERIFIED_DATE,
-	CT_EMAIL_VALID_FROM,
-	CT_EMAIL_VALID_UNTIL,
-	CT_EMAIL_TYPE,
-	CT_PREFERRED_LANGUAGE,
-	CT_PREFERRED_CONTACT_METHOD
+	public static String getCurrentDateTime(String format, String timezone) {
+		Date now = new Date()
+		return now.format(format, TimeZone.getTimeZone(timezone)).toString()
+	}
 }
