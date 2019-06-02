@@ -19,6 +19,8 @@ import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import internal.GlobalVariable
+import utils.RegexUtil
+
 import static constants.common.*
 
 public class common {
@@ -63,5 +65,11 @@ public class common {
 
 		//Verify user is on dashboard page
 		WebUI.verifyMatch(WebUI.getUrl(), dashboardUrl, false)
+	}
+	
+	@Keyword
+	def verifyElementTextContains(TestObject to, String expectedText) {
+		
+		WebUI.verifyMatch(WebUI.getText(to).trim(), RegexUtil.containsString(expectedText), true)
 	}
 }

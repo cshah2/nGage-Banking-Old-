@@ -12,5 +12,8 @@ import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
+import utils.RegexUtil
 
-CustomKeywords.'api.RandomUser.generateRandomCustomerData'()
+//CustomKeywords.'api.RandomUser.generateRandomCustomerData'()
+
+RegexUtil.containsString('+12345')

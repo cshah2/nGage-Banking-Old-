@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>select_AddressType</name>
+   <name>lbl_Street</name>
    <tag></tag>
-   <elementGuidId>3bd8b7a3-989c-4d21-af3a-6777726711ab</elementGuidId>
+   <elementGuidId>238af3fa-5344-4f2c-9e6b-5223ecb9427f</elementGuidId>
    <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[contains(@id,'_wtfinal_review_CN')]//label[text()='Street']/..</value>
+      </entry>
       <entry>
          <key>CSS</key>
          <value></value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
-      </entry>
-      <entry>
-         <key>XPATH</key>
-         <value>//div[contains(@id,'wtAddress') and contains(@id,'wtSectionExpandableArea')]//label[text()='Address Type']/../select</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>lbl_MiddleName</name>
+   <name>lbl_EmailType</name>
    <tag></tag>
-   <elementGuidId>052359ab-3f0f-4c29-8417-52a0dfc4f0b2</elementGuidId>
+   <elementGuidId>6a74da17-69f8-4cb4-a881-7fe02e96de9c</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//div[contains(@id,'_wtfinal_review_CN')]//label[text()='Middle Name']/..</value>
+         <value>//div[contains(@id,'_wtfinal_review_CN')]//label[text()='Email Type']/..</value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value></value>
       </entry>
       <entry>
          <key>BASIC</key>

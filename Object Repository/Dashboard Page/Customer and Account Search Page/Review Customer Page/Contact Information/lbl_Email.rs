@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>input_Email</name>
+   <name>lbl_Email</name>
    <tag></tag>
    <elementGuidId>e63e60c0-209a-4da5-9194-27f186c01f71</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
-         <value></value>
+         <key>XPATH</key>
+         <value>//div[contains(@id,'_wtfinal_review_CN')]//label[text()='Email']/..</value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value>input[id*='_wtContact'][id*='wtEmailData']</value>
+         <value></value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
       </entry>
    </selectorCollection>
-   <selectorMethod>CSS</selectorMethod>
+   <selectorMethod>XPATH</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

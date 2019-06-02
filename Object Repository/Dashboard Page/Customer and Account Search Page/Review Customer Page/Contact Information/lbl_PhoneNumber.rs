@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>select_Country</name>
+   <name>lbl_PhoneNumber</name>
    <tag></tag>
-   <elementGuidId>8f3571a8-528e-49d0-88a6-81b5fa4fb7d2</elementGuidId>
+   <elementGuidId>d3dedd3e-aea8-4579-9dec-b467e44da9ec</elementGuidId>
    <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[contains(@id,'_wtfinal_review_CN')]//label[text()='Phone Number']/..</value>
+      </entry>
       <entry>
          <key>CSS</key>
          <value></value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
-      </entry>
-      <entry>
-         <key>XPATH</key>
-         <value>//div[contains(@id,'wtAddress') and contains(@id,'wtSectionExpandableArea')]//label[text()='Country']/../select</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

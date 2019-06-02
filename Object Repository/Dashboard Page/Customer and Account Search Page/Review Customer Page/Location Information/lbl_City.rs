@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>select_EmailType</name>
+   <name>lbl_City</name>
    <tag></tag>
-   <elementGuidId>6a74da17-69f8-4cb4-a881-7fe02e96de9c</elementGuidId>
+   <elementGuidId>cf235666-cf6f-4688-a229-fe18b29cb24d</elementGuidId>
    <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[contains(@id,'_wtfinal_review_CN')]//label[text()='City']/..</value>
+      </entry>
       <entry>
          <key>CSS</key>
          <value></value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
-      </entry>
-      <entry>
-         <key>XPATH</key>
-         <value>//div[contains(@id,'wtContact') and contains(@id,'wtSectionExpandableArea')]//label[text()='Email Type']/../select</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

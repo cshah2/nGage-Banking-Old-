@@ -123,9 +123,74 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Crea
 
 'Wait for review page to load'
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Contact Information/btn_Next'), GlobalVariable.TIMEOUT)
+
 //Verify customer information review page.
 //TODO: Cannot create test objects BUG - 25416 https://corp.savanainc.com/Gemini6/workspace/0/item/25416
 
+'Verify First name'
+CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Basic Information/lbl_FirstName'), data.get(Fields.CUST_FIRST_NAME))
+
+'Verify Middle name'
+CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Basic Information/lbl_MiddleName'), data.get(Fields.CUST_MIDDLE_NAME))
+
+'Verify Last name'
+CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Basic Information/lbl_LastName'), data.get(Fields.CUST_LAST_NAME))
+
+'Verify DOB'
+CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Basic Information/lbl_DOB'), data.get(Fields.CUST_DOB))
+
+'Verify Tax ID'
+CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Basic Information/lbl_TaxID'), data.get(Fields.CUST_TAX_ID))
+
+'Verify Residency' //TODO: Bug - Country is shown as 2 digit value
+CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Basic Information/lbl_CountryOfResidence'), 'US')
+
+'Verify Residencey Status'
+CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Basic Information/lblt_ResidencyStatus'), data.get(Fields.CUST_RESIDENCY_STATUS))
+
+'Verify Marital Status'
+CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Basic Information/lbl_MaritalStatus'), data.get(Fields.CUST_MARITAL_STATUS))
+
+'Verify Street'
+CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Location Information/lbl_Street'), data.get(Fields.ADDR_STREET))
+
+'Verify City'
+CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Location Information/lbl_City'), data.get(Fields.ADDR_CITY))
+
+'Verify Country' //TODO: Bug - County is shown as 2 digit value
+CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Location Information/lbl_Country'), 'US')
+
+'Verify State/Region' //TODO: Bug - County is shown as 2 digit value
+CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Location Information/lbl_StateOrRegion'), 'PA')
+
+'Verify Zip/Postal code'
+CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Location Information/lbl_ZipOrPostalCode'), data.get(Fields.ADDR_ZIPCODE))
+
+'Verify Address Type'
+CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Location Information/lbl_AddressType'), data.get(Fields.ADDR_ADDRESS_TYPE))
+
+'Verify Address Label'
+CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Location Information/lbl_AddressLabel'), data.get(Fields.ADDR_ADDRESS_LABEL))
+
+'Verify Phone Number'
+CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Contact Information/lbl_PhoneNumber'), data.get(Fields.CT_PHONE_NUMBER))
+
+'Verify Phone Type'
+CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Contact Information/lbl_PhoneType'), data.get(Fields.CT_PHONE_TYPE))
+
+'Verify Email'
+CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Contact Information/lbl_Email'), data.get(Fields.CT_EMAIL))
+
+'Verify Email Type'
+CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Contact Information/lbl_EmailType'), data.get(Fields.CT_EMAIL_TYPE))
+
+'Verify Preferred Language'
+CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Contact Information/lbl_PreferredLanguage'), data.get(Fields.CT_PREFERRED_LANGUAGE))
+
+'Verify Preferred Contact Method'
+CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Contact Information/lbl_PreferredContactMethod'), data.get(Fields.CT_PREFERRED_CONTACT_METHOD))
+
+//Submit application.
 'Click on Next button'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Contact Information/btn_Next'))
 

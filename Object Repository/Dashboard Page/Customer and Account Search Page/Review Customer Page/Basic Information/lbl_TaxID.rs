@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>select_PreferredLanguage</name>
+   <name>lbl_TaxID</name>
    <tag></tag>
-   <elementGuidId>ed16ce59-437b-4bbc-bc24-94f381d50cd6</elementGuidId>
+   <elementGuidId>daa99460-934e-4087-a92f-6650c36ec33b</elementGuidId>
    <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[contains(@id,'_wtfinal_review_CN')]//label[text()='Tax Id']/..</value>
+      </entry>
       <entry>
          <key>CSS</key>
          <value></value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
-      </entry>
-      <entry>
-         <key>XPATH</key>
-         <value>//div[contains(@id,'wtContact') and contains(@id,'wtSectionExpandableArea')]//label[text()='Preferred Language']/../select</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>select_CountryOfCitizenship</name>
+   <name>lbl_ZipOrPostalCode</name>
    <tag></tag>
-   <elementGuidId>1fb8d8de-8007-4496-a17a-2460d5358122</elementGuidId>
+   <elementGuidId>a77ea99b-7491-44e6-ad57-bdbb436ca4be</elementGuidId>
    <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[contains(@id,'_wtfinal_review_CN')]//label[text()='Zip/Postal Code']/..</value>
+      </entry>
       <entry>
          <key>CSS</key>
          <value></value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
-      </entry>
-      <entry>
-         <key>XPATH</key>
-         <value>//div[contains(@id,'wtBasicInformation') and contains(@id,'wtSectionExpandableArea')]//label[text()='Country of Citizenship']/../select</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

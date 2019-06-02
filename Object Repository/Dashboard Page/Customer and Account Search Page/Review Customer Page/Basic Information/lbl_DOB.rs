@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>input_ZipOrPostalCode</name>
+   <name>lbl_DOB</name>
    <tag></tag>
-   <elementGuidId>a77ea99b-7491-44e6-ad57-bdbb436ca4be</elementGuidId>
+   <elementGuidId>d0961f50-964c-4771-9d38-dc45397e2dd9</elementGuidId>
    <selectorCollection>
       <entry>
+         <key>XPATH</key>
+         <value>//div[contains(@id,'_wtfinal_review_CN')]//label[text()='Date of Birth']/..</value>
+      </entry>
+      <entry>
          <key>CSS</key>
-         <value>input[id*='_wtAddress'][id*='wtPostalCode']</value>
+         <value></value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
-      </entry>
-      <entry>
-         <key>XPATH</key>
-         <value></value>
       </entry>
    </selectorCollection>
-   <selectorMethod>CSS</selectorMethod>
+   <selectorMethod>XPATH</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>
