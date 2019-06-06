@@ -18,19 +18,53 @@ import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
+import enums.RegexOperator
 import internal.GlobalVariable
 
 public class RegexUtil {
-	
+
 	private static String addEscapeChars(String text) {
-		
+
 		text = text.replaceAll('\\+', '\\\\+')
 		return text
 	}
+
+//	public static String containsString(String text) {
+//
+//		text = addEscapeChars(text)
+//		return '.*'+text+'.*'
+//	}
 	
-	public static String containsString(String text) {
+	public static String formRegexString(String text, RegexOperator operator) {
 		
-		text = addEscapeChars(text)
-		return '.*'+text+'.*'
+		
+		switch(operator) {
+			
+			case RegexOperator.EQUALS:
+				text = addEscapeChars(text)
+				break;
+			case RegexOperator.EQUALS_IGNORE_CASE:
+				text = addEscapeChars(text)
+				text = '(?i)'+text+'(?i)'
+				break;
+			case RegexOperator.CONTAINS:
+				text = addEscapeChars(text)
+				text = '.*'+text+'.*'
+				break;
+			case RegexOperator.CONTAINS_IGNORE_CASE:
+				text = addEscapeChars(text)
+				text = '.*(?i)'+text+'(?i).*'
+				break;
+			case RegexOperator.STARTS_WITH:
+				break;
+			case RegexOperator.ENDS_WITH:
+				break;
+			case RegexOperator.NONE:
+				break;
+			default:
+				break;
+				
+			return text;
+		}
 	}
 }

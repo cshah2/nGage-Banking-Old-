@@ -16,4 +16,4 @@ import utils.RegexUtil
 
 //CustomKeywords.'api.RandomUser.generateRandomCustomerData'()
 
-RegexUtil.containsString('+12345')
+WebUI.verifyMatch('Chintan Shah', '.*(?i)ntan sh(?i).*',true)

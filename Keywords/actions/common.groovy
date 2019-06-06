@@ -18,6 +18,7 @@ import com.kms.katalon.core.webui.common.WebUiCommonHelper
 import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
+import enums.RegexOperator
 import internal.GlobalVariable
 import utils.RegexUtil
 
@@ -70,6 +71,6 @@ public class common {
 	@Keyword
 	def verifyElementTextContains(TestObject to, String expectedText) {
 		
-		WebUI.verifyMatch(WebUI.getText(to).trim(), RegexUtil.containsString(expectedText), true)
+		WebUI.verifyMatch(WebUI.getText(to).trim(), RegexUtil.formRegexString(expectedText, RegexOperator.CONTAINS), true)
 	}
 }
