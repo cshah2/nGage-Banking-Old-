@@ -12,7 +12,6 @@ import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
-import constants.common
 import enums.RegexOperator
 import internal.GlobalVariable as GlobalVariable
 
@@ -57,16 +56,10 @@ CustomKeywords.'actions.table.verifyRecordsCount'(findTestObject('Dashboard Page
 'Verify all values in column are matching the values'
 CustomKeywords.'actions.table.verifyAllValuesInColumnEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), colPos_LastName, searchLastName)
 
-
+'Click on Clear Filter button'
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_ClearFilters'))
 
 //Search for - first name
-
-'Delete all cookies'
-WebUI.deleteAllCookies()
-
-'Navigate back to home page'
-WebUI.navigateToUrl(common.dashboardUrl)
-
 'Click on Search All drop down'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search'))
 
@@ -94,3 +87,38 @@ CustomKeywords.'actions.table.verifyRecordsCount'(findTestObject('Dashboard Page
 
 'Verify all values in column are matching the values'
 CustomKeywords.'actions.table.verifyAllValuesInColumnEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), colPos_FirstName, searchFirstName)
+
+'Click on Clear Filter button'
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_ClearFilters'))
+
+//Search for - phone number
+'Click on Search All drop down'
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search'))
+
+'Wait for Menus to be visible'
+WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/ddOption_Menu'), GlobalVariable.TIMEOUT)
+
+'Click on Customer option'
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/ddOption_Customer'))
+
+'Wait for Search button to be visible'
+WebUI.delay(2) //TODO: Need to find correct wait condition.
+CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Search'), GlobalVariable.TIMEOUT)
+
+'Enter Search Criteria in phone number field'
+WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_PhoneNumber'), searchPhoneNumber)
+
+'Click on Search button'
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Search'))
+
+'Wait for table to be visible'
+CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), GlobalVariable.TIMEOUT)
+
+'Verify result table contains atleast 1 record'
+CustomKeywords.'actions.table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), expRowsCount, RegexOperator.GREATER_THAN_OR_EQUAL)
+
+'Verify all values in column are matching the values'
+CustomKeywords.'actions.table.verifyAllValuesInColumnEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), colPos_PhoneNumber, searchPhoneNumber)
+
+'Click on Clear Filter button'
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_ClearFilters'))
