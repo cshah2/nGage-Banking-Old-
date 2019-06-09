@@ -32,20 +32,20 @@ CustomKeywords.'actions.common.login'()
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search'))
 
 'Wait for Menus to be visible'
-WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/ddOption_Menu'), GlobalVariable.TIMEOUT)
+WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Menu'), GlobalVariable.TIMEOUT)
 
 'Click on Customer option'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/ddOption_Customer'))
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Customer'))
 
 'Wait for Search button to be visible'
 WebUI.delay(2) //TODO: Need to find correct wait condition.
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Search'), GlobalVariable.TIMEOUT)
+CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'), GlobalVariable.TIMEOUT)
 
 'Enter Search Criteria in last name field'
 WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_LastName'), searchLastName)
 
 'Click on Search button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Search'))
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'))
 
 'Wait for table to be visible'
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), GlobalVariable.TIMEOUT)
@@ -57,27 +57,27 @@ CustomKeywords.'actions.table.verifyRecordsCount'(findTestObject('Dashboard Page
 CustomKeywords.'actions.table.verifyAllValuesInColumnEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), colPos_LastName, searchLastName)
 
 'Click on Clear Filter button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_ClearFilters'))
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_ClearFilters'))
 
 //Search for - first name
 'Click on Search All drop down'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search'))
 
 'Wait for Menus to be visible'
-WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/ddOption_Menu'), GlobalVariable.TIMEOUT)
+WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Menu'), GlobalVariable.TIMEOUT)
 
 'Click on Customer option'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/ddOption_Customer'))
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Customer'))
 
 'Wait for Search button to be visible'
 WebUI.delay(2) //TODO: Need to find correct wait condition.
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Search'), GlobalVariable.TIMEOUT)
+CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'), GlobalVariable.TIMEOUT)
 
 'Enter Search Criteria in First name field'
 WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_FirstName'), searchFirstName)
 
 'Click on Search button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Search'))
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'))
 
 'Wait for table to be visible'
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), GlobalVariable.TIMEOUT)
@@ -89,27 +89,27 @@ CustomKeywords.'actions.table.verifyRecordsCount'(findTestObject('Dashboard Page
 CustomKeywords.'actions.table.verifyAllValuesInColumnEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), colPos_FirstName, searchFirstName)
 
 'Click on Clear Filter button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_ClearFilters'))
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_ClearFilters'))
 
 //Search for - phone number
 'Click on Search All drop down'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search'))
 
 'Wait for Menus to be visible'
-WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/ddOption_Menu'), GlobalVariable.TIMEOUT)
+WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Menu'), GlobalVariable.TIMEOUT)
 
 'Click on Customer option'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/ddOption_Customer'))
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Customer'))
 
 'Wait for Search button to be visible'
 WebUI.delay(2) //TODO: Need to find correct wait condition.
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Search'), GlobalVariable.TIMEOUT)
+CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'), GlobalVariable.TIMEOUT)
 
 'Enter Search Criteria in phone number field'
 WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_PhoneNumber'), searchPhoneNumber)
 
 'Click on Search button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Search'))
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'))
 
 'Wait for table to be visible'
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), GlobalVariable.TIMEOUT)
@@ -121,4 +121,4 @@ CustomKeywords.'actions.table.verifyRecordsCount'(findTestObject('Dashboard Page
 CustomKeywords.'actions.table.verifyAllValuesInColumnEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), colPos_PhoneNumber, searchPhoneNumber)
 
 'Click on Clear Filter button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_ClearFilters'))
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_ClearFilters'))

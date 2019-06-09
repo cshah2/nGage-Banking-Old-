@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>ddOption_Organization</name>
+   <name>dd_AccountsType_Option_Banking</name>
    <tag></tag>
-   <elementGuidId>24d9b7f4-a1e8-4bf7-8000-abe111898782</elementGuidId>
+   <elementGuidId>5aa1df30-fb84-4b04-b6af-7d37f924742f</elementGuidId>
    <selectorCollection>
-      <entry>
-         <key>XPATH</key>
-         <value>//div[contains(@id,'_wtSearchBar')]//div[contains(@class,'DropdownMenu') and contains(@id,'_wtMenu')]//a[text()='Organization']</value>
-      </entry>
       <entry>
          <key>BASIC</key>
          <value></value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value></value>
+         <key>XPATH</key>
+         <value>//div[contains(@id,'_wtacctSearch_CN')]//div[contains(@class,'DropdownMenu') and contains(@id,'_wtMenu')]//a[text()='Banking']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

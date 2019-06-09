@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>dd_Search</name>
+   <name>lbl_AccountTitle</name>
    <tag></tag>
-   <elementGuidId>0e8684b8-ab86-4f42-988d-84320a54bbf2</elementGuidId>
+   <elementGuidId>3c3f18c3-c802-400d-bbeb-d203e63b3d6e</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value>div[id*='_wtSearchBar'] > div:nth-of-type(1) div[class*='ButtonDropdown_text'][id*='wtText']</value>
+         <value>div[class='PanelSubHeader'] div[class='SubHeader-center'] div[class*='SingleAccountRoundShadow'] span</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

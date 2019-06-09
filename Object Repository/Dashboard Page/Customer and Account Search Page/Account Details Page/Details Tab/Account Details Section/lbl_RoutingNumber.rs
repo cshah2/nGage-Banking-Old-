@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>ddOption_Menu</name>
+   <name>lbl_RoutingNumber</name>
    <tag></tag>
-   <elementGuidId>8307d52d-51dc-461b-a335-5394b2d6311a</elementGuidId>
+   <elementGuidId>c29ded23-2163-4324-9cb6-0b89b77cabcd</elementGuidId>
    <selectorCollection>
-      <entry>
-         <key>XPATH</key>
-         <value>//div[contains(@id,'_wtSearchBar')]//div[contains(@class,'DropdownMenu') and contains(@id,'_wtMenu')]//a[text()='Customer']</value>
-      </entry>
       <entry>
          <key>BASIC</key>
          <value></value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value></value>
+         <key>XPATH</key>
+         <value>//table[contains(@id,'_wtaccountDetails')]//td[text()='Routing Number']/../td[@class='ShowRecord_Value']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

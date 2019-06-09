@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>dd_Search</name>
+   <name>tab_Overview</name>
    <tag></tag>
-   <elementGuidId>0e8684b8-ab86-4f42-988d-84320a54bbf2</elementGuidId>
+   <elementGuidId>97b14036-a093-4c29-99c7-f207553f8816</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value>div[id*='_wtSearchBar'] > div:nth-of-type(1) div[class*='ButtonDropdown_text'][id*='wtText']</value>
+         <value>div[id*='wtTabs_Header'] span[tabname='Overview']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

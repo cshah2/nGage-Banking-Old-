@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>dd_Search</name>
+   <name>section_AccountDetails</name>
    <tag></tag>
-   <elementGuidId>0e8684b8-ab86-4f42-988d-84320a54bbf2</elementGuidId>
+   <elementGuidId>511515a7-3263-4be8-9374-a1f31190cc13</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value>div[id*='_wtSearchBar'] > div:nth-of-type(1) div[class*='ButtonDropdown_text'][id*='wtText']</value>
+         <value>div[displayblockname=&quot;Account Details&quot;] div[class*='SectionExpandable_content']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

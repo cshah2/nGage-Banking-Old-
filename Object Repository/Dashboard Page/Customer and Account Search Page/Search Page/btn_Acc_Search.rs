@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>dd_Search</name>
+   <name>btn_Acc_Search</name>
    <tag></tag>
-   <elementGuidId>0e8684b8-ab86-4f42-988d-84320a54bbf2</elementGuidId>
+   <elementGuidId>2515a48f-d012-4dd7-8329-421397664321</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value>div[id*='_wtSearchBar'] > div:nth-of-type(1) div[class*='ButtonDropdown_text'][id*='wtText']</value>
+         <value>div[id*='_wtacctSearch_CN'] input[value='Search']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

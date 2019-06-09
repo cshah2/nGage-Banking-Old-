@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>dd_Search</name>
+   <name>btn_Cust_ClearFilters</name>
    <tag></tag>
-   <elementGuidId>0e8684b8-ab86-4f42-988d-84320a54bbf2</elementGuidId>
+   <elementGuidId>76a48d65-8c41-4214-a569-99b4d85b5f3d</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
       </entry>
       <entry>
          <key>CSS</key>
-         <value>div[id*='_wtSearchBar'] > div:nth-of-type(1) div[class*='ButtonDropdown_text'][id*='wtText']</value>
+         <value>div[id*='_wtcustSearch_CN'] div[data-intro='Submit search'] input[value='Clear Filters']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

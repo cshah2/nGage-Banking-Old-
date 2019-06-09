@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>btn_ClearFilters</name>
+   <name>input_AccountNumber</name>
    <tag></tag>
-   <elementGuidId>76a48d65-8c41-4214-a569-99b4d85b5f3d</elementGuidId>
+   <elementGuidId>ce19de2c-cf6e-4a6f-820f-f9c9236d927b</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
@@ -11,7 +11,7 @@
       </entry>
       <entry>
          <key>CSS</key>
-         <value>div[id*='_wtcustSearch_CN'] div[data-intro='Submit search'] input[value='Clear Filters']</value>
+         <value>div[id*='_wtacctSearch_CN'] input[id*='_wtaccountNumberInput']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>
