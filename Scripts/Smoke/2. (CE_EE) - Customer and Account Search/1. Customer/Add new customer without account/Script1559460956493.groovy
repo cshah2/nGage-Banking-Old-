@@ -17,6 +17,7 @@ import enums.Fields
 import internal.GlobalVariable as GlobalVariable
 
 Map<Fields, String> data = Data.CUSTOMER_001
+println "Customer = "+data
 
 'Login into portal'
 CustomKeywords.'actions.common.login'()

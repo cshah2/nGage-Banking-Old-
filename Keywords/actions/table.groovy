@@ -380,8 +380,8 @@ public class table {
 
 	@Keyword
 	def clickCell(TestObject to, int rowNo, int colNo) {
-		WebElement cell = getCell(to, rowNo, colNo)
-		cell.findElement(By.xpath("//a")).click()
+		WebElement table = getTable(to)
+		table.findElement(By.xpath("//tbody/tr["+rowNo+"]/td["+colNo+"]//a")).click()
 	}
 
 }

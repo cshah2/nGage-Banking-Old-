@@ -12,7 +12,7 @@ public class Data {
 	static {
 		CUSTOMER_001 = new HashMap<Fields, String>()
 		Map parsedJson = RandomUtil.generateRandomCustomerData()
-		
+
 		CUSTOMER_001.put(Fields.CUST_FIRST_NAME, parsedJson.get("results").get(0).get("name").get("first"))
 		CUSTOMER_001.put(Fields.CUST_MIDDLE_NAME, RandomStringUtils.randomAlphabetic(1))
 		CUSTOMER_001.put(Fields.CUST_LAST_NAME, parsedJson.get("results").get(0).get("name").get("last"))
@@ -41,5 +41,26 @@ public class Data {
 
 		CUSTOMER_001.put(Fields.CUST_MEMBER_ID, 'MID_'+RandomStringUtils.randomNumeric(6))
 		CUSTOMER_001.put(Fields.CUST_CUSTOMER_GROUP, 'Banking Customer')
+	}
+	
+	public static final Map<Fields, String> ACCOUNT_001;
+	static {
+		ACCOUNT_001 = new HashMap<Fields, String>()
+		ACCOUNT_001.put(Fields.ACC_TITLE, CUSTOMER_001.get(Fields.CUST_FIRST_NAME)+' '+CUSTOMER_001.get(Fields.CUST_LAST_NAME))
+		ACCOUNT_001.put(Fields.ACC_DESCRIPTION, 'Savings')
+		ACCOUNT_001.put(Fields.ACC_GROUP, 'Banking')
+		ACCOUNT_001.put(Fields.ACC_NUMBER, '1'+RandomStringUtils.randomNumeric(11))
+		ACCOUNT_001.put(Fields.ACC_BROKERED, 'false')
+		ACCOUNT_001.put(Fields.ACC_TIMEZONE, 'UTC')
+		ACCOUNT_001.put(Fields.ACC_STATEMENT_FREQUENCY, 'Daily')
+		ACCOUNT_001.put(Fields.ACC_PRODUCT_TYPE, 'Personal Savings')
+		ACCOUNT_001.put(Fields.ACC_POSITION_NAME, 'Personal Savings')
+		ACCOUNT_001.put(Fields.ACC_CURRENCY_CODE, 'USD')
+		ACCOUNT_001.put(Fields.ACC_VERTICAL, '01')
+		ACCOUNT_001.put(Fields.ACC_DEPT_ID, '350')
+		ACCOUNT_001.put(Fields.DOC_TYPE, 'Terms and conditions')
+		ACCOUNT_001.put(Fields.DOC_SIGNED_BY, CUSTOMER_001.get(Fields.CUST_FIRST_NAME)+' '+CUSTOMER_001.get(Fields.CUST_LAST_NAME))
+		ACCOUNT_001.put(Fields.DOC_SIGNED_DATE, DateUtil.getCurrentDateTime('MM/dd/yyyy HH:mm:ss', 'EST'))
+		ACCOUNT_001.put(Fields.DOC_VERSION, '01')
 	}
 }

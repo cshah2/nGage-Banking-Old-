@@ -25,7 +25,7 @@ public class DateUtil {
 		def currFormatDate = new Date().parse(currFormat,date)
 		return currFormatDate.format(expFormat)
 	}
-	
+
 	public static String getCurrentDateTime(String format, String timezone) {
 		Date now = new Date()
 		return now.format(format, TimeZone.getTimeZone(timezone)).toString()

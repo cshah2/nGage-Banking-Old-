@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>lbl_FirstName</name>
+   <name>input_CurrencyCode</name>
    <tag></tag>
-   <elementGuidId>3312742e-5f4e-4271-a807-02be79a7cc8a</elementGuidId>
+   <elementGuidId>3a04cda4-3187-452f-9bc9-0efc58fd4793</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>CSS</key>
-      </entry>
-      <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[contains(@id,'_wtfinal_review_CN')]//label[text()='First Name']/..</value>
+         <value>//div[contains(@id,'_wtPositionListCN')]/div[not(contains(@style,'display:none'))]//div[starts-with(text(),'Currency Code')]/input</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

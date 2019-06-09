@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>lbl_FirstName</name>
+   <name>select_ProductType</name>
    <tag></tag>
-   <elementGuidId>3312742e-5f4e-4271-a807-02be79a7cc8a</elementGuidId>
+   <elementGuidId>bf548159-4add-4cf5-a511-512cf53cde7c</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>CSS</key>
-      </entry>
-      <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[contains(@id,'_wtfinal_review_CN')]//label[text()='First Name']/..</value>
+         <value>//div[contains(@id,'_wtPositionListCN')]/div[not(contains(@style,'display:none'))]//div[starts-with(text(),'Product Type')]/select</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
