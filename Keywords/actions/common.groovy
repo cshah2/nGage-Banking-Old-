@@ -48,8 +48,12 @@ public class common {
 		//'Navigate to login page url'
 		WebUI.navigateToUrl(loginUrl)
 
+		//Get Current URL
+		String currentUrl = WebUI.getUrl()
+		
 		//Check if User is on Login page or not
-		if(WebUI.getUrl().contains('Login.aspx')) {
+		
+		if(currentUrl.contains('Login.aspx') || currentUrl.contains('NoPermission.aspx')) {
 
 			//Verify login page is loaded
 			WebUI.verifyElementVisible(findTestObject('Login Page/lbl_Heading'))
@@ -67,10 +71,16 @@ public class common {
 		//Verify user is on dashboard page
 		WebUI.verifyMatch(WebUI.getUrl(), dashboardUrl, false)
 	}
-	
+
 	@Keyword
 	def verifyElementTextContains(TestObject to, String expectedText) {
-		
+
 		WebUI.verifyMatch(WebUI.getText(to).trim(), RegexUtil.formRegexString(expectedText, RegexOperator.CONTAINS), true)
+	}
+	
+	@Keyword
+	def verifyUrlContains(String expectedText) {
+		
+		WebUI.verifyMatch(WebUI.getUrl().trim(), RegexUtil.formRegexString(expectedText, RegexOperator.CONTAINS), true)
 	}
 }

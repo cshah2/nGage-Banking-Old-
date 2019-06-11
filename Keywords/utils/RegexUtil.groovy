@@ -26,20 +26,21 @@ public class RegexUtil {
 	private static String addEscapeChars(String text) {
 
 		text = text.replaceAll('\\+', '\\\\+')
+		text = text.replaceAll('\\*', '\\\\*')
 		return text
 	}
 
-//	public static String containsString(String text) {
-//
-//		text = addEscapeChars(text)
-//		return '.*'+text+'.*'
-//	}
-	
+	//	public static String containsString(String text) {
+	//
+	//		text = addEscapeChars(text)
+	//		return '.*'+text+'.*'
+	//	}
+
 	public static String formRegexString(String text, RegexOperator operator) {
-		
-		
+
+
 		switch(operator) {
-			
+
 			case RegexOperator.EQUALS:
 				text = addEscapeChars(text)
 				break;
@@ -63,8 +64,39 @@ public class RegexUtil {
 				break;
 			default:
 				break;
-				
-			return text;
+
+				return text;
 		}
 	}
+	
+//    public static String maskString(String strText, int start, int end, char maskChar) 
+//        throws Exception{
+//        
+//        if(strText == null || strText.equals(""))
+//            return "";
+//        
+//        if(start < 0)
+//            start = 0;
+//        
+//        if( end > strText.length() )
+//            end = strText.length();
+//            
+//        if(start > end)
+//            throw new Exception("End index cannot be greater than start index");
+//        
+//        int maskLength = end - start;
+//        
+//        if(maskLength == 0)
+//            return strText;
+//        
+//        StringBuilder sbMaskString = new StringBuilder(maskLength);
+//        
+//        for(int i = 0; i < maskLength; i++){
+//            sbMaskString.append(maskChar);
+//        }
+//        
+//        return strText.substring(0, start) 
+//            + sbMaskString.toString() 
+//            + strText.substring(start + maskLength);
+//    }
 }

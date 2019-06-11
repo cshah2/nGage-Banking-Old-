@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>1. Search Customer</name>
+   <name>2. Customer Tabs (5)</name>
    <tag></tag>
    <comment></comment>
-   <testCaseGuid>a48f4d18-9720-4b9e-8baf-7e244db3b43a</testCaseGuid>
+   <testCaseGuid>c34dd238-8bdb-4700-806b-9eb729a0a6be</testCaseGuid>
 </TestCaseEntity>

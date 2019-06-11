@@ -11,11 +11,5 @@ import com.kms.katalon.core.testdata.TestData as TestData
 import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-
-import constants.common
-import enums.RegexOperator
 import internal.GlobalVariable as GlobalVariable
-import utils.RegexUtil
 
-String ID = '123456789'
-println RegexUtil.maskString(ID, 1, 4, '*')

@@ -14,7 +14,7 @@ public class RandomUtil {
 
 		RequestObject request
 		String url = 'https://api.randomuser.me/?nat=US'
-		
+
 		//Set URL
 		request = new RequestObject('objectId')
 		request.setRestUrl(url)
@@ -33,7 +33,7 @@ public class RandomUtil {
 		if(!(statusCode == 200 || statusCode == 204)) {
 			KeywordUtil.markFailedAndStop('call to patch single user api failed')
 		}
-	
+
 		JsonSlurper slupper = new JsonSlurper()
 		return slupper.parseText(res.getResponseBodyContent())
 	}
