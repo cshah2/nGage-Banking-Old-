@@ -19,9 +19,12 @@ import enums.RegexOperator
 import internal.GlobalVariable as GlobalVariable
 
 Map<Fields, String> custData = Data.CUSTOMER_002
-println "Customer002 = "+custData
+println "Customer002 = "+custData.toMapString()
 
 int expRowsCount = 1
+
+//Mark this test as failed if required customer is not created
+CustomKeywords.'actions.common.shouldFailTest'(custData)
 
 'Login into portal'
 CustomKeywords.'actions.common.login'()

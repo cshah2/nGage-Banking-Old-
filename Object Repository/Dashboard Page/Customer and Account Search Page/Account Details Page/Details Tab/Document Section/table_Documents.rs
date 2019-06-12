@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>input_DeptId</name>
+   <name>table_Documents</name>
    <tag></tag>
-   <elementGuidId>03cd5037-b523-497d-ba96-5152f24c2647</elementGuidId>
+   <elementGuidId>c57a4cea-8522-460a-9433-4eaf6c67ed72</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//div[contains(@id,'_wtPositionListCN')]/div[not(contains(@style,'display:none'))]//div[starts-with(text(),'Dept Id') or starts-with(text(),'Department Id')]/input</value>
+         <value></value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>table[id*='_wttcDtlTable']</value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

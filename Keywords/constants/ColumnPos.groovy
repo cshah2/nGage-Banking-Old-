@@ -30,6 +30,19 @@ public class ColumnPos {
 	//Accounts Table - Customer Details page
 	public static int ACC_NUMBER = 1
 	public static int ACC_TITLE = 2
+	public static int ACC_OPEN_DATE = 3
+	public static int ACC_OWNERSHIP = 4
 	public static int ACC_PRODUCT_NAME = 5
 	public static int ACC_DESCRIPTION = 6
+	public static int ACC_INTEREST_RATE = 7
+	public static int ACC_LEDGER_BALANCE = 8
+	public static int ACC_AVAILABLE_BALANCE = 9
+	
+	//Documents Table - Account Details page
+	public static int DOC_TYPE = 1
+	public static int DOC_SIGNED_BY = 2
+	public static int DOC_SIGNED_DATE = 3
+	public static int DOC_VERSION = 4
+	public static int DOC_RESCINDED_BY = 5
+	public static int DOC_RECISION_DATE = 6
 }

@@ -45,27 +45,6 @@ public class Data {
 		CUSTOMER_001.put(Fields.CUST_CUSTOMER_GROUP, 'Banking Customer')
 	}
 
-	public static final Map<Fields, String> ACCOUNT_001;
-	static {
-		ACCOUNT_001 = new HashMap<Fields, String>()
-		ACCOUNT_001.put(Fields.ACC_TITLE, CUSTOMER_001.get(Fields.CUST_FIRST_NAME)+' '+CUSTOMER_001.get(Fields.CUST_LAST_NAME))
-		ACCOUNT_001.put(Fields.ACC_DESCRIPTION, 'Savings')
-		ACCOUNT_001.put(Fields.ACC_GROUP, 'Banking')
-		ACCOUNT_001.put(Fields.ACC_NUMBER, '1'+RandomStringUtils.randomNumeric(11))
-		ACCOUNT_001.put(Fields.ACC_BROKERED, 'false')
-		ACCOUNT_001.put(Fields.ACC_TIMEZONE, 'UTC')
-		ACCOUNT_001.put(Fields.ACC_STATEMENT_FREQUENCY, 'Daily')
-		ACCOUNT_001.put(Fields.ACC_PRODUCT_TYPE, 'Personal Savings')
-		ACCOUNT_001.put(Fields.ACC_POSITION_NAME, 'Personal Savings')
-		ACCOUNT_001.put(Fields.ACC_CURRENCY_CODE, 'USD')
-		ACCOUNT_001.put(Fields.ACC_VERTICAL, '01')
-		ACCOUNT_001.put(Fields.ACC_DEPT_ID, '350')
-		ACCOUNT_001.put(Fields.DOC_TYPE, 'Terms and conditions')
-		ACCOUNT_001.put(Fields.DOC_SIGNED_BY, CUSTOMER_001.get(Fields.CUST_FIRST_NAME)+' '+CUSTOMER_001.get(Fields.CUST_LAST_NAME))
-		ACCOUNT_001.put(Fields.DOC_SIGNED_DATE, DateUtil.getCurrentDateTime('MM/dd/yyyy HH:mm:ss', 'EST'))
-		ACCOUNT_001.put(Fields.DOC_VERSION, '01')
-	}
-
 	public static final Map<Fields, String> CUSTOMER_002;
 	static {
 		CUSTOMER_002 = new HashMap<Fields, String>()
@@ -101,6 +80,34 @@ public class Data {
 
 		CUSTOMER_002.put(Fields.CUST_MEMBER_ID, 'MID_'+RandomStringUtils.randomNumeric(6))
 		CUSTOMER_002.put(Fields.CUST_CUSTOMER_GROUP, 'Banking Customer')
+		CUSTOMER_002.put(Fields.IS_CREATED, 'false')
+	}
+
+	public static final Map<Fields, String> ACCOUNT_001;
+	static {
+		ACCOUNT_001 = new HashMap<Fields, String>()
+		ACCOUNT_001.put(Fields.ACC_TITLE, CUSTOMER_002.get(Fields.CUST_FIRST_NAME)+' '+CUSTOMER_002.get(Fields.CUST_LAST_NAME))
+		ACCOUNT_001.put(Fields.ACC_DESCRIPTION, 'Savings')
+		ACCOUNT_001.put(Fields.ACC_GROUP, 'Banking')
+		ACCOUNT_001.put(Fields.ACC_NUMBER, '10'+RandomStringUtils.randomNumeric(10))
+		ACCOUNT_001.put(Fields.ACC_BROKERED, 'false')
+		ACCOUNT_001.put(Fields.ACC_TIMEZONE, 'UTC')
+		ACCOUNT_001.put(Fields.ACC_STATEMENT_FREQUENCY, 'Daily')
+		ACCOUNT_001.put(Fields.ACC_PRODUCT_TYPE, 'Personal Savings')
+		ACCOUNT_001.put(Fields.ACC_POSITION_NAME, 'Personal Savings')
+		ACCOUNT_001.put(Fields.ACC_CURRENCY_CODE, 'USD')
+		ACCOUNT_001.put(Fields.ACC_VERTICAL, '01')
+		ACCOUNT_001.put(Fields.ACC_DEPT_ID, '350')
+		ACCOUNT_001.put(Fields.ACC_OPEN_DATE, DateUtil.getCurrentDateTime('MM/dd/yyyy', 'EST'))
+		ACCOUNT_001.put(Fields.DOC_TYPE, 'Terms and conditions')
+		ACCOUNT_001.put(Fields.DOC_SIGNED_BY, CUSTOMER_002.get(Fields.CUST_FIRST_NAME)+' '+CUSTOMER_002.get(Fields.CUST_LAST_NAME))
+		ACCOUNT_001.put(Fields.DOC_SIGNED_DATE, DateUtil.getCurrentDateTime('MM/dd/yyyy HH:mm:ss', 'EST'))
+		ACCOUNT_001.put(Fields.DOC_VERSION, '01')
+		
+		ACCOUNT_001.put(Fields.ACC_LEDGER_BALANCE, '1.60000')
+		ACCOUNT_001.put(Fields.ACC_LEDGER_BALANCE, '0.00')
+		ACCOUNT_001.put(Fields.ACC_AVAILABLE_BALANCE, '0.00')
+		ACCOUNT_001.put(Fields.IS_CREATED, 'false')
 	}
 
 	public static final Map<Fields, String> ACCOUNT_002;
@@ -109,19 +116,26 @@ public class Data {
 		ACCOUNT_002.put(Fields.ACC_TITLE, CUSTOMER_002.get(Fields.CUST_FIRST_NAME)+' '+CUSTOMER_002.get(Fields.CUST_LAST_NAME))
 		ACCOUNT_002.put(Fields.ACC_DESCRIPTION, 'Savings')
 		ACCOUNT_002.put(Fields.ACC_GROUP, 'Banking')
-		ACCOUNT_002.put(Fields.ACC_NUMBER, '1'+RandomStringUtils.randomNumeric(11))
+		ACCOUNT_002.put(Fields.ACC_NUMBER, '11'+RandomStringUtils.randomNumeric(10))
 		ACCOUNT_002.put(Fields.ACC_BROKERED, 'false')
 		ACCOUNT_002.put(Fields.ACC_TIMEZONE, 'UTC')
 		ACCOUNT_002.put(Fields.ACC_STATEMENT_FREQUENCY, 'Daily')
 		ACCOUNT_002.put(Fields.ACC_PRODUCT_TYPE, 'Personal Savings')
+		ACCOUNT_002.put(Fields.ACC_PRODUCT_NAME, 'P2001')
 		ACCOUNT_002.put(Fields.ACC_POSITION_NAME, 'Personal Savings')
 		ACCOUNT_002.put(Fields.ACC_CURRENCY_CODE, 'USD')
 		ACCOUNT_002.put(Fields.ACC_VERTICAL, '01')
 		ACCOUNT_002.put(Fields.ACC_DEPT_ID, '350')
+		ACCOUNT_002.put(Fields.ACC_OPEN_DATE, DateUtil.getCurrentDateTime('MM/dd/yyyy', 'EST'))
 		ACCOUNT_002.put(Fields.DOC_TYPE, 'Terms and conditions')
 		ACCOUNT_002.put(Fields.DOC_SIGNED_BY, CUSTOMER_002.get(Fields.CUST_FIRST_NAME)+' '+CUSTOMER_002.get(Fields.CUST_LAST_NAME))
 		ACCOUNT_002.put(Fields.DOC_SIGNED_DATE, DateUtil.getCurrentDateTime('MM/dd/yyyy HH:mm:ss', 'EST'))
 		ACCOUNT_002.put(Fields.DOC_VERSION, '01')
+		
+		ACCOUNT_002.put(Fields.ACC_LEDGER_BALANCE, '1.60000')
+		ACCOUNT_002.put(Fields.ACC_LEDGER_BALANCE, '0.00')
+		ACCOUNT_002.put(Fields.ACC_AVAILABLE_BALANCE, '0.00')
+		ACCOUNT_002.put(Fields.IS_CREATED, 'false')
 	}
 	
 	//Existing Customer Data, To be used when not running test suite

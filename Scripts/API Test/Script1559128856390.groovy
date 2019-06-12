@@ -12,10 +12,15 @@ import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
+import constants.Data
 import constants.common
+import enums.Fields
 import enums.RegexOperator
 import internal.GlobalVariable as GlobalVariable
 import utils.RegexUtil
 
-String ID = '123456789'
-println RegexUtil.maskString(ID, 1, 4, '*')
+Map<Fields, String> custData = Data.CUSTOMER_002
+Map<Fields, String> accData = Data.ACCOUNT_001
+
+CustomKeywords.'actions.common.shouldFailTest'(custData)
+CustomKeywords.'actions.common.shouldFailTest'(accData)

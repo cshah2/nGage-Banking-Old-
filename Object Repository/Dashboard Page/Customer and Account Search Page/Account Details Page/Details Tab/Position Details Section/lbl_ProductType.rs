@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>input_DeptId</name>
+   <name>lbl_ProductType</name>
    <tag></tag>
-   <elementGuidId>03cd5037-b523-497d-ba96-5152f24c2647</elementGuidId>
+   <elementGuidId>c15fb201-4973-4db7-8307-905cce2d0b4e</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//div[contains(@id,'_wtPositionListCN')]/div[not(contains(@style,'display:none'))]//div[starts-with(text(),'Dept Id') or starts-with(text(),'Department Id')]/input</value>
+         <value>//table[contains(@id,'_wtpositionDetails')]//td[text()='Product Type']/../td[@class='ShowRecord_Value']</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

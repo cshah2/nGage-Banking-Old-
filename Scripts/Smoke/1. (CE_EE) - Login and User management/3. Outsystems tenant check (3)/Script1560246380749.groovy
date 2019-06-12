@@ -11,10 +11,12 @@ import com.kms.katalon.core.testdata.TestData as TestData
 import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-import internal.GlobalVariable as GlobalVariable
-import static constants.common.*;
 
-String connectedTo = 'SavanaINT';
+import enums.RegexOperator
+import internal.GlobalVariable as GlobalVariable
+import utils.RegexUtil
+
+import static constants.common.*;
 
 'Login into portal'
 CustomKeywords.'actions.common.login'()
@@ -28,5 +30,6 @@ WebUI.click(findTestObject('Dashboard Page/Header Section/icon_LightningBolt'))
 'Wait for dialog to be present'
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Header Section/Dialog LightningBolt/dialog'), GlobalVariable.TIMEOUT)
 
-'Verify ConnectedTo value is correct'
-WebUI.verifyMatch(WebUI.getText(findTestObject('Dashboard Page/Header Section/Dialog LightningBolt/lbl_ConnectedTo')), '.*'+connectedTo+'.*', true)
+'Verify ConnectedTo value is not bank'
+WebUI.verifyMatch(WebUI.getText(findTestObject('Dashboard Page/Header Section/Dialog LightningBolt/lbl_ConnectedTo')), RegexUtil.formRegexString(GlobalVariable.CONNECTED_TO, RegexOperator.CONTAINS), true)
+

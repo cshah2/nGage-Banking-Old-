@@ -33,12 +33,12 @@ public class table {
 
 	private WebElement getRow(TestObject to, int rowNo) {
 		WebElement table = getTable(to)
-		return table.findElement(By.xpath("//tbody/tr["+rowNo+"]"))
+		return table.findElement(By.xpath(".//tbody/tr["+rowNo+"]"))
 	}
 
 	private WebElement getCell(TestObject to, int rowNo, int colNo) {
 		WebElement table = getTable(to)
-		return table.findElement(By.xpath("//tbody/tr["+rowNo+"]/td["+colNo+"]"))
+		return table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]"))
 	}
 
 	private String getCellText(TestObject to, int rowNo, int colNo) {
@@ -48,7 +48,7 @@ public class table {
 
 	private int getRowsCount(TestObject to) {
 		WebElement table = getTable(to)
-		return table.findElements(By.xpath("//tbody/tr")).size()
+		return table.findElements(By.xpath(".//tbody/tr")).size()
 	}
 
 	private List<String> getAllTextFromColumn(TestObject to, int colNo) {
@@ -57,23 +57,23 @@ public class table {
 		List<WebElement> cells = new ArrayList<WebElement>()
 
 		WebElement table = getTable(to)
-		cells = table.findElements(By.xpath("//tbody/tr/td["+colNo+"]"))
+		cells = table.findElements(By.xpath(".//tbody/tr/td["+colNo+"]"))
 
 		for(WebElement cell in cells) {
 			cellsText.add(cell.getText())
 		}
-		
+
 		return cellsText
 	}
 
 	//Keywords
-	
+
 	@Keyword
 	def verifyRecordsCount(TestObject to, int expRowsCount, RegexOperator operator) {
-		
+
 		int actRowsCount = getRowsCount(to)
 		println "Actual records count = "+actRowsCount
-		
+
 		switch(operator) {
 			case RegexOperator.EQUALS:
 				WebUI.verifyEqual(actRowsCount, expRowsCount)
@@ -100,6 +100,7 @@ public class table {
 				println actRowsCount+" is not equal to "+expRowsCount
 				break;
 			default:
+				WebUI.takeScreenshot()
 				KeywordUtil.markFailedAndStop('Incorrect operator provided in keyword for integer comparison operation.')
 				break;
 		}
@@ -144,10 +145,10 @@ public class table {
 
 	@Keyword
 	def verifyAllValuesInColumnEquals(TestObject to, int colNo, String expText) {
-		
+
 		String regexString = RegexUtil.formRegexString(expText, RegexOperator.EQUALS)
 		println "Regex String = "+regexString
-		
+
 		List<String> cellsText = getAllTextFromColumn(to, colNo)
 		for(String cellText in cellsText) {
 			println "Cell Text = "+cellText
@@ -157,7 +158,7 @@ public class table {
 
 	@Keyword
 	def verifyAllValuesInColumnEqualsIgnoreCase(TestObject to, int colNo, String expText) {
-		
+
 		String regexString = RegexUtil.formRegexString(expText, RegexOperator.EQUALS_IGNORE_CASE)
 		println "Regex String = "+regexString
 
@@ -170,7 +171,7 @@ public class table {
 
 	@Keyword
 	def VerifyAllValuesInColumnContains(TestObject to, int colNo, String expText) {
-		
+
 		String regexString = RegexUtil.formRegexString(expText, RegexOperator.CONTAINS)
 		println "Regex String = "+regexString
 
@@ -183,7 +184,7 @@ public class table {
 
 	@Keyword
 	def verifuAllValuesInColumnContainsIgnoreCase(TestObject to, int colNo, String expText) {
-		
+
 		String regexString = RegexUtil.formRegexString(expText, RegexOperator.CONTAINS_IGNORE_CASE)
 		println "Regex String = "+regexString
 
@@ -196,7 +197,7 @@ public class table {
 
 	@Keyword
 	def verifyAllValuesinColumnStartsWith(TestObject to, int colNo, String expText) {
-		
+
 		String regexString = RegexUtil.formRegexString(expText, RegexOperator.STARTS_WITH)
 		println "Regex String = "+regexString
 
@@ -209,7 +210,7 @@ public class table {
 
 	@Keyword
 	def verifyAllValuesInColumnEndsWith(TestObject to, int colNo, String expText) {
-		
+
 		String regexString = RegexUtil.formRegexString(expText, RegexOperator.ENDS_WITH)
 		println "Regex String = "+regexString
 
@@ -242,6 +243,7 @@ public class table {
 			KeywordUtil.markPassed("value "+expText+" found in column at row no "+rowNo)
 		}
 		else {
+			WebUI.takeScreenshot()
 			KeywordUtil.markFailed("value "+expText+" not found in column")
 		}
 	}
@@ -268,6 +270,7 @@ public class table {
 			KeywordUtil.markPassed("value "+expText+" found in column at row no "+rowNo)
 		}
 		else {
+			WebUI.takeScreenshot()
 			KeywordUtil.markFailed("value "+expText+" not found in column")
 		}
 	}
@@ -294,6 +297,7 @@ public class table {
 			KeywordUtil.markPassed("value "+expText+" found in column at row no "+rowNo)
 		}
 		else {
+			WebUI.takeScreenshot()
 			KeywordUtil.markFailed("value "+expText+" not found in column")
 		}
 	}
@@ -320,6 +324,7 @@ public class table {
 			KeywordUtil.markPassed("value "+expText+" found in column at row no "+rowNo)
 		}
 		else {
+			WebUI.takeScreenshot()
 			KeywordUtil.markFailed("value "+expText+" not found in column")
 		}
 	}
@@ -346,6 +351,7 @@ public class table {
 			KeywordUtil.markPassed("value "+expText+" found in column at row no "+rowNo)
 		}
 		else {
+			WebUI.takeScreenshot()
 			KeywordUtil.markFailed("value "+expText+" not found in column")
 		}
 	}
@@ -372,6 +378,7 @@ public class table {
 			KeywordUtil.markPassed("value "+expText+" found in column at row no "+rowNo)
 		}
 		else {
+			WebUI.takeScreenshot()
 			KeywordUtil.markFailed("value "+expText+" not found in column")
 		}
 	}
@@ -381,7 +388,13 @@ public class table {
 	@Keyword
 	def clickCell(TestObject to, int rowNo, int colNo) {
 		WebElement table = getTable(to)
-		table.findElement(By.xpath("//tbody/tr["+rowNo+"]/td["+colNo+"]//a")).click()
+		try {
+			table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]//a")).click()
+		}
+		catch(Exception e) {
+			WebUI.takeScreenshot()
+			KeywordUtil.markFailedAndStop('Unable to click on link inside table '+e.toString())
+		}
 	}
 
 }

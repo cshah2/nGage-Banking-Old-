@@ -39,16 +39,16 @@ public class WaitFor {
 	private static WebDriver jsWaitDriver;
 	private static WebDriverWait jsWait;
 	private static JavascriptExecutor jsExec;
-	
-	
+
+
 	private void setDriver () {
 		jsWaitDriver = DriverFactory.getWebDriver();
 		jsWait = new WebDriverWait(jsWaitDriver, GlobalVariable.TIMEOUT);
 		jsExec = (JavascriptExecutor) jsWaitDriver;
 	}
-	
+
 	private By getLocator(TestObject to) {
-		
+
 		String cssLocator = to.selectorCollection.get(SelectorMethod.CSS)
 		String xpathLocator = to.selectorCollection.get(SelectorMethod.XPATH)
 		if(StringUtils.isNotBlank(cssLocator)) {
@@ -61,29 +61,70 @@ public class WaitFor {
 			return null
 		}
 	}
-	
+
 	@Keyword
 	def elementVisible(TestObject to, int timeout) {
+
+		setDriver()
+
+		jsWait.pollingEvery(100, TimeUnit.MILLISECONDS)
+		jsWait.ignoring(StaleElementReferenceException.class)
+
+		By locator = getLocator(to)
+		try {
+			if(locator != null)
+				jsWait.until(ExpectedConditions.visibilityOfElementLocated(locator))
+			else {
+				WebUI.takeScreenshot()
+				KeywordUtil.markFailedAndStop('Locator is neither XPATH or CSS')
+			}
+		}
+		catch(Exception e) {
+			WebUI.takeScreenshot()
+			KeywordUtil.markFailedAndStop('Exception occured while waiting for element'+e.toString())
+		}
+	}
 	
+	@Keyword
+	def urlContains(String expUrlText, int timour) {
 		setDriver()
 		
 		jsWait.pollingEvery(100, TimeUnit.MILLISECONDS)
 		jsWait.ignoring(StaleElementReferenceException.class)
-		
-		By locator = getLocator(to) 
-		if(locator != null)
-			jsWait.until(ExpectedConditions.visibilityOfElementLocated(locator))
-		else 
-			KeywordUtil.markFailedAndStop('Locator is neither XPATH or CSS')
+
+		try {
+			jsWait.until(ExpectedConditions.urlContains(expUrlText))
+		}
+		catch(Exception e) {
+			WebUI.takeScreenshot()
+			KeywordUtil.markFailedAndStop('Exception occured while waiting for element'+e.toString())
+		}
 	}
 	
 	@Keyword
-	def ajaxComplete() {
+	def titleContains(String expTitleText, int timour) {
+		setDriver()
 		
+		jsWait.pollingEvery(100, TimeUnit.MILLISECONDS)
+		jsWait.ignoring(StaleElementReferenceException.class)
+
+		try {
+			jsWait.until(ExpectedConditions.titleContains(expTitleText))
+		}
+		catch(Exception e) {
+			WebUI.takeScreenshot()
+			KeywordUtil.markFailedAndStop('Exception occured while waiting for element'+e.toString())
+		}
+	}
+
+
+	@Keyword
+	def ajaxComplete() {
+
 		setDriver();
 		jsExec.executeScript("var callback = arguments[arguments.length - 1];"
-			+ "var xhr = new XMLHttpRequest();" + "xhr.open('GET', '/Ajax_call', true);"
-			+ "xhr.onreadystatechange = function() {" + "  if (xhr.readyState == 4) {"
-			+ "    callback(xhr.responseText);" + "  }" + "};" + "xhr.send();");
+				+ "var xhr = new XMLHttpRequest();" + "xhr.open('GET', '/Ajax_call', true);"
+				+ "xhr.onreadystatechange = function() {" + "  if (xhr.readyState == 4) {"
+				+ "    callback(xhr.responseText);" + "  }" + "};" + "xhr.send();");
 	}
 }

@@ -23,16 +23,13 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable
 
 public class javaScript {
-	
+
 	@Keyword
 	def setText(TestObject to, String text) {
-		
+
 		WebElement e = WebUiCommonHelper.findWebElement(to, GlobalVariable.TIMEOUT)
 		List<WebElement> list = new ArrayList<WebElement>()
 		list.add(e)
 		WebUI.executeJavaScript('arguments[0].value = "'+text+'"', list)
-		
-//		WebUI.sendKeys(to, Keys.chord(Keys.TAB))
-//		WebUI.delay(1)
 	}
 }

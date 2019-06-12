@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalVariableEntities>
    <description></description>
-   <name>QA-CE</name>
+   <name>SavCE_SIT</name>
    <tag></tag>
    <defaultProfile>false</defaultProfile>
    <GlobalVariableEntity>
@@ -21,12 +21,17 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>30</initValue>
+      <initValue>60</initValue>
       <name>TIMEOUT</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
       <initValue>2</initValue>
       <name>RETRY</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'SavCE_SIT'</initValue>
+      <name>CONNECTED_TO</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>

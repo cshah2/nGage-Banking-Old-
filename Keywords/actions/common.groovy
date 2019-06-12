@@ -7,17 +7,20 @@ import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
+import com.kms.katalon.core.context.TestCaseContext
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
 import com.kms.katalon.core.model.FailureHandling
 import com.kms.katalon.core.testcase.TestCase
 import com.kms.katalon.core.testdata.TestData
 import com.kms.katalon.core.testobject.TestObject
+import com.kms.katalon.core.util.KeywordUtil
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.common.WebUiCommonHelper
 import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
+import enums.Fields
 import enums.RegexOperator
 import internal.GlobalVariable
 import utils.RegexUtil
@@ -50,9 +53,9 @@ public class common {
 
 		//Get Current URL
 		String currentUrl = WebUI.getUrl()
-		
+
 		//Check if User is on Login page or not
-		
+
 		if(currentUrl.contains('Login.aspx') || currentUrl.contains('NoPermission.aspx')) {
 
 			//Verify login page is loaded
@@ -77,10 +80,23 @@ public class common {
 
 		WebUI.verifyMatch(WebUI.getText(to).trim(), RegexUtil.formRegexString(expectedText, RegexOperator.CONTAINS), true)
 	}
-	
+
 	@Keyword
 	def verifyUrlContains(String expectedText) {
-		
+
 		WebUI.verifyMatch(WebUI.getUrl().trim(), RegexUtil.formRegexString(expectedText, RegexOperator.CONTAINS), true)
+	}
+	
+	@Keyword
+	def shouldFailTest(Map<Fields, String> map) {
+		
+		boolean shouldFail = false
+		if(map.get(Fields.IS_CREATED).equalsIgnoreCase('false')) {
+			shouldFail = true
+		}
+		
+		if(shouldFail) {
+			KeywordUtil.markFailedAndStop('Cannot execute test cases as required data is not created.')
+		}
 	}
 }
