@@ -7,6 +7,11 @@
 /.classpath
 .svn/
 
+/Reports/
+
+/Settings/internal/com.kms.katalon.composer.testcase.properties
+/Settings/internal/com.kms.katalon.composer.testcase.settings.properties
+
 # Compiled class file
 *.class
 
