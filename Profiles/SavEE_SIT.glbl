@@ -34,4 +34,9 @@
       <initValue>'SavEE_SIT'</initValue>
       <name>CONNECTED_TO</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'EE'</initValue>
+      <name>ENVIRONMENT</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

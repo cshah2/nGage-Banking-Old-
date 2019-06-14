@@ -86,15 +86,15 @@ public class common {
 
 		WebUI.verifyMatch(WebUI.getUrl().trim(), RegexUtil.formRegexString(expectedText, RegexOperator.CONTAINS), true)
 	}
-	
+
 	@Keyword
 	def shouldFailTest(Map<Fields, String> map) {
-		
+
 		boolean shouldFail = false
 		if(map.get(Fields.IS_CREATED).equalsIgnoreCase('false')) {
 			shouldFail = true
 		}
-		
+
 		if(shouldFail) {
 			KeywordUtil.markFailedAndStop('Cannot execute test cases as required data is not created.')
 		}

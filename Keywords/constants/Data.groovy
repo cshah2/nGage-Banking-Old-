@@ -103,7 +103,7 @@ public class Data {
 		ACCOUNT_001.put(Fields.DOC_SIGNED_BY, CUSTOMER_002.get(Fields.CUST_FIRST_NAME)+' '+CUSTOMER_002.get(Fields.CUST_LAST_NAME))
 		ACCOUNT_001.put(Fields.DOC_SIGNED_DATE, DateUtil.getCurrentDateTime('MM/dd/yyyy HH:mm:ss', 'EST'))
 		ACCOUNT_001.put(Fields.DOC_VERSION, '01')
-		
+
 		ACCOUNT_001.put(Fields.ACC_LEDGER_BALANCE, '1.60000')
 		ACCOUNT_001.put(Fields.ACC_LEDGER_BALANCE, '0.00')
 		ACCOUNT_001.put(Fields.ACC_AVAILABLE_BALANCE, '0.00')
@@ -131,13 +131,13 @@ public class Data {
 		ACCOUNT_002.put(Fields.DOC_SIGNED_BY, CUSTOMER_002.get(Fields.CUST_FIRST_NAME)+' '+CUSTOMER_002.get(Fields.CUST_LAST_NAME))
 		ACCOUNT_002.put(Fields.DOC_SIGNED_DATE, DateUtil.getCurrentDateTime('MM/dd/yyyy HH:mm:ss', 'EST'))
 		ACCOUNT_002.put(Fields.DOC_VERSION, '01')
-		
+
 		ACCOUNT_002.put(Fields.ACC_LEDGER_BALANCE, '1.60000')
 		ACCOUNT_002.put(Fields.ACC_LEDGER_BALANCE, '0.00')
 		ACCOUNT_002.put(Fields.ACC_AVAILABLE_BALANCE, '0.00')
 		ACCOUNT_002.put(Fields.IS_CREATED, 'false')
 	}
-	
+
 	//Existing Customer Data, To be used when not running test suite
 	public static final Map<Fields, String> CUSTOMER_003;
 	static {
