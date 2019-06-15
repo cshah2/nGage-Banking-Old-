@@ -13,6 +13,7 @@ import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.StaleElementReferenceException
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
+import org.openqa.selenium.support.ui.ExpectedCondition
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.Wait
 import org.openqa.selenium.support.ui.WebDriverWait
@@ -84,11 +85,63 @@ public class WaitFor {
 			KeywordUtil.markFailedAndStop('Exception occured while waiting for element'+e.toString())
 		}
 	}
+
+	@Keyword
+	def elementNotPresent(TestObject to, int timeout) {
+
+		setDriver()
+
+		jsWait.pollingEvery(100, TimeUnit.MILLISECONDS)
+		jsWait.ignoring(StaleElementReferenceException.class)
+
+		By locator = getLocator(to)
+		try {
+			if(locator != null)
+				jsWait.until(ExpectedConditions.invisibilityOfElementLocated(locator))
+			else {
+				WebUI.takeScreenshot()
+				KeywordUtil.markFailedAndStop('Locator is neither XPATH or CSS')
+			}
+		}
+		catch(Exception e) {
+			WebUI.takeScreenshot()
+			KeywordUtil.markFailedAndStop('Exception occured while waiting for element'+e.toString())
+		}
+	}
 	
+	@Keyword
+	def textNotEmpty(TestObject to, int timeout) {
+
+		setDriver()
+
+		jsWait.pollingEvery(100, TimeUnit.MILLISECONDS)
+		jsWait.ignoring(StaleElementReferenceException.class)
+
+		
+		By locator = getLocator(to)
+		try {
+			if(locator != null)
+				jsWait.until(new ExpectedCondition<Boolean>() {
+					public Boolean apply(WebDriver d){
+						d.findElement(locator).getAttribute("value").length() != 0
+					}
+				})
+			else {
+				WebUI.takeScreenshot()
+				KeywordUtil.markFailedAndStop('Locator is neither XPATH or CSS')
+			}
+		}
+		catch(Exception e) {
+			WebUI.takeScreenshot()
+			KeywordUtil.markFailedAndStop('Exception occured while waiting for element'+e.toString())
+		}
+	}
+
+
 	@Keyword
 	def urlContains(String expUrlText, int timour) {
 		setDriver()
-		
+
 		jsWait.pollingEvery(100, TimeUnit.MILLISECONDS)
 		jsWait.ignoring(StaleElementReferenceException.class)
 
@@ -100,11 +153,11 @@ public class WaitFor {
 			KeywordUtil.markFailedAndStop('Exception occured while waiting for element'+e.toString())
 		}
 	}
-	
+
 	@Keyword
 	def titleContains(String expTitleText, int timour) {
 		setDriver()
-		
+
 		jsWait.pollingEvery(100, TimeUnit.MILLISECONDS)
 		jsWait.ignoring(StaleElementReferenceException.class)
 

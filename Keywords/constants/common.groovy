@@ -25,5 +25,6 @@ public class common {
 	public static String password = GlobalVariable.PASSWORD
 	public static String dashboardName = 'Chintan Shah'
 	public static String dashboardUrl = GlobalVariable.BASE_URL + '/nGageBanking_Customer/CustomerSearch.aspx'
+	public static String createCustomerUrl = GlobalVariable.BASE_URL + '/nGageBanking_Customer/CustomerMainFlow.CustomerCreate.aspx?isOrg=False'
 	public static String dateFormat = 'MM/dd/yyyy'
 }
