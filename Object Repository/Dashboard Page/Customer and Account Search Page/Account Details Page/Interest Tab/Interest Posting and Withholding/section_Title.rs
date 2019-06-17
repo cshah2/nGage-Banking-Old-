@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>dd_AccountsType</name>
+   <name>section_Title</name>
    <tag></tag>
-   <elementGuidId>12dabb17-adf1-4706-b579-1a82cc40c66b</elementGuidId>
+   <elementGuidId>3a9d5f64-fa75-41d8-865d-ba6dc42f4457</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>div[id*='_wtSearchBar'] div[id*='_wtacctSearch_CN'] div[id*='_wtButton']</value>
+         <value>div[displayblockname='Interest Posting And Withholding'] div[id*='_wtTitle_wtTitle']</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

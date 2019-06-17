@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>dd_AccountsType</name>
+   <name>tab_Interest</name>
    <tag></tag>
-   <elementGuidId>12dabb17-adf1-4706-b579-1a82cc40c66b</elementGuidId>
+   <elementGuidId>cea1b12a-92f3-46ca-a88c-448f6981f950</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>div[id*='_wtSearchBar'] div[id*='_wtacctSearch_CN'] div[id*='_wtButton']</value>
+         <value>div[id*='wtTabs_Header'] span[tabname='Interest']</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

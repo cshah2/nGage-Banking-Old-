@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>dd_AccountsType</name>
+   <name>table_Transactions</name>
    <tag></tag>
-   <elementGuidId>12dabb17-adf1-4706-b579-1a82cc40c66b</elementGuidId>
+   <elementGuidId>9ce66eb4-e38c-41a7-8288-052d7a312415</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>div[id*='_wtSearchBar'] div[id*='_wtacctSearch_CN'] div[id*='_wtButton']</value>
+         <value>div[displayblockname='TRANSACTION'] table[id*='_wtTransactionsTable']</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

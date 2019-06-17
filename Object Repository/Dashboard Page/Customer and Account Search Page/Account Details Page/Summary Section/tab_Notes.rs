@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>dd_AccountsType</name>
+   <name>tab_Notes</name>
    <tag></tag>
-   <elementGuidId>12dabb17-adf1-4706-b579-1a82cc40c66b</elementGuidId>
+   <elementGuidId>0d6559d3-cc46-4e51-a613-fa0aece45f6b</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>div[id*='_wtSearchBar'] div[id*='_wtacctSearch_CN'] div[id*='_wtButton']</value>
+         <value>div[id*='wtTabs_Header'] span[tabname='Notes']</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

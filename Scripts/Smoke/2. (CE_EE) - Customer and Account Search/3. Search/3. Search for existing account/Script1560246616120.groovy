@@ -37,7 +37,7 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Sear
 'Wait for Menus to be visible'
 WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Menu'), GlobalVariable.TIMEOUT)
 
-'Click on Customer option'
+'Click on Accounts option'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Account'))
 
 'Wait for Account Type drop down to be visible'
@@ -53,7 +53,7 @@ WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account 
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_AccountsType_Option_Banking'))
 
 'Wait for Account number input field to be visible'
-WebUI.delay(2)
+WebUI.delay(3)
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_AccountNumber'), GlobalVariable.TIMEOUT)
 
 'Enter Search Criteria in account number field'
