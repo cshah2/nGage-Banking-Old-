@@ -7,11 +7,10 @@
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>div[id*=&quot;wtPopup_CN&quot;] div[id*=&quot;wtMainContent&quot;]</value>
+         <value>div[id*=&quot;wtPopup_CN&quot;]</value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

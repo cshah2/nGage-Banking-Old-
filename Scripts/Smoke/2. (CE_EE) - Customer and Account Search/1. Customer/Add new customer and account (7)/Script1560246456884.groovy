@@ -143,7 +143,7 @@ CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashbo
 CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Basic Information/lbl_TaxID'), custData.get(Fields.CUST_TAX_ID))
 
 'Verify Residency' //TODO: Bug - Country is shown as 2 digit value
-CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Basic Information/lbl_CountryOfResidence'), 'US')
+CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Basic Information/lbl_CountryOfResidence'), custData.get(Fields.CUST_COUNTRY_OF_RESIDENCE))
 
 'Verify Residencey Status'
 CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Basic Information/lblt_ResidencyStatus'), custData.get(Fields.CUST_RESIDENCY_STATUS))
@@ -158,10 +158,10 @@ CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashbo
 CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Location Information/lbl_City'), custData.get(Fields.ADDR_CITY))
 
 'Verify Country' //TODO: Bug - County is shown as 2 digit value
-CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Location Information/lbl_Country'), 'US')
+CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Location Information/lbl_Country'), custData.get(Fields.ADDR_COUNTY))
 
 'Verify State/Region' //TODO: Bug - County is shown as 2 digit value
-CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Location Information/lbl_StateOrRegion'), 'PA')
+CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Location Information/lbl_StateOrRegion'), custData.get(Fields.ADDR_STATE))
 
 'Verify Zip/Postal code'
 CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Location Information/lbl_ZipOrPostalCode'), custData.get(Fields.ADDR_ZIPCODE))
@@ -287,7 +287,7 @@ CustomKeywords.'actions.javaScript.setText'(findTestObject('Dashboard Page/Custo
 WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_Version1'), accData.get(Fields.DOC_VERSION))
 
 'Click on OK button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/btn_Ok'))
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/btn_Submit'))
 
 'Wait for Customer details page to load'
 CustomKeywords.'utils.WaitFor.titleContains'('Customer Details', GlobalVariable.TIMEOUT)

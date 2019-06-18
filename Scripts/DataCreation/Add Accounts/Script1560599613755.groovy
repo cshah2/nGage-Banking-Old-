@@ -189,10 +189,10 @@ if(StringUtils.isNotBlank(DocType2)) {
 }
 
 'Scroll to OK button'
-WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/btn_Ok'), GlobalVariable.TIMEOUT)
+WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/btn_Submit'), GlobalVariable.TIMEOUT)
 
 'Click on OK button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/btn_Ok'))
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/btn_Submit'))
 
 'Wait for Customer details page to load'
 CustomKeywords.'utils.WaitFor.titleContains'('Customer Details', GlobalVariable.TIMEOUT)

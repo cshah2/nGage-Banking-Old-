@@ -176,7 +176,7 @@ CustomKeywords.'actions.javaScript.setText'(findTestObject('Dashboard Page/Custo
 WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_Version1'), accData2.get(Fields.DOC_VERSION))
 
 'Click on OK button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/btn_Ok'))
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/btn_Submit'))
 
 'Wait for Customer details page to load'
 CustomKeywords.'utils.WaitFor.titleContains'('Customer Details', GlobalVariable.TIMEOUT)
