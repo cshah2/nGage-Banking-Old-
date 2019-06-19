@@ -192,6 +192,12 @@ CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashbo
 'Verify Preferred Contact Method'
 CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Contact Information/lbl_PreferredContactMethod'), data.get(Fields.CT_PREFERRED_CONTACT_METHOD))
 
+'Scroll to btn_Next element'
+WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Contact Information/btn_Next'), GlobalVariable.TIMEOUT)
+
+'Wait for btn Next to be clickable'
+WebUI.waitForElementClickable(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Contact Information/btn_Next'), GlobalVariable.TIMEOUT)
+
 //Submit application.
 'Click on Next button'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Contact Information/btn_Next'))
