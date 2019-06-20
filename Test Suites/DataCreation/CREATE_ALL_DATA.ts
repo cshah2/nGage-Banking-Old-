@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestSuiteEntity>
    <description></description>
-   <name>BOTH</name>
+   <name>CREATE_ALL_DATA</name>
    <tag></tag>
    <isRerun>false</isRerun>
-   <mailRecipient>cshah@savanainc.com;apatil@savanainc.com;</mailRecipient>
+   <mailRecipient></mailRecipient>
    <numberOfRerun>0</numberOfRerun>
    <pageLoadTimeout>60</pageLoadTimeout>
    <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>

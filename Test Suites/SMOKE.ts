@@ -4,7 +4,7 @@
    <name>SMOKE</name>
    <tag></tag>
    <isRerun>false</isRerun>
-   <mailRecipient>cshah@savanainc.com;apatil@savanainc.com;</mailRecipient>
+   <mailRecipient></mailRecipient>
    <numberOfRerun>0</numberOfRerun>
    <pageLoadTimeout>30</pageLoadTimeout>
    <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>

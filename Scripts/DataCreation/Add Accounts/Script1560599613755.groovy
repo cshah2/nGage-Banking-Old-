@@ -167,6 +167,9 @@ WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Cr
 	
 if(StringUtils.isNotBlank(DocType2)) {
 	
+	'Scroll to Add another document link'
+	WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/icon_AddAnotherDocument'), GlobalVariable.TIMEOUT)
+	
 	'Click on Add another document link'
 	WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/icon_AddAnotherDocument'))
 	
