@@ -83,7 +83,7 @@ if(StringUtils.isNotBlank(AccTitle)) {
 }
 
 'Select account ownership'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_Ownership'), accData.get(Fields.ACC_OWNERSHIP), false)
+WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_Ownership'), AccOwnership, false)
 
 'Enter account description'
 WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountDescription'), AccDescription)
