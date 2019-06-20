@@ -6,7 +6,7 @@
    <containsHeaders>true</containsHeaders>
    <csvSeperator></csvSeperator>
    <dataFileGUID>a4918f81-dfa5-4b77-be34-8cecd03596a5</dataFileGUID>
-   <dataSourceUrl>CustomerAndAccountsData.xlsx</dataSourceUrl>
+   <dataSourceUrl>Data Files/Batch/CustomerAndAccountsData.xlsx</dataSourceUrl>
    <driver>ExcelFile</driver>
    <isInternalPath>true</isInternalPath>
    <query></query>

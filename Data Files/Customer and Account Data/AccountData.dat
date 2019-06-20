@@ -6,11 +6,11 @@
    <containsHeaders>true</containsHeaders>
    <csvSeperator></csvSeperator>
    <dataFileGUID>386e2bee-28e6-42cf-88ec-bf90ba002005</dataFileGUID>
-   <dataSourceUrl>CustomerAndAccountsData.xlsx</dataSourceUrl>
+   <dataSourceUrl>Data Files/Batch/CustomerAndAccountsData.xlsx</dataSourceUrl>
    <driver>ExcelFile</driver>
    <isInternalPath>true</isInternalPath>
    <query></query>
    <secureUserAccount>false</secureUserAccount>
-   <sheetName>AccountData</sheetName>
+   <sheetName>CustomerData</sheetName>
    <usingGlobalDBSetting>false</usingGlobalDBSetting>
 </DataFileEntity>
