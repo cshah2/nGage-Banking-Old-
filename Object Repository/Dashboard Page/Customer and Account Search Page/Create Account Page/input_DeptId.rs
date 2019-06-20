@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//div[contains(@id,'_wtPositionListCN')]/div[not(contains(@style,'display:none'))]//div[starts-with(text(),'Dept Id') or starts-with(text(),'Department Id')]/input</value>
+         <value>//div[contains(@id,'_wtPositionListCN')]/div[not(contains(@style,'display:none'))]//div[starts-with(text(),'Dept Id') or starts-with(text(),'Department Id')]/../input</value>
       </entry>
       <entry>
          <key>BASIC</key>

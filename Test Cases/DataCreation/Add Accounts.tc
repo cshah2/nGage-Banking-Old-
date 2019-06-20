@@ -36,6 +36,13 @@
    <variable>
       <defaultValue>''</defaultValue>
       <description></description>
+      <id>c5522ca1-93fd-4a52-b68a-e38db1981456</id>
+      <masked>false</masked>
+      <name>AccOwnership</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
       <id>1c453a47-3596-47cb-ad4e-ca6b4369bf1a</id>
       <masked>false</masked>
       <name>AccDescription</name>

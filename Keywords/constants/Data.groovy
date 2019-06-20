@@ -87,6 +87,7 @@ public class Data {
 	static {
 		ACCOUNT_001 = new HashMap<Fields, String>()
 		ACCOUNT_001.put(Fields.ACC_TITLE, CUSTOMER_002.get(Fields.CUST_FIRST_NAME)+' '+CUSTOMER_002.get(Fields.CUST_LAST_NAME))
+		ACCOUNT_001.put(Fields.ACC_OWNERSHIP, 'Primary')
 		ACCOUNT_001.put(Fields.ACC_DESCRIPTION, 'Savings')
 		ACCOUNT_001.put(Fields.ACC_GROUP, 'Banking')
 		ACCOUNT_001.put(Fields.ACC_NUMBER, '10'+RandomStringUtils.randomNumeric(10))
@@ -114,6 +115,7 @@ public class Data {
 	static {
 		ACCOUNT_002 = new HashMap<Fields, String>()
 		ACCOUNT_002.put(Fields.ACC_TITLE, CUSTOMER_002.get(Fields.CUST_FIRST_NAME)+' '+CUSTOMER_002.get(Fields.CUST_LAST_NAME))
+		ACCOUNT_002.put(Fields.ACC_OWNERSHIP, 'Primary')
 		ACCOUNT_002.put(Fields.ACC_DESCRIPTION, 'Savings')
 		ACCOUNT_002.put(Fields.ACC_GROUP, 'Banking')
 		ACCOUNT_002.put(Fields.ACC_NUMBER, '11'+RandomStringUtils.randomNumeric(10))
