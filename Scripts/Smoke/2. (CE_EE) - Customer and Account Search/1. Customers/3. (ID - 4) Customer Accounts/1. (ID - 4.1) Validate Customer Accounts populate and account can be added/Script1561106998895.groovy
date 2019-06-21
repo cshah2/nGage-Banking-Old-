@@ -123,60 +123,11 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Cust
 'Wait for Create accounts page to load'
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountTitle'), GlobalVariable.TIMEOUT)
 
-'Verify Default value present in account title'
-WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountTitle'), 'value', custData.get(Fields.CUST_NAME_VIEW), GlobalVariable.TIMEOUT)
+'Fill up accounts page'
+CustomKeywords.'actions.common.accountFormFill'(accData2)
 
-'Select account ownership'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_Ownership'), accData2.get(Fields.ACC_OWNERSHIP), false)
-
-'Enter account description'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountDescription'), accData2.get(Fields.ACC_DESCRIPTION))
-
-'Select Account group'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_AccountGroup'), accData2.get(Fields.ACC_GROUP), false)
-
-'Wait for Product section to be visible'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_ProductType'), GlobalVariable.TIMEOUT)
-
-'Enter account number'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountNumber'), accData2.get(Fields.ACC_NUMBER))
-
-'Select timezone'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_Timezone'), accData2.get(Fields.ACC_TIMEZONE), false)
-
-'Select statement frequency'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_StatementFrequency'), accData2.get(Fields.ACC_STATEMENT_FREQUENCY), false)
-
-'Select Product Type'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_ProductType'), accData2.get(Fields.ACC_PRODUCT_TYPE), false)
-
-'Wait for Javascript load'
-WebUI.delay(2) //TODO: Need to wait for effective condition
-WebUI.waitForJQueryLoad(GlobalVariable.TIMEOUT)
-
-'Verify Position Name'
-WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_PositionName'), 'value', accData2.get(Fields.ACC_POSITION_NAME), GlobalVariable.TIMEOUT)
-
-'Verify currency code'
-WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_CurrencyCode'), 'value', accData2.get(Fields.ACC_CURRENCY_CODE), GlobalVariable.TIMEOUT)
-
-'Verify vertical'
-WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_Vertical'), 'value', accData2.get(Fields.ACC_VERTICAL), GlobalVariable.TIMEOUT)
-
-'Verify Dept ID'
-WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_DeptId'), 'value', accData2.get(Fields.ACC_DEPT_ID), GlobalVariable.TIMEOUT)
-
-'Select Document 1 - Terms and Conditions'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/select_DocumentType1'), accData2.get(Fields.DOC_TYPE), false)
-
-'Enter signde by'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_SignedBy1'), custData.get(Fields.CUST_NAME_VIEW))
-
-'Enter signed date'
-CustomKeywords.'actions.javaScript.setText'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_SignedDate1'), accData2.get(Fields.DOC_SIGNED_DATE))
-
-'Enter vesion'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_Version1'), accData2.get(Fields.DOC_VERSION))
+'Scroll to OK button'
+WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/btn_Submit'), GlobalVariable.TIMEOUT)
 
 'Click on OK button'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/btn_Submit'))

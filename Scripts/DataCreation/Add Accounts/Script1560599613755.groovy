@@ -22,8 +22,47 @@ import enums.RegexOperator
 import internal.GlobalVariable as GlobalVariable
 import utils.DateUtil
 
-
 int expRowsCount = 1
+
+Map<Fields, String> accData = new HashMap<Fields, String>()
+accData = new HashMap<Fields, String>()
+accData.put(Fields.ACC_TITLE, AccTitle)
+accData.put(Fields.ACC_OWNERSHIP, AccOwnership)
+accData.put(Fields.ACC_DESCRIPTION, AccDescription)
+accData.put(Fields.ACC_GROUP, AccGroup)
+accData.put(Fields.ACC_NUMBER, AccNumber)
+if(StringUtils.isNotBlank(Brokered) && "Yes".equalsIgnoreCase(Brokered)) {
+	accData.put(Fields.ACC_BROKERED, Brokered)
+}
+accData.put(Fields.ACC_TIMEZONE, Timezone)
+accData.put(Fields.ACC_STATEMENT_FREQUENCY, StatementFrequency)
+accData.put(Fields.ACC_PRODUCT_TYPE, ProductType)
+accData.put(Fields.ACC_POSITION_NAME, PositionName)
+accData.put(Fields.ACC_CURRENCY_CODE, CurrencyCode)
+accData.put(Fields.ACC_VERTICAL, Vertical)
+accData.put(Fields.ACC_DEPT_ID, DepartmentID)
+accData.put(Fields.ACC_CREDIT_LIMIT, CreditLimit)
+accData.put(Fields.ACC_INTEREST_RATE, InterestRate)
+accData.put(Fields.DOC_TYPE, DocType1)
+accData.put(Fields.DOC_SIGNED_BY, DocSignedBy1)
+if(StringUtils.isNotBlank(DocSignedDate1)) {
+	accData.put(Fields.DOC_SIGNED_DATE, DocSignedDate1)
+}
+else {
+	accData.put(Fields.DOC_SIGNED_DATE, DateUtil.getCurrentDateTime('MM/dd/yyyy HH:mm:ss', 'EST'))
+}
+
+accData.put(Fields.DOC_VERSION, DocVersion1)
+accData.put(Fields.DOC_TYPE2, DocType2)
+accData.put(Fields.DOC_SIGNED_BY2, DocSignedBy2)
+if(StringUtils.isNotBlank(DocSignedDate2)) {
+	accData.put(Fields.DOC_SIGNED_DATE2, DocSignedDate2)
+}
+else {
+	accData.put(Fields.DOC_SIGNED_DATE2, DateUtil.getCurrentDateTime('MM/dd/yyyy HH:mm:ss', 'EST'))
+}
+
+accData.put(Fields.DOC_VERSION2, DocVersion2)
 
 'Login into portal'
 CustomKeywords.'actions.common.login'()
@@ -77,122 +116,124 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Cust
 'Wait for Create accounts page to load'
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountTitle'), GlobalVariable.TIMEOUT)
 
-'Enter account title'
-if(StringUtils.isNotBlank(AccTitle)) {
-	WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountTitle'), AccTitle)
-}
-
-'Select account ownership'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_Ownership'), AccOwnership, false)
-
-'Enter account description'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountDescription'), AccDescription)
-
-'Select Account group'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_AccountGroup'), AccGroup, false)
-
-'Wait for Product section to be visible'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_ProductType'), GlobalVariable.TIMEOUT)
-
-'Enter account number'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountNumber'), AccNumber)
-
-'Select checkbox Brokered'
-if("Yes".equalsIgnoreCase(Brokered)) {
-	WebUI.check(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/checkbox_Brokered'))
-}
-
-'Select timezone'
-if(StringUtils.isNotBlank(Timezone)) {
-	WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_Timezone'), Timezone, false)
-}
-
-'Select statement frequency'
-if(StringUtils.isNotBlank(StatementFrequency)) {
-	WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_StatementFrequency'), StatementFrequency, false)
-}
-
-'Select Product Type'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_ProductType'), ProductType, false)
-
-'Wait for Position name field to have a value'
-CustomKeywords.'utils.WaitFor.textNotEmpty'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_PositionName'), GlobalVariable.TIMEOUT)
-
-'EnterPosition Name'
-if(StringUtils.isNotBlank(PositionName)) {
-	WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_PositionName'), PositionName)
-}
-
-'Enter currency code'
-if(StringUtils.isNotBlank(CurrencyCode)) {
-	WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_CurrencyCode'), CurrencyCode)
-}
-
-'Enter vertical'
-if(StringUtils.isNotBlank(Vertical)) {
-	WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_Vertical'), Vertical)
-}
-
-'Enter Dept ID'
-if(StringUtils.isNotBlank(DepartmentID)) {
-	WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_DeptId'), DepartmentID)
-}
-
-'Enter Credit limit'
-if(StringUtils.isNotBlank(CreditLimit)) {
-	WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_CreditLimit'), CreditLimit)
-}
-
-'Enter Interest Rate'
-if(StringUtils.isNotBlank(InterestRate)) {
-	WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_InterestRate'), InterestRate)
-}
-
-'Select Document 1'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/select_DocumentType1'), DocType1, false)
-
-'Enter signde by'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_SignedBy1'), DocSignedBy1)
-
-'Enter signed date'
-if(StringUtils.isNotBlank(DocSignedDate1)) {
-	CustomKeywords.'actions.javaScript.setText'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_SignedDate1'), DocSignedDate1)
-}
-else {
-	CustomKeywords.'actions.javaScript.setText'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_SignedDate1'), DateUtil.getCurrentDateTime('MM/dd/yyyy HH:mm:ss', 'EST'))
-}
-
-'Enter vesion'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_Version1'), DocVersion1)
-	
-if(StringUtils.isNotBlank(DocType2)) {
-	
-	'Scroll to Add another document link'
-	WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/icon_AddAnotherDocument'), GlobalVariable.TIMEOUT)
-	
-	'Click on Add another document link'
-	WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/icon_AddAnotherDocument'))
-	
-	'Wait for new document section to be visible'
-	CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/select_DocumentType2'), GlobalVariable.TIMEOUT)
-	
-	'Select Document 2'
-	WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/select_DocumentType2'), DocType2, false)
-	
-	'Enter signde by'
-	WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_SignedBy2'), DocSignedBy2)
-	
-	'Enter signed date'
-	if(StringUtils.isNotBlank(DocSignedDate2)) {
-		CustomKeywords.'actions.javaScript.setText'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_SignedDate2'), DocSignedDate2)
-	}
-	else {
-		CustomKeywords.'actions.javaScript.setText'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_SignedDate2'), DateUtil.getCurrentDateTime('MM/dd/yyyy HH:mm:ss', 'EST'))
-	}
-	
-	'Enter vesion'
-	WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_Version2'), DocVersion2)
-}
+//'Enter account title'
+//if(StringUtils.isNotBlank(AccTitle)) {
+//	WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountTitle'), AccTitle)
+//}
+//
+//'Select account ownership'
+//WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_Ownership'), AccOwnership, false)
+//
+//'Enter account description'
+//WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountDescription'), AccDescription)
+//
+//'Select Account group'
+//WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_AccountGroup'), AccGroup, false)
+//
+//'Wait for Product section to be visible'
+//CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_ProductType'), GlobalVariable.TIMEOUT)
+//
+//'Enter account number'
+//WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountNumber'), AccNumber)
+//
+//'Select checkbox Brokered'
+//if("Yes".equalsIgnoreCase(Brokered)) {
+//	WebUI.check(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/checkbox_Brokered'))
+//}
+//
+//'Select timezone'
+//if(StringUtils.isNotBlank(Timezone)) {
+//	WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_Timezone'), Timezone, false)
+//}
+//
+//'Select statement frequency'
+//if(StringUtils.isNotBlank(StatementFrequency)) {
+//	WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_StatementFrequency'), StatementFrequency, false)
+//}
+//
+//'Select Product Type'
+//WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_ProductType'), ProductType, false)
+//
+//'Wait for Position name field to have a value'
+//CustomKeywords.'utils.WaitFor.textNotEmpty'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_PositionName'), GlobalVariable.TIMEOUT)
+//
+//'EnterPosition Name'
+//if(StringUtils.isNotBlank(PositionName)) {
+//	WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_PositionName'), PositionName)
+//}
+//
+//'Enter currency code'
+//if(StringUtils.isNotBlank(CurrencyCode)) {
+//	WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_CurrencyCode'), CurrencyCode)
+//}
+//
+//'Enter vertical'
+//if(StringUtils.isNotBlank(Vertical)) {
+//	WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_Vertical'), Vertical)
+//}
+//
+//'Enter Dept ID'
+//if(StringUtils.isNotBlank(DepartmentID)) {
+//	WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_DeptId'), DepartmentID)
+//}
+//
+//'Enter Credit limit'
+//if(StringUtils.isNotBlank(CreditLimit)) {
+//	WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_CreditLimit'), CreditLimit)
+//}
+//
+//'Enter Interest Rate'
+//if(StringUtils.isNotBlank(InterestRate)) {
+//	WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_InterestRate'), InterestRate)
+//}
+//
+//'Select Document 1'
+//WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/select_DocumentType1'), DocType1, false)
+//
+//'Enter signde by'
+//WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_SignedBy1'), DocSignedBy1)
+//
+//'Enter signed date'
+//if(StringUtils.isNotBlank(DocSignedDate1)) {
+//	CustomKeywords.'actions.javaScript.setText'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_SignedDate1'), DocSignedDate1)
+//}
+//else {
+//	CustomKeywords.'actions.javaScript.setText'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_SignedDate1'), DateUtil.getCurrentDateTime('MM/dd/yyyy HH:mm:ss', 'EST'))
+//}
+//
+//'Enter vesion'
+//WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_Version1'), DocVersion1)
+//	
+//if(StringUtils.isNotBlank(DocType2)) {
+//	
+//	'Scroll to Add another document link'
+//	WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/icon_AddAnotherDocument'), GlobalVariable.TIMEOUT)
+//	
+//	'Click on Add another document link'
+//	WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/icon_AddAnotherDocument'))
+//	
+//	'Wait for new document section to be visible'
+//	CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/select_DocumentType2'), GlobalVariable.TIMEOUT)
+//	
+//	'Select Document 2'
+//	WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/select_DocumentType2'), DocType2, false)
+//	
+//	'Enter signde by'
+//	WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_SignedBy2'), DocSignedBy2)
+//	
+//	'Enter signed date'
+//	if(StringUtils.isNotBlank(DocSignedDate2)) {
+//		CustomKeywords.'actions.javaScript.setText'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_SignedDate2'), DocSignedDate2)
+//	}
+//	else {
+//		CustomKeywords.'actions.javaScript.setText'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_SignedDate2'), DateUtil.getCurrentDateTime('MM/dd/yyyy HH:mm:ss', 'EST'))
+//	}
+//	
+//	'Enter vesion'
+//	WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_Version2'), DocVersion2)
+//}
+'Fill form'
+CustomKeywords.'actions.common.accountFormFill'(accData)
 
 'Scroll to OK button'
 WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/btn_Submit'), GlobalVariable.TIMEOUT)

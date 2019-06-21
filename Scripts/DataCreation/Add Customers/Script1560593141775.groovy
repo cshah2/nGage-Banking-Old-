@@ -19,6 +19,30 @@ import enums.Fields
 import internal.GlobalVariable as GlobalVariable
 import utils.DateUtil
 
+Map<Fields, String> custData = new HashMap<Fields, String>()
+custData.put(Fields.CUST_FIRST_NAME, FirstName)
+custData.put(Fields.CUST_MIDDLE_NAME, MiddleName)
+custData.put(Fields.CUST_LAST_NAME, LastName)
+custData.put(Fields.CUST_DOB, DOB)
+custData.put(Fields.CUST_TAX_ID, TaxID)
+custData.put(Fields.CUST_COUNTRY_OF_RESIDENCE, CountryOfResidence)
+custData.put(Fields.CUST_RESIDENCY_STATUS, ResidencyStatus)
+custData.put(Fields.CUST_MARITAL_STATUS, MaritalStatus)
+custData.put(Fields.CUST_NAME_VIEW, FirstName+' '+LastName)
+custData.put(Fields.ADDR_STREET, DateUtil.getCurrentDateTime('dd MMMMM', 'EST')+' '+Street)
+custData.put(Fields.ADDR_CITY, City)
+custData.put(Fields.ADDR_COUNTY, Country)
+custData.put(Fields.ADDR_STATE, State)
+custData.put(Fields.ADDR_ZIPCODE, Zipcode)
+custData.put(Fields.ADDR_ADDRESS_TYPE, AddType)
+custData.put(Fields.ADDR_ADDRESS_LABEL, AddLabel)
+custData.put(Fields.CT_PHONE_NUMBER, PhoneNumber)
+custData.put(Fields.CT_PHONE_TYPE, PhoneType)
+custData.put(Fields.CT_EMAIL, Email)
+custData.put(Fields.CT_EMAIL_TYPE, EmailType)
+custData.put(Fields.CT_PREFERRED_LANGUAGE, PreferredLanguage)
+custData.put(Fields.CT_PREFERRED_CONTACT_METHOD, PreferredContactMethod)
+
 'Login into portal'
 CustomKeywords.'actions.common.login'()
 
@@ -28,80 +52,11 @@ WebUI.navigateToUrl(createCustomerUrl)
 'Wait for Create customer page to be visible'
 WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_FirstName'), GlobalVariable.TIMEOUT)
 
-'Enter First name'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_FirstName'), FirstName)
+'Fill Form'
+CustomKeywords.'actions.common.customerFormFill'(custData)
 
-'Enter Middle name'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_MiddleName'), MiddleName)
-
-'Enter Last name'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_LastName'), LastName)
-
-'Enter Date of birth'
-CustomKeywords.'actions.javaScript.setText'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_DOB'), DOB)
-
-'Enter Tax ID'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_TaxID'), TaxID)
-
-'Select Country of residency'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/select_CountryOfResidence'), CountryOfResidence, false)
-
-'Select Residency status'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/select_ResidencyStatus'), ResidencyStatus, false)
-
-'Select Marital status'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/select_MaritalStatus'), MaritalStatus, false)
-
-'Click on Next button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/btn_Next'))
-
-'Wait for Location information fields to be visible'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_Street'), GlobalVariable.TIMEOUT)
-
-'Enter Street'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_Street'), DateUtil.getCurrentDateTime('dd MMMMM', 'EST')+' '+Street)
-
-'Enter City'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_City'), City)
-
-'Select Country'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/select_Country'), Country, false)
-
-'Select State/Region'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/select_StateOrRegion'), State, false)
-
-'Enter Zip/Postal Code'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_ZipOrPostalCode'), Zipcode)
-
-'Select Address Type'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/select_AddressType'), AddType, false)
-
-'Enter Address Label'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_AddressLabel'), AddLabel)
-
-'Click on Next button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/btn_Next'))
-
-'Wait for Contact information fields to be visible'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/input_PhoneNumber'), GlobalVariable.TIMEOUT)
-
-'Enter Phone number'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/input_PhoneNumber'), PhoneNumber)
-
-'Select Phone type'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/select_PhoneType'), PhoneType, false)
-
-'Enter Email'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/input_Email'), Email)
-
-'Select Email type'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/select_EmailType'), EmailType, false)
-
-'Select Preferred language'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/select_PreferredLanguage'), PreferredLanguage, false)
-
-'Select Preferred contact method'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/select_PreferredContactMethod'), PreferredContactMethod, false)
+'Scroll to next button'
+WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/btn_Next'), GlobalVariable.TIMEOUT)
 
 'Click on Next button'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/btn_Next'))
@@ -141,7 +96,7 @@ WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account 
 CustomKeywords.'actions.common.verifyUrlContains'('CustomerMainFlow.CustomerDetail.aspx')
 
 'Verify Customer name is displayed correctly'
-WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/lbl_CustomerName'), FirstName+' '+LastName)
+WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/lbl_CustomerName'), custData.get(Fields.CUST_NAME_VIEW))
 
 'Verify Customer phone is displayed correctly'
-WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/lbl_PhoneNumber'), PhoneNumber)
+WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/lbl_PhoneNumber'), custData.get(Fields.CT_PHONE_NUMBER))

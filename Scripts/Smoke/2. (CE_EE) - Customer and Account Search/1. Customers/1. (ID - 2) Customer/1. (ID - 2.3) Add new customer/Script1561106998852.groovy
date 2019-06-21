@@ -32,7 +32,7 @@ WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account 
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Customer'))
 
 'Wait for Create customer icon to be visible'
-WebUI.delay(2) //TODO: Need to identify propert wait condition
+WebUI.delay(3) //TODO: Need to identify propert wait condition
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/icon_CreateCustomer'), GlobalVariable.TIMEOUT)
 
 'Click on Create customer icon'
@@ -41,93 +41,17 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Sear
 'Wait for Create customer page to be visible'
 WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_FirstName'), GlobalVariable.TIMEOUT)
 
-'Enter First name'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_FirstName'), data.get(Fields.CUST_FIRST_NAME))
+'Fill form'
+CustomKeywords.'actions.common.customerFormFill'(data)
 
-'Enter Middle name'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_MiddleName'), data.get(Fields.CUST_MIDDLE_NAME))
-
-'Enter Last name'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_LastName'), data.get(Fields.CUST_LAST_NAME))
-
-'Enter Date of birth'
-CustomKeywords.'actions.javaScript.setText'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_DOB'), data.get(Fields.CUST_DOB))
-
-'Enter Tax ID'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_TaxID'), data.get(Fields.CUST_TAX_ID))
-
-'Select Country of residency'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/select_CountryOfResidence'), data.get(Fields.CUST_COUNTRY_OF_RESIDENCE), false)
-
-'Select Residency status'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/select_ResidencyStatus'), data.get(Fields.CUST_RESIDENCY_STATUS), false)
-
-//Field Removed in latest build
-//'Select Country of Citizenship'
-//WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/select_CountryOfCitizenship'), 'United States of America', false)
-
-'Select Marital status'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/select_MaritalStatus'), data.get(Fields.CUST_MARITAL_STATUS), false)
-
-'Click on Next button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/btn_Next'))
-
-'Wait for Location information fields to be visible'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_Street'), GlobalVariable.TIMEOUT)
-
-'Enter Street'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_Street'), data.get(Fields.ADDR_STREET))
-
-'Enter City'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_City'), data.get(Fields.ADDR_CITY))
-
-'Select Country'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/select_Country'), data.get(Fields.ADDR_COUNTY), false)
-
-'Select State/Region'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/select_StateOrRegion'), data.get(Fields.ADDR_STATE), false)
-
-'Enter Zip/Postal Code'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_ZipOrPostalCode'), data.get(Fields.ADDR_ZIPCODE))
-
-'Select Address Type'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/select_AddressType'), data.get(Fields.ADDR_ADDRESS_TYPE), false)
-
-'Enter Address Label'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_AddressLabel'), data.get(Fields.ADDR_ADDRESS_LABEL))
-
-'Click on Next button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/btn_Next'))
-
-'Wait for Contact information fields to be visible'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/input_PhoneNumber'), GlobalVariable.TIMEOUT)
-
-'Enter Phone number'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/input_PhoneNumber'), data.get(Fields.CT_PHONE_NUMBER))
-
-'Select Phone type'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/select_PhoneType'), data.get(Fields.CT_PHONE_TYPE), false)
-
-'Enter Email'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/input_Email'), data.get(Fields.CT_EMAIL))
-
-'Select Email type'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/select_EmailType'), data.get(Fields.CT_EMAIL_TYPE), false)
-
-'Select Preferred language'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/select_PreferredLanguage'), data.get(Fields.CT_PREFERRED_LANGUAGE), false)
-
-'Select Preferred contact method'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/select_PreferredContactMethod'), data.get(Fields.CT_PREFERRED_CONTACT_METHOD), false)
+'Scroll to Next button'
+WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/btn_Next'), GlobalVariable.TIMEOUT)
 
 'Click on Next button'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/btn_Next'))
 
 'Wait for review page to load'
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Contact Information/btn_Next'), GlobalVariable.TIMEOUT)
-
-//Verify customer information review page.
-//TODO: Cannot create test objects BUG - 25416 https://corp.savanainc.com/Gemini6/workspace/0/item/25416
 
 'Verify First name'
 CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Basic Information/lbl_FirstName'), data.get(Fields.CUST_FIRST_NAME))
@@ -144,7 +68,7 @@ CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashbo
 'Verify Tax ID'
 CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Basic Information/lbl_TaxID'), data.get(Fields.CUST_TAX_ID))
 
-'Verify Residency' //TODO: Bug - Country is shown as 2 digit value
+'Verify Residency'
 CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Basic Information/lbl_CountryOfResidence'), data.get(Fields.CUST_COUNTRY_OF_RESIDENCE))
 
 'Verify Residencey Status'
@@ -159,10 +83,10 @@ CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashbo
 'Verify City'
 CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Location Information/lbl_City'), data.get(Fields.ADDR_CITY))
 
-'Verify Country' //TODO: Bug - County is shown as 2 digit value
+'Verify Country'
 CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Location Information/lbl_Country'), data.get(Fields.ADDR_COUNTY))
 
-'Verify State/Region' //TODO: Bug - County is shown as 2 digit value
+'Verify State/Region'
 CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Location Information/lbl_StateOrRegion'), data.get(Fields.ADDR_STATE))
 
 'Verify Zip/Postal code'

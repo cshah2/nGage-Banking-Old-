@@ -27,6 +27,8 @@ import utils.RegexUtil
 
 import static constants.common.*
 
+import org.apache.commons.lang3.StringUtils
+
 public class common {
 
 	//Open browser if not already opened
@@ -35,7 +37,7 @@ public class common {
 			DriverFactory.getWebDriver()
 		}
 		catch(Exception e) {
-			WebUI.openBrowser('')
+			WebUI.openBrowser(null)
 		}
 	}
 
@@ -99,4 +101,273 @@ public class common {
 			KeywordUtil.markFailedAndStop('Cannot execute test cases as required data is not created.')
 		}
 	}
+
+	private boolean isValidData(Map<Fields, String> data, Fields field) {
+		if(data.containsKey(field) && StringUtils.isNotBlank(data.get(field))) {
+			return true
+		}
+		else {
+			return false
+		}
+	}
+
+	@Keyword
+	def customerFormFill(Map<Fields, String> custData) {
+
+		//Enter First name
+		if(isValidData(custData, Fields.CUST_FIRST_NAME)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_FirstName'), custData.get(Fields.CUST_FIRST_NAME))
+		}
+		
+		//Enter Middle name
+		if(isValidData(custData, Fields.CUST_MIDDLE_NAME)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_MiddleName'), custData.get(Fields.CUST_MIDDLE_NAME))
+		}
+		
+		//Enter Last name
+		if(isValidData(custData, Fields.CUST_LAST_NAME)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_LastName'), custData.get(Fields.CUST_LAST_NAME))
+		}
+		
+		//Enter Date of birth
+		if(isValidData(custData, Fields.CUST_DOB)) {
+			new actions.javaScript().setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_DOB'), custData.get(Fields.CUST_DOB))
+		}
+		
+		//Enter Tax ID
+		if(isValidData(custData, Fields.CUST_TAX_ID)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_TaxID'), custData.get(Fields.CUST_TAX_ID))
+		}
+		
+		//Select Country of residency
+		if(isValidData(custData, Fields.CUST_COUNTRY_OF_RESIDENCE)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/select_CountryOfResidence'), custData.get(Fields.CUST_COUNTRY_OF_RESIDENCE), false)
+		}
+		
+		//Select Residency status
+		if(isValidData(custData, Fields.CUST_RESIDENCY_STATUS)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/select_ResidencyStatus'), custData.get(Fields.CUST_RESIDENCY_STATUS), false)
+		}
+		
+		//Select Marital status
+		if(isValidData(custData, Fields.CUST_MARITAL_STATUS)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/select_MaritalStatus'), custData.get(Fields.CUST_MARITAL_STATUS), false)
+		}
+		
+		//Scroll to next button
+		WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/btn_Next'), GlobalVariable.TIMEOUT)
+		
+		//Click on Next button
+		WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/btn_Next'))
+		
+		//Wait for Location information fields to be visible
+		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_Street'), GlobalVariable.TIMEOUT)
+		
+		//Enter Street'
+		if(isValidData(custData, Fields.ADDR_STREET)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_Street'), custData.get(Fields.ADDR_STREET))
+		}
+		
+		//Enter City
+		if(isValidData(custData, Fields.ADDR_CITY)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_City'), custData.get(Fields.ADDR_CITY))
+		}
+		
+		//Select Country
+		if(isValidData(custData, Fields.ADDR_COUNTY)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/select_Country'), custData.get(Fields.ADDR_COUNTY), false)
+		}
+		
+		//Select State/Region
+		if(isValidData(custData, Fields.ADDR_STATE)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/select_StateOrRegion'), custData.get(Fields.ADDR_STATE), false)
+		}
+		
+		//Enter Zip/Postal Code
+		if(isValidData(custData, Fields.ADDR_ZIPCODE)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_ZipOrPostalCode'), custData.get(Fields.ADDR_ZIPCODE))
+		}
+		
+		//Select Address Type
+		if(isValidData(custData, Fields.ADDR_ADDRESS_TYPE)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/select_AddressType'), custData.get(Fields.ADDR_ADDRESS_TYPE), false)
+		}
+		
+		//Enter Address Label
+		if(isValidData(custData, Fields.ADDR_ADDRESS_LABEL)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_AddressLabel'), custData.get(Fields.ADDR_ADDRESS_LABEL))
+		}
+		
+		//Scroll to next button
+		WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/btn_Next'), GlobalVariable.TIMEOUT)
+		
+		//Click on Next button
+		WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/btn_Next'))
+		
+		//Wait for Contact information fields to be visible
+		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/input_PhoneNumber'), GlobalVariable.TIMEOUT)
+		
+		//Enter Phone number
+		if(isValidData(custData, Fields.CT_PHONE_NUMBER)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/input_PhoneNumber'), custData.get(Fields.CT_PHONE_NUMBER))
+		}
+		
+		//Select Phone type
+		if(isValidData(custData, Fields.CT_PHONE_NUMBER)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/select_PhoneType'), custData.get(Fields.CT_PHONE_TYPE), false)
+		}
+		
+		//Enter Email
+		if(isValidData(custData, Fields.CT_EMAIL)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/input_Email'), custData.get(Fields.CT_EMAIL))
+		}
+		
+		//Select Email type
+		if(isValidData(custData, Fields.CT_EMAIL_TYPE)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/select_EmailType'), custData.get(Fields.CT_EMAIL_TYPE), false)
+		}
+		
+		//Select Preferred language
+		if(isValidData(custData, Fields.CT_PREFERRED_LANGUAGE)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/select_PreferredLanguage'), custData.get(Fields.CT_PREFERRED_LANGUAGE), false)
+		}
+		
+		//Select Preferred contact method
+		if(isValidData(custData, Fields.CT_PREFERRED_CONTACT_METHOD)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/select_PreferredContactMethod'), custData.get(Fields.CT_PREFERRED_CONTACT_METHOD), false)
+		}
+	}
+
+	@Keyword
+	def accountFormFill(Map<Fields, String> accData) {
+
+		//Enter account title
+		if(isValidData(accData, Fields.ACC_TITLE)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountTitle'), accData.get(Fields.ACC_TITLE))
+		}
+
+		//Select account ownership
+		if(isValidData(accData, Fields.ACC_OWNERSHIP)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_Ownership'), accData.get(Fields.ACC_OWNERSHIP), false)
+		}
+
+		//Enter account description
+		if(isValidData(accData, Fields.ACC_DESCRIPTION)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountDescription'), accData.get(Fields.ACC_DESCRIPTION))
+		}
+
+		//Select Account group
+		if(isValidData(accData, Fields.ACC_GROUP)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_AccountGroup'), accData.get(Fields.ACC_GROUP), false)
+		}
+
+		//Wait for Product section to be visible
+		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_ProductType'),GlobalVariable.TIMEOUT)
+
+		//Enter account number
+		if(isValidData(accData, Fields.ACC_NUMBER)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountNumber'), accData.get(Fields.ACC_NUMBER))
+		}
+
+		//Select timezone
+		if(isValidData(accData, Fields.ACC_TIMEZONE)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_Timezone'), accData.get(Fields.ACC_TIMEZONE), false)
+		}
+
+		//'Select statement frequency'
+		if(isValidData(accData, Fields.ACC_STATEMENT_FREQUENCY)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_StatementFrequency'), accData.get(Fields.ACC_STATEMENT_FREQUENCY), false)
+		}
+
+		//Select Product Type
+		if(isValidData(accData, Fields.ACC_PRODUCT_TYPE)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_ProductType'), accData.get(Fields.ACC_PRODUCT_TYPE), false)
+		}
+
+		//Wait for position name field to load text
+		new utils.WaitFor().textNotEmpty(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_PositionName'), GlobalVariable.TIMEOUT)
+		WebUI.delay(2)
+
+		//Enter Position name
+		if(isValidData(accData, Fields.ACC_POSITION_NAME)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_PositionName'), accData.get(Fields.ACC_POSITION_NAME))
+		}
+
+		//Enter Currency code
+		if(isValidData(accData, Fields.ACC_CURRENCY_CODE)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_CurrencyCode'), accData.get(Fields.ACC_CURRENCY_CODE))
+		}
+
+		//Enter Vertical
+		if(isValidData(accData, Fields.ACC_VERTICAL)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_Vertical'), accData.get(Fields.ACC_VERTICAL))
+		}
+
+		//Enter Department ID
+		if(isValidData(accData, Fields.ACC_DEPT_ID)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_DeptId'), accData.get(Fields.ACC_DEPT_ID))
+		}
+
+		//Enter Credit Limit
+		if(isValidData(accData, Fields.ACC_CREDIT_LIMIT)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_CreditLimit'), accData.get(Fields.ACC_CREDIT_LIMIT))
+		}
+
+		//Enter Interest rate
+		if(isValidData(accData, Fields.ACC_INTEREST_RATE)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_InterestRate'), accData.get(Fields.ACC_INTEREST_RATE))
+		}
+
+		//Select Document 1 - Terms and Conditions
+		if(isValidData(accData, Fields.DOC_TYPE)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/select_DocumentType1'), accData.get(Fields.DOC_TYPE), false)
+		}
+
+		//Enter signed by
+		if(isValidData(accData, Fields.DOC_SIGNED_BY)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_SignedBy1'), accData.get(Fields.DOC_SIGNED_BY))
+		}
+
+		//Enter signed date
+		if(isValidData(accData, Fields.DOC_SIGNED_DATE)) {
+			new actions.javaScript().setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_SignedDate1'), accData.get(Fields.DOC_SIGNED_DATE))
+		}
+
+		//Enter version
+		if(isValidData(accData, Fields.DOC_VERSION)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_Version1'), accData.get(Fields.DOC_VERSION))
+		}
+
+		//Enter document 2 details if present
+		if(isValidData(accData, Fields.DOC_TYPE2)) {
+
+			//Scroll to Add another document link
+			WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/icon_AddAnotherDocument'), GlobalVariable.TIMEOUT)
+
+			//Click on Add another document link
+			WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/icon_AddAnotherDocument'))
+
+			//Wait for new document section to be visible
+			new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/select_DocumentType2'), GlobalVariable.TIMEOUT)
+
+			//Select Document 2
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/select_DocumentType2'), accData.get(Fields.DOC_TYPE2), false)
+
+			//Enter signed by 2
+			if(isValidData(accData, Fields.DOC_SIGNED_BY2)) {
+				WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_SignedBy2'), accData.get(Fields.DOC_SIGNED_BY2))
+			}
+
+			//Enter signed date 2
+			if(isValidData(accData, Fields.DOC_SIGNED_DATE2)) {
+				new actions.javaScript().setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_SignedDate2'), accData.get(Fields.DOC_SIGNED_DATE2))
+			}
+
+			//Enter vesion 2
+			if(isValidData(accData, Fields.DOC_VERSION2)) {
+				WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_Version2'), accData.get(Fields.DOC_VERSION2))
+			}
+		}
+	}
+
 }
