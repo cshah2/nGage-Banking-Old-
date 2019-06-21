@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TestCaseEntity>
-   <description>Validate finxact version value is not empty.</description>
-   <name>2. Finxact Version check (2)</name>
-   <tag></tag>
-   <comment></comment>
-   <testCaseGuid>82d39d8a-6116-4532-aeba-fe85ee0320a3</testCaseGuid>
-</TestCaseEntity>

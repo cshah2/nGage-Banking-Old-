@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Validate user is able to login into application by using valid credentials.</description>
+   <name>1. (ID - 1.1) Validate log in</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>a6271c68-f21b-4a8b-9611-a62b5ae74c5d</testCaseGuid>
+</TestCaseEntity>

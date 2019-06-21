@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Validate user is able to search existing customer account based on provided filter criteria</description>
+   <name>1. (ID - 11.1) Search for existing account</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>e57b314d-0d74-4d53-bec9-c7e50715104e</testCaseGuid>
+</TestCaseEntity>
