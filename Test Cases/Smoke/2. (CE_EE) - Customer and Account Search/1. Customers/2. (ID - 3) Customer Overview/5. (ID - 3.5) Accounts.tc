@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Create account from Overview screen.</description>
+   <name>5. (ID - 3.5) Accounts</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>bb05ea5c-a8b7-4015-a399-1581b261fd7c</testCaseGuid>
+</TestCaseEntity>

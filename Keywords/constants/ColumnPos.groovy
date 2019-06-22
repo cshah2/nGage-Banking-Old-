@@ -37,7 +37,7 @@ public class ColumnPos {
 	public static int ACC_INTEREST_RATE = 7
 	public static int ACC_LEDGER_BALANCE = 8
 	public static int ACC_AVAILABLE_BALANCE = 9
-	
+
 	//Documents Table - Account Details page
 	public static int DOC_TYPE = 1
 	public static int DOC_SIGNED_BY = 2
@@ -45,4 +45,18 @@ public class ColumnPos {
 	public static int DOC_VERSION = 4
 	public static int DOC_RESCINDED_BY = 5
 	public static int DOC_RECISION_DATE = 6
+	
+	//Address Table - Contact Details section - Customer Page
+	public static int ADDR_ADDRESS_TYPE = 1
+	public static int ADDR_ADDRESS_LABEL = 2
+	public static int ADDR_STREET = 3
+	public static int ADDR_CITY = 4
+	public static int ADDR_COUNTY = 5
+	public static int ADDR_STATE = 6
+	public static int ADDR_ZIPCODE = 7
+	public static int ADDR_VALID_FROM = 8
+	public static int ADDR_VALID_UNTIL = 9
+	public static int ADDR_VERIFIED_DATE = 10
+	public static int ADDR_PREFERRED = 11
+	public static int ADDR_MOREICON = 12
 }

@@ -43,7 +43,38 @@ public class Data {
 
 		CUSTOMER_001.put(Fields.CUST_MEMBER_ID, 'MID_'+RandomStringUtils.randomNumeric(6))
 		CUSTOMER_001.put(Fields.CUST_CUSTOMER_GROUP, 'Banking Customer')
+		
+		CUSTOMER_001.put(Fields.IS_CREATED, 'false')
 	}
+	
+	public static final Map<Fields, String> CUSTOMER_001_ADDRESS2;
+	static {
+		CUSTOMER_001_ADDRESS2 = new HashMap<Fields, String>()
+		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_STREET, DateUtil.getCurrentDateTime('dd MMMMM', 'EST')+' Street')
+		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_CITY, 'Austin')
+		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_COUNTY, 'United States of America')
+		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_STATE, 'Texas')
+		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_ZIPCODE, '2'+RandomStringUtils.randomNumeric(4))
+		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_ADDRESS_TYPE, 'Work/Office')
+		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_ADDRESS_LABEL, 'OFFICE')
+		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_VIEW, CUSTOMER_001_ADDRESS2.get(Fields.ADDR_STREET)+', '+CUSTOMER_001_ADDRESS2.get(Fields.ADDR_CITY)+', TX '+CUSTOMER_001_ADDRESS2.get(Fields.ADDR_ZIPCODE))
+		CUSTOMER_001_ADDRESS2.put(Fields.IS_CREATED, 'false')
+	}
+
+	public static final Map<Fields, String> CUSTOMER_001_ADDRESS3;
+	static {
+		CUSTOMER_001_ADDRESS3 = new HashMap<Fields, String>()
+		CUSTOMER_001_ADDRESS3.put(Fields.ADDR_STREET, DateUtil.getCurrentDateTime('dd MMMMM', 'EST')+' Street Change')
+		CUSTOMER_001_ADDRESS3.put(Fields.ADDR_CITY, 'Phoenix')
+		CUSTOMER_001_ADDRESS3.put(Fields.ADDR_COUNTY, 'United States of America')
+		CUSTOMER_001_ADDRESS3.put(Fields.ADDR_STATE, 'Arizona')
+		CUSTOMER_001_ADDRESS3.put(Fields.ADDR_ZIPCODE, '3'+RandomStringUtils.randomNumeric(4))
+		CUSTOMER_001_ADDRESS3.put(Fields.ADDR_ADDRESS_TYPE, 'Headquarter')
+		CUSTOMER_001_ADDRESS3.put(Fields.ADDR_ADDRESS_LABEL, 'Head Office')
+		CUSTOMER_001_ADDRESS3.put(Fields.ADDR_VIEW, CUSTOMER_001_ADDRESS3.get(Fields.ADDR_STREET)+', '+CUSTOMER_001_ADDRESS3.get(Fields.ADDR_CITY)+', AZ '+CUSTOMER_001_ADDRESS3.get(Fields.ADDR_ZIPCODE))
+		CUSTOMER_001_ADDRESS3.put(Fields.IS_CREATED, 'false')
+	}
+
 
 	public static final Map<Fields, String> CUSTOMER_002;
 	static {
@@ -139,7 +170,7 @@ public class Data {
 		ACCOUNT_002.put(Fields.ACC_AVAILABLE_BALANCE, '0.00')
 		ACCOUNT_002.put(Fields.IS_CREATED, 'false')
 	}
-
+	
 	//Existing Customer Data, To be used when not running test suite
 	public static final Map<Fields, String> CUSTOMER_003;
 	static {

@@ -118,120 +118,120 @@ public class common {
 		if(isValidData(custData, Fields.CUST_FIRST_NAME)) {
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_FirstName'), custData.get(Fields.CUST_FIRST_NAME))
 		}
-		
+
 		//Enter Middle name
 		if(isValidData(custData, Fields.CUST_MIDDLE_NAME)) {
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_MiddleName'), custData.get(Fields.CUST_MIDDLE_NAME))
 		}
-		
+
 		//Enter Last name
 		if(isValidData(custData, Fields.CUST_LAST_NAME)) {
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_LastName'), custData.get(Fields.CUST_LAST_NAME))
 		}
-		
+
 		//Enter Date of birth
 		if(isValidData(custData, Fields.CUST_DOB)) {
 			new actions.javaScript().setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_DOB'), custData.get(Fields.CUST_DOB))
 		}
-		
+
 		//Enter Tax ID
 		if(isValidData(custData, Fields.CUST_TAX_ID)) {
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_TaxID'), custData.get(Fields.CUST_TAX_ID))
 		}
-		
+
 		//Select Country of residency
 		if(isValidData(custData, Fields.CUST_COUNTRY_OF_RESIDENCE)) {
 			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/select_CountryOfResidence'), custData.get(Fields.CUST_COUNTRY_OF_RESIDENCE), false)
 		}
-		
+
 		//Select Residency status
 		if(isValidData(custData, Fields.CUST_RESIDENCY_STATUS)) {
 			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/select_ResidencyStatus'), custData.get(Fields.CUST_RESIDENCY_STATUS), false)
 		}
-		
+
 		//Select Marital status
 		if(isValidData(custData, Fields.CUST_MARITAL_STATUS)) {
 			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/select_MaritalStatus'), custData.get(Fields.CUST_MARITAL_STATUS), false)
 		}
-		
+
 		//Scroll to next button
 		WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/btn_Next'), GlobalVariable.TIMEOUT)
-		
+
 		//Click on Next button
 		WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/btn_Next'))
-		
+
 		//Wait for Location information fields to be visible
 		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_Street'), GlobalVariable.TIMEOUT)
-		
+
 		//Enter Street'
 		if(isValidData(custData, Fields.ADDR_STREET)) {
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_Street'), custData.get(Fields.ADDR_STREET))
 		}
-		
+
 		//Enter City
 		if(isValidData(custData, Fields.ADDR_CITY)) {
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_City'), custData.get(Fields.ADDR_CITY))
 		}
-		
+
 		//Select Country
 		if(isValidData(custData, Fields.ADDR_COUNTY)) {
 			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/select_Country'), custData.get(Fields.ADDR_COUNTY), false)
 		}
-		
+
 		//Select State/Region
 		if(isValidData(custData, Fields.ADDR_STATE)) {
 			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/select_StateOrRegion'), custData.get(Fields.ADDR_STATE), false)
 		}
-		
+
 		//Enter Zip/Postal Code
 		if(isValidData(custData, Fields.ADDR_ZIPCODE)) {
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_ZipOrPostalCode'), custData.get(Fields.ADDR_ZIPCODE))
 		}
-		
+
 		//Select Address Type
 		if(isValidData(custData, Fields.ADDR_ADDRESS_TYPE)) {
 			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/select_AddressType'), custData.get(Fields.ADDR_ADDRESS_TYPE), false)
 		}
-		
+
 		//Enter Address Label
 		if(isValidData(custData, Fields.ADDR_ADDRESS_LABEL)) {
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_AddressLabel'), custData.get(Fields.ADDR_ADDRESS_LABEL))
 		}
-		
+
 		//Scroll to next button
 		WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/btn_Next'), GlobalVariable.TIMEOUT)
-		
+
 		//Click on Next button
 		WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/btn_Next'))
-		
+
 		//Wait for Contact information fields to be visible
 		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/input_PhoneNumber'), GlobalVariable.TIMEOUT)
-		
+
 		//Enter Phone number
 		if(isValidData(custData, Fields.CT_PHONE_NUMBER)) {
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/input_PhoneNumber'), custData.get(Fields.CT_PHONE_NUMBER))
 		}
-		
+
 		//Select Phone type
 		if(isValidData(custData, Fields.CT_PHONE_NUMBER)) {
 			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/select_PhoneType'), custData.get(Fields.CT_PHONE_TYPE), false)
 		}
-		
+
 		//Enter Email
 		if(isValidData(custData, Fields.CT_EMAIL)) {
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/input_Email'), custData.get(Fields.CT_EMAIL))
 		}
-		
+
 		//Select Email type
 		if(isValidData(custData, Fields.CT_EMAIL_TYPE)) {
 			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/select_EmailType'), custData.get(Fields.CT_EMAIL_TYPE), false)
 		}
-		
+
 		//Select Preferred language
 		if(isValidData(custData, Fields.CT_PREFERRED_LANGUAGE)) {
 			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/select_PreferredLanguage'), custData.get(Fields.CT_PREFERRED_LANGUAGE), false)
 		}
-		
+
 		//Select Preferred contact method
 		if(isValidData(custData, Fields.CT_PREFERRED_CONTACT_METHOD)) {
 			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/select_PreferredContactMethod'), custData.get(Fields.CT_PREFERRED_CONTACT_METHOD), false)

@@ -181,5 +181,5 @@ if('EE'.equalsIgnoreCase(GlobalVariable.ENVIRONMENT)) {
 	WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/tab_Overview'))
 
 	'Wait for Customer Person Details section to load in overview tab'
-	CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Overview Tab/Customer Person Detail Section/section_Body'), GlobalVariable.TIMEOUT)
+	CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Overview Tab/Customer Person Detail Section/section_Body'), GlobalVariable.TIMEOUT)
 }

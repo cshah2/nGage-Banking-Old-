@@ -85,6 +85,29 @@ public class WaitFor {
 			KeywordUtil.markFailedAndStop('Exception occured while waiting for element'+e.toString())
 		}
 	}
+	
+	@Keyword
+	def elementVisible(By locator, int timeout) {
+
+		setDriver()
+
+		jsWait.pollingEvery(100, TimeUnit.MILLISECONDS)
+		jsWait.ignoring(StaleElementReferenceException.class)
+
+		try {
+			if(locator != null)
+				jsWait.until(ExpectedConditions.visibilityOfElementLocated(locator))
+			else {
+				WebUI.takeScreenshot()
+				KeywordUtil.markFailedAndStop('Locator is neither XPATH or CSS')
+			}
+		}
+		catch(Exception e) {
+			WebUI.takeScreenshot()
+			KeywordUtil.markFailedAndStop('Exception occured while waiting for element'+e.toString())
+		}
+	}
+
 
 	@Keyword
 	def elementNotPresent(TestObject to, int timeout) {
@@ -108,7 +131,7 @@ public class WaitFor {
 			KeywordUtil.markFailedAndStop('Exception occured while waiting for element'+e.toString())
 		}
 	}
-	
+
 	@Keyword
 	def textNotEmpty(TestObject to, int timeout) {
 
@@ -117,15 +140,15 @@ public class WaitFor {
 		jsWait.pollingEvery(100, TimeUnit.MILLISECONDS)
 		jsWait.ignoring(StaleElementReferenceException.class)
 
-		
+
 		By locator = getLocator(to)
 		try {
 			if(locator != null)
 				jsWait.until(new ExpectedCondition<Boolean>() {
-					public Boolean apply(WebDriver d){
-						d.findElement(locator).getAttribute("value").length() != 0
-					}
-				})
+							public Boolean apply(WebDriver d){
+								d.findElement(locator).getAttribute("value").length() != 0
+							}
+						})
 			else {
 				WebUI.takeScreenshot()
 				KeywordUtil.markFailedAndStop('Locator is neither XPATH or CSS')

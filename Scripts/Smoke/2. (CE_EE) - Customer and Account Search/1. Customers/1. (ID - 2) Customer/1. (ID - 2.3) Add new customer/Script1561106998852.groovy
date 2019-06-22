@@ -158,3 +158,6 @@ WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Sear
 
 'Verify Customer address is displayed correctly'
 WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/lbl_Address'), data.get(Fields.ADDR_VIEW))
+
+'Set data flag'
+data.put(Fields.IS_CREATED, 'true')

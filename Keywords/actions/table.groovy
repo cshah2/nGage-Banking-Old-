@@ -5,8 +5,11 @@ import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
+import java.util.concurrent.TimeUnit
+
 import org.openqa.selenium.By
 import org.openqa.selenium.WebElement
+import org.openqa.selenium.interactions.Actions
 
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
@@ -19,6 +22,7 @@ import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.util.KeywordUtil
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.common.WebUiCommonHelper
+import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import enums.RegexOperator
@@ -67,6 +71,96 @@ public class table {
 	}
 
 	//Keywords
+
+	@Keyword
+	def waitUntilRecordsCountEquals(TestObject to, int expRowsCount, int timeout) {
+
+		def startTime = System.currentTimeMillis()
+		def endTime = startTime + TimeUnit.SECONDS.toMillis(timeout)
+		def currentTime = System.currentTimeMillis()
+
+		int actRowsCount = -1
+		println "Actual records count = "+actRowsCount
+
+		boolean isRefreshed = false
+
+		while(currentTime < endTime) {
+
+			try {
+				actRowsCount = getRowsCount(to)
+				println "Actual records count = "+actRowsCount
+			}
+			catch(Exception e) {
+				println "Exception occurred while fetching records count"+e.toString()
+				WebUI.delay(2)
+				continue
+			}
+
+			if(actRowsCount == expRowsCount) {
+				isRefreshed = true
+				break
+			}
+			else {
+				WebUI.delay(2)
+				continue
+			}
+		}
+
+		if(isRefreshed) {
+			KeywordUtil.markPassed("Table is refreshed")
+		}
+		else {
+			KeywordUtil.markFailedAndStop('Table is not refreshed withing given time')
+		}
+	}
+	
+	@Keyword
+	def waitUntilCellValueEquals(TestObject to, int rowNo, int colNo, String expText, int timeout) {
+		
+		def startTime = System.currentTimeMillis()
+		def endTime = startTime + TimeUnit.SECONDS.toMillis(timeout)
+		def currentTime = System.currentTimeMillis()
+		String actText 
+		
+		boolean isRefreshed = false
+		while(currentTime < endTime) {
+			try {
+				actText = getCellText(to, rowNo, colNo)
+				println "Actual cell text = "+actText
+			}
+			catch(Exception e) {
+				println "Exception occurred while fetching cell text"+e.toString()
+				WebUI.delay(2)
+				continue
+			}
+			
+			if(actText.equals(expText)) {
+				isRefreshed = true
+				break
+			}
+			else {
+				WebUI.delay(2)
+				continue
+			}
+		}
+		
+		if(isRefreshed) {
+			KeywordUtil.markPassed("Table is refreshed")
+		}
+		else {
+			KeywordUtil.markFailedAndStop('Table is not refreshed withing given time')
+		}
+	}
+
+	@Keyword
+	def moveToCell(TestObject to, int rowNo, int colNo) {
+		WebElement table = getTable(to)
+		Actions asDriver = new Actions(DriverFactory.getWebDriver())
+		WebElement cell = table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]"))
+		asDriver.moveToElement(cell)
+	}
+
+
 
 	@Keyword
 	def verifyRecordsCount(TestObject to, int expRowsCount, RegexOperator operator) {
@@ -397,4 +491,36 @@ public class table {
 		}
 	}
 
+	@Keyword
+	def clickMoreButton(TestObject to, int rowNo, int colNo) {
+		WebElement table = getTable(to)
+		try {
+			WebElement e = table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]//span[contains(@class,fa-ellipsis-v)]"))
+			new javaScript().scrollToElement(e)
+			WebUI.delay(1)
+			e.click()
+		}
+		catch(Exception e) {
+			WebUI.takeScreenshot()
+			KeywordUtil.markFailedAndStop('Unable to click on link inside table '+e.toString())
+		}
+	}
+	
+	@Keyword
+	def clickMoreButtonAndSelectOption(TestObject to, int rowNo, int colNo, String option) {
+		WebElement table = getTable(to)
+		try {
+			moveToCell(to, rowNo, colNo)
+			WebUI.delay(1)
+			WebElement e = table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]//span[contains(@class,fa-ellipsis-v)]"))
+			e.click()
+			WebUI.delay(3) //Wait for 3 seconds to load the options menu
+			WebElement optionElement = table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]//div[contains(@id,'_wtMenu') and contains(@class,'DropdownMenu')]//a[text()='"+option+"']"))
+			optionElement.click()
+		}
+		catch(Exception e) {
+			WebUI.takeScreenshot()
+			KeywordUtil.markFailedAndStop('Unable to click on link inside table '+e.toString())
+		}
+	}
 }
