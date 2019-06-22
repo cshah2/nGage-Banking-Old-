@@ -43,13 +43,22 @@ public class javaScript {
 	}
 	
 	@Keyword
+	def click(WebElement e) {
+
+		List<WebElement> list = new ArrayList<WebElement>()
+		list.add(e)
+		WebUI.executeJavaScript('arguments[0].click()', list)
+	}
+
+
+	@Keyword
 	def scrollToElement(TestObject to) {
 		WebElement e = WebUiCommonHelper.findWebElement(to, GlobalVariable.TIMEOUT)
 		List<WebElement> list = new ArrayList<WebElement>()
 		list.add(e)
 		WebUI.executeJavaScript('arguments[0].scrollIntoView({behavior: "auto", block: "start", inline: "nearest"})', list)
 	}
-	
+
 	@Keyword
 	def scrollToElement(WebElement e) {
 		//WebElement e = WebUiCommonHelper.findWebElement(to, GlobalVariable.TIMEOUT)
@@ -57,5 +66,4 @@ public class javaScript {
 		list.add(e)
 		WebUI.executeJavaScript('arguments[0].scrollIntoView({behavior: "auto", block: "start", inline: "nearest"})', list)
 	}
-
 }

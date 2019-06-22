@@ -45,8 +45,8 @@ public class ColumnPos {
 	public static int DOC_VERSION = 4
 	public static int DOC_RESCINDED_BY = 5
 	public static int DOC_RECISION_DATE = 6
-	
-	//Address Table - Contact Details section - Customer Page
+
+	//Address Table - Contact Details tab - Customer Details Page
 	public static int ADDR_ADDRESS_TYPE = 1
 	public static int ADDR_ADDRESS_LABEL = 2
 	public static int ADDR_STREET = 3
@@ -59,4 +59,24 @@ public class ColumnPos {
 	public static int ADDR_VERIFIED_DATE = 10
 	public static int ADDR_PREFERRED = 11
 	public static int ADDR_MOREICON = 12
+
+	//Customer Phone Table - Contact Details tab - Customer Details Page
+	public static int CT_PHONE_TYPE = 1
+	public static int CT_PHONE_LABEL = 2
+	public static int CT_PHONE_NUMBER = 3
+	public static int CT_PHONE_VALID_FROM = 4
+	public static int CT_PHONE_VALID_UNTIL = 5
+	public static int CT_PHONE_VERIFIED_DATE = 6
+	public static int CT_PHONE_PREFERRED = 7
+	public static int CT_PHONE_EDITICON = 8
+
+	//Customer Email Table - Contact Details tab - Customer Details Page
+	public static int CT_EMAIL_TYPE = 1
+	public static int CT_EMAIL_LABEL = 2
+	public static int CT_EMAIL = 3
+	public static int CT_EMAIL_VALID_FROM = 4
+	public static int CT_EMAIL_VALID_UNTIL = 5
+	public static int CT_EMAIL_VERIFIED_DATE = 6
+	public static int CT_EMAIL_PREFERRED = 7
+	public static int CT_EMAIL_EDITICON = 8
 }

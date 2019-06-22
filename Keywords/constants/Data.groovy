@@ -43,10 +43,10 @@ public class Data {
 
 		CUSTOMER_001.put(Fields.CUST_MEMBER_ID, 'MID_'+RandomStringUtils.randomNumeric(6))
 		CUSTOMER_001.put(Fields.CUST_CUSTOMER_GROUP, 'Banking Customer')
-		
+
 		CUSTOMER_001.put(Fields.IS_CREATED, 'false')
 	}
-	
+
 	public static final Map<Fields, String> CUSTOMER_001_ADDRESS2;
 	static {
 		CUSTOMER_001_ADDRESS2 = new HashMap<Fields, String>()
@@ -74,7 +74,42 @@ public class Data {
 		CUSTOMER_001_ADDRESS3.put(Fields.ADDR_VIEW, CUSTOMER_001_ADDRESS3.get(Fields.ADDR_STREET)+', '+CUSTOMER_001_ADDRESS3.get(Fields.ADDR_CITY)+', AZ '+CUSTOMER_001_ADDRESS3.get(Fields.ADDR_ZIPCODE))
 		CUSTOMER_001_ADDRESS3.put(Fields.IS_CREATED, 'false')
 	}
+	
+	public static final Map<Fields, String> CUSTOMER_001_PHONE2;
+	static {
+		CUSTOMER_001_PHONE2 = new HashMap<Fields, String>()
+		CUSTOMER_001_PHONE2.put(Fields.CT_PHONE_TYPE, 'Home')
+		CUSTOMER_001_PHONE2.put(Fields.CT_PHONE_LABEL, 'HOME')
+		CUSTOMER_001_PHONE2.put(Fields.CT_PHONE_NUMBER, '+1'+RandomStringUtils.randomNumeric(10))
+		CUSTOMER_001_PHONE2.put(Fields.IS_CREATED, 'false')
+	}
 
+	public static final Map<Fields, String> CUSTOMER_001_PHONE3;
+	static {
+		CUSTOMER_001_PHONE3 = new HashMap<Fields, String>()
+		CUSTOMER_001_PHONE3.put(Fields.CT_PHONE_TYPE, 'Mobile')
+		CUSTOMER_001_PHONE3.put(Fields.CT_PHONE_LABEL, 'PERSONAL')
+		CUSTOMER_001_PHONE3.put(Fields.CT_PHONE_NUMBER, '+1'+RandomStringUtils.randomNumeric(10))
+		CUSTOMER_001_PHONE3.put(Fields.IS_CREATED, 'false')
+	}
+	
+	public static final Map<Fields, String> CUSTOMER_001_EMAIL2;
+	static {
+		CUSTOMER_001_EMAIL2 = new HashMap<Fields, String>()
+		CUSTOMER_001_EMAIL2.put(Fields.CT_EMAIL_TYPE, 'Personal')
+		CUSTOMER_001_EMAIL2.put(Fields.CT_EMAIL_LABEL, 'SELF')
+		CUSTOMER_001_EMAIL2.put(Fields.CT_EMAIL, 'my.emaila@exmaple.com')
+		CUSTOMER_001_EMAIL2.put(Fields.IS_CREATED, 'false')
+	}
+
+	public static final Map<Fields, String> CUSTOMER_001_EMAIL3;
+	static {
+		CUSTOMER_001_EMAIL3 = new HashMap<Fields, String>()
+		CUSTOMER_001_EMAIL3.put(Fields.CT_EMAIL_TYPE, 'Work')
+		CUSTOMER_001_EMAIL3.put(Fields.CT_EMAIL_LABEL, 'OFFICE')
+		CUSTOMER_001_EMAIL3.put(Fields.CT_EMAIL, 'my.emailb@exmaple.com')
+		CUSTOMER_001_EMAIL3.put(Fields.IS_CREATED, 'false')
+	}
 
 	public static final Map<Fields, String> CUSTOMER_002;
 	static {
@@ -170,7 +205,7 @@ public class Data {
 		ACCOUNT_002.put(Fields.ACC_AVAILABLE_BALANCE, '0.00')
 		ACCOUNT_002.put(Fields.IS_CREATED, 'false')
 	}
-	
+
 	//Existing Customer Data, To be used when not running test suite
 	public static final Map<Fields, String> CUSTOMER_003;
 	static {

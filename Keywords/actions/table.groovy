@@ -113,15 +113,15 @@ public class table {
 			KeywordUtil.markFailedAndStop('Table is not refreshed withing given time')
 		}
 	}
-	
+
 	@Keyword
 	def waitUntilCellValueEquals(TestObject to, int rowNo, int colNo, String expText, int timeout) {
-		
+
 		def startTime = System.currentTimeMillis()
 		def endTime = startTime + TimeUnit.SECONDS.toMillis(timeout)
 		def currentTime = System.currentTimeMillis()
-		String actText 
-		
+		String actText
+
 		boolean isRefreshed = false
 		while(currentTime < endTime) {
 			try {
@@ -133,7 +133,7 @@ public class table {
 				WebUI.delay(2)
 				continue
 			}
-			
+
 			if(actText.equals(expText)) {
 				isRefreshed = true
 				break
@@ -143,7 +143,7 @@ public class table {
 				continue
 			}
 		}
-		
+
 		if(isRefreshed) {
 			KeywordUtil.markPassed("Table is refreshed")
 		}
@@ -154,10 +154,11 @@ public class table {
 
 	@Keyword
 	def moveToCell(TestObject to, int rowNo, int colNo) {
+
 		WebElement table = getTable(to)
 		Actions asDriver = new Actions(DriverFactory.getWebDriver())
 		WebElement cell = table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]"))
-		asDriver.moveToElement(cell)
+		asDriver.moveToElement(cell).build().perform()
 	}
 
 
@@ -483,7 +484,10 @@ public class table {
 	def clickCell(TestObject to, int rowNo, int colNo) {
 		WebElement table = getTable(to)
 		try {
-			table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]//a")).click()
+			moveToCell(to, rowNo, colNo)
+			WebElement e = table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]//a")) 
+			//e.click()
+			new javaScript().click(e)
 		}
 		catch(Exception e) {
 			WebUI.takeScreenshot()
@@ -498,14 +502,16 @@ public class table {
 			WebElement e = table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]//span[contains(@class,fa-ellipsis-v)]"))
 			new javaScript().scrollToElement(e)
 			WebUI.delay(1)
-			e.click()
+			//e.click()
+			new javaScript().click(e)
+			
 		}
 		catch(Exception e) {
 			WebUI.takeScreenshot()
 			KeywordUtil.markFailedAndStop('Unable to click on link inside table '+e.toString())
 		}
 	}
-	
+
 	@Keyword
 	def clickMoreButtonAndSelectOption(TestObject to, int rowNo, int colNo, String option) {
 		WebElement table = getTable(to)
@@ -513,10 +519,12 @@ public class table {
 			moveToCell(to, rowNo, colNo)
 			WebUI.delay(1)
 			WebElement e = table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]//span[contains(@class,fa-ellipsis-v)]"))
-			e.click()
+			//e.click()
+			new javaScript().click(e)
 			WebUI.delay(3) //Wait for 3 seconds to load the options menu
 			WebElement optionElement = table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]//div[contains(@id,'_wtMenu') and contains(@class,'DropdownMenu')]//a[text()='"+option+"']"))
-			optionElement.click()
+			//optionElement.click()
+			new javaScript().click(optionElement)
 		}
 		catch(Exception e) {
 			WebUI.takeScreenshot()

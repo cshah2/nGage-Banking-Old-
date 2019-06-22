@@ -28,6 +28,8 @@ import utils.RegexUtil
 import static constants.common.*
 
 import org.apache.commons.lang3.StringUtils
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.interactions.Actions
 
 public class common {
 
@@ -40,7 +42,7 @@ public class common {
 			WebUI.openBrowser(null)
 		}
 	}
-
+	
 	@Keyword
 	def login() {
 
@@ -77,6 +79,16 @@ public class common {
 		WebUI.verifyMatch(WebUI.getUrl(), dashboardUrl, false)
 	}
 
+	@Keyword
+	def moveToElement(TestObject to) {
+		
+		WebUI.scrollToElement(to, GlobalVariable.TIMEOUT)
+		
+		Actions asDriver = new Actions(DriverFactory.getWebDriver())
+		WebElement e = WebUiCommonHelper.findWebElement(to, GlobalVariable.TIMEOUT)
+		asDriver.moveToElement(e).build().perform()
+	}
+	
 	@Keyword
 	def verifyElementTextContains(TestObject to, String expectedText) {
 
