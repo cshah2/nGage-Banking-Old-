@@ -120,60 +120,60 @@ CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard P
 CustomKeywords.'actions.table.clickMoreButtonAndSelectOption'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/table_Addresses'), rowNo, ColumnPos.ADDR_MOREICON, 'Edit Address')
 
 'Wait for Edit address task drawer to load'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/input_Street'), GlobalVariable.TIMEOUT)
+CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Street'), GlobalVariable.TIMEOUT)
 
 //Verify values from the selected row are loaded in fields
 'Verify Street value'
-WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/input_Street'), 'value', addressData.get(Fields.ADDR_STREET), GlobalVariable.TIMEOUT)
+WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Street'), 'value', addressData.get(Fields.ADDR_STREET), GlobalVariable.TIMEOUT)
 
 'Verify city value'
-WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/input_City'), 'value', addressData.get(Fields.ADDR_CITY), GlobalVariable.TIMEOUT)
+WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_City'), 'value', addressData.get(Fields.ADDR_CITY), GlobalVariable.TIMEOUT)
 
 'Verify region selected'
-WebUI.verifyOptionSelectedByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/select_State'), addressData.get(Fields.ADDR_STATE), false, GlobalVariable.TIMEOUT)
+WebUI.verifyOptionSelectedByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/select_State'), addressData.get(Fields.ADDR_STATE), false, GlobalVariable.TIMEOUT)
 
 'Verify zipcode value'
-WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/input_Zipcode'), 'value', addressData.get(Fields.ADDR_ZIPCODE), GlobalVariable.TIMEOUT)
+WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Zipcode'), 'value', addressData.get(Fields.ADDR_ZIPCODE), GlobalVariable.TIMEOUT)
 
 'Verify country selected'
-WebUI.verifyOptionSelectedByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/select_Country'), addressData.get(Fields.ADDR_COUNTY), false, GlobalVariable.TIMEOUT)
+WebUI.verifyOptionSelectedByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/select_Country'), addressData.get(Fields.ADDR_COUNTY), false, GlobalVariable.TIMEOUT)
 
 'Verify address type selected'
-WebUI.verifyOptionSelectedByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/select_AddressType'), addressData.get(Fields.ADDR_ADDRESS_TYPE), false, GlobalVariable.TIMEOUT)
+WebUI.verifyOptionSelectedByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/select_AddressType'), addressData.get(Fields.ADDR_ADDRESS_TYPE), false, GlobalVariable.TIMEOUT)
 
 'Verify address label value'
-WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/input_AddressLabel'), 'value', addressData.get(Fields.ADDR_ADDRESS_LABEL), GlobalVariable.TIMEOUT)
+WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_AddressLabel'), 'value', addressData.get(Fields.ADDR_ADDRESS_LABEL), GlobalVariable.TIMEOUT)
 
 //Enter updated values in field
 'Enter street'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/input_Street'), addressEdit.get(Fields.ADDR_STREET))
+WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Street'), addressEdit.get(Fields.ADDR_STREET))
 
 'Enter city'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/input_City'), addressEdit.get(Fields.ADDR_CITY))
+WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_City'), addressEdit.get(Fields.ADDR_CITY))
 
 'Select state'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/select_State'), addressEdit.get(Fields.ADDR_STATE), false)
+WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/select_State'), addressEdit.get(Fields.ADDR_STATE), false)
 
 'Enter Zipcode'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/input_Zipcode'), addressEdit.get(Fields.ADDR_ZIPCODE))
+WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Zipcode'), addressEdit.get(Fields.ADDR_ZIPCODE))
 
 'Select country'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/select_Country'), addressEdit.get(Fields.ADDR_COUNTY), false)
+WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/select_Country'), addressEdit.get(Fields.ADDR_COUNTY), false)
 
 'Select address type'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/select_AddressType'), addressEdit.get(Fields.ADDR_ADDRESS_TYPE), false)
+WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/select_AddressType'), addressEdit.get(Fields.ADDR_ADDRESS_TYPE), false)
 
 'Enter address label'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/input_AddressLabel'), addressEdit.get(Fields.ADDR_ADDRESS_LABEL))
+WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_AddressLabel'), addressEdit.get(Fields.ADDR_ADDRESS_LABEL))
 
 'Scroll to submit button'
-WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/btn_Submit'), GlobalVariable.TIMEOUT)
+WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/btn_Submit'), GlobalVariable.TIMEOUT)
 
 'Click on Submit button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/btn_Submit'))
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/btn_Submit'))
 
 'Wait for elements from task drawer to be not present'
-CustomKeywords.'utils.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/input_Street'), GlobalVariable.TIMEOUT)
+CustomKeywords.'utils.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Street'), GlobalVariable.TIMEOUT)
 
 'Wait for cell value to get updated in a selected row'
 //TODO: There is no success message displayed on completion of task.

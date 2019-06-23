@@ -105,25 +105,25 @@ CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Cus
 CustomKeywords.'actions.javaScript.click'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/icon_AddNewEmail'))
 
 'Wait for Add email task drawer to load'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Email/input_Email'), GlobalVariable.TIMEOUT)
+CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_Email'), GlobalVariable.TIMEOUT)
 
 'Enter Email'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Email/input_Email'), custDataEmail2.get(Fields.CT_EMAIL))
+WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_Email'), custDataEmail2.get(Fields.CT_EMAIL))
 
 'Select Email type'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Email/select_EmailType'), custDataEmail2.get(Fields.CT_EMAIL_TYPE), false)
+WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/select_EmailType'), custDataEmail2.get(Fields.CT_EMAIL_TYPE), false)
 
 'Enter Email label'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Email/input_EmailLabel'), custDataEmail2.get(Fields.CT_EMAIL_LABEL))
+WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_EmailLabel'), custDataEmail2.get(Fields.CT_EMAIL_LABEL))
 
 'Scroll to submit button'
-WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Email/btn_Submit'), GlobalVariable.TIMEOUT)
+WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/btn_Submit'), GlobalVariable.TIMEOUT)
 
 'Click on Submit button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Email/btn_Submit'))
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/btn_Submit'))
 
 'Wait for elements from task drawer to be not present'
-CustomKeywords.'utils.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Email/input_Email'), GlobalVariable.TIMEOUT)
+CustomKeywords.'utils.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_Email'), GlobalVariable.TIMEOUT)
 
 'Wait for emails to get added in table'
 //TODO: There is no success message displayed on completion of task.

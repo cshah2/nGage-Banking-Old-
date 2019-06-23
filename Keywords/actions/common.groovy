@@ -28,6 +28,7 @@ import utils.RegexUtil
 import static constants.common.*
 
 import org.apache.commons.lang3.StringUtils
+import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.interactions.Actions
 
@@ -42,7 +43,7 @@ public class common {
 			WebUI.openBrowser(null)
 		}
 	}
-	
+
 	@Keyword
 	def login() {
 
@@ -81,14 +82,24 @@ public class common {
 
 	@Keyword
 	def moveToElement(TestObject to) {
-		
-		WebUI.scrollToElement(to, GlobalVariable.TIMEOUT)
-		
+
+		//WebUI.scrollToElement(to, GlobalVariable.TIMEOUT)
+
 		Actions asDriver = new Actions(DriverFactory.getWebDriver())
 		WebElement e = WebUiCommonHelper.findWebElement(to, GlobalVariable.TIMEOUT)
 		asDriver.moveToElement(e).build().perform()
+		WebUI.delay(1)
 	}
-	
+
+	@Keyword
+	def moveToElement(WebElement e) {
+
+		Actions asDriver = new Actions(DriverFactory.getWebDriver())
+		asDriver.moveToElement(e).build().perform()
+		WebUI.delay(1)
+	}
+
+
 	@Keyword
 	def verifyElementTextContains(TestObject to, String expectedText) {
 
@@ -312,12 +323,12 @@ public class common {
 
 		//Enter Vertical
 		if(isValidData(accData, Fields.ACC_VERTICAL)) {
-			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_Vertical'), accData.get(Fields.ACC_VERTICAL))
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_Vertical'), accData.get(Fields.ACC_VERTICAL), false)
 		}
 
 		//Enter Department ID
 		if(isValidData(accData, Fields.ACC_DEPT_ID)) {
-			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_DeptId'), accData.get(Fields.ACC_DEPT_ID))
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_DeptId'), accData.get(Fields.ACC_DEPT_ID), false)
 		}
 
 		//Enter Credit Limit

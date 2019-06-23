@@ -19,7 +19,7 @@ import enums.RegexOperator
 import internal.GlobalVariable as GlobalVariable
 import utils.DateUtil
 
-Map<Fields, String> custData = Data.CUSTOMER_002
+Map<Fields, String> custData = Data.CUSTOMER_001
 println "Customer001 = "+custData.toMapString()
 
 //Mark this test as failed if required customer and account is not created
@@ -86,8 +86,8 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Cust
 'Wait for customer personal details section to be visible'
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Overview Tab/Customer Person Detail Section/section_Body'), GlobalVariable.TIMEOUT)
 
-'Scroll to Create account Icon in account section'
-WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Overview Tab/Customer Accounts Section/icon_CreateAccount'), GlobalVariable.TIMEOUT)
+'Move to Create account Icon in account section'
+CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Overview Tab/Customer Accounts Section/icon_CreateAccount'))
 
 'Click on Create account icon'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Overview Tab/Customer Accounts Section/icon_CreateAccount'))

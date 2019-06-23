@@ -106,7 +106,7 @@ WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Sear
 'Verify Account name'
 WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Position Details Section/lbl_Name'), accData.get(Fields.ACC_POSITION_NAME))
 
-'Verify Departmnet ID'
+'Verify Departmnet ID' //TODO: Bug - Department ID value is Department 350 in selection, but in view mode it is shown as 350
 WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Position Details Section/lbl_DepartmentId'), accData.get(Fields.ACC_DEPT_ID))
 
 'Verify Currency Code'

@@ -158,7 +158,7 @@ public class table {
 		WebElement table = getTable(to)
 		Actions asDriver = new Actions(DriverFactory.getWebDriver())
 		WebElement cell = table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]"))
-		asDriver.moveToElement(cell).build().perform()
+		new common().moveToElement(cell)
 	}
 
 
@@ -485,7 +485,7 @@ public class table {
 		WebElement table = getTable(to)
 		try {
 			moveToCell(to, rowNo, colNo)
-			WebElement e = table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]//a")) 
+			WebElement e = table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]//a"))
 			//e.click()
 			new javaScript().click(e)
 		}
@@ -504,7 +504,7 @@ public class table {
 			WebUI.delay(1)
 			//e.click()
 			new javaScript().click(e)
-			
+
 		}
 		catch(Exception e) {
 			WebUI.takeScreenshot()

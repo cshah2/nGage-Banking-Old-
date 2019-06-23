@@ -169,12 +169,12 @@ CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Cus
 //
 //'Enter vertical'
 //if(StringUtils.isNotBlank(Vertical)) {
-//	WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_Vertical'), Vertical)
+//	WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_Vertical'), Vertical)
 //}
 //
 //'Enter Dept ID'
 //if(StringUtils.isNotBlank(DepartmentID)) {
-//	WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_DeptId'), DepartmentID)
+//	WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_DeptId'), DepartmentID)
 //}
 //
 //'Enter Credit limit'

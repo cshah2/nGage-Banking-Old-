@@ -122,37 +122,37 @@ WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search
 CustomKeywords.'actions.javaScript.click'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/icon_AddNewAddress'))
 
 'Wait for Add address task drawer to load'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/input_Street'), GlobalVariable.TIMEOUT)
+CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Street'), GlobalVariable.TIMEOUT)
 
 'Enter street'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/input_Street'), custDataAddress2.get(Fields.ADDR_STREET))
+WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Street'), custDataAddress2.get(Fields.ADDR_STREET))
 
 'Enter city'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/input_City'), custDataAddress2.get(Fields.ADDR_CITY))
+WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_City'), custDataAddress2.get(Fields.ADDR_CITY))
 
 'Select state'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/select_State'), custDataAddress2.get(Fields.ADDR_STATE), false)
+WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/select_State'), custDataAddress2.get(Fields.ADDR_STATE), false)
 
 'Enter Zipcode'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/input_Zipcode'), custDataAddress2.get(Fields.ADDR_ZIPCODE))
+WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Zipcode'), custDataAddress2.get(Fields.ADDR_ZIPCODE))
 
 'Select country'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/select_Country'), custDataAddress2.get(Fields.ADDR_COUNTY), false)
+WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/select_Country'), custDataAddress2.get(Fields.ADDR_COUNTY), false)
 
 'Select address type'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/select_AddressType'), custDataAddress2.get(Fields.ADDR_ADDRESS_TYPE), false)
+WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/select_AddressType'), custDataAddress2.get(Fields.ADDR_ADDRESS_TYPE), false)
 
 'Enter address label'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/input_AddressLabel'), custDataAddress2.get(Fields.ADDR_ADDRESS_LABEL))
+WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_AddressLabel'), custDataAddress2.get(Fields.ADDR_ADDRESS_LABEL))
 
 'Scroll to submit button'
-WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/btn_Submit'), GlobalVariable.TIMEOUT)
+WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/btn_Submit'), GlobalVariable.TIMEOUT)
 
 'Click on Submit button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/btn_Submit'))
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/btn_Submit'))
 
 'Wait for elements from task drawer to be not present'
-CustomKeywords.'utils.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Task Drawer/Customer Address/input_Street'), GlobalVariable.TIMEOUT)
+CustomKeywords.'utils.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Street'), GlobalVariable.TIMEOUT)
 
 'Wait for address to get added'
 //TODO: There is no success message displayed on completion of task.

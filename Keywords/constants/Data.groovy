@@ -74,7 +74,7 @@ public class Data {
 		CUSTOMER_001_ADDRESS3.put(Fields.ADDR_VIEW, CUSTOMER_001_ADDRESS3.get(Fields.ADDR_STREET)+', '+CUSTOMER_001_ADDRESS3.get(Fields.ADDR_CITY)+', AZ '+CUSTOMER_001_ADDRESS3.get(Fields.ADDR_ZIPCODE))
 		CUSTOMER_001_ADDRESS3.put(Fields.IS_CREATED, 'false')
 	}
-	
+
 	public static final Map<Fields, String> CUSTOMER_001_PHONE2;
 	static {
 		CUSTOMER_001_PHONE2 = new HashMap<Fields, String>()
@@ -92,7 +92,7 @@ public class Data {
 		CUSTOMER_001_PHONE3.put(Fields.CT_PHONE_NUMBER, '+1'+RandomStringUtils.randomNumeric(10))
 		CUSTOMER_001_PHONE3.put(Fields.IS_CREATED, 'false')
 	}
-	
+
 	public static final Map<Fields, String> CUSTOMER_001_EMAIL2;
 	static {
 		CUSTOMER_001_EMAIL2 = new HashMap<Fields, String>()
@@ -163,8 +163,8 @@ public class Data {
 		ACCOUNT_001.put(Fields.ACC_PRODUCT_TYPE, '6 Month Compounding-Business')
 		ACCOUNT_001.put(Fields.ACC_POSITION_NAME, '6 Month Compounding-Business')
 		ACCOUNT_001.put(Fields.ACC_CURRENCY_CODE, 'USD')
-		ACCOUNT_001.put(Fields.ACC_VERTICAL, '01')
-		ACCOUNT_001.put(Fields.ACC_DEPT_ID, '350')
+		ACCOUNT_001.put(Fields.ACC_VERTICAL, 'Vertical 01')
+		ACCOUNT_001.put(Fields.ACC_DEPT_ID, 'Department 350')
 		ACCOUNT_001.put(Fields.ACC_OPEN_DATE, DateUtil.getCurrentDateTime('MM/dd/yyyy', 'EST'))
 		ACCOUNT_001.put(Fields.DOC_TYPE, 'Terms and conditions')
 		ACCOUNT_001.put(Fields.DOC_SIGNED_BY, CUSTOMER_002.get(Fields.CUST_FIRST_NAME)+' '+CUSTOMER_002.get(Fields.CUST_LAST_NAME))
@@ -191,8 +191,8 @@ public class Data {
 		ACCOUNT_002.put(Fields.ACC_PRODUCT_NAME, 'MTG')
 		ACCOUNT_002.put(Fields.ACC_POSITION_NAME, 'Mortgage Personal Loan')
 		ACCOUNT_002.put(Fields.ACC_CURRENCY_CODE, 'USD')
-		ACCOUNT_002.put(Fields.ACC_VERTICAL, '01')
-		ACCOUNT_002.put(Fields.ACC_DEPT_ID, '350')
+		ACCOUNT_002.put(Fields.ACC_VERTICAL, 'Vertical 01')
+		ACCOUNT_002.put(Fields.ACC_DEPT_ID, 'Department 350')
 		ACCOUNT_002.put(Fields.ACC_CREDIT_LIMIT, '100000')
 		ACCOUNT_002.put(Fields.ACC_INTEREST_RATE, '8')
 		ACCOUNT_002.put(Fields.ACC_OPEN_DATE, DateUtil.getCurrentDateTime('MM/dd/yyyy', 'EST'))
@@ -202,7 +202,7 @@ public class Data {
 		ACCOUNT_002.put(Fields.DOC_VERSION, '01')
 
 		ACCOUNT_002.put(Fields.ACC_LEDGER_BALANCE, '0.00')
-		ACCOUNT_002.put(Fields.ACC_AVAILABLE_BALANCE, '0.00')
+		ACCOUNT_002.put(Fields.ACC_AVAILABLE_BALANCE, '100,000.00')
 		ACCOUNT_002.put(Fields.IS_CREATED, 'false')
 	}
 

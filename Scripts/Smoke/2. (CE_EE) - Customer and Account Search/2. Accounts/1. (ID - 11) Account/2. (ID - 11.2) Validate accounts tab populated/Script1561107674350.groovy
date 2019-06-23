@@ -69,11 +69,17 @@ CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Cus
 'Verify Account title contains correct account number'
 CustomKeywords.'actions.common.verifyElementTextContains'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/lbl_AccountTitle'), accData.get(Fields.ACC_NUMBER))
 
+'Move to Overview tab'
+CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Overview'))
+
 'Click on Overview tab'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Overview'))
 
 'Wait for Overview tab to be visible'
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Overview Tab/Holds Section/section_Body'), GlobalVariable.TIMEOUT)
+
+'Move to Details tab'
+CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Details'))
 
 'Click on Details tab'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Details'))
@@ -81,11 +87,17 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Acco
 'Wait Details tab to be visible'
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Account Details Section/section_AccountDetails'), GlobalVariable.TIMEOUT)
 
+'Move to Transaction tab'
+CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Transactions'))
+
 'Click on Transaction tab'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Transactions'))
 
 'Wait for Transactions tab to load'
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Transaction Tab/Transactions Section/section_Body'), GlobalVariable.TIMEOUT)
+
+'Move to Interests tab'
+CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Interest'))
 
 'Click on Interest tab'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Interest'))
@@ -93,11 +105,17 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Acco
 'Wait for Interest tab to load'
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Interest Tab/Interest Posting and Withholding/section_Body'), GlobalVariable.TIMEOUT)
 
+'Move to Holds tab'
+CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Holds'))
+
 'Click on Holds tab'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Holds'))
 
 'Wait for Holds tab to load'
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Holds Tab/Holds Section/section_Body'), GlobalVariable.TIMEOUT)
+
+'Move to Orders tab'
+CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Orders'))
 
 'Click on Orders tab'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Orders'))
@@ -106,22 +124,30 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Acco
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Orders Tab/Orders Section/section_Body'), GlobalVariable.TIMEOUT)
 
 if('EE'.equalsIgnoreCase(GlobalVariable.ENVIRONMENT)) {
+	'Move to Notes tab'
+	CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Notes'))
+	
 	'Click on Notes tab'
 	WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Notes'))
 	
 	'Wait for Notes tab to load'
 	CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Notest Tab/Notes Section/section_Body'), GlobalVariable.TIMEOUT)
-	
+
+	'Move to Documents tab'
+	CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Documents'))
+
 	'Click on Documents tab'
 	WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Documents'))
 	
 	'Wait for Documents tab to load'
 	CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Documents Tab/Documents Section/section_Body'), GlobalVariable.TIMEOUT)
-	
+
+	'Move to Cases tab'
+	CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Cases'))
+
 	'Click on Cases tab'
 	WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Cases'))
 	
 	'Wait for Cases tab to load'
 	CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Cases Tab/Cases Section/tab_OpenCases'), GlobalVariable.TIMEOUT)
 }
-
