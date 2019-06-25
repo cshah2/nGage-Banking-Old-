@@ -79,4 +79,9 @@ public class ColumnPos {
 	public static int CT_EMAIL_VERIFIED_DATE = 6
 	public static int CT_EMAIL_PREFERRED = 7
 	public static int CT_EMAIL_EDITICON = 8
+	
+	//Customer Notes - Notes tab - Customer Details Page
+	public static int NOTE_TEXT = 1
+	public static int NOTE_CREATED_BY = 2
+	public static int NOTE_CREATED_DATE = 3
 }

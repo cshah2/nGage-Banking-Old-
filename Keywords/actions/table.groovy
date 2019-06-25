@@ -31,18 +31,47 @@ import utils.RegexUtil
 
 public class table {
 
+	//	private String allRows =
+	//	private String allColumns = './td'
+
+
+	private By allRows() {
+		return By.xpath('.//tbody/tr')
+	}
+
+	private By singleRow(int rowNo) {
+		return By.xpath('.//tbody/tr['+rowNo+']')
+	}
+
+	private By allCells() {
+		return By.xpath('./td')
+	}
+
+	private By singleCell(int colNo) {
+		return By.xpath('./td['+colNo+']')
+	}
+
+	private By wholeColumn(int colNo) {
+		return By.xpath('.//tbody/tr/td['+colNo+']')
+	}
+
+
+
+
 	private WebElement getTable(TestObject to) {
 		return WebUiCommonHelper.findWebElement(to, GlobalVariable.TIMEOUT)
 	}
 
 	private WebElement getRow(TestObject to, int rowNo) {
 		WebElement table = getTable(to)
-		return table.findElement(By.xpath(".//tbody/tr["+rowNo+"]"))
+		return table.findElement(singleRow(rowNo))
 	}
 
 	private WebElement getCell(TestObject to, int rowNo, int colNo) {
 		WebElement table = getTable(to)
-		return table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]"))
+		WebElement row = table.findElement(singleRow(rowNo))
+		WebElement cell = row.findElement(singleCell(colNo))
+		return cell
 	}
 
 	private String getCellText(TestObject to, int rowNo, int colNo) {
@@ -52,7 +81,14 @@ public class table {
 
 	private int getRowsCount(TestObject to) {
 		WebElement table = getTable(to)
-		return table.findElements(By.xpath(".//tbody/tr")).size()
+
+		if(table.findElements(allRows()).size() == 1
+		&& table.findElement(singleRow(1)).findElements(allCells()).size() == 1
+		&& table.findElement(singleRow(1)).findElement(singleCell(1)).getAttribute("colspan") != null) {
+			return 0;
+		}
+
+		return table.findElements(allRows()).size()
 	}
 
 	private List<String> getAllTextFromColumn(TestObject to, int colNo) {
@@ -61,7 +97,7 @@ public class table {
 		List<WebElement> cells = new ArrayList<WebElement>()
 
 		WebElement table = getTable(to)
-		cells = table.findElements(By.xpath(".//tbody/tr/td["+colNo+"]"))
+		cells = table.findElements(wholeColumn(colNo))
 
 		for(WebElement cell in cells) {
 			cellsText.add(cell.getText())
@@ -157,11 +193,18 @@ public class table {
 
 		WebElement table = getTable(to)
 		Actions asDriver = new Actions(DriverFactory.getWebDriver())
-		WebElement cell = table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]"))
-		new common().moveToElement(cell)
+		new common().moveToElement(getCell(to, rowNo, colNo))
 	}
 
 
+	@Keyword
+	def getRecordsCount(TestObject to) {
+
+		int actRowsCount = getRowsCount(to)
+		println "Actual records count = "+actRowsCount
+
+		return actRowsCount
+	}
 
 	@Keyword
 	def verifyRecordsCount(TestObject to, int expRowsCount, RegexOperator operator) {
@@ -499,7 +542,8 @@ public class table {
 	def clickMoreButton(TestObject to, int rowNo, int colNo) {
 		WebElement table = getTable(to)
 		try {
-			WebElement e = table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]//span[contains(@class,fa-ellipsis-v)]"))
+			WebElement e = getCell(to, rowNo, colNo).findElement(By.xpath('.//span[contains(@class,fa-ellipsis-v)]'))
+			//WebElement e = table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]//span[contains(@class,fa-ellipsis-v)]"))
 			new javaScript().scrollToElement(e)
 			WebUI.delay(1)
 			//e.click()
@@ -518,11 +562,13 @@ public class table {
 		try {
 			moveToCell(to, rowNo, colNo)
 			WebUI.delay(1)
-			WebElement e = table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]//span[contains(@class,fa-ellipsis-v)]"))
+			WebElement e = getCell(to, rowNo, colNo).findElement(By.xpath('.//span[contains(@class,fa-ellipsis-v)]'))
+			//WebElement e = table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]//span[contains(@class,fa-ellipsis-v)]"))
 			//e.click()
 			new javaScript().click(e)
 			WebUI.delay(3) //Wait for 3 seconds to load the options menu
-			WebElement optionElement = table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]//div[contains(@id,'_wtMenu') and contains(@class,'DropdownMenu')]//a[text()='"+option+"']"))
+			WebElement optionElement = getCell(to, rowNo, colNo).findElement(By.xpath(".//div[contains(@id,'_wtMenu') and contains(@class,'DropdownMenu')]//a[text()='"+option+"']"))
+			//WebElement optionElement = table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]//div[contains(@id,'_wtMenu') and contains(@class,'DropdownMenu')]//a[text()='"+option+"']"))
 			//optionElement.click()
 			new javaScript().click(optionElement)
 		}

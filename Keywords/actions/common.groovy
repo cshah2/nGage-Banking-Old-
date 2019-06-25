@@ -20,6 +20,7 @@ import com.kms.katalon.core.webui.common.WebUiCommonHelper
 import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
+import constants.ColumnPos
 import enums.Fields
 import enums.RegexOperator
 import internal.GlobalVariable
@@ -47,46 +48,34 @@ public class common {
 	@Keyword
 	def login() {
 
-		//Open browser if not already opened
+		TestObject usernameField 	= findTestObject('Login Page/input_UserName')
+		TestObject passwordField	= findTestObject('Login Page/input_Password')
+		TestObject loginButton 		= findTestObject('Login Page/btn_Login')
+		TestObject loginPageHeader 	= findTestObject('Login Page/lbl_Heading')
+
 		openBrowser()
-
-		//Delete all cookies
 		WebUI.deleteAllCookies()
-
-		//'Navigate to login page url'
 		WebUI.navigateToUrl(loginUrl)
-
-		//Get Current URL
 		String currentUrl = WebUI.getUrl()
 
 		//Check if User is on Login page or not
-
 		if(currentUrl.contains('Login.aspx') || currentUrl.contains('NoPermission.aspx')) {
 
-			//Verify login page is loaded
-			WebUI.verifyElementVisible(findTestObject('Login Page/lbl_Heading'))
-
-			//Enter username
-			WebUI.sendKeys(findTestObject('Login Page/input_UserName'), username)
-
-			//Enter password
-			WebUI.sendKeys(findTestObject('Login Page/input_Password'), password)
-
-			//Click on Login button
-			WebUI.click(findTestObject('Login Page/btn_Login'))
+			WebUI.verifyElementVisible(loginPageHeader)
+			WebUI.sendKeys(usernameField, username)
+			WebUI.sendKeys(passwordField, password)
+			WebUI.click(loginButton)
 		}
-
-		//Verify user is on dashboard page
 		WebUI.verifyMatch(WebUI.getUrl(), dashboardUrl, false)
 	}
 
 	@Keyword
 	def moveToElement(TestObject to) {
 
-		//WebUI.scrollToElement(to, GlobalVariable.TIMEOUT)
-
-		Actions asDriver = new Actions(DriverFactory.getWebDriver())
 		WebElement e = WebUiCommonHelper.findWebElement(to, GlobalVariable.TIMEOUT)
+		new javaScript().scrollToElement(to)
+		
+		Actions asDriver = new Actions(DriverFactory.getWebDriver())
 		asDriver.moveToElement(e).build().perform()
 		WebUI.delay(1)
 	}
@@ -94,6 +83,8 @@ public class common {
 	@Keyword
 	def moveToElement(WebElement e) {
 
+		new javaScript().scrollToElement(e)
+		
 		Actions asDriver = new Actions(DriverFactory.getWebDriver())
 		asDriver.moveToElement(e).build().perform()
 		WebUI.delay(1)
@@ -391,6 +382,119 @@ public class common {
 				WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_Version2'), accData.get(Fields.DOC_VERSION2))
 			}
 		}
+	}
+
+	@Keyword
+	def searchCustomer(Map<Fields, String> custData) {
+
+		//Click on Search All drop down
+		WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search'))
+
+		//Wait for Menus to be visible
+		WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Menu'), GlobalVariable.TIMEOUT)
+
+		//Click on Customer option
+		WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Customer'))
+
+		//Wait for Search button to be visible
+		WebUI.delay(3) //TODO: Need to find correct wait condition.
+		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'), GlobalVariable.TIMEOUT)
+
+		//Enter Search Criteria in last name field
+		WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_LastName'), custData.get(Fields.CUST_LAST_NAME))
+
+		//Enter Search Criteria in First name field
+		WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_FirstName'), custData.get(Fields.CUST_FIRST_NAME))
+
+		//Enter Search Criteria in phone number field
+		WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_PhoneNumber'), custData.get(Fields.CT_PHONE_NUMBER))
+
+		//Click on Search button
+		WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'))
+
+		TestObject resultTable = findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult')
+
+		//Wait for table to be visible
+		new utils.WaitFor().elementVisible(resultTable, GlobalVariable.TIMEOUT)
+
+		//Verify result table contains atleast 1 record
+		new actions.table().verifyRecordsCount(resultTable, 1, RegexOperator.GREATER_THAN_OR_EQUAL)
+
+		int rowNo = 1
+
+		//Verify column values are matching - last name
+		new actions.table().verifyCellValueEquals(resultTable, rowNo, ColumnPos.CUST_LAST_NAME, custData.get(Fields.CUST_LAST_NAME))
+
+		//Verify column values are matching - first name
+		new actions.table().verifyCellValueEquals(resultTable, rowNo, ColumnPos.CUST_FIRST_NAME, custData.get(Fields.CUST_FIRST_NAME))
+
+		//Verify column values are matching - phone number
+		new actions.table().verifyCellValueEquals(resultTable, rowNo, ColumnPos.CUST_PHONE_NUMBER, custData.get(Fields.CT_PHONE_NUMBER))
+	}
+
+	@Keyword
+	def searchCustomerAndOpen(Map<Fields, String> custData, int rowNo = 1) {
+
+		searchCustomer(custData)
+
+		TestObject resultTable = findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult')
+
+		//Click on Last name link in a first row of search result table
+		new actions.table().clickCell(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), rowNo, ColumnPos.CUST_LAST_NAME)
+
+		//Wait for Customer details page to load
+		WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/lbl_CustomerName'), GlobalVariable.TIMEOUT)
+
+		//Verify Customer name is displayed correctly
+		WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/lbl_CustomerName'), custData.get(Fields.CUST_NAME_VIEW))
+	}
+
+	@Keyword
+	def searchAccount(Map<Fields, String> accData) {
+
+		//Click on Search All drop down
+		WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search'))
+
+		//Wait for Menus to be visible
+		WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Menu'), GlobalVariable.TIMEOUT)
+
+		//Click on Accounts option
+		WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Account'))
+
+		//Wait for Account Type drop down to be visible
+		WebUI.delay(3) //TODO: Need to look for wait conditon
+		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_AccountsType'), GlobalVariable.TIMEOUT)
+
+		//Click on accounts type drop down
+		WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_AccountsType'))
+
+		//Wait for Menus to be visible
+		WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_AccountsType_Option_Menu'), GlobalVariable.TIMEOUT)
+
+		if('Banking'.equalsIgnoreCase(accData.get(Fields.ACC_GROUP))) {
+			//Click on Banking option
+			WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_AccountsType_Option_Banking'))
+		}
+		else {
+			//Click on Multi- Position option
+			WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_AccountsType_Option_MultiPosition'))
+		}
+
+		//Wait for Account number input field to be visible
+		WebUI.delay(3) //TODO: Need to look for wait conditon
+		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_AccountNumber'), GlobalVariable.TIMEOUT)
+
+		//Enter Search Criteria in account number field
+		WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_AccountNumber'), accData.get(Fields.ACC_NUMBER))
+
+		//Click on Search button
+		WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Acc_Search'))
+
+		//Wait for Account title to be visible
+		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/lbl_AccountTitle'), GlobalVariable.TIMEOUT)
+
+		//Verify Account title contains correct account number
+		new actions.common().verifyElementTextContains(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/lbl_AccountTitle'), accData.get(Fields.ACC_NUMBER))
 	}
 
 }

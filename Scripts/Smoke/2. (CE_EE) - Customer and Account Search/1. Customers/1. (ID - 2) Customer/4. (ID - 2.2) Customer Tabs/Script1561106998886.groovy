@@ -28,65 +28,13 @@ println "Account001 = "+accData1.toMapString()
 CustomKeywords.'actions.common.shouldFailTest'(custData)
 CustomKeywords.'actions.common.shouldFailTest'(accData1)
 
-//custData.put(Fields.CUST_FIRST_NAME, 'frederick')
-//custData.put(Fields.CUST_LAST_NAME, 'rivera')
-//custData.put(Fields.CT_PHONE_NUMBER, '+12551735641')
-//custData.put(Fields.CUST_NAME_VIEW, 'frederick rivera')
-
 int expRowsCount = 1
 
 'Login into portal'
 CustomKeywords.'actions.common.login'()
 
-//Search for customer
-'Click on Search All drop down'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search'))
-
-'Wait for Menus to be visible'
-WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Menu'), GlobalVariable.TIMEOUT)
-
-'Click on Customer option'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Customer'))
-
-'Wait for Search button to be visible'
-WebUI.delay(2) //TODO: Need to find correct wait condition.
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'), GlobalVariable.TIMEOUT)
-
-'Enter Search Criteria in last name field'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_LastName'), custData.get(Fields.CUST_LAST_NAME))
-
-'Enter Search Criteria in First name field'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_FirstName'), custData.get(Fields.CUST_FIRST_NAME))
-
-'Enter Search Criteria in phone number field'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_PhoneNumber'), custData.get(Fields.CT_PHONE_NUMBER))
-
-'Click on Search button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'))
-
-'Wait for table to be visible'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), GlobalVariable.TIMEOUT)
-
-'Verify result table contains atleast 1 record'
-CustomKeywords.'actions.table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), expRowsCount, RegexOperator.EQUALS)
-
-'Verify column values are matching - last name'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), 1, ColumnPos.CUST_LAST_NAME, custData.get(Fields.CUST_LAST_NAME))
-
-'Verify column values are matching - first name'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), 1, ColumnPos.CUST_FIRST_NAME, custData.get(Fields.CUST_FIRST_NAME))
-
-'Verify column values are matching - phone number'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), 1, ColumnPos.CUST_PHONE_NUMBER, custData.get(Fields.CT_PHONE_NUMBER))
-
-'Click on Last name link in a first row of search result table'
-CustomKeywords.'actions.table.clickCell'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), 1, ColumnPos.CUST_LAST_NAME)
-
-'Wait for Customer details page to load'
-WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/lbl_CustomerName'), GlobalVariable.TIMEOUT)
-
-'Verify Customer name is displayed correctly'
-WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/lbl_CustomerName'), custData.get(Fields.CUST_NAME_VIEW))
+'Search customer and open Customer details page'
+CustomKeywords.'actions.common.searchCustomerAndOpen'(custData)
 
 //Verify Correct tabs are displayed in EE environment
 'Verify accounts tab link is visible'
