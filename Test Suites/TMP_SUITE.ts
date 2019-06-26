@@ -20,6 +20,6 @@
       <guid>6813d553-4c84-45e4-b674-3e6878a35b2b</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Smoke/2. (CE_EE) - Customer and Account Search/1. Customers/2. (ID - 3) Customer Overview/5. (ID - 3.5) Accounts</testCaseId>
+      <testCaseId>Test Cases/Smoke/2. (CE_EE) - Customer and Account Search/1. Customers/7. (ID - 8) Customer Documents/1. (ID - 8.1) Upload Document</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>

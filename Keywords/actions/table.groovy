@@ -26,37 +26,102 @@ import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import enums.RegexOperator
+import enums.WebTable
 import internal.GlobalVariable
 import utils.RegexUtil
 
 public class table {
 
-	//	private String allRows =
-	//	private String allColumns = './td'
-
+	private WebTable type
 
 	private By allRows() {
-		return By.xpath('.//tbody/tr')
+
+		By locator
+		switch(type) {
+			case WebTable.DEFAULT:
+				locator = By.xpath(".//tbody/tr")
+				break
+			case WebTable.DOCUMENT:
+				locator = By.xpath(".//div[@class='bodyRow']/span/div")
+				break
+			Default:
+				locator = By.xpath(".//tbody/tr")
+				break
+		}
+		return locator
 	}
 
 	private By singleRow(int rowNo) {
-		return By.xpath('.//tbody/tr['+rowNo+']')
+
+		By locator
+		switch(type) {
+			case WebTable.DEFAULT:
+				locator = By.xpath(".//tbody/tr["+rowNo+"]")
+				break
+			case WebTable.DOCUMENT:
+				locator = By.xpath(".//div[@class='bodyRow']/span/div["+rowNo+"]")
+				break
+			Default:
+				locator = By.xpath(".//tbody/tr["+rowNo+"]")
+				break
+		}
+		return locator
 	}
 
 	private By allCells() {
-		return By.xpath('./td')
+
+		By locator
+		switch(type) {
+			case WebTable.DEFAULT:
+				locator = By.xpath("./td")
+				break
+			case WebTable.DOCUMENT:
+				locator = By.xpath(".//div[contains(@class,'cell OSInline')]")
+				break
+			Default:
+				locator = By.xpath("./td")
+				break
+		}
+		return locator
 	}
 
 	private By singleCell(int colNo) {
-		return By.xpath('./td['+colNo+']')
+
+		By locator
+		switch(type) {
+			case WebTable.DEFAULT:
+				locator = By.xpath("./td["+colNo+"]")
+				break
+			case WebTable.DOCUMENT:
+				locator = By.xpath(".//div[contains(@class,'cell OSInline')]["+colNo+"]")
+				break
+			Default:
+				locator = By.xpath("./td["+colNo+"]")
+				break
+		}
+		return locator
 	}
 
 	private By wholeColumn(int colNo) {
-		return By.xpath('.//tbody/tr/td['+colNo+']')
+
+		By locator
+		switch(type) {
+			case WebTable.DEFAULT:
+				locator = By.xpath(".//tbody/tr/td["+colNo+"]")
+				break
+			case WebTable.DOCUMENT:
+				locator = By.xpath(".//div[@class='bodyRow']/span/div//div[contains(@class,'cell OSInline')]["+colNo+"]")
+				break
+			Default:
+				locator = By.xpath(".//tbody/tr/td["+colNo+"]")
+				break
+		}
+		return locator
 	}
 
-
-
+	private By moreIcon() {
+		return By.xpath(".//span[contains(@class,fa-ellipsis-v)]")
+	}
 
 	private WebElement getTable(TestObject to) {
 		return WebUiCommonHelper.findWebElement(to, GlobalVariable.TIMEOUT)
@@ -109,7 +174,10 @@ public class table {
 	//Keywords
 
 	@Keyword
-	def waitUntilRecordsCountEquals(TestObject to, int expRowsCount, int timeout) {
+	def waitUntilRecordsCountEquals(TestObject to, int expRowsCount, int timeout, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
 
 		def startTime = System.currentTimeMillis()
 		def endTime = startTime + TimeUnit.SECONDS.toMillis(timeout)
@@ -151,7 +219,10 @@ public class table {
 	}
 
 	@Keyword
-	def waitUntilCellValueEquals(TestObject to, int rowNo, int colNo, String expText, int timeout) {
+	def waitUntilCellValueEquals(TestObject to, int rowNo, int colNo, String expText, int timeout, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
 
 		def startTime = System.currentTimeMillis()
 		def endTime = startTime + TimeUnit.SECONDS.toMillis(timeout)
@@ -189,7 +260,10 @@ public class table {
 	}
 
 	@Keyword
-	def moveToCell(TestObject to, int rowNo, int colNo) {
+	def moveToCell(TestObject to, int rowNo, int colNo, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
 
 		WebElement table = getTable(to)
 		Actions asDriver = new Actions(DriverFactory.getWebDriver())
@@ -198,7 +272,10 @@ public class table {
 
 
 	@Keyword
-	def getRecordsCount(TestObject to) {
+	def getRecordsCount(TestObject to, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
 
 		int actRowsCount = getRowsCount(to)
 		println "Actual records count = "+actRowsCount
@@ -207,7 +284,10 @@ public class table {
 	}
 
 	@Keyword
-	def verifyRecordsCount(TestObject to, int expRowsCount, RegexOperator operator) {
+	def verifyRecordsCount(TestObject to, int expRowsCount, RegexOperator operator, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
 
 		int actRowsCount = getRowsCount(to)
 		println "Actual records count = "+actRowsCount
@@ -246,35 +326,59 @@ public class table {
 
 	//Cell value comparison
 	@Keyword
-	def verifyCellValueContains(TestObject to, int rowNo, int colNo, String expText) {
+	def verifyCellValueContains(TestObject to, int rowNo, int colNo, String expText, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
+
 		String actText = getCellText(to, rowNo, colNo)
 		WebUI.verifyMatch(actText, RegexUtil.formRegexString(expText, RegexOperator.CONTAINS), true)
 	}
 
 	@Keyword
-	def verifyCellValueContainsIgnoreCase(TestObject to, int rowNo, int colNo, String expText) {
+	def verifyCellValueContainsIgnoreCase(TestObject to, int rowNo, int colNo, String expText, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
+
 		String actText = getCellText(to, rowNo, colNo)
 		WebUI.verifyMatch(actText, RegexUtil.formRegexString(expText, RegexOperator.CONTAINS_IGNORE_CASE), true)
 	}
 
 	@Keyword
-	def verifyCellValueStartsWith(TestObject to, int rowNo, int colNo, String expText) {
+	def verifyCellValueStartsWith(TestObject to, int rowNo, int colNo, String expText, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
+
 		//TODO:
 	}
 
 	@Keyword
-	def verifyCellValueEndsWith(TestObject to, int rowNo, int colNo, String expText) {
+	def verifyCellValueEndsWith(TestObject to, int rowNo, int colNo, String expText, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
+
 		//TODO:
 	}
 
 	@Keyword
-	def verifyCellValueEquals(TestObject to, int rowNo, int colNo, String expText) {
+	def verifyCellValueEquals(TestObject to, int rowNo, int colNo, String expText, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
+
 		String actText = getCellText(to, rowNo, colNo)
 		WebUI.verifyMatch(actText, RegexUtil.formRegexString(expText, RegexOperator.EQUALS), true)
 	}
 
 	@Keyword
-	def verifyCellValueEqualsIgnoreCase(TestObject to, int rowNo, int colNo, String expText) {
+	def verifyCellValueEqualsIgnoreCase(TestObject to, int rowNo, int colNo, String expText, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
+
 		String actText = getCellText(to, rowNo, colNo)
 		WebUI.verifyMatch(actText, RegexUtil.formRegexString(expText, RegexOperator.EQUALS_IGNORE_CASE), true)
 	}
@@ -282,7 +386,10 @@ public class table {
 	//Column values comparison
 
 	@Keyword
-	def verifyAllValuesInColumnEquals(TestObject to, int colNo, String expText) {
+	def verifyAllValuesInColumnEquals(TestObject to, int colNo, String expText, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
 
 		String regexString = RegexUtil.formRegexString(expText, RegexOperator.EQUALS)
 		println "Regex String = "+regexString
@@ -295,7 +402,10 @@ public class table {
 	}
 
 	@Keyword
-	def verifyAllValuesInColumnEqualsIgnoreCase(TestObject to, int colNo, String expText) {
+	def verifyAllValuesInColumnEqualsIgnoreCase(TestObject to, int colNo, String expText, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
 
 		String regexString = RegexUtil.formRegexString(expText, RegexOperator.EQUALS_IGNORE_CASE)
 		println "Regex String = "+regexString
@@ -308,7 +418,10 @@ public class table {
 	}
 
 	@Keyword
-	def VerifyAllValuesInColumnContains(TestObject to, int colNo, String expText) {
+	def VerifyAllValuesInColumnContains(TestObject to, int colNo, String expText, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
 
 		String regexString = RegexUtil.formRegexString(expText, RegexOperator.CONTAINS)
 		println "Regex String = "+regexString
@@ -321,7 +434,10 @@ public class table {
 	}
 
 	@Keyword
-	def verifuAllValuesInColumnContainsIgnoreCase(TestObject to, int colNo, String expText) {
+	def verifuAllValuesInColumnContainsIgnoreCase(TestObject to, int colNo, String expText, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
 
 		String regexString = RegexUtil.formRegexString(expText, RegexOperator.CONTAINS_IGNORE_CASE)
 		println "Regex String = "+regexString
@@ -334,7 +450,10 @@ public class table {
 	}
 
 	@Keyword
-	def verifyAllValuesinColumnStartsWith(TestObject to, int colNo, String expText) {
+	def verifyAllValuesinColumnStartsWith(TestObject to, int colNo, String expText, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
 
 		String regexString = RegexUtil.formRegexString(expText, RegexOperator.STARTS_WITH)
 		println "Regex String = "+regexString
@@ -347,7 +466,10 @@ public class table {
 	}
 
 	@Keyword
-	def verifyAllValuesInColumnEndsWith(TestObject to, int colNo, String expText) {
+	def verifyAllValuesInColumnEndsWith(TestObject to, int colNo, String expText, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
 
 		String regexString = RegexUtil.formRegexString(expText, RegexOperator.ENDS_WITH)
 		println "Regex String = "+regexString
@@ -360,7 +482,11 @@ public class table {
 	}
 
 	@Keyword
-	def verifyAnyValueInColumnEquals(TestObject to, int colNo, String expText) {
+	def verifyAnyValueInColumnEquals(TestObject to, int colNo, String expText, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
+
 		List<String> cellsText = getAllTextFromColumn(to, colNo)
 
 		boolean isMatchFound = false
@@ -387,7 +513,11 @@ public class table {
 	}
 
 	@Keyword
-	def verifyAnyValueInColumnEqualsIgnoreCase(TestObject to, int colNo, String expText) {
+	def verifyAnyValueInColumnEqualsIgnoreCase(TestObject to, int colNo, String expText, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
+
 		List<String> cellsText = getAllTextFromColumn(to, colNo)
 
 		boolean isMatchFound = false
@@ -414,7 +544,11 @@ public class table {
 	}
 
 	@Keyword
-	def verifyAnyValueInColumnContains(TestObject to, int colNo, String expText) {
+	def verifyAnyValueInColumnContains(TestObject to, int colNo, String expText, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
+
 		List<String> cellsText = getAllTextFromColumn(to, colNo)
 
 		boolean isMatchFound = false
@@ -441,7 +575,11 @@ public class table {
 	}
 
 	@Keyword
-	def verifyAnyValueInColumnContainsIgnoreCase(TestObject to, int colNo, String expText) {
+	def verifyAnyValueInColumnContainsIgnoreCase(TestObject to, int colNo, String expText, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
+
 		List<String> cellsText = getAllTextFromColumn(to, colNo)
 
 		boolean isMatchFound = false
@@ -468,7 +606,11 @@ public class table {
 	}
 
 	@Keyword
-	def verifyAnyValueInColumnStartsWith(TestObject to, int colNo, String expText) {
+	def verifyAnyValueInColumnStartsWith(TestObject to, int colNo, String expText, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
+
 		List<String> cellsText = getAllTextFromColumn(to, colNo)
 
 		boolean isMatchFound = false
@@ -495,7 +637,11 @@ public class table {
 	}
 
 	@Keyword
-	def verifyAnyValueInColumnEndsWith(TestObject to, int colNo, String expText) {
+	def verifyAnyValueInColumnEndsWith(TestObject to, int colNo, String expText, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
+
 		List<String> cellsText = getAllTextFromColumn(to, colNo)
 
 		boolean isMatchFound = false
@@ -524,7 +670,11 @@ public class table {
 	//Operation within cell
 
 	@Keyword
-	def clickCell(TestObject to, int rowNo, int colNo) {
+	def clickCell(TestObject to, int rowNo, int colNo, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
+
 		WebElement table = getTable(to)
 		try {
 			moveToCell(to, rowNo, colNo)
@@ -539,11 +689,14 @@ public class table {
 	}
 
 	@Keyword
-	def clickMoreButton(TestObject to, int rowNo, int colNo) {
+	def clickMoreButton(TestObject to, int rowNo, int colNo, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
+
 		WebElement table = getTable(to)
 		try {
-			WebElement e = getCell(to, rowNo, colNo).findElement(By.xpath('.//span[contains(@class,fa-ellipsis-v)]'))
-			//WebElement e = table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]//span[contains(@class,fa-ellipsis-v)]"))
+			WebElement e = getCell(to, rowNo, colNo).findElement(moreIcon())
 			new javaScript().scrollToElement(e)
 			WebUI.delay(1)
 			//e.click()
@@ -557,18 +710,20 @@ public class table {
 	}
 
 	@Keyword
-	def clickMoreButtonAndSelectOption(TestObject to, int rowNo, int colNo, String option) {
+	def clickMoreButtonAndSelectOption(TestObject to, int rowNo, int colNo, String option, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
+
 		WebElement table = getTable(to)
 		try {
 			moveToCell(to, rowNo, colNo)
 			WebUI.delay(1)
-			WebElement e = getCell(to, rowNo, colNo).findElement(By.xpath('.//span[contains(@class,fa-ellipsis-v)]'))
-			//WebElement e = table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]//span[contains(@class,fa-ellipsis-v)]"))
+			WebElement e = getCell(to, rowNo, colNo).findElement(moreIcon())
 			//e.click()
 			new javaScript().click(e)
 			WebUI.delay(3) //Wait for 3 seconds to load the options menu
 			WebElement optionElement = getCell(to, rowNo, colNo).findElement(By.xpath(".//div[contains(@id,'_wtMenu') and contains(@class,'DropdownMenu')]//a[text()='"+option+"']"))
-			//WebElement optionElement = table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]//div[contains(@id,'_wtMenu') and contains(@class,'DropdownMenu')]//a[text()='"+option+"']"))
 			//optionElement.click()
 			new javaScript().click(optionElement)
 		}
