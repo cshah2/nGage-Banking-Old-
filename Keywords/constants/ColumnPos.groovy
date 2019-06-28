@@ -84,4 +84,17 @@ public class ColumnPos {
 	public static int NOTE_TEXT = 1
 	public static int NOTE_CREATED_BY = 2
 	public static int NOTE_CREATED_DATE = 3
+	
+	//Customer Documents - Documents tab - Customer Details Page
+	public static int DOCUMENT_ICON = 1
+	public static int DOCUMENT_ICON2 = 2
+	public static int DOCUMENT_CLASS = 3
+	public static int DOCUMENT_TYPE = 4
+	public static int DOCUMENT_DESCRIPTION = 5
+	public static int DOCUMENT_CUSTOMER_ID = 6
+	public static int DOCUMENT_ACCOUNT_NUMBER = 7
+	public static int DOCUMENT_CREATED_BY = 8
+	public static int DOCUMENT_STATUS= 9
+
+	
 }

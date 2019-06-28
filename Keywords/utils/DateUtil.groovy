@@ -5,6 +5,11 @@ import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
+
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
@@ -29,5 +34,12 @@ public class DateUtil {
 	public static String getCurrentDateTime(String format, String timezone) {
 		Date now = new Date()
 		return now.format(format, TimeZone.getTimeZone(timezone)).toString()
+	}
+
+	public static String getCurrentDateTimeMinusDays(int days, String format, String timezone) {
+
+		String dateString = ZonedDateTime.now(ZoneId.of(timezone.toLowerCase())).parse(format).minusDays(days)
+		println "Date is :"+dateString
+		return dateString
 	}
 }

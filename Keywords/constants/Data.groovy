@@ -2,6 +2,8 @@ package constants
 
 import org.apache.commons.lang3.RandomStringUtils
 
+import com.kms.katalon.core.configuration.RunConfiguration
+
 import enums.Fields
 import utils.DateUtil
 import utils.RandomUtil
@@ -41,7 +43,7 @@ public class Data {
 		CUSTOMER_001.put(Fields.CT_PREFERRED_LANGUAGE, 'English - United States')
 		CUSTOMER_001.put(Fields.CT_PREFERRED_CONTACT_METHOD, 'Email')
 
-		CUSTOMER_001.put(Fields.CUST_MEMBER_ID, 'MID_'+RandomStringUtils.randomNumeric(6))
+		CUSTOMER_001.put(Fields.CUST_CUSTOMER_ID, 'CID_'+RandomStringUtils.randomNumeric(6))
 		CUSTOMER_001.put(Fields.CUST_CUSTOMER_GROUP, 'Banking Customer')
 
 		CUSTOMER_001.put(Fields.IS_CREATED, 'false')
@@ -110,6 +112,37 @@ public class Data {
 		CUSTOMER_001_EMAIL3.put(Fields.CT_EMAIL, 'my.emailb@exmaple.com')
 		CUSTOMER_001_EMAIL3.put(Fields.IS_CREATED, 'false')
 	}
+	
+	public static final Map<Fields, String> CUSTOMER_001_DOCUMENT1;
+	static {
+		CUSTOMER_001_DOCUMENT1 = new HashMap<Fields, String>()
+		CUSTOMER_001_DOCUMENT1.put(Fields.DOCUMENT_FILEPATH, RunConfiguration.getProjectDir().replace('/', '\\')+'\\Data Files\\UploadFiles\\CustomerDocument-AddressUpdate.pdf')
+		CUSTOMER_001_DOCUMENT1.put(Fields.DOCUMENT_CLASS, 'Customer Legal Documents')
+		CUSTOMER_001_DOCUMENT1.put(Fields.DOCUMENT_TYPE, 'Affidavit')
+		CUSTOMER_001_DOCUMENT1.put(Fields.DOCUMENT_START_DATE, DateUtil.getCurrentDateTime(common.dateFormat, 'EST'))
+		CUSTOMER_001_DOCUMENT1.put(Fields.DOCUMENT_END_DATE, DateUtil.getCurrentDateTime(common.dateFormat, 'EST'))
+		CUSTOMER_001_DOCUMENT1.put(Fields.DOCUMENT_RECEIVED_DATE, DateUtil.getCurrentDateTime(common.dateFormat, 'EST'))
+		CUSTOMER_001_DOCUMENT1.put(Fields.DOCUMENT_STATUS, 'New')
+		CUSTOMER_001_DOCUMENT1.put(Fields.DOCUMENT_DESCRIPTION, 'This is customer legal document - affidavit')
+		CUSTOMER_001_DOCUMENT1.put(Fields.IS_CREATED, 'false')
+	}
+	
+	public static final Map<Fields, String> CUSTOMER_001_DOCUMENT1_EDIT;
+	static {
+		CUSTOMER_001_DOCUMENT1_EDIT = new HashMap<Fields, String>()
+		CUSTOMER_001_DOCUMENT1_EDIT.put(Fields.DOCUMENT_FILEPATH, RunConfiguration.getProjectDir().replace('/', '\\')+'\\Data Files\\UploadFiles\\CustomerDocument-AddressUpdate.pdf')
+		CUSTOMER_001_DOCUMENT1_EDIT.put(Fields.DOCUMENT_CLASS, 'Customer Legal Documents')
+		CUSTOMER_001_DOCUMENT1_EDIT.put(Fields.DOCUMENT_TYPE, 'Death Certificate')
+		CUSTOMER_001_DOCUMENT1_EDIT.put(Fields.DOCUMENT_START_DATE, DateUtil.getCurrentDateTime(common.dateFormat, 'EST'))
+		CUSTOMER_001_DOCUMENT1_EDIT.put(Fields.DOCUMENT_END_DATE, DateUtil.getCurrentDateTime(common.dateFormat, 'EST'))
+		CUSTOMER_001_DOCUMENT1_EDIT.put(Fields.DOCUMENT_RECEIVED_DATE, DateUtil.getCurrentDateTime(common.dateFormat, 'EST'))
+		CUSTOMER_001_DOCUMENT1_EDIT.put(Fields.DOCUMENT_STATUS, 'New')
+		CUSTOMER_001_DOCUMENT1_EDIT.put(Fields.DOCUMENT_DESCRIPTION, 'This is customer legal document - affidavit')
+		CUSTOMER_001_DOCUMENT1_EDIT.put(Fields.IS_CREATED, 'false')
+	}
+
+	
+	
 
 	public static final Map<Fields, String> CUSTOMER_002;
 	static {
@@ -144,7 +177,7 @@ public class Data {
 		CUSTOMER_002.put(Fields.CT_PREFERRED_LANGUAGE, 'English - United States')
 		CUSTOMER_002.put(Fields.CT_PREFERRED_CONTACT_METHOD, 'Phone-Text')
 
-		CUSTOMER_002.put(Fields.CUST_MEMBER_ID, 'MID_'+RandomStringUtils.randomNumeric(6))
+		CUSTOMER_002.put(Fields.CUST_CUSTOMER_ID, 'CID_'+RandomStringUtils.randomNumeric(6))
 		CUSTOMER_002.put(Fields.CUST_CUSTOMER_GROUP, 'Banking Customer')
 		CUSTOMER_002.put(Fields.IS_CREATED, 'false')
 	}
@@ -239,7 +272,7 @@ public class Data {
 		CUSTOMER_003.put(Fields.CT_PREFERRED_LANGUAGE, 'English - United States')
 		CUSTOMER_003.put(Fields.CT_PREFERRED_CONTACT_METHOD, 'Unkwown')
 
-		CUSTOMER_003.put(Fields.CUST_MEMBER_ID, '9632154897')
+		CUSTOMER_003.put(Fields.CUST_CUSTOMER_ID, '9632154897')
 		CUSTOMER_003.put(Fields.CUST_CUSTOMER_GROUP, 'Banking Customer')
 	}
 

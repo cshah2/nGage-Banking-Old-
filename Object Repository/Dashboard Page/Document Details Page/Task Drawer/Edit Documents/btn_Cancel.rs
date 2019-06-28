@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>bnt_Submit</name>
+   <name>btn_Cancel</name>
    <tag></tag>
-   <elementGuidId>bb055261-d96c-4be0-bb05-67c12e1dd26d</elementGuidId>
+   <elementGuidId>2c56219b-a92c-4b7f-92a5-e387c687d77f</elementGuidId>
    <selectorCollection>
       <entry>
+         <key>CSS</key>
+         <value></value>
+      </entry>
+      <entry>
          <key>XPATH</key>
-         <value>//span[contains(@id,'_wtCustomerTaskDrawer')]//input[@value='Submit']</value>
+         <value>//span[contains(@id,'_wtCustomerTaskDrawer')]//input[@value='Cancel']</value>
       </entry>
       <entry>
          <key>BASIC</key>

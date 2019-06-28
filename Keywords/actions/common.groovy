@@ -74,7 +74,7 @@ public class common {
 
 		WebElement e = WebUiCommonHelper.findWebElement(to, GlobalVariable.TIMEOUT)
 		new javaScript().scrollToElement(to)
-		
+
 		Actions asDriver = new Actions(DriverFactory.getWebDriver())
 		asDriver.moveToElement(e).build().perform()
 		WebUI.delay(1)
@@ -84,7 +84,7 @@ public class common {
 	def moveToElement(WebElement e) {
 
 		new javaScript().scrollToElement(e)
-		
+
 		Actions asDriver = new Actions(DriverFactory.getWebDriver())
 		asDriver.moveToElement(e).build().perform()
 		WebUI.delay(1)

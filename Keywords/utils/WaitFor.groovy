@@ -85,7 +85,30 @@ public class WaitFor {
 			KeywordUtil.markFailedAndStop('Exception occured while waiting for element'+e.toString())
 		}
 	}
-	
+
+	@Keyword
+	def elementClickable(TestObject to, int timeout) {
+
+		setDriver()
+
+		jsWait.pollingEvery(100, TimeUnit.MILLISECONDS)
+		jsWait.ignoring(StaleElementReferenceException.class)
+
+		By locator = getLocator(to)
+		try {
+			if(locator != null)
+				jsWait.until(ExpectedConditions.elementToBeClickable(locator))
+			else {
+				WebUI.takeScreenshot()
+				KeywordUtil.markFailedAndStop('Locator is neither XPATH or CSS')
+			}
+		}
+		catch(Exception e) {
+			WebUI.takeScreenshot()
+			KeywordUtil.markFailedAndStop('Exception occured while waiting for element'+e.toString())
+		}
+	}
+
 	@Keyword
 	def elementVisible(By locator, int timeout) {
 
