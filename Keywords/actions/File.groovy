@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent
 
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
+import com.kms.katalon.core.configuration.RunConfiguration
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
 import com.kms.katalon.core.model.FailureHandling
@@ -25,9 +26,9 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable
 
 public class File {
-	
+
 	private void performRobotAction() {
-		
+
 		Robot robot = new Robot()
 		WebUI.delay(2)
 		println "Press Enter"
@@ -44,15 +45,15 @@ public class File {
 		robot.keyRelease(KeyEvent.VK_ENTER)
 		WebUI.delay(2)
 	}
-			
+
 	private void copyToClipBoard(String filePath) {
-		
+
 		println 'Copy file path to clipboard'
 		StringSelection ss = new StringSelection(filePath)
 		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null)
 	}
-			
-			
+
+
 	@Keyword
 	def upload(TestObject to, String filePath) {
 		try {
@@ -61,16 +62,39 @@ public class File {
 
 			//Click on File upload element
 			WebUI.click(to)
-			
+
 			//Wait for File upload dialog to load
 			WebUI.delay(3)
-			
+
 			//Perform Robot action to upload file
 			performRobotAction()
 		}
 		catch(Exception e) {
 			WebUI.takeScreenshot()
 			KeywordUtil.markFailedAndStop("File upload operation failed."+e.message)
+		}
+	}
+	
+	@Keyword
+	def uploadAutoIt(TestObject to, String filePath) {
+		
+		String autoItExe = RunConfiguration.getProjectDir().replace('/', '\\')+'\\Data Files\\UploadFiles\\FileUpload.exe'
+		String cmdLine1 = ' "'+'Open'+'"'
+		String cmdLine2 = ' "'+filePath+'"'
+		String cmd = autoItExe+cmdLine1+cmdLine2
+		println "Auto it command is "+cmd
+		
+		//Click on File upload element
+		WebUI.click(to)
+
+		//Wait for File upload dialog to load
+		WebUI.delay(3)
+		
+		try {
+			Runtime.getRuntime().exec(cmd)
+		}
+		catch(Exception e) {
+			KeywordUtil.markFailedAndStop('Exception occurred while upload file using AutoIt'+e.toString())
 		}
 	}
 }

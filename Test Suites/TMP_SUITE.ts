@@ -22,10 +22,4 @@
       <isRun>true</isRun>
       <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/1. Customers/7. (ID - 8) Customer Documents/1. (ID - 8.1) Upload Document</testCaseId>
    </testCaseLink>
-   <testCaseLink>
-      <guid>0af986a7-a9b6-472f-82e9-6e3a70562d84</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
-      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/1. Customers/7. (ID - 8) Customer Documents/2. (ID - 8.3) Edit Document</testCaseId>
-   </testCaseLink>
 </TestSuiteEntity>
