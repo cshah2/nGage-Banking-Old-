@@ -11,7 +11,9 @@ import com.kms.katalon.core.testdata.TestData as TestData
 import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+
+import constants.common
 import internal.GlobalVariable as GlobalVariable
 import utils.DateUtil
 
-DateUtil.getCurrentDateTimeMinusDays(1, "MM/dd/yyyy", "EST")
+DateUtil.getCurrentDateTimeMinusDays(1, "MM/dd/yyyy", common.timezone)

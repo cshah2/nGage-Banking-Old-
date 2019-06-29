@@ -406,8 +406,8 @@ public class common {
 		//Enter Search Criteria in First name field
 		WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_FirstName'), custData.get(Fields.CUST_FIRST_NAME))
 
-		//Enter Search Criteria in phone number field
-		WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_PhoneNumber'), custData.get(Fields.CT_PHONE_NUMBER))
+		//Enter Search Criteria in Tax ID field
+		WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_TaxID'), custData.get(Fields.CUST_TAX_ID))
 
 		//Click on Search button
 		WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'))
@@ -427,9 +427,6 @@ public class common {
 
 		//Verify column values are matching - first name
 		new actions.table().verifyCellValueEquals(resultTable, rowNo, ColumnPos.CUST_FIRST_NAME, custData.get(Fields.CUST_FIRST_NAME))
-
-		//Verify column values are matching - phone number
-		new actions.table().verifyCellValueEquals(resultTable, rowNo, ColumnPos.CUST_PHONE_NUMBER, custData.get(Fields.CT_PHONE_NUMBER))
 	}
 
 	@Keyword

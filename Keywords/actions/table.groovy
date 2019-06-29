@@ -118,7 +118,24 @@ public class table {
 		}
 		return locator
 	}
-
+	
+	private By clickElement() {
+		
+		By locator
+		switch(type) {
+			case WebTable.DEFAULT:
+				locator = By.xpath(".//a")
+				break
+			case WebTable.DOCUMENT:
+				locator = By.xpath(".//*[name()='svg']")
+				break
+			Default:
+				locator = By.xpath(".//a")
+				break
+		}
+		return locator
+	}
+	
 	private By moreIcon() {
 		return By.xpath(".//span[contains(@class,fa-ellipsis-v)]")
 	}
@@ -677,10 +694,10 @@ public class table {
 
 		WebElement table = getTable(to)
 		try {
-			moveToCell(to, rowNo, colNo)
-			WebElement e = table.findElement(By.xpath(".//tbody/tr["+rowNo+"]/td["+colNo+"]//a"))
-			//e.click()
-			new javaScript().click(e)
+			moveToCell(to, rowNo, colNo, type)
+			WebElement e = table.findElement(singleRow(rowNo)).findElement(singleCell(colNo)).findElement(clickElement())
+			e.click()
+			//new javaScript().click(e)
 		}
 		catch(Exception e) {
 			WebUI.takeScreenshot()
@@ -717,7 +734,7 @@ public class table {
 
 		WebElement table = getTable(to)
 		try {
-			moveToCell(to, rowNo, colNo)
+			moveToCell(to, rowNo, colNo, type)
 			WebUI.delay(1)
 			WebElement e = getCell(to, rowNo, colNo).findElement(moreIcon())
 			//e.click()

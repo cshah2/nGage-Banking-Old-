@@ -27,4 +27,6 @@ public class common {
 	public static String dashboardUrl = GlobalVariable.BASE_URL + '/nGageBanking_Customer/CustomerSearch.aspx'
 	public static String createCustomerUrl = GlobalVariable.BASE_URL + '/nGageBanking_Customer/CustomerMainFlow.CustomerCreate.aspx?isOrg=False'
 	public static String dateFormat = 'MM/dd/yyyy'
+	public static String dateTimeFormat = 'MM/dd/yyyy HH:mm:ss'
+	public static String timezone = 'America/New_York'
 }

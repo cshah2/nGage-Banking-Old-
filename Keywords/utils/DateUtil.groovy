@@ -32,13 +32,15 @@ public class DateUtil {
 	}
 
 	public static String getCurrentDateTime(String format, String timezone) {
-		Date now = new Date()
-		return now.format(format, TimeZone.getTimeZone(timezone)).toString()
+
+		String dateString = ZonedDateTime.now(ZoneId.of(timezone))format(DateTimeFormatter.ofPattern(format))
+		println "Date is :"+dateString
+		return dateString
 	}
 
 	public static String getCurrentDateTimeMinusDays(int days, String format, String timezone) {
 
-		String dateString = ZonedDateTime.now(ZoneId.of(timezone.toLowerCase())).parse(format).minusDays(days)
+		String dateString = ZonedDateTime.now(ZoneId.of(timezone)).minusDays(days).format(DateTimeFormatter.ofPattern(format))
 		println "Date is :"+dateString
 		return dateString
 	}

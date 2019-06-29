@@ -27,7 +27,7 @@ public class Data {
 		CUSTOMER_001.put(Fields.CUST_MARITAL_STATUS, 'Single')
 		CUSTOMER_001.put(Fields.CUST_NAME_VIEW, CUSTOMER_001.get(Fields.CUST_FIRST_NAME)+' '+CUSTOMER_001.get(Fields.CUST_LAST_NAME))
 
-		CUSTOMER_001.put(Fields.ADDR_STREET, DateUtil.getCurrentDateTime('dd MMMMM', 'EST')+' Street')
+		CUSTOMER_001.put(Fields.ADDR_STREET, DateUtil.getCurrentDateTime('dd MMMMM', common.timezone)+' Street')
 		CUSTOMER_001.put(Fields.ADDR_CITY, 'Philadelphia')
 		CUSTOMER_001.put(Fields.ADDR_COUNTY, 'United States of America')
 		CUSTOMER_001.put(Fields.ADDR_STATE, 'Pennsylvania')
@@ -52,7 +52,7 @@ public class Data {
 	public static final Map<Fields, String> CUSTOMER_001_ADDRESS2;
 	static {
 		CUSTOMER_001_ADDRESS2 = new HashMap<Fields, String>()
-		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_STREET, DateUtil.getCurrentDateTime('dd MMMMM', 'EST')+' Street')
+		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_STREET, DateUtil.getCurrentDateTime('dd MMMMM', common.timezone)+' Street')
 		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_CITY, 'Austin')
 		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_COUNTY, 'United States of America')
 		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_STATE, 'Texas')
@@ -66,7 +66,7 @@ public class Data {
 	public static final Map<Fields, String> CUSTOMER_001_ADDRESS3;
 	static {
 		CUSTOMER_001_ADDRESS3 = new HashMap<Fields, String>()
-		CUSTOMER_001_ADDRESS3.put(Fields.ADDR_STREET, DateUtil.getCurrentDateTime('dd MMMMM', 'EST')+' Street Change')
+		CUSTOMER_001_ADDRESS3.put(Fields.ADDR_STREET, DateUtil.getCurrentDateTime('dd MMMMM', common.timezone)+' Street Change')
 		CUSTOMER_001_ADDRESS3.put(Fields.ADDR_CITY, 'Phoenix')
 		CUSTOMER_001_ADDRESS3.put(Fields.ADDR_COUNTY, 'United States of America')
 		CUSTOMER_001_ADDRESS3.put(Fields.ADDR_STATE, 'Arizona')
@@ -112,37 +112,39 @@ public class Data {
 		CUSTOMER_001_EMAIL3.put(Fields.CT_EMAIL, 'my.emailb@exmaple.com')
 		CUSTOMER_001_EMAIL3.put(Fields.IS_CREATED, 'false')
 	}
-	
+
 	public static final Map<Fields, String> CUSTOMER_001_DOCUMENT1;
 	static {
 		CUSTOMER_001_DOCUMENT1 = new HashMap<Fields, String>()
 		CUSTOMER_001_DOCUMENT1.put(Fields.DOCUMENT_FILEPATH, RunConfiguration.getProjectDir().replace('/', '\\')+'\\Data Files\\UploadFiles\\CustomerDocument-AddressUpdate.pdf')
 		CUSTOMER_001_DOCUMENT1.put(Fields.DOCUMENT_CLASS, 'Customer Legal Documents')
 		CUSTOMER_001_DOCUMENT1.put(Fields.DOCUMENT_TYPE, 'Affidavit')
-		CUSTOMER_001_DOCUMENT1.put(Fields.DOCUMENT_START_DATE, DateUtil.getCurrentDateTime(common.dateFormat, 'EST'))
-		CUSTOMER_001_DOCUMENT1.put(Fields.DOCUMENT_END_DATE, DateUtil.getCurrentDateTime(common.dateFormat, 'EST'))
-		CUSTOMER_001_DOCUMENT1.put(Fields.DOCUMENT_RECEIVED_DATE, DateUtil.getCurrentDateTime(common.dateFormat, 'EST'))
+		CUSTOMER_001_DOCUMENT1.put(Fields.DOCUMENT_START_DATE, DateUtil.getCurrentDateTime(common.dateFormat, common.timezone))
+		CUSTOMER_001_DOCUMENT1.put(Fields.DOCUMENT_END_DATE, DateUtil.getCurrentDateTime(common.dateFormat, common.timezone))
+		CUSTOMER_001_DOCUMENT1.put(Fields.DOCUMENT_RECEIVED_DATE, DateUtil.getCurrentDateTime(common.dateFormat, common.timezone))
 		CUSTOMER_001_DOCUMENT1.put(Fields.DOCUMENT_STATUS, 'New')
 		CUSTOMER_001_DOCUMENT1.put(Fields.DOCUMENT_DESCRIPTION, 'This is customer legal document - affidavit')
+		CUSTOMER_001_DOCUMENT1.put(Fields.DOCUMENT_TITLE, CUSTOMER_001_DOCUMENT1.get(Fields.DOCUMENT_TYPE)+' Cust # '+CUSTOMER_001.get(Fields.CUST_CUSTOMER_ID)+' - Recvd '+CUSTOMER_001_DOCUMENT1.get(Fields.DOCUMENT_RECEIVED_DATE))
 		CUSTOMER_001_DOCUMENT1.put(Fields.IS_CREATED, 'false')
 	}
-	
+
 	public static final Map<Fields, String> CUSTOMER_001_DOCUMENT1_EDIT;
 	static {
 		CUSTOMER_001_DOCUMENT1_EDIT = new HashMap<Fields, String>()
 		CUSTOMER_001_DOCUMENT1_EDIT.put(Fields.DOCUMENT_FILEPATH, RunConfiguration.getProjectDir().replace('/', '\\')+'\\Data Files\\UploadFiles\\CustomerDocument-AddressUpdate.pdf')
 		CUSTOMER_001_DOCUMENT1_EDIT.put(Fields.DOCUMENT_CLASS, 'Customer Legal Documents')
 		CUSTOMER_001_DOCUMENT1_EDIT.put(Fields.DOCUMENT_TYPE, 'Death Certificate')
-		CUSTOMER_001_DOCUMENT1_EDIT.put(Fields.DOCUMENT_START_DATE, DateUtil.getCurrentDateTime(common.dateFormat, 'EST'))
-		CUSTOMER_001_DOCUMENT1_EDIT.put(Fields.DOCUMENT_END_DATE, DateUtil.getCurrentDateTime(common.dateFormat, 'EST'))
-		CUSTOMER_001_DOCUMENT1_EDIT.put(Fields.DOCUMENT_RECEIVED_DATE, DateUtil.getCurrentDateTime(common.dateFormat, 'EST'))
-		CUSTOMER_001_DOCUMENT1_EDIT.put(Fields.DOCUMENT_STATUS, 'New')
-		CUSTOMER_001_DOCUMENT1_EDIT.put(Fields.DOCUMENT_DESCRIPTION, 'This is customer legal document - affidavit')
+		CUSTOMER_001_DOCUMENT1_EDIT.put(Fields.DOCUMENT_START_DATE, DateUtil.getCurrentDateTimeMinusDays(3, common.dateFormat, common.timezone))
+		CUSTOMER_001_DOCUMENT1_EDIT.put(Fields.DOCUMENT_END_DATE, DateUtil.getCurrentDateTimeMinusDays(1, common.dateFormat, common.timezone))
+		CUSTOMER_001_DOCUMENT1_EDIT.put(Fields.DOCUMENT_RECEIVED_DATE, DateUtil.getCurrentDateTimeMinusDays(2, common.dateFormat, common.timezone))
+		CUSTOMER_001_DOCUMENT1_EDIT.put(Fields.DOCUMENT_STATUS, 'In Review')
+		CUSTOMER_001_DOCUMENT1_EDIT.put(Fields.DOCUMENT_DESCRIPTION, 'This is customer legal document - affidavit Edit')
+		CUSTOMER_001_DOCUMENT1_EDIT.put(Fields.DOCUMENT_TITLE, CUSTOMER_001_DOCUMENT1_EDIT.get(Fields.DOCUMENT_TYPE)+' Cust # '+CUSTOMER_001.get(Fields.CUST_CUSTOMER_ID)+' - Recvd '+CUSTOMER_001_DOCUMENT1_EDIT.get(Fields.DOCUMENT_RECEIVED_DATE))
 		CUSTOMER_001_DOCUMENT1_EDIT.put(Fields.IS_CREATED, 'false')
 	}
 
-	
-	
+
+
 
 	public static final Map<Fields, String> CUSTOMER_002;
 	static {
@@ -161,7 +163,7 @@ public class Data {
 		CUSTOMER_002.put(Fields.CUST_MARITAL_STATUS, 'Married')
 		CUSTOMER_002.put(Fields.CUST_NAME_VIEW, CUSTOMER_002.get(Fields.CUST_FIRST_NAME)+' '+CUSTOMER_002.get(Fields.CUST_LAST_NAME))
 
-		CUSTOMER_002.put(Fields.ADDR_STREET, DateUtil.getCurrentDateTime('dd MMMMM', 'EST')+' Street')
+		CUSTOMER_002.put(Fields.ADDR_STREET, DateUtil.getCurrentDateTime('dd MMMMM', common.timezone)+' Street')
 		CUSTOMER_002.put(Fields.ADDR_CITY, 'Philadelphia')
 		CUSTOMER_002.put(Fields.ADDR_COUNTY, 'United States of America')
 		CUSTOMER_002.put(Fields.ADDR_STATE, 'Pennsylvania')
@@ -198,10 +200,10 @@ public class Data {
 		ACCOUNT_001.put(Fields.ACC_CURRENCY_CODE, 'USD')
 		ACCOUNT_001.put(Fields.ACC_VERTICAL, 'Vertical 01')
 		ACCOUNT_001.put(Fields.ACC_DEPT_ID, 'Department 350')
-		ACCOUNT_001.put(Fields.ACC_OPEN_DATE, DateUtil.getCurrentDateTime('MM/dd/yyyy', 'EST'))
+		ACCOUNT_001.put(Fields.ACC_OPEN_DATE, DateUtil.getCurrentDateTime(common.dateFormat, common.timezone))
 		ACCOUNT_001.put(Fields.DOC_TYPE, 'Terms and conditions')
 		ACCOUNT_001.put(Fields.DOC_SIGNED_BY, CUSTOMER_002.get(Fields.CUST_FIRST_NAME)+' '+CUSTOMER_002.get(Fields.CUST_LAST_NAME))
-		ACCOUNT_001.put(Fields.DOC_SIGNED_DATE, DateUtil.getCurrentDateTime('MM/dd/yyyy HH:mm:ss', 'EST'))
+		ACCOUNT_001.put(Fields.DOC_SIGNED_DATE, DateUtil.getCurrentDateTime(common.dateTimeFormat, common.timezone))
 		ACCOUNT_001.put(Fields.DOC_VERSION, '01')
 
 		ACCOUNT_001.put(Fields.ACC_LEDGER_BALANCE, '0.00')
@@ -228,10 +230,10 @@ public class Data {
 		ACCOUNT_002.put(Fields.ACC_DEPT_ID, 'Department 350')
 		ACCOUNT_002.put(Fields.ACC_CREDIT_LIMIT, '100000')
 		ACCOUNT_002.put(Fields.ACC_INTEREST_RATE, '8')
-		ACCOUNT_002.put(Fields.ACC_OPEN_DATE, DateUtil.getCurrentDateTime('MM/dd/yyyy', 'EST'))
+		ACCOUNT_002.put(Fields.ACC_OPEN_DATE, DateUtil.getCurrentDateTime(common.dateFormat, common.timezone))
 		ACCOUNT_002.put(Fields.DOC_TYPE, 'Terms and conditions')
 		ACCOUNT_002.put(Fields.DOC_SIGNED_BY, CUSTOMER_002.get(Fields.CUST_FIRST_NAME)+' '+CUSTOMER_002.get(Fields.CUST_LAST_NAME))
-		ACCOUNT_002.put(Fields.DOC_SIGNED_DATE, DateUtil.getCurrentDateTime('MM/dd/yyyy HH:mm:ss', 'EST'))
+		ACCOUNT_002.put(Fields.DOC_SIGNED_DATE, DateUtil.getCurrentDateTime(common.dateTimeFormat, common.timezone))
 		ACCOUNT_002.put(Fields.DOC_VERSION, '01')
 
 		ACCOUNT_002.put(Fields.ACC_LEDGER_BALANCE, '0.00')
