@@ -72,13 +72,12 @@ WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Sear
 WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Position Details Section/lbl_Name'), accData.get(Fields.ACC_POSITION_NAME))
 
 'Verify Departmnet ID' //TODO: Bug - Department ID value is Department 350 in selection, but in view mode it is shown as 350
-WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Position Details Section/lbl_DepartmentId'), accData.get(Fields.ACC_DEPT_ID))
+WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Position Details Section/lbl_DepartmentId'), accData.get(Fields.ACC_DEPT_ID_VIEW))
 
 'Verify Currency Code'
-WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Position Details Section/lbl_CurrencyCode'), accData.get(Fields.ACC_CURRENCY_CODE))
+WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Position Details Section/lbl_CurrencyCode'), accData.get(Fields.ACC_CURRENCY_CODE_VIEW))
 
 //Verify Document section
-
 'Verify document table contains only 1 record'
 CustomKeywords.'actions.table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Document Section/table_Documents'), 1, RegexOperator.EQUALS)
 

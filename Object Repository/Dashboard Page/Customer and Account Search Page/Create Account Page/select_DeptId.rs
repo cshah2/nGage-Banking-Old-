@@ -6,11 +6,11 @@
    <elementGuidId>03cd5037-b523-497d-ba96-5152f24c2647</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//div[contains(@id,'_wtPositionListCN')]/div[not(contains(@style,'display:none'))]//option[text()='Department 350']/..</value>
+         <key>BASIC</key>
       </entry>
       <entry>
-         <key>BASIC</key>
+         <key>XPATH</key>
+         <value>//div[contains(@id,'_wtPositionListCN')]/div[not(contains(@style,'display:none'))]//select[contains(@id,'_wtDeptId')]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

@@ -7,11 +7,10 @@
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value></value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[contains(@id,'_wtPositionListCN')]/div[not(contains(@style,'display:none'))]//div[starts-with(text(),'Credit Limit')]/input</value>
+         <value>//div[contains(@id,'_wtPositionListCN')]/div[not(contains(@style,'display:none'))]//input[contains(@id,'_wtCreditLimit')]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

@@ -34,9 +34,10 @@ public class ColumnPos {
 	public static int ACC_OWNERSHIP = 4
 	public static int ACC_PRODUCT_NAME = 5
 	public static int ACC_DESCRIPTION = 6
-	public static int ACC_INTEREST_RATE = 7
-	public static int ACC_LEDGER_BALANCE = 8
-	public static int ACC_AVAILABLE_BALANCE = 9
+	public static int ACC_POSITION_NAME = 7
+	public static int ACC_INTEREST_RATE = 8
+	public static int ACC_LEDGER_BALANCE = 9
+	public static int ACC_AVAILABLE_BALANCE = 10
 
 	//Documents Table - Account Details page
 	public static int DOC_TYPE = 1

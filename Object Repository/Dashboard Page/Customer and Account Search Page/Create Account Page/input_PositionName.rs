@@ -7,11 +7,10 @@
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value></value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[contains(@id,'_wtPositionListCN')]/div[not(contains(@style,'display:none'))]//div[starts-with(text(),'Position Name')]/input</value>
+         <value>//div[contains(@id,'_wtPositionListCN')]/div[not(contains(@style,'display:none'))]//input[contains(@id,'_wtPositionName')]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

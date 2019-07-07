@@ -309,7 +309,7 @@ public class common {
 
 		//Enter Currency code
 		if(isValidData(accData, Fields.ACC_CURRENCY_CODE)) {
-			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_CurrencyCode'), accData.get(Fields.ACC_CURRENCY_CODE))
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_Currency'), accData.get(Fields.ACC_CURRENCY_CODE), false)
 		}
 
 		//Enter Vertical

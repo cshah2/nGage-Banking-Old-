@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>input_InterestRate</name>
+   <name>input_ProductName</name>
    <tag></tag>
-   <elementGuidId>d1e1ecdf-6e21-4744-9d71-d36d79cc9443</elementGuidId>
+   <elementGuidId>b09bfdbc-d6d0-43f6-a7fa-3662ce02f20e</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[contains(@id,'_wtPositionListCN')]/div[not(contains(@style,'display:none'))]//input[contains(@id,'_wtInterestRate')]</value>
+         <value>//div[contains(@id,'_wtPositionListCN')]/div[not(contains(@style,'display:none'))]//input[contains(@id,'_wtProductName')]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
