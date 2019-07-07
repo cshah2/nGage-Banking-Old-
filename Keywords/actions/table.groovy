@@ -229,6 +229,7 @@ public class table {
 
 		if(isRefreshed) {
 			KeywordUtil.markPassed("Table is refreshed")
+			WebUI.delay(1)
 		}
 		else {
 			KeywordUtil.markFailedAndStop('Table is not refreshed withing given time')
