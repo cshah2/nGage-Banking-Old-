@@ -35,6 +35,10 @@ import org.openqa.selenium.interactions.Actions
 
 public class common {
 
+	TestObject addressTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/table_Addresses')
+	TestObject phoneTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/table_Phones')
+	TestObject emailTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/table_Emails')
+	
 	//Open browser if not already opened
 	private void openBrowser() {
 		try {
@@ -89,7 +93,6 @@ public class common {
 		asDriver.moveToElement(e).build().perform()
 		WebUI.delay(1)
 	}
-
 
 	@Keyword
 	def verifyElementTextContains(TestObject to, String expectedText) {
@@ -494,4 +497,166 @@ public class common {
 		new actions.common().verifyElementTextContains(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/lbl_AccountTitle'), accData.get(Fields.ACC_NUMBER))
 	}
 
+	@Keyword
+	def addressFormFill(Map<Fields, String> addressData) {
+		
+		'Wait for Add address task drawer to load'
+		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Street'), GlobalVariable.TIMEOUT)
+		
+		'Enter street'
+		if(isValidData(addressData, Fields.ADDR_STREET)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Street'), addressData.get(Fields.ADDR_STREET))
+		}
+		
+		'Enter city'
+		if(isValidData(addressData, Fields.ADDR_CITY)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_City'), addressData.get(Fields.ADDR_CITY))
+		}
+		
+		'Select state'
+		if(isValidData(addressData, Fields.ADDR_STATE)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/select_State'), addressData.get(Fields.ADDR_STATE), false)
+		}
+		
+		'Enter Zipcode'
+		if(isValidData(addressData, Fields.ADDR_ZIPCODE)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Zipcode'), addressData.get(Fields.ADDR_ZIPCODE))
+		}
+		
+		'Select country'
+		if(isValidData(addressData, Fields.ADDR_COUNTY)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/select_Country'), addressData.get(Fields.ADDR_COUNTY), false)
+		}
+		
+		'Select address type'
+		if(isValidData(addressData, Fields.ADDR_ADDRESS_TYPE)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/select_AddressType'), addressData.get(Fields.ADDR_ADDRESS_TYPE), false)
+		}
+		
+		'Enter address label'
+		if(isValidData(addressData, Fields.ADDR_ADDRESS_LABEL)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_AddressLabel'), addressData.get(Fields.ADDR_ADDRESS_LABEL))
+		}
+	}
+	
+	@Keyword
+	def verifyAddressDetailsInTable(Map<Fields, String> addressData, int rowNo) {
+		
+		'Verify Address Type'
+		if(isValidData(addressData, Fields.ADDR_ADDRESS_TYPE)) {
+			new actions.table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_ADDRESS_TYPE, addressData.get(Fields.ADDR_ADDRESS_TYPE))
+		}
+		
+		'Verify Address Label'
+		if(isValidData(addressData, Fields.ADDR_ADDRESS_LABEL)) {
+			new actions.table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_ADDRESS_LABEL, addressData.get(Fields.ADDR_ADDRESS_LABEL))
+		}
+		
+		'Verify Address Street'
+		if(isValidData(addressData, Fields.ADDR_STREET)) {
+			new actions.table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_STREET, addressData.get(Fields.ADDR_STREET))
+		}
+		
+		'Verify Address City'
+		if(isValidData(addressData, Fields.ADDR_CITY)) {
+			new actions.table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_CITY, addressData.get(Fields.ADDR_CITY))
+		}
+		
+		'Verify Address Country'
+		if(isValidData(addressData, Fields.ADDR_COUNTY)) {
+			new actions.table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_COUNTY, addressData.get(Fields.ADDR_COUNTY))
+		}
+		
+		'Verify Address State'
+		if(isValidData(addressData, Fields.ADDR_STATE)) {
+			new actions.table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_STATE, addressData.get(Fields.ADDR_STATE))
+		}
+		
+		'Verify Address Zipcode'
+		if(isValidData(addressData, Fields.ADDR_ZIPCODE)) {
+			new actions.table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_ZIPCODE, addressData.get(Fields.ADDR_ZIPCODE))
+		}
+	}
+	
+	@Keyword
+	def phoneFormFill(Map<Fields, String> phoneData) {
+		
+		'Wait for Add Phones task drawer to load'
+		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/input_PhoneLabel'), GlobalVariable.TIMEOUT)
+		
+		'Enter phone number'
+		if(isValidData(phoneData, Fields.CT_PHONE_NUMBER)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/input_PhoneNumber'), phoneData.get(Fields.CT_PHONE_NUMBER))
+		}
+		
+		'Select phone type'
+		if(isValidData(phoneData, Fields.CT_PHONE_TYPE)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/select_PhoneType'), phoneData.get(Fields.CT_PHONE_TYPE), false)
+		}
+		
+		'Enter phone label'
+		if(isValidData(phoneData, Fields.CT_PHONE_LABEL)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/input_PhoneLabel'), phoneData.get(Fields.CT_PHONE_LABEL))
+		}
+	}
+	
+	@Keyword
+	def verifyPhoneDetailsInTable(Map<Fields, String> phoneData, int rowNo) {
+		
+		'Verify Phone Type'
+		if(isValidData(phoneData, Fields.CT_PHONE_TYPE)) {
+			new actions.table().verifyCellValueEquals(phoneTable, rowNo, ColumnPos.CT_PHONE_TYPE, phoneData.get(Fields.CT_PHONE_TYPE))
+		}
+		
+		'Verify Phone Label'
+		if(isValidData(phoneData, Fields.CT_PHONE_LABEL)) {
+			new actions.table().verifyCellValueEquals(phoneTable, rowNo, ColumnPos.CT_PHONE_LABEL, phoneData.get(Fields.CT_PHONE_LABEL))
+		}
+		
+		'Verify Phone Number'
+		if(isValidData(phoneData, Fields.CT_PHONE_NUMBER)) {
+			new actions.table().verifyCellValueEquals(phoneTable, rowNo, ColumnPos.CT_PHONE_NUMBER, phoneData.get(Fields.CT_PHONE_NUMBER))
+		}
+	}
+
+	@Keyword
+	def emailFormFill(Map<Fields, String> emailData) {
+		
+		'Wait for Add email task drawer to load'
+		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_Email'), GlobalVariable.TIMEOUT)
+
+		'Enter Email'
+		if(isValidData(emailData, Fields.CT_EMAIL)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_Email'), emailData.get(Fields.CT_EMAIL))
+		}
+
+		'Select Email type'
+		if(isValidData(emailData, Fields.CT_EMAIL_TYPE)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/select_EmailType'), emailData.get(Fields.CT_EMAIL_TYPE), false)
+		}
+
+		'Enter Email label'
+		if(isValidData(emailData, Fields.CT_EMAIL_LABEL)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_EmailLabel'), emailData.get(Fields.CT_EMAIL_LABEL))
+		}
+	}
+	
+	@Keyword
+	def verifyEmailDetailsInTable(Map<Fields, String> emailData, int rowNo) {
+		
+		'Verify Email Type'
+		if(isValidData(emailData, Fields.CT_EMAIL_TYPE)) {
+			new actions.table().verifyCellValueEquals(emailTable, rowNo, ColumnPos.CT_EMAIL_TYPE, emailData.get(Fields.CT_EMAIL_TYPE))
+		}
+		
+		'Verify Email Label'
+		if(isValidData(emailData, Fields.CT_EMAIL_LABEL)) {
+			new actions.table().verifyCellValueEquals(emailTable, rowNo, ColumnPos.CT_EMAIL_LABEL, emailData.get(Fields.CT_EMAIL_LABEL))
+		}
+		
+		'Verify Email'
+		if(isValidData(emailData, Fields.CT_EMAIL)) {
+			new actions.table().verifyCellValueEquals(emailTable, rowNo, ColumnPos.CT_EMAIL, emailData.get(Fields.CT_EMAIL))
+		}
+	}
 }

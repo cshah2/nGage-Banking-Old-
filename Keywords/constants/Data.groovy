@@ -63,18 +63,18 @@ public class Data {
 		CUSTOMER_001_ADDRESS2.put(Fields.IS_CREATED, 'false')
 	}
 
-	public static final Map<Fields, String> CUSTOMER_001_ADDRESS3;
+	public static final Map<Fields, String> CUSTOMER_001_ADDRESS2_EDIT;
 	static {
-		CUSTOMER_001_ADDRESS3 = new HashMap<Fields, String>()
-		CUSTOMER_001_ADDRESS3.put(Fields.ADDR_STREET, DateUtil.getCurrentDateTime('dd MMMMM', common.timezone)+' Street Change')
-		CUSTOMER_001_ADDRESS3.put(Fields.ADDR_CITY, 'Phoenix')
-		CUSTOMER_001_ADDRESS3.put(Fields.ADDR_COUNTY, 'United States of America')
-		CUSTOMER_001_ADDRESS3.put(Fields.ADDR_STATE, 'Arizona')
-		CUSTOMER_001_ADDRESS3.put(Fields.ADDR_ZIPCODE, '3'+RandomStringUtils.randomNumeric(4))
-		CUSTOMER_001_ADDRESS3.put(Fields.ADDR_ADDRESS_TYPE, 'Headquarter')
-		CUSTOMER_001_ADDRESS3.put(Fields.ADDR_ADDRESS_LABEL, 'Head Office')
-		CUSTOMER_001_ADDRESS3.put(Fields.ADDR_VIEW, CUSTOMER_001_ADDRESS3.get(Fields.ADDR_STREET)+', '+CUSTOMER_001_ADDRESS3.get(Fields.ADDR_CITY)+', AZ '+CUSTOMER_001_ADDRESS3.get(Fields.ADDR_ZIPCODE))
-		CUSTOMER_001_ADDRESS3.put(Fields.IS_CREATED, 'false')
+		CUSTOMER_001_ADDRESS2_EDIT = new HashMap<Fields, String>()
+		CUSTOMER_001_ADDRESS2_EDIT.put(Fields.ADDR_STREET, DateUtil.getCurrentDateTime('dd MMMMM', common.timezone)+' Street Change')
+		CUSTOMER_001_ADDRESS2_EDIT.put(Fields.ADDR_CITY, 'Phoenix')
+		CUSTOMER_001_ADDRESS2_EDIT.put(Fields.ADDR_COUNTY, 'United States of America')
+		CUSTOMER_001_ADDRESS2_EDIT.put(Fields.ADDR_STATE, 'Arizona')
+		CUSTOMER_001_ADDRESS2_EDIT.put(Fields.ADDR_ZIPCODE, '3'+RandomStringUtils.randomNumeric(4))
+		CUSTOMER_001_ADDRESS2_EDIT.put(Fields.ADDR_ADDRESS_TYPE, 'Headquarter')
+		CUSTOMER_001_ADDRESS2_EDIT.put(Fields.ADDR_ADDRESS_LABEL, 'Head Office')
+		CUSTOMER_001_ADDRESS2_EDIT.put(Fields.ADDR_VIEW, CUSTOMER_001_ADDRESS2_EDIT.get(Fields.ADDR_STREET)+', '+CUSTOMER_001_ADDRESS2_EDIT.get(Fields.ADDR_CITY)+', AZ '+CUSTOMER_001_ADDRESS2_EDIT.get(Fields.ADDR_ZIPCODE))
+		CUSTOMER_001_ADDRESS2_EDIT.put(Fields.IS_CREATED, 'false')
 	}
 
 	public static final Map<Fields, String> CUSTOMER_001_PHONE2;
@@ -86,13 +86,13 @@ public class Data {
 		CUSTOMER_001_PHONE2.put(Fields.IS_CREATED, 'false')
 	}
 
-	public static final Map<Fields, String> CUSTOMER_001_PHONE3;
+	public static final Map<Fields, String> CUSTOMER_001_PHONE2_EDIT;
 	static {
-		CUSTOMER_001_PHONE3 = new HashMap<Fields, String>()
-		CUSTOMER_001_PHONE3.put(Fields.CT_PHONE_TYPE, 'Mobile')
-		CUSTOMER_001_PHONE3.put(Fields.CT_PHONE_LABEL, 'PERSONAL')
-		CUSTOMER_001_PHONE3.put(Fields.CT_PHONE_NUMBER, '+1'+RandomStringUtils.randomNumeric(10))
-		CUSTOMER_001_PHONE3.put(Fields.IS_CREATED, 'false')
+		CUSTOMER_001_PHONE2_EDIT = new HashMap<Fields, String>()
+		CUSTOMER_001_PHONE2_EDIT.put(Fields.CT_PHONE_TYPE, 'Mobile')
+		CUSTOMER_001_PHONE2_EDIT.put(Fields.CT_PHONE_LABEL, 'PERSONAL')
+		CUSTOMER_001_PHONE2_EDIT.put(Fields.CT_PHONE_NUMBER, '+1'+RandomStringUtils.randomNumeric(10))
+		CUSTOMER_001_PHONE2_EDIT.put(Fields.IS_CREATED, 'false')
 	}
 
 	public static final Map<Fields, String> CUSTOMER_001_EMAIL2;
@@ -104,13 +104,13 @@ public class Data {
 		CUSTOMER_001_EMAIL2.put(Fields.IS_CREATED, 'false')
 	}
 
-	public static final Map<Fields, String> CUSTOMER_001_EMAIL3;
+	public static final Map<Fields, String> CUSTOMER_001_EMAIL2_EDIT;
 	static {
-		CUSTOMER_001_EMAIL3 = new HashMap<Fields, String>()
-		CUSTOMER_001_EMAIL3.put(Fields.CT_EMAIL_TYPE, 'Work')
-		CUSTOMER_001_EMAIL3.put(Fields.CT_EMAIL_LABEL, 'OFFICE')
-		CUSTOMER_001_EMAIL3.put(Fields.CT_EMAIL, 'my.emailb@exmaple.com')
-		CUSTOMER_001_EMAIL3.put(Fields.IS_CREATED, 'false')
+		CUSTOMER_001_EMAIL2_EDIT = new HashMap<Fields, String>()
+		CUSTOMER_001_EMAIL2_EDIT.put(Fields.CT_EMAIL_TYPE, 'Work')
+		CUSTOMER_001_EMAIL2_EDIT.put(Fields.CT_EMAIL_LABEL, 'OFFICE')
+		CUSTOMER_001_EMAIL2_EDIT.put(Fields.CT_EMAIL, 'my.emailb@exmaple.com')
+		CUSTOMER_001_EMAIL2_EDIT.put(Fields.IS_CREATED, 'false')
 	}
 
 	public static final Map<Fields, String> CUSTOMER_001_DOCUMENT1;

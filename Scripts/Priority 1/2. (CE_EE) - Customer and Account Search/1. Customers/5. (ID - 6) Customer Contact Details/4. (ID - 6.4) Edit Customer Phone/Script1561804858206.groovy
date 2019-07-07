@@ -21,10 +21,11 @@ import utils.DateUtil
 
 Map<Fields, String> custData = Data.CUSTOMER_001
 Map<Fields, String> phoneData = Data.CUSTOMER_001_PHONE2
-Map<Fields, String> phoneEdit = Data.CUSTOMER_001_PHONE3
+Map<Fields, String> phoneEdit = Data.CUSTOMER_001_PHONE2_EDIT
 println "Customer001 = "+custData.toMapString()
 println "Customer001 Phone data = "+phoneData.toMapString()
 println "Customer001 Phone Edit = "+phoneEdit.toMapString()
+TestObject phoneTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/table_Phones')
 
 //Mark this test as failed if required customer and account is not created
 CustomKeywords.'actions.common.shouldFailTest'(custData)
@@ -43,22 +44,16 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Cust
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/section_Body'), GlobalVariable.TIMEOUT)
 
 'Verify Phones table contains atleast one row'
-CustomKeywords.'actions.table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/table_Phones'), 1, RegexOperator.GREATER_THAN_OR_EQUAL)
+CustomKeywords.'actions.table.verifyRecordsCount'(phoneTable, 1, RegexOperator.GREATER_THAN_OR_EQUAL)
 
 //Verify Phones details for second row
 int rowNo = 2 
 
-'Verify Phone Type'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/table_Phones'), rowNo, ColumnPos.CT_PHONE_TYPE, phoneData.get(Fields.CT_PHONE_TYPE))
-
-'Verify Phone Label'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/table_Phones'), rowNo, ColumnPos.CT_PHONE_LABEL, phoneData.get(Fields.CT_PHONE_LABEL))
-
-'Verify Phone number'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/table_Phones'), rowNo, ColumnPos.CT_PHONE_NUMBER, phoneData.get(Fields.CT_PHONE_NUMBER))
+'Verify phone details'
+CustomKeywords.'actions.common.verifyPhoneDetailsInTable'(phoneData, rowNo)
 
 'Click on Edit icon for second row'
-CustomKeywords.'actions.table.clickCell'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/table_Phones'), rowNo, ColumnPos.CT_PHONE_EDITICON)
+CustomKeywords.'actions.table.clickCell'(phoneTable, rowNo, ColumnPos.CT_PHONE_EDITICON)
 
 'Wait for Edit phones task drawer to load'
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/input_PhoneNumber'), GlobalVariable.TIMEOUT)
@@ -73,15 +68,8 @@ WebUI.verifyOptionSelectedByLabel(findTestObject('Dashboard Page/Customer and Ac
 'Verify phone label'
 WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/input_PhoneLabel'), 'value', phoneData.get(Fields.CT_PHONE_LABEL), GlobalVariable.TIMEOUT)
 
-//Enter updated values in field
-'Enter phone number'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/input_PhoneNumber'), phoneEdit.get(Fields.CT_PHONE_NUMBER))
-
-'Select phone type'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/select_PhoneType'), phoneEdit.get(Fields.CT_PHONE_TYPE), false)
-
-'Enter phone label'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/input_PhoneLabel'), phoneEdit.get(Fields.CT_PHONE_LABEL))
+'Enter updated values in field'
+CustomKeywords.'actions.common.phoneFormFill'(phoneEdit)
 
 'Scroll to submit button'
 WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/btn_Submit'), GlobalVariable.TIMEOUT)
@@ -94,17 +82,10 @@ CustomKeywords.'utils.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/
 
 'Wait for cell value to get updated in a selected row'
 //TODO: There is no success message displayed on completion of task.
-CustomKeywords.'actions.table.waitUntilCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/table_Phones'), rowNo, ColumnPos.CT_PHONE_TYPE, phoneEdit.get(Fields.CT_PHONE_TYPE), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.table.waitUntilCellValueEquals'(phoneTable, rowNo, ColumnPos.CT_PHONE_TYPE, phoneEdit.get(Fields.CT_PHONE_TYPE), GlobalVariable.TIMEOUT)
 
-//Verify updated values in address table
-'Verify Phone Type'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/table_Phones'), rowNo, ColumnPos.CT_PHONE_TYPE, phoneEdit.get(Fields.CT_PHONE_TYPE))
-
-'Verify Phone Label'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/table_Phones'), rowNo, ColumnPos.CT_PHONE_LABEL, phoneEdit.get(Fields.CT_PHONE_LABEL))
-
-'Verify Phone Number'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/table_Phones'), rowNo, ColumnPos.CT_PHONE_NUMBER, phoneEdit.get(Fields.CT_PHONE_NUMBER))
+'Verify updated values in address table'
+CustomKeywords.'actions.common.verifyPhoneDetailsInTable'(phoneEdit, rowNo)
 
 'Set data flag'
 phoneEdit.put(Fields.IS_CREATED, 'true')

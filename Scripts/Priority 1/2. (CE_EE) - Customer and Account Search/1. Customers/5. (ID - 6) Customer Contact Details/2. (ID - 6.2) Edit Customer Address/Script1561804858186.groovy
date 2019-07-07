@@ -21,10 +21,12 @@ import utils.DateUtil
 
 Map<Fields, String> custData = Data.CUSTOMER_001
 Map<Fields, String> addressData = Data.CUSTOMER_001_ADDRESS2
-Map<Fields, String> addressEdit = Data.CUSTOMER_001_ADDRESS3
+Map<Fields, String> addressEdit = Data.CUSTOMER_001_ADDRESS2_EDIT
 println "Customer001 = "+custData.toMapString()
 println "Customer001 Address data = "+addressData.toMapString()
 println "Customer001 Address Edit = "+addressEdit.toMapString()
+
+TestObject addressTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/table_Addresses')
 
 //Mark this test as failed if required customer and account is not created
 CustomKeywords.'actions.common.shouldFailTest'(custData)
@@ -43,34 +45,16 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Cust
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/section_Body'), GlobalVariable.TIMEOUT)
 
 'Verify Address table contains atleast one row'
-CustomKeywords.'actions.table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/table_Addresses'), 1, RegexOperator.GREATER_THAN_OR_EQUAL)
+CustomKeywords.'actions.table.verifyRecordsCount'(addressTable, 1, RegexOperator.GREATER_THAN_OR_EQUAL)
 
 //Verify Address details for second row
 int rowNo = 2 
 
-'Verify Address Type'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/table_Addresses'), rowNo, ColumnPos.ADDR_ADDRESS_TYPE, addressData.get(Fields.ADDR_ADDRESS_TYPE))
-
-'Verify Address Label'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/table_Addresses'), rowNo, ColumnPos.ADDR_ADDRESS_LABEL, addressData.get(Fields.ADDR_ADDRESS_LABEL))
-
-'Verify Address Street'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/table_Addresses'), rowNo, ColumnPos.ADDR_STREET, addressData.get(Fields.ADDR_STREET))
-
-'Verify Address City'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/table_Addresses'), rowNo, ColumnPos.ADDR_CITY, addressData.get(Fields.ADDR_CITY))
-
-'Verify Address Country'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/table_Addresses'), rowNo, ColumnPos.ADDR_COUNTY, addressData.get(Fields.ADDR_COUNTY))
-
-'Verify Address State'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/table_Addresses'), rowNo, ColumnPos.ADDR_STATE, addressData.get(Fields.ADDR_STATE))
-
-'Verify Address Zipcode'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/table_Addresses'), rowNo, ColumnPos.ADDR_ZIPCODE, addressData.get(Fields.ADDR_ZIPCODE))
+'Verify Address Details'
+CustomKeywords.'actions.common.verifyAddressDetailsInTable'(addressData, rowNo)
 
 'Click on More button and select Edit Address option'
-CustomKeywords.'actions.table.clickMoreButtonAndSelectOption'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/table_Addresses'), rowNo, ColumnPos.ADDR_MOREICON, 'Edit Address')
+CustomKeywords.'actions.table.clickMoreButtonAndSelectOption'(addressTable, rowNo, ColumnPos.ADDR_MOREICON, 'Edit Address')
 
 'Wait for Edit address task drawer to load'
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Street'), GlobalVariable.TIMEOUT)
@@ -98,26 +82,8 @@ WebUI.verifyOptionSelectedByLabel(findTestObject('Dashboard Page/Customer and Ac
 WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_AddressLabel'), 'value', addressData.get(Fields.ADDR_ADDRESS_LABEL), GlobalVariable.TIMEOUT)
 
 //Enter updated values in field
-'Enter street'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Street'), addressEdit.get(Fields.ADDR_STREET))
-
-'Enter city'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_City'), addressEdit.get(Fields.ADDR_CITY))
-
-'Select state'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/select_State'), addressEdit.get(Fields.ADDR_STATE), false)
-
-'Enter Zipcode'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Zipcode'), addressEdit.get(Fields.ADDR_ZIPCODE))
-
-'Select country'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/select_Country'), addressEdit.get(Fields.ADDR_COUNTY), false)
-
-'Select address type'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/select_AddressType'), addressEdit.get(Fields.ADDR_ADDRESS_TYPE), false)
-
-'Enter address label'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_AddressLabel'), addressEdit.get(Fields.ADDR_ADDRESS_LABEL))
+'Fill address details in form'
+CustomKeywords.'actions.common.addressFormFill'(addressEdit)
 
 'Scroll to submit button'
 WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/btn_Submit'), GlobalVariable.TIMEOUT)
@@ -130,29 +96,10 @@ CustomKeywords.'utils.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/
 
 'Wait for cell value to get updated in a selected row'
 //TODO: There is no success message displayed on completion of task.
-CustomKeywords.'actions.table.waitUntilCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/table_Addresses'), rowNo, ColumnPos.ADDR_ADDRESS_TYPE, addressEdit.get(Fields.ADDR_ADDRESS_TYPE), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.table.waitUntilCellValueEquals'(addressTable, rowNo, ColumnPos.ADDR_ADDRESS_TYPE, addressEdit.get(Fields.ADDR_ADDRESS_TYPE), GlobalVariable.TIMEOUT)
 
-//Verify updated values in address table
-'Verify Address Type'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/table_Addresses'), rowNo, ColumnPos.ADDR_ADDRESS_TYPE, addressEdit.get(Fields.ADDR_ADDRESS_TYPE))
-
-'Verify Address Label'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/table_Addresses'), rowNo, ColumnPos.ADDR_ADDRESS_LABEL, addressEdit.get(Fields.ADDR_ADDRESS_LABEL))
-
-'Verify Address Street'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/table_Addresses'), rowNo, ColumnPos.ADDR_STREET, addressEdit.get(Fields.ADDR_STREET))
-
-'Verify Address City'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/table_Addresses'), rowNo, ColumnPos.ADDR_CITY, addressEdit.get(Fields.ADDR_CITY))
-
-'Verify Address Country'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/table_Addresses'), rowNo, ColumnPos.ADDR_COUNTY, addressEdit.get(Fields.ADDR_COUNTY))
-
-'Verify Address State'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/table_Addresses'), rowNo, ColumnPos.ADDR_STATE, addressEdit.get(Fields.ADDR_STATE))
-
-'Verify Address Zipcode'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/table_Addresses'), rowNo, ColumnPos.ADDR_ZIPCODE, addressEdit.get(Fields.ADDR_ZIPCODE))
+'Verify updated values in address table'
+CustomKeywords.'actions.common.verifyAddressDetailsInTable'(addressEdit, rowNo)
 
 'Set data flag'
 addressEdit.put(Fields.IS_CREATED, 'true')

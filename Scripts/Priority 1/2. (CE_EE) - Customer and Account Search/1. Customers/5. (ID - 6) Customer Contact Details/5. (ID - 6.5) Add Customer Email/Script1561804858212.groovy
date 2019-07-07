@@ -23,6 +23,7 @@ Map<Fields, String> custData = Data.CUSTOMER_001
 Map<Fields, String> custDataEmail2 = Data.CUSTOMER_001_EMAIL2
 println "Customer001 = "+custData.toMapString()
 println "Customer001 Email 2 = "+custDataEmail2.toMapString()
+TestObject emailTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/table_Emails')
 
 //Mark this test as failed if required customer and account is not created
 CustomKeywords.'actions.common.shouldFailTest'(custData)
@@ -40,16 +41,11 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Cust
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/section_Body'), GlobalVariable.TIMEOUT)
 
 'Verify Phones table contains only one row'
-CustomKeywords.'actions.table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/table_Emails'), 1, RegexOperator.EQUALS)
+CustomKeywords.'actions.table.verifyRecordsCount'(emailTable, 1, RegexOperator.EQUALS)
 
-//Verify Primary Phone Details
 int rowNo = 1 
-
-'Verify Email Type'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/table_Emails'), rowNo, ColumnPos.CT_EMAIL_TYPE, custData.get(Fields.CT_EMAIL_TYPE))
-
-'Verify Email'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/table_Emails'), rowNo, ColumnPos.CT_EMAIL, custData.get(Fields.CT_EMAIL))
+'Verify email details of primary record'
+CustomKeywords.'actions.common.verifyEmailDetailsInTable'(custData, rowNo)
 
 'Move to add new phones button'
 CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/icon_AddNewEmail'))
@@ -57,17 +53,8 @@ CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Cus
 'Click on Add new email icon'
 CustomKeywords.'actions.javaScript.click'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/icon_AddNewEmail'))
 
-'Wait for Add email task drawer to load'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_Email'), GlobalVariable.TIMEOUT)
-
-'Enter Email'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_Email'), custDataEmail2.get(Fields.CT_EMAIL))
-
-'Select Email type'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/select_EmailType'), custDataEmail2.get(Fields.CT_EMAIL_TYPE), false)
-
-'Enter Email label'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_EmailLabel'), custDataEmail2.get(Fields.CT_EMAIL_LABEL))
+'Fill email data in form'
+CustomKeywords.'actions.common.emailFormFill'(custDataEmail2)
 
 'Scroll to submit button'
 WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/btn_Submit'), GlobalVariable.TIMEOUT)
@@ -80,19 +67,11 @@ CustomKeywords.'utils.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/
 
 'Wait for emails to get added in table'
 //TODO: There is no success message displayed on completion of task.
-CustomKeywords.'actions.table.waitUntilRecordsCountEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/table_Emails'), 2, GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.table.waitUntilRecordsCountEquals'(emailTable, 2, GlobalVariable.TIMEOUT)
 
-//Verify phones details of second row
-rowNo = 2 
-
-'Verify Email Type'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/table_Emails'), rowNo, ColumnPos.CT_EMAIL_TYPE, custDataEmail2.get(Fields.CT_EMAIL_TYPE))
-
-'Verify Email Label'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/table_Emails'), rowNo, ColumnPos.CT_EMAIL_LABEL, custDataEmail2.get(Fields.CT_EMAIL_LABEL))
-
-'Verify Email'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/table_Emails'), rowNo, ColumnPos.CT_EMAIL, custDataEmail2.get(Fields.CT_EMAIL))
+rowNo = 2
+'Verify email details of second row'
+CustomKeywords.'actions.common.verifyEmailDetailsInTable'(custDataEmail2, rowNo)
 
 'Set data flag'
 custDataEmail2.put(Fields.IS_CREATED, 'true')

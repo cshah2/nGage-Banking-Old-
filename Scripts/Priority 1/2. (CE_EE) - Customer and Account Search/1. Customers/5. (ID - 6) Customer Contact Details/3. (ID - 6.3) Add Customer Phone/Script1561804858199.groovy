@@ -23,6 +23,7 @@ Map<Fields, String> custData = Data.CUSTOMER_001
 Map<Fields, String> custDataPhone2 = Data.CUSTOMER_001_PHONE2
 println "Customer001 = "+custData.toMapString()
 println "Customer001 Phone 2 = "+custDataPhone2.toMapString()
+TestObject phoneTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/table_Phones')
 
 //Mark this test as failed if required customer and account is not created
 CustomKeywords.'actions.common.shouldFailTest'(custData)
@@ -40,16 +41,13 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Cust
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/section_Body'), GlobalVariable.TIMEOUT)
 
 'Verify Phones table contains only one row'
-CustomKeywords.'actions.table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/table_Phones'), 1, RegexOperator.EQUALS)
+CustomKeywords.'actions.table.verifyRecordsCount'(phoneTable, 1, RegexOperator.EQUALS)
 
 //Verify Primary Phone Details
 int rowNo = 1 
 
-'Verify Phone Type'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/table_Phones'), rowNo, ColumnPos.CT_PHONE_TYPE, custData.get(Fields.CT_PHONE_TYPE))
-
-'Verify Phone Number'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/table_Phones'), rowNo, ColumnPos.CT_PHONE_NUMBER, custData.get(Fields.CT_PHONE_NUMBER))
+'Verify phone data in table'
+CustomKeywords.'actions.common.verifyPhoneDetailsInTable'(custData, rowNo)
 
 'Move to add new phones button'
 CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/icon_AddNewPhone'))
@@ -57,17 +55,8 @@ CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Cus
 'Click on Add new phone icon'
 CustomKeywords.'actions.javaScript.click'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/icon_AddNewPhone'))
 
-'Wait for Add Phones task drawer to load'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/input_PhoneLabel'), GlobalVariable.TIMEOUT)
-
-'Enter phone number'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/input_PhoneNumber'), custDataPhone2.get(Fields.CT_PHONE_NUMBER))
-
-'Select phone type'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/select_PhoneType'), custDataPhone2.get(Fields.CT_PHONE_TYPE), false)
-
-'Enter phone label'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/input_PhoneLabel'), custDataPhone2.get(Fields.CT_PHONE_LABEL))
+'Add phone details in form'
+CustomKeywords.'actions.common.phoneFormFill'(custDataPhone2)
 
 'Scroll to submit button'
 WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/btn_Submit'), GlobalVariable.TIMEOUT)
@@ -80,19 +69,13 @@ CustomKeywords.'utils.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/
 
 'Wait for phones to get added in table'
 //TODO: There is no success message displayed on completion of task.
-CustomKeywords.'actions.table.waitUntilRecordsCountEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/table_Phones'), 2, GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.table.waitUntilRecordsCountEquals'(phoneTable, 2, GlobalVariable.TIMEOUT)
 
 //Verify phones details of second row
 rowNo = 2 
 
-'Verify Phone Type'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/table_Phones'), rowNo, ColumnPos.CT_PHONE_TYPE, custDataPhone2.get(Fields.CT_PHONE_TYPE))
-
-'Verify Phone Label'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/table_Phones'), rowNo, ColumnPos.CT_PHONE_LABEL, custDataPhone2.get(Fields.CT_PHONE_LABEL))
-
-'Verify Phone Number'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/table_Phones'), rowNo, ColumnPos.CT_PHONE_NUMBER, custDataPhone2.get(Fields.CT_PHONE_NUMBER))
+'Verify phone details in a table'
+CustomKeywords.'actions.common.verifyPhoneDetailsInTable'(custDataPhone2, rowNo)
 
 'Set data flag'
 custDataPhone2.put(Fields.IS_CREATED, 'true')

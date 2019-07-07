@@ -21,10 +21,11 @@ import utils.DateUtil
 
 Map<Fields, String> custData = Data.CUSTOMER_001
 Map<Fields, String> emailData = Data.CUSTOMER_001_EMAIL2
-Map<Fields, String> emailEdit = Data.CUSTOMER_001_EMAIL3
+Map<Fields, String> emailEdit = Data.CUSTOMER_001_EMAIL2_EDIT
 println "Customer001 = "+custData.toMapString()
 println "Customer001 Phone data = "+emailData.toMapString()
 println "Customer001 Phone Edit = "+emailEdit.toMapString()
+TestObject emailTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/table_Emails')
 
 //Mark this test as failed if required customer and account is not created
 CustomKeywords.'actions.common.shouldFailTest'(custData)
@@ -43,22 +44,14 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Cust
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/section_Body'), GlobalVariable.TIMEOUT)
 
 'Verify Email table contains atleast one row'
-CustomKeywords.'actions.table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/table_Emails'), 1, RegexOperator.GREATER_THAN_OR_EQUAL)
+CustomKeywords.'actions.table.verifyRecordsCount'(emailTable, 1, RegexOperator.GREATER_THAN_OR_EQUAL)
 
-//Verify Phones details for second row
 int rowNo = 2 
-
-'Verify Email Type'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/table_Emails'), rowNo, ColumnPos.CT_EMAIL_TYPE, emailData.get(Fields.CT_EMAIL_TYPE))
-
-'Verify Phone Label'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/table_Emails'), rowNo, ColumnPos.CT_EMAIL_LABEL, emailData.get(Fields.CT_EMAIL_LABEL))
-
-'Verify Phone number'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/table_Emails'), rowNo, ColumnPos.CT_EMAIL, emailData.get(Fields.CT_EMAIL))
+'Verify email details for second row'
+CustomKeywords.'actions.common.verifyEmailDetailsInTable'(emailData, rowNo)
 
 'Click on Edit icon for second row'
-CustomKeywords.'actions.table.clickCell'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/table_Emails'), rowNo, ColumnPos.CT_PHONE_EDITICON)
+CustomKeywords.'actions.table.clickCell'(emailTable, rowNo, ColumnPos.CT_PHONE_EDITICON)
 
 'Wait for Edit email task drawer to load'
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_Email'), GlobalVariable.TIMEOUT)
@@ -73,15 +66,8 @@ WebUI.verifyOptionSelectedByLabel(findTestObject('Dashboard Page/Customer and Ac
 'Verify email label'
 WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_EmailLabel'), 'value', emailData.get(Fields.CT_EMAIL_LABEL), GlobalVariable.TIMEOUT)
 
-//Enter updated values in field
-'Enter email'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_Email'), emailEdit.get(Fields.CT_EMAIL))
-
-'Select email type'
-WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/select_EmailType'), emailEdit.get(Fields.CT_EMAIL_TYPE), false)
-
-'Enter email label'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_EmailLabel'), emailEdit.get(Fields.CT_EMAIL_LABEL))
+'Enter updated values in field'
+CustomKeywords.'actions.common.emailFormFill'(emailEdit)
 
 'Scroll to submit button'
 WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/btn_Submit'), GlobalVariable.TIMEOUT)
@@ -94,17 +80,10 @@ CustomKeywords.'utils.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/
 
 'Wait for cell value to get updated in a selected row'
 //TODO: There is no success message displayed on completion of task.
-CustomKeywords.'actions.table.waitUntilCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/table_Emails'), rowNo, ColumnPos.CT_EMAIL_TYPE, emailEdit.get(Fields.CT_EMAIL_TYPE), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.table.waitUntilCellValueEquals'(emailTable, rowNo, ColumnPos.CT_EMAIL_TYPE, emailEdit.get(Fields.CT_EMAIL_TYPE), GlobalVariable.TIMEOUT)
 
-//Verify updated values in address table
-'Verify Phone Type'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/table_Emails'), rowNo, ColumnPos.CT_EMAIL_TYPE, emailEdit.get(Fields.CT_EMAIL_TYPE))
-
-'Verify Phone Label'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/table_Emails'), rowNo, ColumnPos.CT_EMAIL_LABEL, emailEdit.get(Fields.CT_EMAIL_LABEL))
-
-'Verify Phone Number'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/table_Emails'), rowNo, ColumnPos.CT_EMAIL, emailEdit.get(Fields.CT_EMAIL))
+'Verify updated values in email table'
+CustomKeywords.'actions.common.verifyEmailDetailsInTable'(emailEdit, rowNo)
 
 'Set data flag'
 emailEdit.put(Fields.IS_CREATED, 'true')
