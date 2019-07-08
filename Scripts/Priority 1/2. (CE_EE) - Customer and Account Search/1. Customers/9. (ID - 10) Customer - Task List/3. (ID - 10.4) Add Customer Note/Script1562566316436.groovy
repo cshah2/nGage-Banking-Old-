@@ -16,7 +16,6 @@ import constants.ColumnPos
 import constants.Data
 import constants.common
 import enums.Fields
-import enums.RegexOperator
 import internal.GlobalVariable as GlobalVariable
 import utils.DateUtil
 
@@ -45,11 +44,8 @@ CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Cus
 'Get Current rows count'
 int currentRowsCount = CustomKeywords.'actions.table.getRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Notes Tab/Notes section/table_Notes'))
 
-'Move to Add new note icon'
-CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Notes Tab/Notes section/icon_AddNote'))
-
-'Click on Add new note icon'
-CustomKeywords.'actions.javaScript.click'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Notes Tab/Notes section/icon_AddNote'))
+'Select Add Customer Note from Task list'
+CustomKeywords.'actions.common.selectTaskFromTaskList'('Add Customer Note')
 
 'Wait for Add Notes task drawer to load'
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Notes/input_Notes'), GlobalVariable.TIMEOUT)

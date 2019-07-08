@@ -118,9 +118,9 @@ public class table {
 		}
 		return locator
 	}
-	
+
 	private By clickElement() {
-		
+
 		By locator
 		switch(type) {
 			case WebTable.DEFAULT:
@@ -135,7 +135,7 @@ public class table {
 		}
 		return locator
 	}
-	
+
 	private By moreIcon() {
 		return By.xpath(".//span[contains(@class,fa-ellipsis-v)]")
 	}
@@ -229,7 +229,7 @@ public class table {
 
 		if(isRefreshed) {
 			KeywordUtil.markPassed("Table is refreshed")
-			WebUI.delay(1)
+			WebUI.delay(2)
 		}
 		else {
 			KeywordUtil.markFailedAndStop('Table is not refreshed withing given time')

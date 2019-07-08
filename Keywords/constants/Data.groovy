@@ -27,7 +27,7 @@ public class Data {
 		CUSTOMER_001.put(Fields.CUST_MARITAL_STATUS, 'Single')
 		CUSTOMER_001.put(Fields.CUST_NAME_VIEW, CUSTOMER_001.get(Fields.CUST_FIRST_NAME)+' '+CUSTOMER_001.get(Fields.CUST_LAST_NAME))
 
-		CUSTOMER_001.put(Fields.ADDR_STREET, DateUtil.getCurrentDateTime('dd MMMMM', common.timezone)+' Street')
+		CUSTOMER_001.put(Fields.ADDR_STREET, DateUtil.getCurrentDateTime('dd MMMM', common.timezone)+' Street')
 		CUSTOMER_001.put(Fields.ADDR_CITY, 'Philadelphia')
 		CUSTOMER_001.put(Fields.ADDR_COUNTY, 'United States of America')
 		CUSTOMER_001.put(Fields.ADDR_STATE, 'Pennsylvania')
@@ -52,7 +52,7 @@ public class Data {
 	public static final Map<Fields, String> CUSTOMER_001_ADDRESS2;
 	static {
 		CUSTOMER_001_ADDRESS2 = new HashMap<Fields, String>()
-		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_STREET, DateUtil.getCurrentDateTime('dd MMMMM', common.timezone)+' Street')
+		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_STREET, DateUtil.getCurrentDateTime('dd MMMM', common.timezone)+' Street')
 		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_CITY, 'Austin')
 		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_COUNTY, 'United States of America')
 		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_STATE, 'Texas')
@@ -66,7 +66,7 @@ public class Data {
 	public static final Map<Fields, String> CUSTOMER_001_ADDRESS2_EDIT;
 	static {
 		CUSTOMER_001_ADDRESS2_EDIT = new HashMap<Fields, String>()
-		CUSTOMER_001_ADDRESS2_EDIT.put(Fields.ADDR_STREET, DateUtil.getCurrentDateTime('dd MMMMM', common.timezone)+' Street Change')
+		CUSTOMER_001_ADDRESS2_EDIT.put(Fields.ADDR_STREET, DateUtil.getCurrentDateTime('dd MMMM', common.timezone)+' Street Change')
 		CUSTOMER_001_ADDRESS2_EDIT.put(Fields.ADDR_CITY, 'Phoenix')
 		CUSTOMER_001_ADDRESS2_EDIT.put(Fields.ADDR_COUNTY, 'United States of America')
 		CUSTOMER_001_ADDRESS2_EDIT.put(Fields.ADDR_STATE, 'Arizona')
@@ -143,6 +143,20 @@ public class Data {
 		CUSTOMER_001_DOCUMENT1_EDIT.put(Fields.IS_CREATED, 'false')
 	}
 
+	public static final Map<Fields, String> CUSTOMER_001_DOCUMENT2;
+	static {
+		CUSTOMER_001_DOCUMENT2 = new HashMap<Fields, String>()
+		CUSTOMER_001_DOCUMENT2.put(Fields.DOCUMENT_FILEPATH, RunConfiguration.getProjectDir().replace('/', '\\')+'\\Data Files\\UploadFiles\\CustomerDocument-AddressUpdate.pdf')
+		CUSTOMER_001_DOCUMENT2.put(Fields.DOCUMENT_CLASS, 'Customer Notices')
+		CUSTOMER_001_DOCUMENT2.put(Fields.DOCUMENT_TYPE, 'Notice of Change of Address')
+		CUSTOMER_001_DOCUMENT2.put(Fields.DOCUMENT_START_DATE, DateUtil.getCurrentDateTime(common.dateFormat, common.timezone))
+		CUSTOMER_001_DOCUMENT2.put(Fields.DOCUMENT_END_DATE, DateUtil.getCurrentDateTime(common.dateFormat, common.timezone))
+		CUSTOMER_001_DOCUMENT2.put(Fields.DOCUMENT_RECEIVED_DATE, DateUtil.getCurrentDateTime(common.dateFormat, common.timezone))
+		CUSTOMER_001_DOCUMENT2.put(Fields.DOCUMENT_STATUS, 'New')
+		CUSTOMER_001_DOCUMENT2.put(Fields.DOCUMENT_DESCRIPTION, 'This is customer notice for change of address')
+		CUSTOMER_001_DOCUMENT2.put(Fields.DOCUMENT_TITLE, CUSTOMER_001_DOCUMENT2.get(Fields.DOCUMENT_TYPE)+' Cust # '+CUSTOMER_001.get(Fields.CUST_CUSTOMER_ID)+' - Recvd '+CUSTOMER_001_DOCUMENT2.get(Fields.DOCUMENT_RECEIVED_DATE))
+		CUSTOMER_001_DOCUMENT2.put(Fields.IS_CREATED, 'false')
+	}
 
 
 
@@ -163,7 +177,7 @@ public class Data {
 		CUSTOMER_002.put(Fields.CUST_MARITAL_STATUS, 'Married')
 		CUSTOMER_002.put(Fields.CUST_NAME_VIEW, CUSTOMER_002.get(Fields.CUST_FIRST_NAME)+' '+CUSTOMER_002.get(Fields.CUST_LAST_NAME))
 
-		CUSTOMER_002.put(Fields.ADDR_STREET, DateUtil.getCurrentDateTime('dd MMMMM', common.timezone)+' Street')
+		CUSTOMER_002.put(Fields.ADDR_STREET, DateUtil.getCurrentDateTime('dd MMMM', common.timezone)+' Street')
 		CUSTOMER_002.put(Fields.ADDR_CITY, 'Philadelphia')
 		CUSTOMER_002.put(Fields.ADDR_COUNTY, 'United States of America')
 		CUSTOMER_002.put(Fields.ADDR_STATE, 'Pennsylvania')

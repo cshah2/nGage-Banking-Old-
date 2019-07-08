@@ -12,15 +12,13 @@ import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
-import constants.ColumnPos
 import constants.Data
 import enums.Fields
 import enums.WebTable
 import internal.GlobalVariable as GlobalVariable
-import utils.DateUtil
 
 Map<Fields, String> custData = Data.CUSTOMER_001
-Map<Fields, String> docData = Data.CUSTOMER_001_DOCUMENT1
+Map<Fields, String> docData = Data.CUSTOMER_001_DOCUMENT2
 println "Customer001 = "+custData.toMapString()
 println "Customer001 Document = "+docData.toMapString()
 
@@ -46,11 +44,8 @@ CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Cus
 int rowCount = CustomKeywords.'actions.table.getRecordsCount'(docTable, WebTable.DOCUMENT)
 println "Current rows count = "+rowCount
 
-'Move to Add new document icon'
-CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Documents Tab/Documents Section/icon_AddNewDocument'))
-
-'Click on Add new document icon'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Documents Tab/Documents Section/icon_AddNewDocument'))
+'Select task Add Customer Document from task list'
+CustomKeywords.'actions.common.selectTaskFromTaskList'('Add Customer Document')
 
 'Fill document details in task drawer'
 CustomKeywords.'actions.common.documentFormFill'(docData)
@@ -72,6 +67,3 @@ int rowNo = 1 //TODO: Document gets added to the top row instead of bottom (unli
 
 'Verify document details in table'
 CustomKeywords.'actions.common.verifyDocumentDetailsInTable'(docData, custData, rowNo)
-
-'Set data flag'
-docData.put(Fields.IS_CREATED, 'true')

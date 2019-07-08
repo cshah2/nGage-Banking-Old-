@@ -130,4 +130,16 @@
       <isRun>true</isRun>
       <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/1. (ID - 11) Account/2. (ID - 11.2) Validate accounts tab populated</testCaseId>
    </testCaseLink>
+   <testCaseLink>
+      <guid>fbb5b8fb-20fb-4b8c-8c93-c215567cf7c3</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/1. Customers/9. (ID - 10) Customer - Task List/2. (ID - 10.3) Add Customer Document</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>9fa86a66-cb60-4485-897f-06363d699047</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/1. Customers/9. (ID - 10) Customer - Task List/3. (ID - 10.4) Add Customer Note</testCaseId>
+   </testCaseLink>
 </TestSuiteEntity>

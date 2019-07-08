@@ -23,6 +23,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import constants.ColumnPos
 import enums.Fields
 import enums.RegexOperator
+import enums.WebTable
 import internal.GlobalVariable
 import utils.RegexUtil
 
@@ -38,6 +39,7 @@ public class common {
 	TestObject addressTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/table_Addresses')
 	TestObject phoneTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/table_Phones')
 	TestObject emailTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/table_Emails')
+	TestObject documentTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Documents Tab/Documents Section/table_Documents')
 	
 	//Open browser if not already opened
 	private void openBrowser() {
@@ -56,21 +58,42 @@ public class common {
 		TestObject passwordField	= findTestObject('Login Page/input_Password')
 		TestObject loginButton 		= findTestObject('Login Page/btn_Login')
 		TestObject loginPageHeader 	= findTestObject('Login Page/lbl_Heading')
-
-		openBrowser()
-		WebUI.deleteAllCookies()
-		WebUI.navigateToUrl(loginUrl)
-		String currentUrl = WebUI.getUrl()
-
-		//Check if User is on Login page or not
-		if(currentUrl.contains('Login.aspx') || currentUrl.contains('NoPermission.aspx')) {
-
-			WebUI.verifyElementVisible(loginPageHeader)
-			WebUI.sendKeys(usernameField, username)
-			WebUI.sendKeys(passwordField, password)
-			WebUI.click(loginButton)
+		int loginAttempt = 1
+		boolean isLoginSuccess = false
+		
+		while (loginAttempt <= 3) {
+			openBrowser()
+			WebUI.deleteAllCookies()
+			WebUI.navigateToUrl(loginUrl)
+			String currentUrl = WebUI.getUrl()
+	
+			//Check if User is on Login page or not
+			if(currentUrl.contains('Login.aspx') || currentUrl.contains('NoPermission.aspx')) {
+	
+				WebUI.delay(2)
+				WebUI.verifyElementVisible(loginPageHeader)
+				WebUI.setText(usernameField, username)
+				WebUI.setText(passwordField, password)
+				WebUI.click(loginButton)
+				WebUI.verifyMatch(WebUI.getUrl(), dashboardUrl, false)
+				isLoginSuccess = true
+				break
+			}
+			else if(currentUrl.equalsIgnoreCase(dashboardUrl)){
+				isLoginSuccess = true
+				break
+			}
+			else {
+				println "Unable to perform login step. Current URL is "+currentUrl
+				loginAttempt++
+				WebUI.closeBrowser()
+				continue
+			}
 		}
-		WebUI.verifyMatch(WebUI.getUrl(), dashboardUrl, false)
+		if(!isLoginSuccess) {
+			WebUI.takeScreenshot()
+			KeywordUtil.markFailedAndStop('Unable to login into portal exception occurred')
+		}
 	}
 
 	@Keyword
@@ -499,120 +522,120 @@ public class common {
 
 	@Keyword
 	def addressFormFill(Map<Fields, String> addressData) {
-		
+
 		'Wait for Add address task drawer to load'
 		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Street'), GlobalVariable.TIMEOUT)
-		
+
 		'Enter street'
 		if(isValidData(addressData, Fields.ADDR_STREET)) {
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Street'), addressData.get(Fields.ADDR_STREET))
 		}
-		
+
 		'Enter city'
 		if(isValidData(addressData, Fields.ADDR_CITY)) {
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_City'), addressData.get(Fields.ADDR_CITY))
 		}
-		
+
 		'Select state'
 		if(isValidData(addressData, Fields.ADDR_STATE)) {
 			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/select_State'), addressData.get(Fields.ADDR_STATE), false)
 		}
-		
+
 		'Enter Zipcode'
 		if(isValidData(addressData, Fields.ADDR_ZIPCODE)) {
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Zipcode'), addressData.get(Fields.ADDR_ZIPCODE))
 		}
-		
+
 		'Select country'
 		if(isValidData(addressData, Fields.ADDR_COUNTY)) {
 			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/select_Country'), addressData.get(Fields.ADDR_COUNTY), false)
 		}
-		
+
 		'Select address type'
 		if(isValidData(addressData, Fields.ADDR_ADDRESS_TYPE)) {
 			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/select_AddressType'), addressData.get(Fields.ADDR_ADDRESS_TYPE), false)
 		}
-		
+
 		'Enter address label'
 		if(isValidData(addressData, Fields.ADDR_ADDRESS_LABEL)) {
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_AddressLabel'), addressData.get(Fields.ADDR_ADDRESS_LABEL))
 		}
 	}
-	
+
 	@Keyword
 	def verifyAddressDetailsInTable(Map<Fields, String> addressData, int rowNo) {
-		
+
 		'Verify Address Type'
 		if(isValidData(addressData, Fields.ADDR_ADDRESS_TYPE)) {
 			new actions.table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_ADDRESS_TYPE, addressData.get(Fields.ADDR_ADDRESS_TYPE))
 		}
-		
+
 		'Verify Address Label'
 		if(isValidData(addressData, Fields.ADDR_ADDRESS_LABEL)) {
 			new actions.table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_ADDRESS_LABEL, addressData.get(Fields.ADDR_ADDRESS_LABEL))
 		}
-		
+
 		'Verify Address Street'
 		if(isValidData(addressData, Fields.ADDR_STREET)) {
 			new actions.table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_STREET, addressData.get(Fields.ADDR_STREET))
 		}
-		
+
 		'Verify Address City'
 		if(isValidData(addressData, Fields.ADDR_CITY)) {
 			new actions.table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_CITY, addressData.get(Fields.ADDR_CITY))
 		}
-		
+
 		'Verify Address Country'
 		if(isValidData(addressData, Fields.ADDR_COUNTY)) {
 			new actions.table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_COUNTY, addressData.get(Fields.ADDR_COUNTY))
 		}
-		
+
 		'Verify Address State'
 		if(isValidData(addressData, Fields.ADDR_STATE)) {
 			new actions.table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_STATE, addressData.get(Fields.ADDR_STATE))
 		}
-		
+
 		'Verify Address Zipcode'
 		if(isValidData(addressData, Fields.ADDR_ZIPCODE)) {
 			new actions.table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_ZIPCODE, addressData.get(Fields.ADDR_ZIPCODE))
 		}
 	}
-	
+
 	@Keyword
 	def phoneFormFill(Map<Fields, String> phoneData) {
-		
+
 		'Wait for Add Phones task drawer to load'
 		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/input_PhoneLabel'), GlobalVariable.TIMEOUT)
-		
+
 		'Enter phone number'
 		if(isValidData(phoneData, Fields.CT_PHONE_NUMBER)) {
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/input_PhoneNumber'), phoneData.get(Fields.CT_PHONE_NUMBER))
 		}
-		
+
 		'Select phone type'
 		if(isValidData(phoneData, Fields.CT_PHONE_TYPE)) {
 			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/select_PhoneType'), phoneData.get(Fields.CT_PHONE_TYPE), false)
 		}
-		
+
 		'Enter phone label'
 		if(isValidData(phoneData, Fields.CT_PHONE_LABEL)) {
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/input_PhoneLabel'), phoneData.get(Fields.CT_PHONE_LABEL))
 		}
 	}
-	
+
 	@Keyword
 	def verifyPhoneDetailsInTable(Map<Fields, String> phoneData, int rowNo) {
-		
+
 		'Verify Phone Type'
 		if(isValidData(phoneData, Fields.CT_PHONE_TYPE)) {
 			new actions.table().verifyCellValueEquals(phoneTable, rowNo, ColumnPos.CT_PHONE_TYPE, phoneData.get(Fields.CT_PHONE_TYPE))
 		}
-		
+
 		'Verify Phone Label'
 		if(isValidData(phoneData, Fields.CT_PHONE_LABEL)) {
 			new actions.table().verifyCellValueEquals(phoneTable, rowNo, ColumnPos.CT_PHONE_LABEL, phoneData.get(Fields.CT_PHONE_LABEL))
 		}
-		
+
 		'Verify Phone Number'
 		if(isValidData(phoneData, Fields.CT_PHONE_NUMBER)) {
 			new actions.table().verifyCellValueEquals(phoneTable, rowNo, ColumnPos.CT_PHONE_NUMBER, phoneData.get(Fields.CT_PHONE_NUMBER))
@@ -621,7 +644,7 @@ public class common {
 
 	@Keyword
 	def emailFormFill(Map<Fields, String> emailData) {
-		
+
 		'Wait for Add email task drawer to load'
 		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_Email'), GlobalVariable.TIMEOUT)
 
@@ -640,23 +663,116 @@ public class common {
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_EmailLabel'), emailData.get(Fields.CT_EMAIL_LABEL))
 		}
 	}
-	
+
 	@Keyword
 	def verifyEmailDetailsInTable(Map<Fields, String> emailData, int rowNo) {
-		
+
 		'Verify Email Type'
 		if(isValidData(emailData, Fields.CT_EMAIL_TYPE)) {
 			new actions.table().verifyCellValueEquals(emailTable, rowNo, ColumnPos.CT_EMAIL_TYPE, emailData.get(Fields.CT_EMAIL_TYPE))
 		}
-		
+
 		'Verify Email Label'
 		if(isValidData(emailData, Fields.CT_EMAIL_LABEL)) {
 			new actions.table().verifyCellValueEquals(emailTable, rowNo, ColumnPos.CT_EMAIL_LABEL, emailData.get(Fields.CT_EMAIL_LABEL))
 		}
-		
+
 		'Verify Email'
 		if(isValidData(emailData, Fields.CT_EMAIL)) {
 			new actions.table().verifyCellValueEquals(emailTable, rowNo, ColumnPos.CT_EMAIL, emailData.get(Fields.CT_EMAIL))
 		}
+	}
+
+	@Keyword
+	def documentFormFill(Map<Fields, String> documentData) {
+
+		'Wait for Task drawer to load'
+		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/select_DocClass'), GlobalVariable.TIMEOUT)
+
+		'Upload file'
+		//CustomKeywords.'actions.File.upload'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_FileUpload'), docData.get(Fields.DOCUMENT_FILEPATH))
+		new actions.File().uploadAutoIt(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_FileUpload'), documentData.get(Fields.DOCUMENT_FILEPATH))
+
+		'Wait for Uploaded file name to be visible'
+		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/lbl_FileNameAfterUpload'), GlobalVariable.TIMEOUT)
+
+		'Select doc class'
+		if(isValidData(documentData, Fields.DOCUMENT_CLASS)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/select_DocClass'), documentData.get(Fields.DOCUMENT_CLASS), false)
+		}
+
+		'Wait for doc type field to be editable'
+		new utils.WaitFor().elementClickable(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/select_DocType'), GlobalVariable.TIMEOUT)
+
+		'Select doc type'
+		if(isValidData(documentData, Fields.DOCUMENT_TYPE)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/select_DocType'), documentData.get(Fields.DOCUMENT_TYPE), false)
+		}
+
+		'Enter start date'
+		if(isValidData(documentData, Fields.DOCUMENT_START_DATE)) {
+			new actions.javaScript().setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_StartDate'), documentData.get(Fields.DOCUMENT_START_DATE))
+		}
+
+		'Enter end date'
+		if(isValidData(documentData, Fields.DOCUMENT_END_DATE)) {
+			new actions.javaScript().setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_EndDate'), documentData.get(Fields.DOCUMENT_END_DATE))
+		}
+
+		'Enter received date'
+		if(isValidData(documentData, Fields.DOCUMENT_RECEIVED_DATE)) {
+			new actions.javaScript().setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_ReceivedDate'), documentData.get(Fields.DOCUMENT_RECEIVED_DATE))
+		}
+
+		'Select status'
+		if(isValidData(documentData, Fields.DOCUMENT_STATUS)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/select_Status'), documentData.get(Fields.DOCUMENT_STATUS), false)
+		}
+
+		'Enter description'
+		if(isValidData(documentData, Fields.DOCUMENT_DESCRIPTION)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_Description'), documentData.get(Fields.DOCUMENT_DESCRIPTION))
+		}
+	}
+
+	@Keyword
+	def verifyDocumentDetailsInTable(Map<Fields, String> documentData, Map<Fields, String> customerData, int rowNo) {
+
+		'Verify Doc Class value'
+		new actions.table().verifyCellValueEquals(documentTable, rowNo, ColumnPos.DOCUMENT_CLASS, documentData.get(Fields.DOCUMENT_CLASS), WebTable.DOCUMENT)
+
+		'Verify Doc Type value'
+		new actions.table().verifyCellValueEquals(documentTable, rowNo, ColumnPos.DOCUMENT_TYPE, documentData.get(Fields.DOCUMENT_TYPE), WebTable.DOCUMENT)
+
+		'Verify Doc description value'
+		new actions.table().verifyCellValueEquals(documentTable, rowNo, ColumnPos.DOCUMENT_DESCRIPTION, documentData.get(Fields.DOCUMENT_DESCRIPTION), WebTable.DOCUMENT)
+
+		'Verify Customer ID value'
+		new actions.table().verifyCellValueEquals(documentTable, rowNo, ColumnPos.DOCUMENT_CUSTOMER_ID, customerData.get(Fields.CUST_CUSTOMER_ID), WebTable.DOCUMENT)
+
+		'Verify Status value'
+		new actions.table().verifyCellValueEquals(documentTable, rowNo, ColumnPos.DOCUMENT_STATUS, documentData.get(Fields.DOCUMENT_STATUS), WebTable.DOCUMENT)
+
+	}
+
+	@Keyword
+	def selectTaskFromTaskList(String taskName) {
+
+		'Scroll to Tasks button'
+		moveToElement(findTestObject('Dashboard Page/Customer and Account Search Page/TaskList Drawer/btn_Tasks'))
+
+		'Select Tasks button'
+		WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/TaskList Drawer/btn_Tasks'))
+
+		'Wait for task drawer to load'
+		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/TaskList Drawer/section_TaskLists'), GlobalVariable.TIMEOUT)
+
+		TestObject taskItem = findTestObject('Dashboard Page/Customer and Account Search Page/TaskList Drawer/btn_TaskItem', , ['taskName' : taskName])
+
+		'Scroll to Task Item'
+		moveToElement(taskItem)
+
+		'Click on Task Item'
+		WebUI.click(taskItem)
 	}
 }

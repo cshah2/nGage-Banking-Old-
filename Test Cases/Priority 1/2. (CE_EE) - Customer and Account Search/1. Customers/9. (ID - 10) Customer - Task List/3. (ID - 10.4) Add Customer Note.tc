@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Add Customer Note</description>
+   <name>3. (ID - 10.4) Add Customer Note</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>0f4bfbf6-8550-4afb-9cad-ce91554c52dd</testCaseGuid>
+</TestCaseEntity>
