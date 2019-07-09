@@ -36,8 +36,9 @@ public class ColumnPos {
 	public static int ACC_DESCRIPTION = 6
 	public static int ACC_POSITION_NAME = 7
 	public static int ACC_INTEREST_RATE = 8
-	public static int ACC_LEDGER_BALANCE = 9
-	public static int ACC_AVAILABLE_BALANCE = 10
+	public static int ACC_CURRENCY_CODE = 9
+	public static int ACC_LEDGER_BALANCE = 10
+	public static int ACC_AVAILABLE_BALANCE = 11
 
 	//Documents Table - Account Details page
 	public static int DOC_TYPE = 1
@@ -80,12 +81,12 @@ public class ColumnPos {
 	public static int CT_EMAIL_VERIFIED_DATE = 6
 	public static int CT_EMAIL_PREFERRED = 7
 	public static int CT_EMAIL_EDITICON = 8
-	
+
 	//Customer Notes - Notes tab - Customer Details Page
 	public static int NOTE_TEXT = 1
 	public static int NOTE_CREATED_BY = 2
 	public static int NOTE_CREATED_DATE = 3
-	
+
 	//Customer Documents - Documents tab - Customer Details Page
 	public static int DOCUMENT_ICON = 1
 	public static int DOCUMENT_ICON2 = 2
@@ -97,5 +98,5 @@ public class ColumnPos {
 	public static int DOCUMENT_CREATED_BY = 8
 	public static int DOCUMENT_STATUS= 9
 
-	
+
 }
