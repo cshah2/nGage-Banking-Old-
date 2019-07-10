@@ -13,6 +13,7 @@ TASKKILL /F /IM CHROMEDRIVER.EXE /T
 set PRJ_PATH=%NGAGE_PROJECTS%\nGage-Banking\nGage-Banking.prj
 set TEST_SUITE=Test Suites/PRIORITY_1
 set BROWSER=Chrome
+set API_KEY=f0588a0f-a994-4ff5-a41f-76b34822b760
 
 ::-------------------------------------------------------------------------
 ::------------------ Select Execution profile from User -------------------
@@ -46,7 +47,7 @@ set EXECUTE_PROFILE=SavEE_SIT
 goto EXECUTE_CMD
 
 :EXECUTE_CMD
-CALL cmd /c start katalon -noSplash  -runMode=console -consoleLog -projectPath="%PRJ_PATH%" -statusDelay=60 -retry=0 -testSuitePath="%TEST_SUITE%" -executionProfile="%EXECUTE_PROFILE%" -browserType="%BROWSER%" -summaryReport -sendMail="iangjeli@savanainc.com"
+CALL cmd /c start katalon -noSplash  -runMode=console -consoleLog -projectPath="%PRJ_PATH%" -statusDelay=60 -retry=0 -testSuitePath="%TEST_SUITE%" -executionProfile="%EXECUTE_PROFILE%" -browserType="%BROWSER%" -summaryReport -apiKey=%API_KEY%
 goto END
 
 :END

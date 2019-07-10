@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
-   <description>Validate Tenant name value in connctedTo field</description>
+   <description>(ID - 1.3) Outsystems tenant check</description>
    <name>3. (ID - 1.3) Outsystems tenant check</name>
    <tag></tag>
    <comment></comment>

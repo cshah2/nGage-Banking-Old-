@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
-   <description>Validate correct TABS are loaded on account details page for CE and EE portal.</description>
+   <description>(ID - 11.2) Validate accounts tab populated</description>
    <name>2. (ID - 11.2) Validate accounts tab populated</name>
    <tag></tag>
    <comment></comment>

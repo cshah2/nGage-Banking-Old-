@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
-   <description>Validate user is able to view existing account and add new account to a customer.</description>
+   <description>(ID - 4.1) Validate Customer Accounts populate and account can be added</description>
    <name>1. (ID - 4.1) Validate Customer Accounts populate and account can be added</name>
    <tag></tag>
    <comment></comment>

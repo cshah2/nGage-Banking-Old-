@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
-   <description>Validate finxact version value is not empty.</description>
+   <description>(ID - 1.2) Finxact Version check</description>
    <name>2. (ID - 1.2) Finxact Version check</name>
    <tag></tag>
    <comment></comment>

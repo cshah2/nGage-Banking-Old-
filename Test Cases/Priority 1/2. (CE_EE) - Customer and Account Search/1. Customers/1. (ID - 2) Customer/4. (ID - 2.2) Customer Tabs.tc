@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
-   <description>Validate corrects TABS are visible in customer details page for CE and EE portal.</description>
+   <description>(ID - 2.2) Customer Tabs</description>
    <name>4. (ID - 2.2) Customer Tabs</name>
    <tag></tag>
    <comment></comment>

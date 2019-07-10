@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
-   <description>Validate user is able to search existing customer based on provided filter criterias.</description>
+   <description>(ID - 2.1) Customer Search</description>
    <name>3. (ID - 2.1) Customer Search</name>
    <tag></tag>
    <comment></comment>

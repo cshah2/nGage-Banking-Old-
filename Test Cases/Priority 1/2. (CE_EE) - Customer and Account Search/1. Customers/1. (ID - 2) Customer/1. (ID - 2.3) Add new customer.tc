@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
-   <description>Validate user is able to add new customer (without account details)</description>
+   <description>(ID - 2.3) Add new customer</description>
    <name>1. (ID - 2.3) Add new customer</name>
    <tag></tag>
    <comment></comment>
