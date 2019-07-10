@@ -47,7 +47,7 @@ set EXECUTE_PROFILE=SavEE_SIT
 goto EXECUTE_CMD
 
 :EXECUTE_CMD
-CALL cmd /c start katalon -noSplash  -runMode=console -consoleLog -projectPath="%PRJ_PATH%" -statusDelay=60 -retry=0 -testSuitePath="%TEST_SUITE%" -executionProfile="%EXECUTE_PROFILE%" -browserType="%BROWSER%" -summaryReport -apiKey=%API_KEY%
+CALL cmd /c start katalon -noSplash  -runMode=console -consoleLog -projectPath="%PRJ_PATH%" -statusDelay=60 -retry=0 -testSuitePath="%TEST_SUITE%" -executionProfile="%EXECUTE_PROFILE%" -browserType="%BROWSER%" -summaryReport -sendMail="iangjeli@savanainc.com" -apiKey=%API_KEY%
 goto END
 
 :END
