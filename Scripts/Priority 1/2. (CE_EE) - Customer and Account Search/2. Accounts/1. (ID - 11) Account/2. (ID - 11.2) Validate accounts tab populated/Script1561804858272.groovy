@@ -42,6 +42,9 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Acco
 'Wait for Overview tab to be visible'
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Overview Tab/Holds Section/section_Body'), GlobalVariable.TIMEOUT)
 
+'Wait for a second'
+WebUI.delay(1)
+
 'Move to Details tab'
 CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Details'))
 
@@ -50,6 +53,9 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Acco
 
 'Wait Details tab to be visible'
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Account Details Section/section_AccountDetails'), GlobalVariable.TIMEOUT)
+
+'Wait for a second'
+WebUI.delay(1)
 
 'Move to Transaction tab'
 CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Transactions'))
@@ -60,6 +66,9 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Acco
 'Wait for Transactions tab to load'
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Transaction Tab/Transactions Section/section_Body'), GlobalVariable.TIMEOUT)
 
+'Wait for a second'
+WebUI.delay(1)
+
 'Move to Interests tab'
 CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Interest'))
 
@@ -68,6 +77,9 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Acco
 
 'Wait for Interest tab to load'
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Interest Tab/Interest Posting and Withholding/section_Body'), GlobalVariable.TIMEOUT)
+
+'Wait for a second'
+WebUI.delay(1)
 
 'Move to Holds tab'
 CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Holds'))
@@ -78,6 +90,9 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Acco
 'Wait for Holds tab to load'
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Holds Tab/Holds Section/section_Body'), GlobalVariable.TIMEOUT)
 
+'Wait for a second'
+WebUI.delay(1)
+
 'Move to Orders tab'
 CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Orders'))
 
@@ -86,6 +101,9 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Acco
 
 'Wait for Orders tab to load'
 CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Orders Tab/Orders Section/section_Body'), GlobalVariable.TIMEOUT)
+
+'Wait for a second'
+WebUI.delay(1)
 
 if('EE'.equalsIgnoreCase(GlobalVariable.ENVIRONMENT)) {
 	'Move to Notes tab'
@@ -97,6 +115,9 @@ if('EE'.equalsIgnoreCase(GlobalVariable.ENVIRONMENT)) {
 	'Wait for Notes tab to load'
 	CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Notest Tab/Notes Section/section_Body'), GlobalVariable.TIMEOUT)
 
+	'Wait for a second'
+	WebUI.delay(1)
+	
 	'Move to Documents tab'
 	CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Documents'))
 
@@ -106,6 +127,9 @@ if('EE'.equalsIgnoreCase(GlobalVariable.ENVIRONMENT)) {
 	'Wait for Documents tab to load'
 	CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Documents Tab/Documents Section/section_Body'), GlobalVariable.TIMEOUT)
 
+	'Wait for a second'
+	WebUI.delay(1)
+	
 	'Move to Cases tab'
 	CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Cases'))
 
@@ -114,4 +138,7 @@ if('EE'.equalsIgnoreCase(GlobalVariable.ENVIRONMENT)) {
 	
 	'Wait for Cases tab to load'
 	CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Cases Tab/Cases Section/tab_OpenCases'), GlobalVariable.TIMEOUT)
+	
+	'Wait for a second'
+	WebUI.delay(1)
 }
