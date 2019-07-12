@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>btn_TaskItem</name>
+   <name>lbl_MessageWrapper</name>
    <tag></tag>
-   <elementGuidId>b0d27c54-e08d-4d61-b318-49fa78a989db</elementGuidId>
+   <elementGuidId>3fc2fe9f-49d6-4a9a-b50c-c1eaf1d70949</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//span[contains(@id,'_wtTaskListRecord')]/div[@class='LinkItem']//*[text()='${taskName}']</value>
+         <value></value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>div[class='Feedback_Message_Wrapper']</value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

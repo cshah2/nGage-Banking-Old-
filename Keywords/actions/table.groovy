@@ -39,13 +39,13 @@ public class table {
 		By locator
 		switch(type) {
 			case WebTable.DEFAULT:
-				locator = By.xpath(".//tbody/tr")
+				locator = By.xpath(".//tbody/tr[not(contains(@class,'TableRowExpandable'))]")
 				break
 			case WebTable.DOCUMENT:
 				locator = By.xpath(".//div[@class='bodyRow']/span/div")
 				break
 			Default:
-				locator = By.xpath(".//tbody/tr")
+				locator = By.xpath(".//tbody/tr[not(contains(@class,'TableRowExpandable'))]")
 				break
 		}
 		return locator
@@ -56,7 +56,7 @@ public class table {
 		By locator
 		switch(type) {
 			case WebTable.DEFAULT:
-				locator = By.xpath(".//tbody/tr["+rowNo+"]")
+				locator = By.xpath(".//tbody/tr[not(contains(@class,'TableRowExpandable'))]["+rowNo+"]")
 				break
 			case WebTable.DOCUMENT:
 				locator = By.xpath(".//div[@class='bodyRow']/span/div["+rowNo+"]")
@@ -107,13 +107,13 @@ public class table {
 		By locator
 		switch(type) {
 			case WebTable.DEFAULT:
-				locator = By.xpath(".//tbody/tr/td["+colNo+"]")
+				locator = By.xpath(".//tbody/tr[not(contains(@class,'TableRowExpandable'))]/td["+colNo+"]")
 				break
 			case WebTable.DOCUMENT:
 				locator = By.xpath(".//div[@class='bodyRow']/span/div//div[contains(@class,'cell OSInline')]["+colNo+"]")
 				break
 			Default:
-				locator = By.xpath(".//tbody/tr/td["+colNo+"]")
+				locator = By.xpath(".//tbody/tr[not(contains(@class,'TableRowExpandable'))]/td["+colNo+"]")
 				break
 		}
 		return locator
@@ -202,6 +202,7 @@ public class table {
 
 		int actRowsCount = -1
 		println "Actual records count = "+actRowsCount
+		println "Expected records count = "+expRowsCount
 
 		boolean isRefreshed = false
 
@@ -214,6 +215,7 @@ public class table {
 			catch(Exception e) {
 				println "Exception occurred while fetching records count"+e.toString()
 				WebUI.delay(2)
+				currentTime = System.currentTimeMillis()
 				continue
 			}
 
@@ -223,6 +225,7 @@ public class table {
 			}
 			else {
 				WebUI.delay(2)
+				currentTime = System.currentTimeMillis()
 				continue
 			}
 		}
@@ -678,6 +681,37 @@ public class table {
 
 		if(isMatchFound) {
 			KeywordUtil.markPassed("value "+expText+" found in column at row no "+rowNo)
+		}
+		else {
+			WebUI.takeScreenshot()
+			KeywordUtil.markFailed("value "+expText+" not found in column")
+		}
+	}
+
+	@Keyword
+	def getRowNumber(TestObject to, int colNo, String expText, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
+
+		List<String> cellsText = getAllTextFromColumn(to, colNo)
+
+		boolean isMatchFound = false
+		int rowNo = 1
+		for(String cellText in cellsText) {
+			try {
+				WebUI.verifyMatch(cellText, RegexUtil.formRegexString(expText, RegexOperator.EQUALS), true)
+				isMatchFound = true
+				break
+			}
+			catch(Exception e) {
+				rowNo++;
+				println e.toString()
+			}
+		}
+
+		if(isMatchFound) {
+			return rowNo
 		}
 		else {
 			WebUI.takeScreenshot()

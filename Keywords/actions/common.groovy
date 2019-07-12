@@ -21,6 +21,7 @@ import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import constants.ColumnPos
+import enums.ErrorType
 import enums.Fields
 import enums.RegexOperator
 import enums.WebTable
@@ -40,7 +41,7 @@ public class common {
 	TestObject phoneTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/table_Phones')
 	TestObject emailTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/table_Emails')
 	TestObject documentTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Documents Tab/Documents Section/table_Documents')
-	
+
 	//Open browser if not already opened
 	private void openBrowser() {
 		try {
@@ -60,16 +61,16 @@ public class common {
 		TestObject loginPageHeader 	= findTestObject('Login Page/lbl_Heading')
 		int loginAttempt = 1
 		boolean isLoginSuccess = false
-		
+
 		while (loginAttempt <= 3) {
 			openBrowser()
 			WebUI.deleteAllCookies()
 			WebUI.navigateToUrl(loginUrl)
 			String currentUrl = WebUI.getUrl()
-	
+
 			//Check if User is on Login page or not
 			if(currentUrl.contains('Login.aspx') || currentUrl.contains('NoPermission.aspx')) {
-	
+
 				WebUI.delay(2)
 				WebUI.verifyElementVisible(loginPageHeader)
 				WebUI.setText(usernameField, username)
@@ -99,9 +100,11 @@ public class common {
 	@Keyword
 	def moveToElement(TestObject to) {
 
-		WebElement e = WebUiCommonHelper.findWebElement(to, GlobalVariable.TIMEOUT)
+		WebUI.waitForElementPresent(to, GlobalVariable.TIMEOUT)
 		new javaScript().scrollToElement(to)
+		WebUI.delay(1)
 
+		WebElement e = WebUiCommonHelper.findWebElement(to, GlobalVariable.TIMEOUT)
 		Actions asDriver = new Actions(DriverFactory.getWebDriver())
 		asDriver.moveToElement(e).build().perform()
 		WebUI.delay(1)
@@ -121,6 +124,13 @@ public class common {
 	def verifyElementTextContains(TestObject to, String expectedText) {
 
 		WebUI.verifyMatch(WebUI.getText(to).trim(), RegexUtil.formRegexString(expectedText, RegexOperator.CONTAINS), true)
+	}
+
+	@Keyword
+	def verifyMatch(TestObject to, String expText, RegexOperator operator) {
+		String actualText = WebUI.getText(to).trim()
+		println "Actual Text = "+actualText
+		WebUI.verifyMatch(actualText, RegexUtil.formRegexString(expText, operator), true)
 	}
 
 	@Keyword
@@ -488,24 +498,29 @@ public class common {
 		WebUI.delay(3) //TODO: Need to look for wait conditon
 		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_AccountsType'), GlobalVariable.TIMEOUT)
 
-		//Click on accounts type drop down
-		WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_AccountsType'))
+		String currentAccType = WebUI.getText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_AccountsType')).trim()
 
-		//Wait for Menus to be visible
-		WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_AccountsType_Option_Menu'), GlobalVariable.TIMEOUT)
+		String accType = accData.get(Fields.ACC_GROUP)
+		if(!currentAccType.equalsIgnoreCase(accType)) {
+			//Click on accounts type drop down
+			WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_AccountsType'))
 
-		if('Banking'.equalsIgnoreCase(accData.get(Fields.ACC_GROUP))) {
-			//Click on Banking option
-			WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_AccountsType_Option_Banking'))
+			//Wait for Menus to be visible
+			WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_AccountsType_Option_Menu'), GlobalVariable.TIMEOUT)
+
+			if('Banking'.equalsIgnoreCase(accType)) {
+				//Click on Banking option
+				WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_AccountsType_Option_Banking'))
+			}
+			else {
+				//Click on Multi- Position option
+				WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_AccountsType_Option_MultiPosition'))
+			}
+
+			//Wait for Account number input field to be visible
+			WebUI.delay(3) //TODO: Need to look for wait conditon
+			new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_AccountNumber'), GlobalVariable.TIMEOUT)
 		}
-		else {
-			//Click on Multi- Position option
-			WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_AccountsType_Option_MultiPosition'))
-		}
-
-		//Wait for Account number input field to be visible
-		WebUI.delay(3) //TODO: Need to look for wait conditon
-		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_AccountNumber'), GlobalVariable.TIMEOUT)
 
 		//Enter Search Criteria in account number field
 		WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_AccountNumber'), accData.get(Fields.ACC_NUMBER))
@@ -767,12 +782,160 @@ public class common {
 		'Wait for task drawer to load'
 		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/TaskList Drawer/section_TaskLists'), GlobalVariable.TIMEOUT)
 
-		TestObject taskItem = findTestObject('Dashboard Page/Customer and Account Search Page/TaskList Drawer/btn_TaskItem', , ['taskName' : taskName])
+		TestObject taskItem = findTestObject('Dashboard Page/Customer and Account Search Page/TaskList Drawer/btn_TaskItem', ['taskName' : taskName])
 
 		'Scroll to Task Item'
 		moveToElement(taskItem)
 
 		'Click on Task Item'
 		WebUI.click(taskItem)
+	}
+
+	@Keyword
+	def transactionFormFill(Map<Fields, String> txnData) {
+
+		'Wait for drawer to load'
+		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Post Transaction/select_TransactionCode'), GlobalVariable.TIMEOUT)
+
+		'Select transaction type'
+		WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Post Transaction/select_TransactionCode'), txnData.get(Fields.TXN_CODE), false)
+
+		'Wait for amount field to load'
+		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Post Transaction/input_Amount'), GlobalVariable.TIMEOUT)
+
+		'Enter amount'
+		if(isValidData(txnData, Fields.TXN_AMOUNT)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Post Transaction/input_Amount'), txnData.get(Fields.TXN_AMOUNT))
+		}
+
+		'Enter comments'
+		if(isValidData(txnData, Fields.TXN_COMMENT)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Post Transaction/input_Comment'), txnData.get(Fields.TXN_COMMENT))
+		}
+	}
+
+	@Keyword
+	def reviewTransactionDetails(Map<Fields, String> txnData) {
+
+		'Wait for drawer to load'
+		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Confirm Transaction/lbl_TransactionCode'), GlobalVariable.TIMEOUT)
+
+		'Verify Transaction code value'
+		String txnCode = txnData.get(Fields.TXN_CODE)
+		verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Confirm Transaction/lbl_TransactionCode'), txnData.get(Fields.TXN_CODE), RegexOperator.ENDS_WITH)
+
+		'Verify Transaction Amount'
+		verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Confirm Transaction/lbl_TransactionAmount'), txnData.get(Fields.TXN_AMOUNT_VIEW), RegexOperator.EQUALS)
+
+		'Store Transaction ID value'
+		String txnId = WebUI.getText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Confirm Transaction/lbl_TransactionId'))
+		println "Transction ID is "+txnId
+		txnData.put(Fields.TXN_ID, txnId)
+
+		'Verify Ledger balance before'
+		verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Confirm Transaction/lbl_LedgerBalanceBefore'), txnData.get(Fields.ACC_LEDGER_BALANCE_BEFORE), RegexOperator.EQUALS)
+
+		'Verify Ledger balance after'
+		verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Confirm Transaction/lbl_LedgerBalanceAfter'), txnData.get(Fields.ACC_LEDGER_BALANCE), RegexOperator.EQUALS)
+
+		'Verify Available balance before'
+		verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Confirm Transaction/lbl_AvailableBalanceBefore'), txnData.get(Fields.ACC_AVAILABLE_BALANCE_BEFORE), RegexOperator.EQUALS)
+
+		'Verify Available balance after'
+		verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Confirm Transaction/lbl_AvailableBalanceAfter'), txnData.get(Fields.ACC_AVAILABLE_BALANCE), RegexOperator.EQUALS)
+	}
+
+	@Keyword
+	def verifyFloatingMessage(String message, ErrorType errorType) {
+
+		'Wait for Message Wrapper to load'
+		new utils.WaitFor().elementVisible(findTestObject('Floating Message/lbl_MessageWrapper'), GlobalVariable.TIMEOUT)
+
+		'Wait for 2 seconds'
+		WebUI.delay(2)
+
+		'Wait for Message to load'
+		new utils.WaitFor().elementVisible(findTestObject('Floating Message/lbl_SuccessMessage'), GlobalVariable.TIMEOUT)
+
+		'Close Message'
+		WebUI.click(findTestObject('Floating Message/btn_Close'))
+	}
+
+	@Keyword
+	def verifyBalanceSummary(Map<Fields, String> txnData) {
+
+		'Verify ledger balance - balance summary section - overview tab'
+		WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Overview Tab/Balance Summary Section/lbl_LedgerBalance'), txnData.get(Fields.ACC_LEDGER_BALANCE))
+
+		'Verify hold balance - balance summary section - overview tab'
+		WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Overview Tab/Balance Summary Section/lbl_Holds'), txnData.get(Fields.ACC_HOLD_BALANCE))
+
+		'Verify avaialble balance - balance summary section - overview tab'
+		WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Overview Tab/Balance Summary Section/lbl_AvailableBalance'), txnData.get(Fields.ACC_AVAILABLE_BALANCE))
+	}
+
+	@Keyword
+	def verifyTransactionDetailsInTable(Map<Fields, String> txnData, TestObject table, int rowNo) {
+
+		'Verify transaction type - transaction table - overview tab'
+		new actions.table().verifyCellValueEquals(table, rowNo, ColumnPos.TXN_TYPE, txnData.get(Fields.TXN_CODE))
+
+		'Verify Credit amount - transaction table - overview tab'
+		if(isValidData(txnData, Fields.TXN_TYPE) && txnData.get(Fields.TXN_TYPE).equalsIgnoreCase('CREDIT')) {
+			new actions.table().verifyCellValueEquals(table, rowNo, ColumnPos.TXN_CREDIT, txnData.get(Fields.TXN_AMOUNT_VIEW))
+		}
+		else if(isValidData(txnData, Fields.TXN_TYPE) && txnData.get(Fields.TXN_TYPE).equalsIgnoreCase('DEBIT')) {
+			new actions.table().verifyCellValueEquals(table, rowNo, ColumnPos.TXN_DEBIT, txnData.get(Fields.TXN_AMOUNT_VIEW))
+		}
+		else {
+			KeywordUtil.markFailedAndStop('Credit or Debit indicator not provided to verify transaction details')
+		}
+
+		'Verify Comment - transaction table - overview tab'
+		new actions.table().verifyCellValueEquals(table, rowNo, ColumnPos.TXN_COMMENT, txnData.get(Fields.TXN_COMMENT))
+	}
+
+	@Keyword
+	def openTransactionInformationSection(TestObject table, int rowNo) {
+
+		'Verify Transaction Details'
+		new actions.table().clickCell(table, rowNo, ColumnPos.TXN_EXPAND_ICON)
+
+		'Wait for section to load'
+		TestObject accordionTranactionInfo = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Transaction Details Section/accordion',['accordionName' : 'Transaction Information'])
+		new utils.WaitFor().elementVisible(accordionTranactionInfo, GlobalVariable.TIMEOUT)
+
+		'Click on Accordion'
+		WebUI.click(accordionTranactionInfo)
+
+		'Wait for Transacion Information section to load'
+		TestObject fieldAccountNumber = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Transaction Details Section/Transaction Information/lbl_TransactionData', ['fieldName' : 'Account Number'])
+		new utils.WaitFor().elementVisible(fieldAccountNumber, GlobalVariable.TIMEOUT)
+	}
+
+
+	@Keyword
+	def verifyTransactionInformationInAccordion(Map<Fields, String> accData, Map<Fields, String> txnData) {
+
+		TestObject accNumber = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Transaction Details Section/Transaction Information/lbl_TransactionData', ['fieldName' : 'Account Number'])
+		TestObject txnAmount = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Transaction Details Section/Transaction Information/lbl_TransactionData', ['fieldName' : 'Amount'])
+		TestObject accBalance = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Transaction Details Section/Transaction Information/lbl_TransactionData', ['fieldName' : 'Balance'])
+		TestObject txnType = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Transaction Details Section/Transaction Information/lbl_TransactionData', ['fieldName' : 'Type'])
+		TestObject accPositionNumber = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Transaction Details Section/Transaction Information/lbl_TransactionData', ['fieldName' : 'Position Account Number'])
+
+		'Verify Account Number'
+		WebUI.verifyElementText(accNumber, accData.get(Fields.ACC_NUMBER))
+
+		'Verify Amount'
+		WebUI.verifyElementText(txnAmount, txnData.get(Fields.TXN_AMOUNT_VIEW))
+
+		'Verify Balance'
+		WebUI.verifyElementText(accBalance, txnData.get(Fields.ACC_AVAILABLE_BALANCE))
+
+		'Verify Transaction type'
+		verifyMatch(txnType, txnData.get(Fields.TXN_TYPE), RegexOperator.EQUALS_IGNORE_CASE)
+
+		'Verify Account Position Number'
+		WebUI.verifyElementText(accPositionNumber, accData.get(Fields.ACC_NUMBER))
 	}
 }

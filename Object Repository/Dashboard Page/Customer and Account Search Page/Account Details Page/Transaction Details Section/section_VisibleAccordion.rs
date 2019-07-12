@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>btn_TaskItem</name>
+   <name>section_VisibleAccordion</name>
    <tag></tag>
-   <elementGuidId>b0d27c54-e08d-4d61-b318-49fa78a989db</elementGuidId>
+   <elementGuidId>ba6690ea-2b09-4ed2-86a1-b1495ceab1ad</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//span[contains(@id,'_wtTaskListRecord')]/div[@class='LinkItem']//*[text()='${taskName}']</value>
+         <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
-         <key>BASIC</key>
+         <key>XPATH</key>
+         <value>//div[@class='AccordionVertical__content' and contains(@style,'visible')]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

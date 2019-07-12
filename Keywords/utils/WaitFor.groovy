@@ -33,6 +33,7 @@ import com.kms.katalon.core.webui.common.WebUiCommonHelper
 import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
+import enums.RegexOperator
 import internal.GlobalVariable
 
 public class WaitFor {
@@ -182,8 +183,7 @@ public class WaitFor {
 			KeywordUtil.markFailedAndStop('Exception occured while waiting for element'+e.toString())
 		}
 	}
-
-
+	
 	@Keyword
 	def urlContains(String expUrlText, int timour) {
 		setDriver()

@@ -57,8 +57,12 @@ public class RegexUtil {
 				text = '.*(?i)'+text+'(?i).*'
 				break;
 			case RegexOperator.STARTS_WITH:
+				text = addEscapeChars(text)
+				text = '^'+text+'.*'
 				break;
 			case RegexOperator.ENDS_WITH:
+				text = addEscapeChars(text)
+				text = '.*'+text+'$'
 				break;
 			case RegexOperator.NONE:
 				break;

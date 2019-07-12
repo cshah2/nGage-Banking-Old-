@@ -97,6 +97,15 @@ public class ColumnPos {
 	public static int DOCUMENT_ACCOUNT_NUMBER = 7
 	public static int DOCUMENT_CREATED_BY = 8
 	public static int DOCUMENT_STATUS= 9
-
-
+	
+	//Account Details Page - Overview tab & Transaction tab - Transaction table
+	public static int TXN_EXPAND_ICON = 1
+	public static int TXN_CREATED_DATE = 2
+	public static int TXN_EFFECTIVE_DATE = 3
+	public static int TXN_GL_JOURNAL_DATE = 4
+	public static int TXN_TYPE = 5
+	public static int TXN_DEBIT = 6
+	public static int TXN_CREDIT = 7
+	public static int TXN_ENDING_BALANCE = 8
+	public static int TXN_COMMENT = 9
 }

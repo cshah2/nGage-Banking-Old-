@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>btn_TaskItem</name>
+   <name>lbl_LedgerBalanceAfter</name>
    <tag></tag>
-   <elementGuidId>b0d27c54-e08d-4d61-b318-49fa78a989db</elementGuidId>
+   <elementGuidId>2cbc0a94-d207-4017-80af-77a69e2787e9</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//span[contains(@id,'_wtTaskListRecord')]/div[@class='LinkItem']//*[text()='${taskName}']</value>
+         <value>//div[contains(@id,'_wttranResponse_CN')]//label[text()='Ledger Balance After']/../div</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
