@@ -30,8 +30,6 @@ import pages.AccountPage
 import pages.CustomerPage
 import pages.SearchPage
 import pages.TaskDrawer
-import pages.SearchPage
-import pages.SearchPage
 import utils.RegexUtil
 
 import static constants.common.*
@@ -41,7 +39,7 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.interactions.Actions
 
-public class common {
+public class Common {
 
 	//Open browser if not already opened
 	private void openBrowser() {
@@ -102,7 +100,7 @@ public class common {
 	def moveToElement(TestObject to) {
 
 		WebUI.waitForElementPresent(to, GlobalVariable.TIMEOUT)
-		new javaScript().scrollToElement(to)
+		new actions.JavaScript().scrollToElement(to)
 		WebUI.delay(1)
 
 		WebElement e = WebUiCommonHelper.findWebElement(to, GlobalVariable.TIMEOUT)
@@ -114,7 +112,7 @@ public class common {
 	@Keyword
 	def moveToElement(WebElement e) {
 
-		new javaScript().scrollToElement(e)
+		new actions.JavaScript().scrollToElement(e)
 
 		Actions asDriver = new Actions(DriverFactory.getWebDriver())
 		asDriver.moveToElement(e).build().perform()
@@ -153,14 +151,14 @@ public class common {
 		}
 	}
 
-//	private boolean isValidData(Map<Fields, String> data, Fields field) {
-//		if(data.containsKey(field) && StringUtils.isNotBlank(data.get(field))) {
-//			return true
-//		}
-//		else {
-//			return false
-//		}
-//	}
+	//	private boolean isValidData(Map<Fields, String> data, Fields field) {
+	//		if(data.containsKey(field) && StringUtils.isNotBlank(data.get(field))) {
+	//			return true
+	//		}
+	//		else {
+	//			return false
+	//		}
+	//	}
 
 	@Keyword
 	def customerFormFill(Map<Fields, String> custData) {
@@ -244,21 +242,21 @@ public class common {
 		AccountPage.reviewTransactionDetails(txnData)
 	}
 
-//	@Keyword
-//	def verifyFloatingMessage(String message, ErrorType errorType) {
-//
-//		'Wait for Message Wrapper to load'
-//		new utils.WaitFor().elementVisible(findTestObject('Floating Message/lbl_MessageWrapper'), GlobalVariable.TIMEOUT)
-//
-//		'Wait for 2 seconds'
-//		WebUI.delay(2)
-//
-//		'Wait for Message to load'
-//		new utils.WaitFor().elementVisible(findTestObject('Floating Message/lbl_SuccessMessage'), GlobalVariable.TIMEOUT)
-//
-//		'Close Message'
-//		WebUI.click(findTestObject('Floating Message/btn_Close'))
-//	}
+	//	@Keyword
+	//	def verifyFloatingMessage(String message, ErrorType errorType) {
+	//
+	//		'Wait for Message Wrapper to load'
+	//		new actions.WaitFor().elementVisible(findTestObject('Floating Message/lbl_MessageWrapper'), GlobalVariable.TIMEOUT)
+	//
+	//		'Wait for 2 seconds'
+	//		WebUI.delay(2)
+	//
+	//		'Wait for Message to load'
+	//		new actions.WaitFor().elementVisible(findTestObject('Floating Message/lbl_SuccessMessage'), GlobalVariable.TIMEOUT)
+	//
+	//		'Close Message'
+	//		WebUI.click(findTestObject('Floating Message/btn_Close'))
+	//	}
 
 	@Keyword
 	def verifyBalanceSummary(Map<Fields, String> txnData) {

@@ -19,7 +19,7 @@ import utils.RegexUtil
 import static constants.common.*;
 
 'Login into portal'
-CustomKeywords.'actions.common.login'()
+CustomKeywords.'actions.Common.login'()
 
 'Verify lightning bolt icon is visible'
 WebUI.verifyElementVisible(findTestObject('Dashboard Page/Header Section/icon_LightningBolt'))
@@ -28,7 +28,7 @@ WebUI.verifyElementVisible(findTestObject('Dashboard Page/Header Section/icon_Li
 WebUI.click(findTestObject('Dashboard Page/Header Section/icon_LightningBolt'))
 
 'Wait for dialog to be present'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Header Section/Dialog LightningBolt/dialog'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Header Section/Dialog LightningBolt/dialog'), GlobalVariable.TIMEOUT)
 
 'Verify ConnectedTo value is not bank'
 WebUI.verifyMatch(WebUI.getText(findTestObject('Dashboard Page/Header Section/Dialog LightningBolt/lbl_ConnectedTo')), RegexUtil.formRegexString(GlobalVariable.CONNECTED_TO, RegexOperator.CONTAINS), true)

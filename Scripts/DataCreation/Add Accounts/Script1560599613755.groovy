@@ -71,26 +71,26 @@ else {
 accData.put(Fields.DOC_VERSION2, DocVersion2)
 
 'Login into portal'
-CustomKeywords.'actions.common.login'()
+CustomKeywords.'actions.Common.login'()
 
 'Search customer and open Customer details page'
-CustomKeywords.'actions.common.searchCustomerAndOpen'(custData)
+CustomKeywords.'actions.Common.searchCustomerAndOpen'(custData)
 
 'Click on Accounts tab'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/tab_Accounts'))
 
 'Wait for Create Account icon to be visible'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/icon_CreateAccount'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/icon_CreateAccount'), GlobalVariable.TIMEOUT)
 
 //Add new account
 'Click on Create Account icon'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/icon_CreateAccount'))
 
 'Wait for Create accounts page to load'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountTitle'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountTitle'), GlobalVariable.TIMEOUT)
 
 'Fill form'
-CustomKeywords.'actions.common.accountFormFill'(accData)
+CustomKeywords.'actions.Common.accountFormFill'(accData)
 
 'Scroll to OK button'
 WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/btn_Submit'), GlobalVariable.TIMEOUT)
@@ -99,10 +99,10 @@ WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/btn_Submit'))
 
 'Wait for Customer details page to load'
-CustomKeywords.'utils.WaitFor.titleContains'('Customer Details', GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.titleContains'('Customer Details', GlobalVariable.TIMEOUT)
 
 'Wait for Page load'
 WebUI.waitForPageLoad(GlobalVariable.TIMEOUT)
 
 'Verify customer details page is loaded'
-CustomKeywords.'actions.common.verifyUrlContains'('CustomerMainFlow.CustomerDetail.aspx')
+CustomKeywords.'actions.Common.verifyUrlContains'('CustomerMainFlow.CustomerDetail.aspx')

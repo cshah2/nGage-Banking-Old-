@@ -28,35 +28,35 @@ println "Customer001 Phone Edit = "+phoneEdit.toMapString()
 TestObject phoneTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/table_Phones')
 
 //Mark this test as failed if required customer and account is not created
-CustomKeywords.'actions.common.shouldFailTest'(custData)
-CustomKeywords.'actions.common.shouldFailTest'(phoneData)
+CustomKeywords.'actions.Common.shouldFailTest'(custData)
+CustomKeywords.'actions.Common.shouldFailTest'(phoneData)
 
 'Login into portal'
-CustomKeywords.'actions.common.login'()
+CustomKeywords.'actions.Common.login'()
 
 'Search customer and open Customer details page'
-CustomKeywords.'actions.common.searchCustomerAndOpen'(custData)
+CustomKeywords.'actions.Common.searchCustomerAndOpen'(custData)
 
 'Click on Contact Details tab'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/tab_ContactDetails'))
 
 'Wait for contact details section to load'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/section_Body'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/section_Body'), GlobalVariable.TIMEOUT)
 
 'Verify Phones table contains atleast one row'
-CustomKeywords.'actions.table.verifyRecordsCount'(phoneTable, 1, RegexOperator.GREATER_THAN_OR_EQUAL)
+CustomKeywords.'actions.Table.verifyRecordsCount'(phoneTable, 1, RegexOperator.GREATER_THAN_OR_EQUAL)
 
 //Verify Phones details for second row
 int rowNo = 2 
 
 'Verify phone details'
-CustomKeywords.'actions.common.verifyPhoneDetailsInTable'(phoneData, rowNo)
+CustomKeywords.'actions.Common.verifyPhoneDetailsInTable'(phoneData, rowNo)
 
 'Click on Edit icon for second row'
-CustomKeywords.'actions.table.clickCell'(phoneTable, rowNo, ColumnPos.CT_PHONE_EDITICON)
+CustomKeywords.'actions.Table.clickCell'(phoneTable, rowNo, ColumnPos.CT_PHONE_EDITICON)
 
 'Wait for Edit phones task drawer to load'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/input_PhoneNumber'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/input_PhoneNumber'), GlobalVariable.TIMEOUT)
 
 //Verify values from the selected row are loaded in fields
 'Verify Phone Number'
@@ -69,7 +69,7 @@ WebUI.verifyOptionSelectedByLabel(findTestObject('Dashboard Page/Customer and Ac
 WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/input_PhoneLabel'), 'value', phoneData.get(Fields.CT_PHONE_LABEL), GlobalVariable.TIMEOUT)
 
 'Enter updated values in field'
-CustomKeywords.'actions.common.phoneFormFill'(phoneEdit)
+CustomKeywords.'actions.Common.phoneFormFill'(phoneEdit)
 
 'Scroll to submit button'
 WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/btn_Submit'), GlobalVariable.TIMEOUT)
@@ -78,14 +78,14 @@ WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/btn_Submit'))
 
 'Wait for elements from task drawer to be not present'
-CustomKeywords.'utils.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/input_PhoneNumber'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/input_PhoneNumber'), GlobalVariable.TIMEOUT)
 
 'Wait for cell value to get updated in a selected row'
 //TODO: There is no success message displayed on completion of task.
-CustomKeywords.'actions.table.waitUntilCellValueEquals'(phoneTable, rowNo, ColumnPos.CT_PHONE_TYPE, phoneEdit.get(Fields.CT_PHONE_TYPE), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.Table.waitUntilCellValueEquals'(phoneTable, rowNo, ColumnPos.CT_PHONE_TYPE, phoneEdit.get(Fields.CT_PHONE_TYPE), GlobalVariable.TIMEOUT)
 
 'Verify updated values in address table'
-CustomKeywords.'actions.common.verifyPhoneDetailsInTable'(phoneEdit, rowNo)
+CustomKeywords.'actions.Common.verifyPhoneDetailsInTable'(phoneEdit, rowNo)
 
 'Set data flag'
 phoneEdit.put(Fields.IS_CREATED, 'true')

@@ -26,37 +26,37 @@ println "Customer001 Document = "+docData.toMapString()
 println "Customer001 Document Edit = "+docEditData.toMapString()
 
 //Mark this test as failed if required customer and document is not created
-CustomKeywords.'actions.common.shouldFailTest'(custData)
-CustomKeywords.'actions.common.shouldFailTest'(docData)
+CustomKeywords.'actions.Common.shouldFailTest'(custData)
+CustomKeywords.'actions.Common.shouldFailTest'(docData)
 
 //Set Data
 TestObject docTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Documents Tab/Documents Section/table_Documents')
 
 'Login into portal'
-CustomKeywords.'actions.common.login'()
+CustomKeywords.'actions.Common.login'()
 
 'Search customer and open Customer details page'
-CustomKeywords.'actions.common.searchCustomerAndOpen'(custData)
+CustomKeywords.'actions.Common.searchCustomerAndOpen'(custData)
 
 'Go to Documents tab'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/tab_Documents'))
 
 'Wait for documents tab to load'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Documents Tab/Documents Section/section_Body'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Documents Tab/Documents Section/section_Body'), GlobalVariable.TIMEOUT)
 
 'Get current document count'
-int rowCount = CustomKeywords.'actions.table.getRecordsCount'(docTable, WebTable.DOCUMENT)
+int rowCount = CustomKeywords.'actions.Table.getRecordsCount'(docTable, WebTable.DOCUMENT)
 println "Current rows count = "+rowCount
 
 int rowNo = rowCount
 
 'Click on last document in the table'
-CustomKeywords.'actions.table.clickCell'(docTable, rowNo, ColumnPos.DOCUMENT_ICON, WebTable.DOCUMENT)
+CustomKeywords.'actions.Table.clickCell'(docTable, rowNo, ColumnPos.DOCUMENT_ICON, WebTable.DOCUMENT)
 
 'Switch to window'
 WebUI.switchToWindowIndex(1)
 WebUI.waitForPageLoad(GlobalVariable.TIMEOUT)
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Document Details Page/View Section/lbl_DocumentTitle'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Document Details Page/View Section/lbl_DocumentTitle'), GlobalVariable.TIMEOUT)
 
 //Verify document details
 'Verify Document Title'
@@ -87,13 +87,13 @@ WebUI.verifyElementText(findTestObject('Dashboard Page/Document Details Page/Vie
 WebUI.verifyElementText(findTestObject('Dashboard Page/Document Details Page/View Section/lbl_Description'), docData.get(Fields.DOCUMENT_DESCRIPTION))
 
 'Move to Edit icon'
-CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Document Details Page/View Section/btn_Edit'))
+CustomKeywords.'actions.Common.moveToElement'(findTestObject('Dashboard Page/Document Details Page/View Section/btn_Edit'))
 
 'Click on Edit icon'
 WebUI.click(findTestObject('Dashboard Page/Document Details Page/View Section/btn_Edit'))
 
 'Wait for Task drawer to load'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Document Details Page/Task Drawer/Edit Documents/select_DocClass'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Document Details Page/Task Drawer/Edit Documents/select_DocClass'), GlobalVariable.TIMEOUT)
 
 'Verify DocClass field is read only'
 WebUI.verifyElementNotClickable(findTestObject('Dashboard Page/Document Details Page/Task Drawer/Edit Documents/select_DocClass'))
@@ -102,13 +102,13 @@ WebUI.verifyElementNotClickable(findTestObject('Dashboard Page/Document Details 
 WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Document Details Page/Task Drawer/Edit Documents/select_DocType'), docEditData.get(Fields.DOCUMENT_TYPE), false)
 
 'Enter start date'
-CustomKeywords.'actions.javaScript.setText'(findTestObject('Dashboard Page/Document Details Page/Task Drawer/Edit Documents/input_StartDate'), docEditData.get(Fields.DOCUMENT_START_DATE))
+CustomKeywords.'actions.JavaScript.setText'(findTestObject('Dashboard Page/Document Details Page/Task Drawer/Edit Documents/input_StartDate'), docEditData.get(Fields.DOCUMENT_START_DATE))
 
 'Enter end date'
-CustomKeywords.'actions.javaScript.setText'(findTestObject('Dashboard Page/Document Details Page/Task Drawer/Edit Documents/input_EndDate'), docEditData.get(Fields.DOCUMENT_END_DATE))
+CustomKeywords.'actions.JavaScript.setText'(findTestObject('Dashboard Page/Document Details Page/Task Drawer/Edit Documents/input_EndDate'), docEditData.get(Fields.DOCUMENT_END_DATE))
 
 'Enter received date'
-CustomKeywords.'actions.javaScript.setText'(findTestObject('Dashboard Page/Document Details Page/Task Drawer/Edit Documents/input_ReceivedDate'), docEditData.get(Fields.DOCUMENT_RECEIVED_DATE))
+CustomKeywords.'actions.JavaScript.setText'(findTestObject('Dashboard Page/Document Details Page/Task Drawer/Edit Documents/input_ReceivedDate'), docEditData.get(Fields.DOCUMENT_RECEIVED_DATE))
 
 'Select status'
 WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Document Details Page/Task Drawer/Edit Documents/select_Status'), docEditData.get(Fields.DOCUMENT_STATUS), false)
@@ -117,17 +117,17 @@ WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Document Details Page/T
 WebUI.setText(findTestObject('Dashboard Page/Document Details Page/Task Drawer/Edit Documents/input_Description'), docEditData.get(Fields.DOCUMENT_DESCRIPTION))
 
 'Move to submit button'
-CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Document Details Page/Task Drawer/Edit Documents/btn_Submit'))
+CustomKeywords.'actions.Common.moveToElement'(findTestObject('Dashboard Page/Document Details Page/Task Drawer/Edit Documents/btn_Submit'))
 
 'Click on submit button'
 WebUI.click(findTestObject('Dashboard Page/Document Details Page/Task Drawer/Edit Documents/btn_Submit'))
 
 'Wait for Task drawer to close'
-CustomKeywords.'utils.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Document Details Page/Task Drawer/Edit Documents/select_DocClass'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Document Details Page/Task Drawer/Edit Documents/select_DocClass'), GlobalVariable.TIMEOUT)
 
 'Wait for page values to refresh'
 WebUI.delay(5) //TODO: Need to add proper wait condition 
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Document Details Page/View Section/lbl_DocumentClass'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Document Details Page/View Section/lbl_DocumentClass'), GlobalVariable.TIMEOUT)
 
 //Verify updated document details
 'Verify Document Title'
@@ -177,22 +177,22 @@ WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Sear
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/tab_Documents'))
 
 'Wait for documents tab to load'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Documents Tab/Documents Section/section_Body'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Documents Tab/Documents Section/section_Body'), GlobalVariable.TIMEOUT)
 
 'Verify Doc Class value'
-CustomKeywords.'actions.table.verifyCellValueEquals'(docTable, rowNo, ColumnPos.DOCUMENT_CLASS, docEditData.get(Fields.DOCUMENT_CLASS), WebTable.DOCUMENT)
+CustomKeywords.'actions.Table.verifyCellValueEquals'(docTable, rowNo, ColumnPos.DOCUMENT_CLASS, docEditData.get(Fields.DOCUMENT_CLASS), WebTable.DOCUMENT)
 
 'Verify Doc Type value'
-CustomKeywords.'actions.table.verifyCellValueEquals'(docTable, rowNo, ColumnPos.DOCUMENT_TYPE, docEditData.get(Fields.DOCUMENT_TYPE), WebTable.DOCUMENT)
+CustomKeywords.'actions.Table.verifyCellValueEquals'(docTable, rowNo, ColumnPos.DOCUMENT_TYPE, docEditData.get(Fields.DOCUMENT_TYPE), WebTable.DOCUMENT)
 
 'Verify Doc description value'
-CustomKeywords.'actions.table.verifyCellValueEquals'(docTable, rowNo, ColumnPos.DOCUMENT_DESCRIPTION, docEditData.get(Fields.DOCUMENT_DESCRIPTION), WebTable.DOCUMENT)
+CustomKeywords.'actions.Table.verifyCellValueEquals'(docTable, rowNo, ColumnPos.DOCUMENT_DESCRIPTION, docEditData.get(Fields.DOCUMENT_DESCRIPTION), WebTable.DOCUMENT)
 
 'Verify Customer ID value'
-CustomKeywords.'actions.table.verifyCellValueEquals'(docTable, rowNo, ColumnPos.DOCUMENT_CUSTOMER_ID, custData.get(Fields.CUST_CUSTOMER_ID), WebTable.DOCUMENT)
+CustomKeywords.'actions.Table.verifyCellValueEquals'(docTable, rowNo, ColumnPos.DOCUMENT_CUSTOMER_ID, custData.get(Fields.CUST_CUSTOMER_ID), WebTable.DOCUMENT)
 
 'Verify Status value'
-CustomKeywords.'actions.table.verifyCellValueEquals'(docTable, rowNo, ColumnPos.DOCUMENT_STATUS, docEditData.get(Fields.DOCUMENT_STATUS), WebTable.DOCUMENT)
+CustomKeywords.'actions.Table.verifyCellValueEquals'(docTable, rowNo, ColumnPos.DOCUMENT_STATUS, docEditData.get(Fields.DOCUMENT_STATUS), WebTable.DOCUMENT)
 
 'Set data flag'
 docEditData.put(Fields.IS_CREATED, 'true')

@@ -47,7 +47,7 @@ public class AccountPage {
 		}
 
 		//Wait for Product section to be visible
-		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_ProductType'),GlobalVariable.TIMEOUT)
+		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_ProductType'),GlobalVariable.TIMEOUT)
 
 		//Enter account number
 		if(StringUtil.isValidData(accData, Fields.ACC_NUMBER)) {
@@ -70,7 +70,7 @@ public class AccountPage {
 		}
 
 		//Wait for position name field to load text
-		new utils.WaitFor().textNotEmpty(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_PositionName'), GlobalVariable.TIMEOUT)
+		new actions.WaitFor().textNotEmpty(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_PositionName'), GlobalVariable.TIMEOUT)
 		WebUI.delay(2)
 
 		//Enter Position name
@@ -115,7 +115,7 @@ public class AccountPage {
 
 		//Enter signed date
 		if(StringUtil.isValidData(accData, Fields.DOC_SIGNED_DATE)) {
-			new actions.javaScript().setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_SignedDate1'), accData.get(Fields.DOC_SIGNED_DATE))
+			new actions.JavaScript().setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_SignedDate1'), accData.get(Fields.DOC_SIGNED_DATE))
 		}
 
 		//Enter version
@@ -133,7 +133,7 @@ public class AccountPage {
 			WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/icon_AddAnotherDocument'))
 
 			//Wait for new document section to be visible
-			new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/select_DocumentType2'), GlobalVariable.TIMEOUT)
+			new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/select_DocumentType2'), GlobalVariable.TIMEOUT)
 
 			//Select Document 2
 			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/select_DocumentType2'), accData.get(Fields.DOC_TYPE2), false)
@@ -145,7 +145,7 @@ public class AccountPage {
 
 			//Enter signed date 2
 			if(StringUtil.isValidData(accData, Fields.DOC_SIGNED_DATE2)) {
-				new actions.javaScript().setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_SignedDate2'), accData.get(Fields.DOC_SIGNED_DATE2))
+				new actions.JavaScript().setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/Documents/input_SignedDate2'), accData.get(Fields.DOC_SIGNED_DATE2))
 			}
 
 			//Enter vesion 2
@@ -158,13 +158,13 @@ public class AccountPage {
 	static def fillTransactionDetails(Map<Fields, String> txnData) {
 		
 		'Wait for drawer to load'
-		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Post Transaction/select_TransactionCode'), GlobalVariable.TIMEOUT)
+		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Post Transaction/select_TransactionCode'), GlobalVariable.TIMEOUT)
 
 		'Select transaction type'
 		WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Post Transaction/select_TransactionCode'), txnData.get(Fields.TXN_CODE), false)
 
 		'Wait for amount field to load'
-		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Post Transaction/input_Amount'), GlobalVariable.TIMEOUT)
+		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Post Transaction/input_Amount'), GlobalVariable.TIMEOUT)
 
 		'Enter amount'
 		if(StringUtil.isValidData(txnData, Fields.TXN_AMOUNT)) {
@@ -180,11 +180,11 @@ public class AccountPage {
 	static def reviewTransactionDetails(Map<Fields, String> txnData) {
 		
 		'Wait for drawer to load'
-		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Confirm Transaction/lbl_TransactionCode'), GlobalVariable.TIMEOUT)
+		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Confirm Transaction/lbl_TransactionCode'), GlobalVariable.TIMEOUT)
 
 		'Verify Transaction code value'
 		String txnCode = txnData.get(Fields.TXN_CODE)
-		new actions.common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Confirm Transaction/lbl_TransactionCode'), txnData.get(Fields.TXN_CODE), RegexOperator.ENDS_WITH)
+		new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Confirm Transaction/lbl_TransactionCode'), txnData.get(Fields.TXN_CODE), RegexOperator.ENDS_WITH)
 
 		'Verify Transaction Amount'
 		WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Confirm Transaction/lbl_TransactionAmount'), txnData.get(Fields.TXN_AMOUNT_VIEW))
@@ -217,41 +217,41 @@ public class AccountPage {
 	static def verifyTransactionTable(Map<Fields, String> txnData, TestObject table, int rowNo) {
 		
 		'Verify transaction type - transaction table - overview tab'
-		new actions.table().verifyCellValueEquals(table, rowNo, ColumnPos.TXN_TYPE, txnData.get(Fields.TXN_CODE))
+		new actions.Table().verifyCellValueEquals(table, rowNo, ColumnPos.TXN_TYPE, txnData.get(Fields.TXN_CODE))
 
 		'Verify Credit amount - transaction table - overview tab'
 		if(StringUtil.isValidData(txnData, Fields.TXN_TYPE) && txnData.get(Fields.TXN_TYPE).equalsIgnoreCase('CREDIT')) {
-			new actions.table().verifyCellValueEquals(table, rowNo, ColumnPos.TXN_CREDIT, txnData.get(Fields.TXN_AMOUNT_VIEW))
+			new actions.Table().verifyCellValueEquals(table, rowNo, ColumnPos.TXN_CREDIT, txnData.get(Fields.TXN_AMOUNT_VIEW))
 		}
 		else if(StringUtil.isValidData(txnData, Fields.TXN_TYPE) && txnData.get(Fields.TXN_TYPE).equalsIgnoreCase('DEBIT')) {
-			new actions.table().verifyCellValueEquals(table, rowNo, ColumnPos.TXN_DEBIT, txnData.get(Fields.TXN_AMOUNT_VIEW))
+			new actions.Table().verifyCellValueEquals(table, rowNo, ColumnPos.TXN_DEBIT, txnData.get(Fields.TXN_AMOUNT_VIEW))
 		}
 		else {
 			KeywordUtil.markFailedAndStop('Credit or Debit indicator not provided to verify transaction details')
 		}
 
 		'Verify Comment - transaction table - overview tab'
-		new actions.table().verifyCellValueEquals(table, rowNo, ColumnPos.TXN_COMMENT, txnData.get(Fields.TXN_COMMENT))
+		new actions.Table().verifyCellValueEquals(table, rowNo, ColumnPos.TXN_COMMENT, txnData.get(Fields.TXN_COMMENT))
 	}
 	
 	static def expandTransactionInformation(TestObject table, int rowNo) {
 		
 		'Move to cell'
-		new actions.table().moveToCell(table, rowNo, ColumnPos.TXN_EXPAND_ICON)
+		new actions.Table().moveToCell(table, rowNo, ColumnPos.TXN_EXPAND_ICON)
 		
 		'Verify Transaction Details'
-		new actions.table().clickCell(table, rowNo, ColumnPos.TXN_EXPAND_ICON)
+		new actions.Table().clickCell(table, rowNo, ColumnPos.TXN_EXPAND_ICON)
 
 		'Wait for section to load'
 		TestObject accordionTranactionInfo = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Transaction Details Section/accordion',['accordionName' : 'Transaction Information'])
-		new utils.WaitFor().elementVisible(accordionTranactionInfo, GlobalVariable.TIMEOUT)
+		new actions.WaitFor().elementVisible(accordionTranactionInfo, GlobalVariable.TIMEOUT)
 
 		'Click on Accordion'
 		WebUI.click(accordionTranactionInfo)
 
 		'Wait for Transacion Information section to load'
 		TestObject fieldAccountNumber = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Transaction Details Section/Transaction Information/lbl_TransactionData', ['fieldName' : 'Account Number'])
-		new utils.WaitFor().elementVisible(fieldAccountNumber, GlobalVariable.TIMEOUT)
+		new actions.WaitFor().elementVisible(fieldAccountNumber, GlobalVariable.TIMEOUT)
 	}
 	
 	static def verifyTransactionInformation(Map<Fields, String> accData, Map<Fields, String> txnData) {
@@ -272,7 +272,7 @@ public class AccountPage {
 		WebUI.verifyElementText(accBalance, txnData.get(Fields.ACC_AVAILABLE_BALANCE))
 
 		'Verify Transaction type'
-		new actions.common().verifyMatch(txnType, txnData.get(Fields.TXN_TYPE), RegexOperator.EQUALS_IGNORE_CASE)
+		new actions.Common().verifyMatch(txnType, txnData.get(Fields.TXN_TYPE), RegexOperator.EQUALS_IGNORE_CASE)
 
 		'Verify Account Position Number'
 		WebUI.verifyElementText(accPositionNumber, accData.get(Fields.ACC_NUMBER))

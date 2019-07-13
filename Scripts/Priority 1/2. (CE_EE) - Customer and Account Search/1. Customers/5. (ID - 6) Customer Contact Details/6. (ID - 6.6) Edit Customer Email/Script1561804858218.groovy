@@ -28,33 +28,33 @@ println "Customer001 Phone Edit = "+emailEdit.toMapString()
 TestObject emailTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/table_Emails')
 
 //Mark this test as failed if required customer and account is not created
-CustomKeywords.'actions.common.shouldFailTest'(custData)
-CustomKeywords.'actions.common.shouldFailTest'(emailData)
+CustomKeywords.'actions.Common.shouldFailTest'(custData)
+CustomKeywords.'actions.Common.shouldFailTest'(emailData)
 
 'Login into portal'
-CustomKeywords.'actions.common.login'()
+CustomKeywords.'actions.Common.login'()
 
 'Search customer and open Customer details page'
-CustomKeywords.'actions.common.searchCustomerAndOpen'(custData)
+CustomKeywords.'actions.Common.searchCustomerAndOpen'(custData)
 
 'Click on Contact Details tab'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/tab_ContactDetails'))
 
 'Wait for contact details section to load'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/section_Body'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/section_Body'), GlobalVariable.TIMEOUT)
 
 'Verify Email table contains atleast one row'
-CustomKeywords.'actions.table.verifyRecordsCount'(emailTable, 1, RegexOperator.GREATER_THAN_OR_EQUAL)
+CustomKeywords.'actions.Table.verifyRecordsCount'(emailTable, 1, RegexOperator.GREATER_THAN_OR_EQUAL)
 
 int rowNo = 2 
 'Verify email details for second row'
-CustomKeywords.'actions.common.verifyEmailDetailsInTable'(emailData, rowNo)
+CustomKeywords.'actions.Common.verifyEmailDetailsInTable'(emailData, rowNo)
 
 'Click on Edit icon for second row'
-CustomKeywords.'actions.table.clickCell'(emailTable, rowNo, ColumnPos.CT_PHONE_EDITICON)
+CustomKeywords.'actions.Table.clickCell'(emailTable, rowNo, ColumnPos.CT_PHONE_EDITICON)
 
 'Wait for Edit email task drawer to load'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_Email'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_Email'), GlobalVariable.TIMEOUT)
 
 //Verify values from the selected row are loaded in fields
 'Verify Email'
@@ -67,7 +67,7 @@ WebUI.verifyOptionSelectedByLabel(findTestObject('Dashboard Page/Customer and Ac
 WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_EmailLabel'), 'value', emailData.get(Fields.CT_EMAIL_LABEL), GlobalVariable.TIMEOUT)
 
 'Enter updated values in field'
-CustomKeywords.'actions.common.emailFormFill'(emailEdit)
+CustomKeywords.'actions.Common.emailFormFill'(emailEdit)
 
 'Scroll to submit button'
 WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/btn_Submit'), GlobalVariable.TIMEOUT)
@@ -76,14 +76,14 @@ WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/btn_Submit'))
 
 'Wait for elements from task drawer to be not present'
-CustomKeywords.'utils.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_Email'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_Email'), GlobalVariable.TIMEOUT)
 
 'Wait for cell value to get updated in a selected row'
 //TODO: There is no success message displayed on completion of task.
-CustomKeywords.'actions.table.waitUntilCellValueEquals'(emailTable, rowNo, ColumnPos.CT_EMAIL_TYPE, emailEdit.get(Fields.CT_EMAIL_TYPE), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.Table.waitUntilCellValueEquals'(emailTable, rowNo, ColumnPos.CT_EMAIL_TYPE, emailEdit.get(Fields.CT_EMAIL_TYPE), GlobalVariable.TIMEOUT)
 
 'Verify updated values in email table'
-CustomKeywords.'actions.common.verifyEmailDetailsInTable'(emailEdit, rowNo)
+CustomKeywords.'actions.Common.verifyEmailDetailsInTable'(emailEdit, rowNo)
 
 'Set data flag'
 emailEdit.put(Fields.IS_CREATED, 'true')

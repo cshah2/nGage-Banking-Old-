@@ -24,10 +24,10 @@ println "Customer002 = "+custData.toMapString()
 int expRowsCount = 1
 
 //Mark this test as failed if required customer is not created
-CustomKeywords.'actions.common.shouldFailTest'(custData)
+CustomKeywords.'actions.Common.shouldFailTest'(custData)
 
 'Login into portal'
-CustomKeywords.'actions.common.login'()
+CustomKeywords.'actions.Common.login'()
 
 //Search for - last name
 'Click on Search All drop down'
@@ -41,7 +41,7 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Sear
 
 'Wait for Search button to be visible'
 WebUI.delay(2) //TODO: Need to find correct wait condition.
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'), GlobalVariable.TIMEOUT)
 
 'Enter Search Criteria in last name field'
 WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_LastName'), custData.get(Fields.CUST_LAST_NAME))
@@ -50,13 +50,13 @@ WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Se
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'))
 
 'Wait for table to be visible'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), GlobalVariable.TIMEOUT)
 
 'Verify result table contains atleast 1 record'
-CustomKeywords.'actions.table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), expRowsCount, RegexOperator.GREATER_THAN_OR_EQUAL)
+CustomKeywords.'actions.Table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), expRowsCount, RegexOperator.GREATER_THAN_OR_EQUAL)
 
 'Verify all values in column are matching the values'
-CustomKeywords.'actions.table.verifyAllValuesInColumnEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), ColumnPos.CUST_LAST_NAME, custData.get(Fields.CUST_LAST_NAME))
+CustomKeywords.'actions.Table.verifyAllValuesInColumnEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), ColumnPos.CUST_LAST_NAME, custData.get(Fields.CUST_LAST_NAME))
 
 'Click on Clear Filter button'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_ClearFilters'))
@@ -73,7 +73,7 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Sear
 
 'Wait for Search button to be visible'
 WebUI.delay(2) //TODO: Need to find correct wait condition.
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'), GlobalVariable.TIMEOUT)
 
 'Enter Search Criteria in First name field'
 WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_FirstName'), custData.get(Fields.CUST_FIRST_NAME))
@@ -82,13 +82,13 @@ WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Se
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'))
 
 'Wait for table to be visible'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), GlobalVariable.TIMEOUT)
 
 'Verify result table contains atleast 1 record'
-CustomKeywords.'actions.table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), expRowsCount, RegexOperator.GREATER_THAN_OR_EQUAL)
+CustomKeywords.'actions.Table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), expRowsCount, RegexOperator.GREATER_THAN_OR_EQUAL)
 
 'Verify all values in column are matching the values'
-CustomKeywords.'actions.table.verifyAllValuesInColumnEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), ColumnPos.CUST_FIRST_NAME, custData.get(Fields.CUST_FIRST_NAME))
+CustomKeywords.'actions.Table.verifyAllValuesInColumnEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), ColumnPos.CUST_FIRST_NAME, custData.get(Fields.CUST_FIRST_NAME))
 
 'Click on Clear Filter button'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_ClearFilters'))
@@ -105,7 +105,7 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Sear
 
 'Wait for Search button to be visible'
 WebUI.delay(2) //TODO: Need to find correct wait condition.
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'), GlobalVariable.TIMEOUT)
 
 'Enter Search Criteria in phone number field'
 WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_PhoneNumber'), custData.get(Fields.CT_PHONE_NUMBER))
@@ -114,13 +114,13 @@ WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Se
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'))
 
 'Wait for table to be visible'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), GlobalVariable.TIMEOUT)
 
 'Verify result table contains atleast 1 record'
-CustomKeywords.'actions.table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), expRowsCount, RegexOperator.GREATER_THAN_OR_EQUAL)
+CustomKeywords.'actions.Table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), expRowsCount, RegexOperator.GREATER_THAN_OR_EQUAL)
 
 'Verify all values in column are matching the values'
-CustomKeywords.'actions.table.verifyAllValuesInColumnEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), ColumnPos.CUST_PHONE_NUMBER, custData.get(Fields.CT_PHONE_NUMBER))
+CustomKeywords.'actions.Table.verifyAllValuesInColumnEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), ColumnPos.CUST_PHONE_NUMBER, custData.get(Fields.CT_PHONE_NUMBER))
 
 'Click on Clear Filter button'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_ClearFilters'))
@@ -130,14 +130,14 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Sear
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search'))
 
 'Wait for Menus to be visible'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Menu'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Menu'), GlobalVariable.TIMEOUT)
 
 'Click on Customer option'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Customer'))
 
 'Wait for Search button to be visible'
 WebUI.delay(2) //TODO: Need to find correct wait condition.
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'), GlobalVariable.TIMEOUT)
 
 'Enter Search Criteria in Tax ID field'
 WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_TaxID'), custData.get(Fields.CUST_TAX_ID))
@@ -146,13 +146,13 @@ WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Se
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'))
 
 'Wait for table to be visible'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), GlobalVariable.TIMEOUT)
 
 'Verify result table contains atleast 1 record'
-CustomKeywords.'actions.table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), expRowsCount, RegexOperator.EQUALS)
+CustomKeywords.'actions.Table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), expRowsCount, RegexOperator.EQUALS)
 
 'Verify all values in column are matching the values'
-CustomKeywords.'actions.table.verifyAllValuesInColumnEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), ColumnPos.CUST_TAX_ID, custData.get(Fields.CUST_TAX_ID_MASKED))
+CustomKeywords.'actions.Table.verifyAllValuesInColumnEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), ColumnPos.CUST_TAX_ID, custData.get(Fields.CUST_TAX_ID_MASKED))
 
 'Click on Clear Filter button'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_ClearFilters'))
@@ -169,7 +169,7 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Sear
 
 'Wait for Search button to be visible'
 WebUI.delay(2) //TODO: Need to find correct wait condition.
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'), GlobalVariable.TIMEOUT)
 
 'Enter Search Criteria in DOB field'
 WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_DOB'), custData.get(Fields.CUST_DOB))
@@ -178,13 +178,13 @@ WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Se
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'))
 
 'Wait for table to be visible'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), GlobalVariable.TIMEOUT)
 
 'Verify result table contains atleast 1 record'
-CustomKeywords.'actions.table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), expRowsCount, RegexOperator.GREATER_THAN_OR_EQUAL)
+CustomKeywords.'actions.Table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), expRowsCount, RegexOperator.GREATER_THAN_OR_EQUAL)
 
 'Verify all values in column are matching the values'
-CustomKeywords.'actions.table.verifyAllValuesInColumnEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), ColumnPos.CUST_DOB, custData.get(Fields.CUST_DOB_MASKED))
+CustomKeywords.'actions.Table.verifyAllValuesInColumnEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), ColumnPos.CUST_DOB, custData.get(Fields.CUST_DOB_MASKED))
 
 'Click on Clear Filter button'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_ClearFilters'))

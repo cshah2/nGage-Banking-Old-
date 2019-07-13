@@ -25,19 +25,19 @@ Map<Fields, String> accData = Data.ACCOUNT_001
 println "Accounts001 = "+accData.toMapString()
 
 //Mark this test as failed if required customer is not created
-CustomKeywords.'actions.common.shouldFailTest'(accData)
+CustomKeywords.'actions.Common.shouldFailTest'(accData)
 
 'Login into portal'
-CustomKeywords.'actions.common.login'()
+CustomKeywords.'actions.Common.login'()
 
 'Search Account'
-CustomKeywords.'actions.common.searchAccount'(accData)
+CustomKeywords.'actions.Common.searchAccount'(accData)
 
 'Click on Details tab'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Details'))
 
 'Wait Account Details section is visible'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Account Details Section/section_AccountDetails'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Account Details Section/section_AccountDetails'), GlobalVariable.TIMEOUT)
 
 //Verify Account Details section
 'Verify Account number'
@@ -79,16 +79,16 @@ WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Sear
 
 //Verify Document section
 'Verify document table contains only 1 record'
-CustomKeywords.'actions.table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Document Section/table_Documents'), 1, RegexOperator.EQUALS)
+CustomKeywords.'actions.Table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Document Section/table_Documents'), 1, RegexOperator.EQUALS)
 
 'Verify Document Type value for first document'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Document Section/table_Documents'), 1, ColumnPos.DOC_TYPE, accData.get(Fields.DOC_TYPE))
+CustomKeywords.'actions.Table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Document Section/table_Documents'), 1, ColumnPos.DOC_TYPE, accData.get(Fields.DOC_TYPE))
 
 'Verify Document Signed by for first document'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Document Section/table_Documents'), 1, ColumnPos.DOC_SIGNED_BY, accData.get(Fields.DOC_SIGNED_BY))
+CustomKeywords.'actions.Table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Document Section/table_Documents'), 1, ColumnPos.DOC_SIGNED_BY, accData.get(Fields.DOC_SIGNED_BY))
 
 'Verify Document Signed date for first document'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Document Section/table_Documents'), 1, ColumnPos.DOC_SIGNED_DATE, DateUtil.convert(accData.get(Fields.DOC_SIGNED_DATE), common.dateTimeFormat, common.dateFormat))
+CustomKeywords.'actions.Table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Document Section/table_Documents'), 1, ColumnPos.DOC_SIGNED_DATE, DateUtil.convert(accData.get(Fields.DOC_SIGNED_DATE), common.dateTimeFormat, common.dateFormat))
 
 'Verify Document version for first document'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Document Section/table_Documents'), 1, ColumnPos.DOC_VERSION, accData.get(Fields.DOC_VERSION))
+CustomKeywords.'actions.Table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Document Section/table_Documents'), 1, ColumnPos.DOC_VERSION, accData.get(Fields.DOC_VERSION))

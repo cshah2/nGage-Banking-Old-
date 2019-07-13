@@ -26,35 +26,35 @@ println "Customer001 Email 2 = "+custDataEmail2.toMapString()
 TestObject emailTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/table_Emails')
 
 //Mark this test as failed if required customer and account is not created
-CustomKeywords.'actions.common.shouldFailTest'(custData)
+CustomKeywords.'actions.Common.shouldFailTest'(custData)
 
 'Login into portal'
-CustomKeywords.'actions.common.login'()
+CustomKeywords.'actions.Common.login'()
 
 'Search customer and open Customer details page'
-CustomKeywords.'actions.common.searchCustomerAndOpen'(custData)
+CustomKeywords.'actions.Common.searchCustomerAndOpen'(custData)
 
 'Click on Contact Details tab'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/tab_ContactDetails'))
 
 'Wait for contact details section to load'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/section_Body'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/section_Body'), GlobalVariable.TIMEOUT)
 
 'Verify Phones table contains only one row'
-CustomKeywords.'actions.table.verifyRecordsCount'(emailTable, 1, RegexOperator.EQUALS)
+CustomKeywords.'actions.Table.verifyRecordsCount'(emailTable, 1, RegexOperator.EQUALS)
 
 int rowNo = 1 
 'Verify email details of primary record'
-CustomKeywords.'actions.common.verifyEmailDetailsInTable'(custData, rowNo)
+CustomKeywords.'actions.Common.verifyEmailDetailsInTable'(custData, rowNo)
 
 'Move to add new phones button'
-CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/icon_AddNewEmail'))
+CustomKeywords.'actions.Common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/icon_AddNewEmail'))
 
 'Click on Add new email icon'
-CustomKeywords.'actions.javaScript.click'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/icon_AddNewEmail'))
+CustomKeywords.'actions.JavaScript.click'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/icon_AddNewEmail'))
 
 'Fill email data in form'
-CustomKeywords.'actions.common.emailFormFill'(custDataEmail2)
+CustomKeywords.'actions.Common.emailFormFill'(custDataEmail2)
 
 'Scroll to submit button'
 WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/btn_Submit'), GlobalVariable.TIMEOUT)
@@ -63,15 +63,15 @@ WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/btn_Submit'))
 
 'Wait for elements from task drawer to be not present'
-CustomKeywords.'utils.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_Email'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_Email'), GlobalVariable.TIMEOUT)
 
 'Wait for emails to get added in table'
 //TODO: There is no success message displayed on completion of task.
-CustomKeywords.'actions.table.waitUntilRecordsCountEquals'(emailTable, 2, GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.Table.waitUntilRecordsCountEquals'(emailTable, 2, GlobalVariable.TIMEOUT)
 
 rowNo = 2
 'Verify email details of second row'
-CustomKeywords.'actions.common.verifyEmailDetailsInTable'(custDataEmail2, rowNo)
+CustomKeywords.'actions.Common.verifyEmailDetailsInTable'(custDataEmail2, rowNo)
 
 'Set data flag'
 custDataEmail2.put(Fields.IS_CREATED, 'true')

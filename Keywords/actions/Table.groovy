@@ -30,7 +30,7 @@ import enums.WebTable
 import internal.GlobalVariable
 import utils.RegexUtil
 
-public class table {
+public class Table {
 
 	private WebTable type
 
@@ -288,7 +288,7 @@ public class table {
 
 		WebElement table = getTable(to)
 		Actions asDriver = new Actions(DriverFactory.getWebDriver())
-		new common().moveToElement(getCell(to, rowNo, colNo))
+		new actions.Common().moveToElement(getCell(to, rowNo, colNo))
 	}
 
 
@@ -749,10 +749,10 @@ public class table {
 		WebElement table = getTable(to)
 		try {
 			WebElement e = getCell(to, rowNo, colNo).findElement(moreIcon())
-			new javaScript().scrollToElement(e)
+			new actions.JavaScript().scrollToElement(e)
 			WebUI.delay(1)
 			//e.click()
-			new javaScript().click(e)
+			new actions.JavaScript().click(e)
 
 		}
 		catch(Exception e) {
@@ -773,11 +773,11 @@ public class table {
 			WebUI.delay(1)
 			WebElement e = getCell(to, rowNo, colNo).findElement(moreIcon())
 			//e.click()
-			new javaScript().click(e)
+			new actions.JavaScript().click(e)
 			WebUI.delay(3) //Wait for 3 seconds to load the options menu
 			WebElement optionElement = getCell(to, rowNo, colNo).findElement(By.xpath(".//div[contains(@id,'_wtMenu') and contains(@class,'DropdownMenu')]//a[text()='"+option+"']"))
 			//optionElement.click()
-			new javaScript().click(optionElement)
+			new actions.JavaScript().click(optionElement)
 		}
 		catch(Exception e) {
 			WebUI.takeScreenshot()

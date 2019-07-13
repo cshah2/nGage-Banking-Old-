@@ -29,35 +29,35 @@ println "Customer001 Address Edit = "+addressEdit.toMapString()
 TestObject addressTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/table_Addresses')
 
 //Mark this test as failed if required customer and account is not created
-CustomKeywords.'actions.common.shouldFailTest'(custData)
-CustomKeywords.'actions.common.shouldFailTest'(addressData)
+CustomKeywords.'actions.Common.shouldFailTest'(custData)
+CustomKeywords.'actions.Common.shouldFailTest'(addressData)
 
 'Login into portal'
-CustomKeywords.'actions.common.login'()
+CustomKeywords.'actions.Common.login'()
 
 'Search customer and open Customer details page'
-CustomKeywords.'actions.common.searchCustomerAndOpen'(custData)
+CustomKeywords.'actions.Common.searchCustomerAndOpen'(custData)
 
 'Click on Contact Details tab'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/tab_ContactDetails'))
 
 'Wait for contact details section to load'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/section_Body'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/section_Body'), GlobalVariable.TIMEOUT)
 
 'Verify Address table contains atleast one row'
-CustomKeywords.'actions.table.verifyRecordsCount'(addressTable, 1, RegexOperator.GREATER_THAN_OR_EQUAL)
+CustomKeywords.'actions.Table.verifyRecordsCount'(addressTable, 1, RegexOperator.GREATER_THAN_OR_EQUAL)
 
 //Verify Address details for second row
 int rowNo = 2 
 
 'Verify Address Details'
-CustomKeywords.'actions.common.verifyAddressDetailsInTable'(addressData, rowNo)
+CustomKeywords.'actions.Common.verifyAddressDetailsInTable'(addressData, rowNo)
 
 'Click on More button and select Edit Address option'
-CustomKeywords.'actions.table.clickMoreButtonAndSelectOption'(addressTable, rowNo, ColumnPos.ADDR_MOREICON, 'Edit Address')
+CustomKeywords.'actions.Table.clickMoreButtonAndSelectOption'(addressTable, rowNo, ColumnPos.ADDR_MOREICON, 'Edit Address')
 
 'Wait for Edit address task drawer to load'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Street'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Street'), GlobalVariable.TIMEOUT)
 
 //Verify values from the selected row are loaded in fields
 'Verify Street value'
@@ -83,7 +83,7 @@ WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Ac
 
 //Enter updated values in field
 'Fill address details in form'
-CustomKeywords.'actions.common.addressFormFill'(addressEdit)
+CustomKeywords.'actions.Common.addressFormFill'(addressEdit)
 
 'Scroll to submit button'
 WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/btn_Submit'), GlobalVariable.TIMEOUT)
@@ -92,14 +92,14 @@ WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/btn_Submit'))
 
 'Wait for elements from task drawer to be not present'
-CustomKeywords.'utils.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Street'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Street'), GlobalVariable.TIMEOUT)
 
 'Wait for cell value to get updated in a selected row'
 //TODO: There is no success message displayed on completion of task.
-CustomKeywords.'actions.table.waitUntilCellValueEquals'(addressTable, rowNo, ColumnPos.ADDR_ADDRESS_TYPE, addressEdit.get(Fields.ADDR_ADDRESS_TYPE), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.Table.waitUntilCellValueEquals'(addressTable, rowNo, ColumnPos.ADDR_ADDRESS_TYPE, addressEdit.get(Fields.ADDR_ADDRESS_TYPE), GlobalVariable.TIMEOUT)
 
 'Verify updated values in address table'
-CustomKeywords.'actions.common.verifyAddressDetailsInTable'(addressEdit, rowNo)
+CustomKeywords.'actions.Common.verifyAddressDetailsInTable'(addressEdit, rowNo)
 
 'Set data flag'
 addressEdit.put(Fields.IS_CREATED, 'true')

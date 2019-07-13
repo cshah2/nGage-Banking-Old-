@@ -23,33 +23,33 @@ Map<Fields, String> custData = Data.CUSTOMER_001
 println "Customer001 = "+custData.toMapString()
 
 //Mark this test as failed if required customer and account is not created
-CustomKeywords.'actions.common.shouldFailTest'(custData)
+CustomKeywords.'actions.Common.shouldFailTest'(custData)
 
 int expRowsCount = 1
 
 'Login into portal'
-CustomKeywords.'actions.common.login'()
+CustomKeywords.'actions.Common.login'()
 
 'Search customer and open Customer details page'
-CustomKeywords.'actions.common.searchCustomerAndOpen'(custData)
+CustomKeywords.'actions.Common.searchCustomerAndOpen'(custData)
 
 'Click on Overview tab'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/tab_Overview'))
 
 'Wait for customer personal details section to be visible'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Overview Tab/Customer Person Detail Section/section_Body'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Overview Tab/Customer Person Detail Section/section_Body'), GlobalVariable.TIMEOUT)
 
 'Move to Create account Icon in account section'
-CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Overview Tab/Customer Accounts Section/icon_CreateAccount'))
+CustomKeywords.'actions.Common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Overview Tab/Customer Accounts Section/icon_CreateAccount'))
 
 'Click on Create account icon'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Overview Tab/Customer Accounts Section/icon_CreateAccount'))
 
 'Wait for create account page to load'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountTitle'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountTitle'), GlobalVariable.TIMEOUT)
 
 'Verify Page URL matches'
-CustomKeywords.'actions.common.verifyUrlContains'('AccountMainFlow.AccountCreate.aspx')
+CustomKeywords.'actions.Common.verifyUrlContains'('AccountMainFlow.AccountCreate.aspx')
 
 'Verify Account title is correctly populated'
 WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountTitle'), 'value', custData.get(Fields.CUST_NAME_VIEW), GlobalVariable.TIMEOUT)

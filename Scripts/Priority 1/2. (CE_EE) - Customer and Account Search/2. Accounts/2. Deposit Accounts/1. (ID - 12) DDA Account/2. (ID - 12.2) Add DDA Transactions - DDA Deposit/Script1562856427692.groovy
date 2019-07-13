@@ -26,65 +26,65 @@ TestObject tabOverview_txnTable = findTestObject('Dashboard Page/Customer and Ac
 TestObject tabTransaction_txnTable = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Transaction Tab/Transactions Section/table_Transactions')
 
 //Mark this test as failed if required customer and account is not created
-CustomKeywords.'actions.common.shouldFailTest'(accData)
+CustomKeywords.'actions.Common.shouldFailTest'(accData)
 
 'Login into portal'
-CustomKeywords.'actions.common.login'()
+CustomKeywords.'actions.Common.login'()
 
 'Search Account and open account details page'
-CustomKeywords.'actions.common.searchAccount'(accData)
+CustomKeywords.'actions.Common.searchAccount'(accData)
 
 'Select a task [POST TRANSACTION]'
 String taskName = 'Post a Transaction'
-CustomKeywords.'actions.common.selectTaskFromTaskList'(taskName)
+CustomKeywords.'actions.Common.selectTaskFromTaskList'(taskName)
 
 'Fill Transaction form'
-CustomKeywords.'actions.common.transactionFormFill'(txnData)
+CustomKeywords.'actions.Common.transactionFormFill'(txnData)
 
 'Scroll to Submit button'
-CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Post Transaction/btn_Submit'))
+CustomKeywords.'actions.Common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Post Transaction/btn_Submit'))
 
 'Click on Submit button'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Post Transaction/btn_Submit'))
 
 'Wait for review page to load'
-CustomKeywords.'actions.common.reviewTransactionDetails'(txnData)
+CustomKeywords.'actions.Common.reviewTransactionDetails'(txnData)
 
 'Move to confirm button'
-CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Confirm Transaction/btn_Confirm'))
+CustomKeywords.'actions.Common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Confirm Transaction/btn_Confirm'))
 
 'Click on confirm button'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Confirm Transaction/btn_Confirm'))
 
 int expRowCount = 1
 'Wait for transaction table to reload'
-CustomKeywords.'actions.table.waitUntilRecordsCountEquals'(tabOverview_txnTable, expRowCount, GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.Table.waitUntilRecordsCountEquals'(tabOverview_txnTable, expRowCount, GlobalVariable.TIMEOUT)
 
 'Refresh web page' //This is done to ensure no dynamic loading is pending
 WebUI.refresh()
 WebUI.waitForPageLoad(GlobalVariable.TIMEOUT)
 
 'Verify data in Balance summary section'
-CustomKeywords.'actions.common.verifyBalanceSummary'(txnData)
+CustomKeywords.'actions.Common.verifyBalanceSummary'(txnData)
 
 int rowNo = 1
 'Verify data in transaction table in overview tab'
-CustomKeywords.'actions.common.verifyTransactionDetailsInTable'(txnData, tabOverview_txnTable, rowNo)
+CustomKeywords.'actions.Common.verifyTransactionDetailsInTable'(txnData, tabOverview_txnTable, rowNo)
 
 'Click on Transactions tab'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Transactions'))
 
 'Wait for transactions tab to load'
-CustomKeywords.'utils.WaitFor.elementVisible'(tabTransaction_txnTable, GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(tabTransaction_txnTable, GlobalVariable.TIMEOUT)
 
 'Verify data in transaction table in transaction tab'
-CustomKeywords.'actions.common.verifyTransactionDetailsInTable'(txnData, tabTransaction_txnTable, rowNo)
+CustomKeywords.'actions.Common.verifyTransactionDetailsInTable'(txnData, tabTransaction_txnTable, rowNo)
 
 'Set Flag'
 txnData.put(Fields.IS_CREATED, 'true')
 
 'Expand Transaction Information section'
-CustomKeywords.'actions.common.openTransactionInformationSection'(tabTransaction_txnTable, 1)
+CustomKeywords.'actions.Common.openTransactionInformationSection'(tabTransaction_txnTable, 1)
 
 'Verify data in Transaction Information section'
-CustomKeywords.'actions.common.verifyTransactionInformationInAccordion'(accData, txnData)
+CustomKeywords.'actions.Common.verifyTransactionInformationInAccordion'(accData, txnData)

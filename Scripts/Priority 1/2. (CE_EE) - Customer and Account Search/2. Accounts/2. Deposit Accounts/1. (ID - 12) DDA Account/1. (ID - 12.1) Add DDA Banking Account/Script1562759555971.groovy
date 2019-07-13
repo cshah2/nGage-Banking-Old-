@@ -23,31 +23,31 @@ Map<Fields, String> accData = Data.CUSTOMER_001_DDA_ACCOUNT
 TestObject accTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/table_Accounts')
 
 //Mark this test as failed if required customer and account is not created
-CustomKeywords.'actions.common.shouldFailTest'(custData)
+CustomKeywords.'actions.Common.shouldFailTest'(custData)
 
 int expRowsCount = 1
 
 'Login into portal'
-CustomKeywords.'actions.common.login'()
+CustomKeywords.'actions.Common.login'()
 
 'Search customer and open Customer details page'
-CustomKeywords.'actions.common.searchCustomerAndOpen'(custData)
+CustomKeywords.'actions.Common.searchCustomerAndOpen'(custData)
 
 'Click on Accounts tab'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/tab_Accounts'))
 
 'Wait for Create Account icon to be visible'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/icon_CreateAccount'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/icon_CreateAccount'), GlobalVariable.TIMEOUT)
 
 //Add new account
 'Click on Create Account icon'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/icon_CreateAccount'))
 
 'Wait for Create accounts page to load'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountTitle'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountTitle'), GlobalVariable.TIMEOUT)
 
 'Fill up accounts page'
-CustomKeywords.'actions.common.accountFormFill'(accData)
+CustomKeywords.'actions.Common.accountFormFill'(accData)
 
 'Scroll to OK button'
 WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/btn_Submit'), GlobalVariable.TIMEOUT)
@@ -56,43 +56,43 @@ WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/btn_Submit'))
 
 'Wait for Customer details page to load'
-CustomKeywords.'utils.WaitFor.titleContains'('Customer Details', GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.titleContains'('Customer Details', GlobalVariable.TIMEOUT)
 
 'Wait for Page load'
 WebUI.waitForPageLoad(GlobalVariable.TIMEOUT)
 
 'Verify customer details page is loaded'
-CustomKeywords.'actions.common.verifyUrlContains'('CustomerMainFlow.CustomerDetail.aspx')
+CustomKeywords.'actions.Common.verifyUrlContains'('CustomerMainFlow.CustomerDetail.aspx')
 
 'Click on Accounts tab'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/tab_Accounts'))
 
 'Wait for accounts list table to be visible'
-CustomKeywords.'utils.WaitFor.elementVisible'(accTable, GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(accTable, GlobalVariable.TIMEOUT)
 
 'Verify newly created account is present in table'
-CustomKeywords.'actions.table.verifyAnyValueInColumnEquals'(accTable, ColumnPos.ACC_NUMBER, accData.get(Fields.ACC_NUMBER))
+CustomKeywords.'actions.Table.verifyAnyValueInColumnEquals'(accTable, ColumnPos.ACC_NUMBER, accData.get(Fields.ACC_NUMBER))
 
 'Set data flag'
 accData.put(Fields.IS_CREATED, 'true')
 
 'Get row number for the newly created account from table'
-int rowNow = CustomKeywords.'actions.table.getRowNumber'(accTable, ColumnPos.ACC_NUMBER, accData.get(Fields.ACC_NUMBER))
+int rowNow = CustomKeywords.'actions.Table.getRowNumber'(accTable, ColumnPos.ACC_NUMBER, accData.get(Fields.ACC_NUMBER))
 
 'Verify Correct account number is displayed in grid'
-CustomKeywords.'actions.table.verifyCellValueEquals'(accTable, rowNow, ColumnPos.ACC_NUMBER, accData.get(Fields.ACC_NUMBER))
+CustomKeywords.'actions.Table.verifyCellValueEquals'(accTable, rowNow, ColumnPos.ACC_NUMBER, accData.get(Fields.ACC_NUMBER))
 
 'Verify Correct account title is displayed in grid'
-CustomKeywords.'actions.table.verifyCellValueEquals'(accTable, rowNow, ColumnPos.ACC_TITLE, accData.get(Fields.ACC_TITLE))
+CustomKeywords.'actions.Table.verifyCellValueEquals'(accTable, rowNow, ColumnPos.ACC_TITLE, accData.get(Fields.ACC_TITLE))
 
 'Verify Correct account open date is displayed in grid'
-CustomKeywords.'actions.table.verifyCellValueEquals'(accTable, rowNow, ColumnPos.ACC_OPEN_DATE, accData.get(Fields.ACC_OPEN_DATE))
+CustomKeywords.'actions.Table.verifyCellValueEquals'(accTable, rowNow, ColumnPos.ACC_OPEN_DATE, accData.get(Fields.ACC_OPEN_DATE))
 
 'Verify Correct account description is displayed in grid'
-CustomKeywords.'actions.table.verifyCellValueEquals'(accTable, rowNow, ColumnPos.ACC_DESCRIPTION, accData.get(Fields.ACC_DESCRIPTION))
+CustomKeywords.'actions.Table.verifyCellValueEquals'(accTable, rowNow, ColumnPos.ACC_DESCRIPTION, accData.get(Fields.ACC_DESCRIPTION))
 
 'Verify Correct account ledger balance is displayed in grid'
-CustomKeywords.'actions.table.verifyCellValueEquals'(accTable, rowNow, ColumnPos.ACC_LEDGER_BALANCE, accData.get(Fields.ACC_LEDGER_BALANCE))
+CustomKeywords.'actions.Table.verifyCellValueEquals'(accTable, rowNow, ColumnPos.ACC_LEDGER_BALANCE, accData.get(Fields.ACC_LEDGER_BALANCE))
 
 'Verify Correct account availble balance is displayed in grid'
-CustomKeywords.'actions.table.verifyCellValueEquals'(accTable, rowNow, ColumnPos.ACC_AVAILABLE_BALANCE, accData.get(Fields.ACC_AVAILABLE_BALANCE))
+CustomKeywords.'actions.Table.verifyCellValueEquals'(accTable, rowNow, ColumnPos.ACC_AVAILABLE_BALANCE, accData.get(Fields.ACC_AVAILABLE_BALANCE))

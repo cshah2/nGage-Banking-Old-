@@ -27,28 +27,28 @@ println "Customer001 Address 2 = "+custDataAddress2.toMapString()
 TestObject addressTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/table_Addresses')
 
 //Mark this test as failed if required customer and account is not created
-CustomKeywords.'actions.common.shouldFailTest'(custData)
+CustomKeywords.'actions.Common.shouldFailTest'(custData)
 
 'Login into portal'
-CustomKeywords.'actions.common.login'()
+CustomKeywords.'actions.Common.login'()
 
 'Search customer and open Customer details page'
-CustomKeywords.'actions.common.searchCustomerAndOpen'(custData)
+CustomKeywords.'actions.Common.searchCustomerAndOpen'(custData)
 
 'Click on Contact Details tab'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/tab_ContactDetails'))
 
 'Wait for contact details section to load'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/section_Body'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/section_Body'), GlobalVariable.TIMEOUT)
 
 'Verify Address table contains only one row'
-CustomKeywords.'actions.table.verifyRecordsCount'(addressTable, 1, RegexOperator.EQUALS)
+CustomKeywords.'actions.Table.verifyRecordsCount'(addressTable, 1, RegexOperator.EQUALS)
 
 //Verify Primary Address details
 int rowNo = 1 
 
 'Verify Address details in table'
-CustomKeywords.'actions.common.verifyAddressDetailsInTable'(custData, rowNo)
+CustomKeywords.'actions.Common.verifyAddressDetailsInTable'(custData, rowNo)
 
 'Scroll to Add new address icon'
 WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/icon_AddNewAddress'), GlobalVariable.TIMEOUT)
@@ -56,10 +56,10 @@ WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search
 'Click on Add new addres icon'
 //WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/icon_AddNewAddress'))
 //TODO: Cannot perform scroll to element - Horizontal scroll does not work
-CustomKeywords.'actions.javaScript.click'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/icon_AddNewAddress'))
+CustomKeywords.'actions.JavaScript.click'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/icon_AddNewAddress'))
 
 'Fill Address details'
-CustomKeywords.'actions.common.addressFormFill'(custDataAddress2)
+CustomKeywords.'actions.Common.addressFormFill'(custDataAddress2)
 
 'Scroll to submit button'
 WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/btn_Submit'), GlobalVariable.TIMEOUT)
@@ -68,16 +68,16 @@ WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/btn_Submit'))
 
 'Wait for elements from task drawer to be not present'
-CustomKeywords.'utils.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Street'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Street'), GlobalVariable.TIMEOUT)
 
 'Wait for address to get added'
 //TODO: There is no success message displayed on completion of task.
-CustomKeywords.'actions.table.waitUntilRecordsCountEquals'(addressTable, 2, GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.Table.waitUntilRecordsCountEquals'(addressTable, 2, GlobalVariable.TIMEOUT)
 
 //Verify address details of second row
 rowNo = 2
 'Verify Address details in table'
-CustomKeywords.'actions.common.verifyAddressDetailsInTable'(custDataAddress2, rowNo)
+CustomKeywords.'actions.Common.verifyAddressDetailsInTable'(custDataAddress2, rowNo)
 
 'Set data flag'
 custDataAddress2.put(Fields.IS_CREATED, 'true')

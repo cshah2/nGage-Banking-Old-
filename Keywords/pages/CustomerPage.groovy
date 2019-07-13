@@ -43,7 +43,7 @@ public class CustomerPage {
 
 		//Enter Date of birth
 		if(StringUtil.isValidData(custData, Fields.CUST_DOB)) {
-			new actions.javaScript().setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_DOB'), custData.get(Fields.CUST_DOB))
+			new actions.JavaScript().setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_DOB'), custData.get(Fields.CUST_DOB))
 		}
 
 		//Enter Tax ID
@@ -73,7 +73,7 @@ public class CustomerPage {
 		WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/btn_Next'))
 
 		//Wait for Location information fields to be visible
-		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_Street'), GlobalVariable.TIMEOUT)
+		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_Street'), GlobalVariable.TIMEOUT)
 
 		//Enter Street'
 		if(StringUtil.isValidData(custData, Fields.ADDR_STREET)) {
@@ -117,7 +117,7 @@ public class CustomerPage {
 		WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/btn_Next'))
 
 		//Wait for Contact information fields to be visible
-		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/input_PhoneNumber'), GlobalVariable.TIMEOUT)
+		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/input_PhoneNumber'), GlobalVariable.TIMEOUT)
 
 		//Enter Phone number
 		if(StringUtil.isValidData(custData, Fields.CT_PHONE_NUMBER)) {
@@ -153,7 +153,7 @@ public class CustomerPage {
 	static def fillAddressDetails(Map<Fields, String> addressData) {
 		
 		'Wait for Add address task drawer to load'
-		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Street'), GlobalVariable.TIMEOUT)
+		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Street'), GlobalVariable.TIMEOUT)
 
 		'Enter street'
 		if(StringUtil.isValidData(addressData, Fields.ADDR_STREET)) {
@@ -196,44 +196,44 @@ public class CustomerPage {
 		TestObject addressTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/table_Addresses')
 		'Verify Address Type'
 		if(StringUtil.isValidData(addressData, Fields.ADDR_ADDRESS_TYPE)) {
-			new actions.table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_ADDRESS_TYPE, addressData.get(Fields.ADDR_ADDRESS_TYPE))
+			new actions.Table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_ADDRESS_TYPE, addressData.get(Fields.ADDR_ADDRESS_TYPE))
 		}
 
 		'Verify Address Label'
 		if(StringUtil.isValidData(addressData, Fields.ADDR_ADDRESS_LABEL)) {
-			new actions.table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_ADDRESS_LABEL, addressData.get(Fields.ADDR_ADDRESS_LABEL))
+			new actions.Table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_ADDRESS_LABEL, addressData.get(Fields.ADDR_ADDRESS_LABEL))
 		}
 
 		'Verify Address Street'
 		if(StringUtil.isValidData(addressData, Fields.ADDR_STREET)) {
-			new actions.table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_STREET, addressData.get(Fields.ADDR_STREET))
+			new actions.Table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_STREET, addressData.get(Fields.ADDR_STREET))
 		}
 
 		'Verify Address City'
 		if(StringUtil.isValidData(addressData, Fields.ADDR_CITY)) {
-			new actions.table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_CITY, addressData.get(Fields.ADDR_CITY))
+			new actions.Table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_CITY, addressData.get(Fields.ADDR_CITY))
 		}
 
 		'Verify Address Country'
 		if(StringUtil.isValidData(addressData, Fields.ADDR_COUNTY)) {
-			new actions.table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_COUNTY, addressData.get(Fields.ADDR_COUNTY))
+			new actions.Table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_COUNTY, addressData.get(Fields.ADDR_COUNTY))
 		}
 
 		'Verify Address State'
 		if(StringUtil.isValidData(addressData, Fields.ADDR_STATE)) {
-			new actions.table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_STATE, addressData.get(Fields.ADDR_STATE))
+			new actions.Table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_STATE, addressData.get(Fields.ADDR_STATE))
 		}
 
 		'Verify Address Zipcode'
 		if(StringUtil.isValidData(addressData, Fields.ADDR_ZIPCODE)) {
-			new actions.table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_ZIPCODE, addressData.get(Fields.ADDR_ZIPCODE))
+			new actions.Table().verifyCellValueEquals(addressTable, rowNo, ColumnPos.ADDR_ZIPCODE, addressData.get(Fields.ADDR_ZIPCODE))
 		}
 	}
 	
 	static def fillPhoneDetails(Map<Fields, String> phoneData) {
 		
 		'Wait for Add Phones task drawer to load'
-		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/input_PhoneLabel'), GlobalVariable.TIMEOUT)
+		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/input_PhoneLabel'), GlobalVariable.TIMEOUT)
 
 		'Enter phone number'
 		if(StringUtil.isValidData(phoneData, Fields.CT_PHONE_NUMBER)) {
@@ -257,17 +257,17 @@ public class CustomerPage {
 		
 		'Verify Phone Type'
 		if(StringUtil.isValidData(phoneData, Fields.CT_PHONE_TYPE)) {
-			new actions.table().verifyCellValueEquals(phoneTable, rowNo, ColumnPos.CT_PHONE_TYPE, phoneData.get(Fields.CT_PHONE_TYPE))
+			new actions.Table().verifyCellValueEquals(phoneTable, rowNo, ColumnPos.CT_PHONE_TYPE, phoneData.get(Fields.CT_PHONE_TYPE))
 		}
 
 		'Verify Phone Label'
 		if(StringUtil.isValidData(phoneData, Fields.CT_PHONE_LABEL)) {
-			new actions.table().verifyCellValueEquals(phoneTable, rowNo, ColumnPos.CT_PHONE_LABEL, phoneData.get(Fields.CT_PHONE_LABEL))
+			new actions.Table().verifyCellValueEquals(phoneTable, rowNo, ColumnPos.CT_PHONE_LABEL, phoneData.get(Fields.CT_PHONE_LABEL))
 		}
 
 		'Verify Phone Number'
 		if(StringUtil.isValidData(phoneData, Fields.CT_PHONE_NUMBER)) {
-			new actions.table().verifyCellValueEquals(phoneTable, rowNo, ColumnPos.CT_PHONE_NUMBER, phoneData.get(Fields.CT_PHONE_NUMBER))
+			new actions.Table().verifyCellValueEquals(phoneTable, rowNo, ColumnPos.CT_PHONE_NUMBER, phoneData.get(Fields.CT_PHONE_NUMBER))
 		}
 
 	}
@@ -275,7 +275,7 @@ public class CustomerPage {
 	static def fillEmailDetails(Map<Fields, String> emailData) {
 		
 		'Wait for Add email task drawer to load'
-		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_Email'), GlobalVariable.TIMEOUT)
+		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_Email'), GlobalVariable.TIMEOUT)
 
 		'Enter Email'
 		if(StringUtil.isValidData(emailData, Fields.CT_EMAIL)) {
@@ -299,31 +299,31 @@ public class CustomerPage {
 		
 		'Verify Email Type'
 		if(StringUtil.isValidData(emailData, Fields.CT_EMAIL_TYPE)) {
-			new actions.table().verifyCellValueEquals(emailTable, rowNo, ColumnPos.CT_EMAIL_TYPE, emailData.get(Fields.CT_EMAIL_TYPE))
+			new actions.Table().verifyCellValueEquals(emailTable, rowNo, ColumnPos.CT_EMAIL_TYPE, emailData.get(Fields.CT_EMAIL_TYPE))
 		}
 
 		'Verify Email Label'
 		if(StringUtil.isValidData(emailData, Fields.CT_EMAIL_LABEL)) {
-			new actions.table().verifyCellValueEquals(emailTable, rowNo, ColumnPos.CT_EMAIL_LABEL, emailData.get(Fields.CT_EMAIL_LABEL))
+			new actions.Table().verifyCellValueEquals(emailTable, rowNo, ColumnPos.CT_EMAIL_LABEL, emailData.get(Fields.CT_EMAIL_LABEL))
 		}
 
 		'Verify Email'
 		if(StringUtil.isValidData(emailData, Fields.CT_EMAIL)) {
-			new actions.table().verifyCellValueEquals(emailTable, rowNo, ColumnPos.CT_EMAIL, emailData.get(Fields.CT_EMAIL))
+			new actions.Table().verifyCellValueEquals(emailTable, rowNo, ColumnPos.CT_EMAIL, emailData.get(Fields.CT_EMAIL))
 		}
 	}
 	
 	static def fillDocumentDetails(Map<Fields, String> documentData) {
 		
 		'Wait for Task drawer to load'
-		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/select_DocClass'), GlobalVariable.TIMEOUT)
+		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/select_DocClass'), GlobalVariable.TIMEOUT)
 
 		'Upload file'
 		//CustomKeywords.'actions.File.upload'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_FileUpload'), docData.get(Fields.DOCUMENT_FILEPATH))
 		new actions.File().uploadAutoIt(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_FileUpload'), documentData.get(Fields.DOCUMENT_FILEPATH))
 
 		'Wait for Uploaded file name to be visible'
-		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/lbl_FileNameAfterUpload'), GlobalVariable.TIMEOUT)
+		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/lbl_FileNameAfterUpload'), GlobalVariable.TIMEOUT)
 
 		'Select doc class'
 		if(StringUtil.isValidData(documentData, Fields.DOCUMENT_CLASS)) {
@@ -331,7 +331,7 @@ public class CustomerPage {
 		}
 
 		'Wait for doc type field to be editable'
-		new utils.WaitFor().elementClickable(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/select_DocType'), GlobalVariable.TIMEOUT)
+		new actions.WaitFor().elementClickable(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/select_DocType'), GlobalVariable.TIMEOUT)
 
 		'Select doc type'
 		if(StringUtil.isValidData(documentData, Fields.DOCUMENT_TYPE)) {
@@ -340,17 +340,17 @@ public class CustomerPage {
 
 		'Enter start date'
 		if(StringUtil.isValidData(documentData, Fields.DOCUMENT_START_DATE)) {
-			new actions.javaScript().setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_StartDate'), documentData.get(Fields.DOCUMENT_START_DATE))
+			new actions.JavaScript().setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_StartDate'), documentData.get(Fields.DOCUMENT_START_DATE))
 		}
 
 		'Enter end date'
 		if(StringUtil.isValidData(documentData, Fields.DOCUMENT_END_DATE)) {
-			new actions.javaScript().setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_EndDate'), documentData.get(Fields.DOCUMENT_END_DATE))
+			new actions.JavaScript().setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_EndDate'), documentData.get(Fields.DOCUMENT_END_DATE))
 		}
 
 		'Enter received date'
 		if(StringUtil.isValidData(documentData, Fields.DOCUMENT_RECEIVED_DATE)) {
-			new actions.javaScript().setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_ReceivedDate'), documentData.get(Fields.DOCUMENT_RECEIVED_DATE))
+			new actions.JavaScript().setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_ReceivedDate'), documentData.get(Fields.DOCUMENT_RECEIVED_DATE))
 		}
 
 		'Select status'
@@ -369,19 +369,19 @@ public class CustomerPage {
 		TestObject documentTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Documents Tab/Documents Section/table_Documents')
 		
 		'Verify Doc Class value'
-		new actions.table().verifyCellValueEquals(documentTable, rowNo, ColumnPos.DOCUMENT_CLASS, documentData.get(Fields.DOCUMENT_CLASS), WebTable.DOCUMENT)
+		new actions.Table().verifyCellValueEquals(documentTable, rowNo, ColumnPos.DOCUMENT_CLASS, documentData.get(Fields.DOCUMENT_CLASS), WebTable.DOCUMENT)
 
 		'Verify Doc Type value'
-		new actions.table().verifyCellValueEquals(documentTable, rowNo, ColumnPos.DOCUMENT_TYPE, documentData.get(Fields.DOCUMENT_TYPE), WebTable.DOCUMENT)
+		new actions.Table().verifyCellValueEquals(documentTable, rowNo, ColumnPos.DOCUMENT_TYPE, documentData.get(Fields.DOCUMENT_TYPE), WebTable.DOCUMENT)
 
 		'Verify Doc description value'
-		new actions.table().verifyCellValueEquals(documentTable, rowNo, ColumnPos.DOCUMENT_DESCRIPTION, documentData.get(Fields.DOCUMENT_DESCRIPTION), WebTable.DOCUMENT)
+		new actions.Table().verifyCellValueEquals(documentTable, rowNo, ColumnPos.DOCUMENT_DESCRIPTION, documentData.get(Fields.DOCUMENT_DESCRIPTION), WebTable.DOCUMENT)
 
 		'Verify Customer ID value'
-		new actions.table().verifyCellValueEquals(documentTable, rowNo, ColumnPos.DOCUMENT_CUSTOMER_ID, custData.get(Fields.CUST_CUSTOMER_ID), WebTable.DOCUMENT)
+		new actions.Table().verifyCellValueEquals(documentTable, rowNo, ColumnPos.DOCUMENT_CUSTOMER_ID, custData.get(Fields.CUST_CUSTOMER_ID), WebTable.DOCUMENT)
 
 		'Verify Status value'
-		new actions.table().verifyCellValueEquals(documentTable, rowNo, ColumnPos.DOCUMENT_STATUS, documentData.get(Fields.DOCUMENT_STATUS), WebTable.DOCUMENT)
+		new actions.Table().verifyCellValueEquals(documentTable, rowNo, ColumnPos.DOCUMENT_STATUS, documentData.get(Fields.DOCUMENT_STATUS), WebTable.DOCUMENT)
 
 	}
 	

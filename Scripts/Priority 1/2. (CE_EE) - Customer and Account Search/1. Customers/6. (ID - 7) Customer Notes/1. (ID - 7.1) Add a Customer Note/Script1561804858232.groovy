@@ -24,57 +24,57 @@ Map<Fields, String> custData = Data.CUSTOMER_001
 println "Customer001 = "+custData.toMapString()
 
 //Mark this test as failed if required customer and account is not created
-CustomKeywords.'actions.common.shouldFailTest'(custData)
+CustomKeywords.'actions.Common.shouldFailTest'(custData)
 
 //Set Data
 String note = 'NOTE - '+DateUtil.getCurrentDateTime('MMddyyyy_HHmmss', common.timezone)
 String noteCreatedBy = 'Chintan Shah'
 
 'Login into portal'
-CustomKeywords.'actions.common.login'()
+CustomKeywords.'actions.Common.login'()
 
 'Search customer and open Customer details page'
-CustomKeywords.'actions.common.searchCustomerAndOpen'(custData)
+CustomKeywords.'actions.Common.searchCustomerAndOpen'(custData)
 
 'Click on Notes tab'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/tab_Notes'))
 
 'Wait for Notes section to load'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Notes Tab/Notes section/section_Body'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Notes Tab/Notes section/section_Body'), GlobalVariable.TIMEOUT)
 
 'Get Current rows count'
-int currentRowsCount = CustomKeywords.'actions.table.getRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Notes Tab/Notes section/table_Notes'))
+int currentRowsCount = CustomKeywords.'actions.Table.getRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Notes Tab/Notes section/table_Notes'))
 
 'Move to Add new note icon'
-CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Notes Tab/Notes section/icon_AddNote'))
+CustomKeywords.'actions.Common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Notes Tab/Notes section/icon_AddNote'))
 
 'Click on Add new note icon'
-CustomKeywords.'actions.javaScript.click'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Notes Tab/Notes section/icon_AddNote'))
+CustomKeywords.'actions.JavaScript.click'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Notes Tab/Notes section/icon_AddNote'))
 
 'Wait for Add Notes task drawer to load'
-CustomKeywords.'utils.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Notes/input_Notes'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Notes/input_Notes'), GlobalVariable.TIMEOUT)
 
 'Enter Notes'
 WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Notes/input_Notes'), note)
 
 'Move to submit button'
-CustomKeywords.'actions.common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Notes/btn_Submit'))
+CustomKeywords.'actions.Common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Notes/btn_Submit'))
 
 'Click on Submit button'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Notes/btn_Submit'))
 
 'Wait for elements from task drawer to be not present'
-CustomKeywords.'utils.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Notes/input_Notes'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Notes/input_Notes'), GlobalVariable.TIMEOUT)
 
 'Wait for Notes to get added'
 //TODO: There is no success message displayed on completion of task.
-CustomKeywords.'actions.table.waitUntilRecordsCountEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Notes Tab/Notes section/table_Notes'), currentRowsCount+1, GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.Table.waitUntilRecordsCountEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Notes Tab/Notes section/table_Notes'), currentRowsCount+1, GlobalVariable.TIMEOUT)
 
 //Verify Notes detail
 rowNo = 1 //TODO: Record gets added to the top of the row if user logins in again.
 
 'Verify Notes'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Notes Tab/Notes section/table_Notes'), rowNo, ColumnPos.NOTE_TEXT, note)
+CustomKeywords.'actions.Table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Notes Tab/Notes section/table_Notes'), rowNo, ColumnPos.NOTE_TEXT, note)
 
 'Verify Address Label'
-CustomKeywords.'actions.table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Notes Tab/Notes section/table_Notes'), rowNo, ColumnPos.NOTE_CREATED_BY, noteCreatedBy)
+CustomKeywords.'actions.Table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Notes Tab/Notes section/table_Notes'), rowNo, ColumnPos.NOTE_CREATED_BY, noteCreatedBy)

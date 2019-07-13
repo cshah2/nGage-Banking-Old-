@@ -23,18 +23,18 @@ public class TaskDrawer {
 	static def selectTask(String taskName) {
 		
 		'Scroll to Tasks button'
-		new actions.common().moveToElement(findTestObject('Dashboard Page/Customer and Account Search Page/TaskList Drawer/btn_Tasks'))
+		new actions.Common().moveToElement(findTestObject('Dashboard Page/Customer and Account Search Page/TaskList Drawer/btn_Tasks'))
 
 		'Select Tasks button'
 		WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/TaskList Drawer/btn_Tasks'))
 
 		'Wait for task drawer to load'
-		new utils.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/TaskList Drawer/section_TaskLists'), GlobalVariable.TIMEOUT)
+		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/TaskList Drawer/section_TaskLists'), GlobalVariable.TIMEOUT)
 
 		TestObject taskItem = findTestObject('Dashboard Page/Customer and Account Search Page/TaskList Drawer/btn_TaskItem', ['taskName' : taskName])
 
 		'Scroll to Task Item'
-		new actions.common().moveToElement(taskItem)
+		new actions.Common().moveToElement(taskItem)
 
 		'Click on Task Item'
 		WebUI.click(taskItem)
