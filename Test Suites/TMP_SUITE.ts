@@ -17,21 +17,15 @@
       <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/1. Customers/1. (ID - 2) Customer/1. (ID - 2.3) Add new customer</testCaseId>
    </testCaseLink>
    <testCaseLink>
-      <guid>53761e07-66f9-4399-9ddc-1e475bca50de</guid>
+      <guid>20a94d46-f0f4-413a-b9e7-48c85342f32f</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/1. (ID - 12) DDA Account/1. (ID - 12.1) Add DDA Banking Account</testCaseId>
+      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/1. Customers/5. (ID - 6) Customer Contact Details/1. (ID - 6.1) Add Customer Address</testCaseId>
    </testCaseLink>
    <testCaseLink>
-      <guid>9e4df937-530a-458a-a40a-dab86a4a2097</guid>
+      <guid>8a5da3d3-fd49-48e1-b119-433c59a9c23c</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/1. (ID - 12) DDA Account/2. (ID - 12.2) Add DDA Transactions - DDA Deposit</testCaseId>
-   </testCaseLink>
-   <testCaseLink>
-      <guid>6e8c7aa1-5151-49cf-a76a-0b873182ed8e</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
-      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/1. (ID - 12) DDA Account/3. (ID - 12.3) Add DDA Transactions - DDA Withdraw</testCaseId>
+      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/1. Customers/5. (ID - 6) Customer Contact Details/2. (ID - 6.2) Edit Customer Address</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>
