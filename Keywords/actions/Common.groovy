@@ -273,9 +273,21 @@ public class Common {
 		AccountPage.expandTransactionInformation(table, rowNo)
 	}
 
-
 	@Keyword
 	def verifyTransactionInformationInAccordion(Map<Fields, String> accData, Map<Fields, String> txnData) {
 		AccountPage.verifyTransactionInformation(accData, txnData)
 	}
+	
+	@Keyword
+	def accountDetailDocFormFill(Map<Fields, String> accDetailDocument) {
+		AccountPage.fillAccountDetailDoc(accDetailDocument)
+	}
+	
+	@Keyword
+	def verifyAccountDetailDocInTable(Map<Fields, String> accDetailDoc, int rowNo) {
+		AccountPage.verifyAccountDetailDoc(accDetailDoc, rowNo)
+	}
+	
+	
+	
 }

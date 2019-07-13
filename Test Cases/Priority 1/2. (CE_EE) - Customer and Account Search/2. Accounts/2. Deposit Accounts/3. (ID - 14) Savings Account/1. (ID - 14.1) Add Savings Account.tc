@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
-   <description>(ID - 14.1) Add Savings Account</description>
+   <description>(ID - 13.1) Add CD Banking Account</description>
    <name>1. (ID - 14.1) Add Savings Account</name>
    <tag></tag>
    <comment></comment>
-   <testCaseGuid>858e87e7-49a5-478f-9636-53c66e78ac57</testCaseGuid>
+   <testCaseGuid>23e20bf5-dbad-4b58-b6f9-20d30e706206</testCaseGuid>
 </TestCaseEntity>

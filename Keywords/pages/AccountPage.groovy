@@ -154,9 +154,9 @@ public class AccountPage {
 			}
 		}
 	}
-	
+
 	static def fillTransactionDetails(Map<Fields, String> txnData) {
-		
+
 		'Wait for drawer to load'
 		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Post Transaction/select_TransactionCode'), GlobalVariable.TIMEOUT)
 
@@ -176,9 +176,9 @@ public class AccountPage {
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Post Transaction/input_Comment'), txnData.get(Fields.TXN_COMMENT))
 		}
 	}
-	
+
 	static def reviewTransactionDetails(Map<Fields, String> txnData) {
-		
+
 		'Wait for drawer to load'
 		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Confirm Transaction/lbl_TransactionCode'), GlobalVariable.TIMEOUT)
 
@@ -201,9 +201,9 @@ public class AccountPage {
 		'Verify Available balance after'
 		WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Confirm Transaction/lbl_AvailableBalanceAfter'), txnData.get(Fields.ACC_AVAILABLE_BALANCE))
 	}
-	
+
 	static def verifyBalanceSummary(Map<Fields, String> txnData) {
-		
+
 		'Verify ledger balance - balance summary section - overview tab'
 		WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Overview Tab/Balance Summary Section/lbl_LedgerBalance'), txnData.get(Fields.ACC_LEDGER_BALANCE))
 
@@ -213,9 +213,9 @@ public class AccountPage {
 		'Verify avaialble balance - balance summary section - overview tab'
 		WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Overview Tab/Balance Summary Section/lbl_AvailableBalance'), txnData.get(Fields.ACC_AVAILABLE_BALANCE))
 	}
-	
+
 	static def verifyTransactionTable(Map<Fields, String> txnData, TestObject table, int rowNo) {
-		
+
 		'Verify transaction type - transaction table - overview tab'
 		new actions.Table().verifyCellValueEquals(table, rowNo, ColumnPos.TXN_TYPE, txnData.get(Fields.TXN_CODE))
 
@@ -233,12 +233,12 @@ public class AccountPage {
 		'Verify Comment - transaction table - overview tab'
 		new actions.Table().verifyCellValueEquals(table, rowNo, ColumnPos.TXN_COMMENT, txnData.get(Fields.TXN_COMMENT))
 	}
-	
+
 	static def expandTransactionInformation(TestObject table, int rowNo) {
-		
+
 		'Move to cell'
 		new actions.Table().moveToCell(table, rowNo, ColumnPos.TXN_EXPAND_ICON)
-		
+
 		'Verify Transaction Details'
 		new actions.Table().clickCell(table, rowNo, ColumnPos.TXN_EXPAND_ICON)
 
@@ -253,9 +253,9 @@ public class AccountPage {
 		TestObject fieldAccountNumber = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Transaction Details Section/Transaction Information/lbl_TransactionData', ['fieldName' : 'Account Number'])
 		new actions.WaitFor().elementVisible(fieldAccountNumber, GlobalVariable.TIMEOUT)
 	}
-	
+
 	static def verifyTransactionInformation(Map<Fields, String> accData, Map<Fields, String> txnData) {
-		
+
 		TestObject accNumber = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Transaction Details Section/Transaction Information/lbl_TransactionData', ['fieldName' : 'Account Number'])
 		TestObject txnAmount = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Transaction Details Section/Transaction Information/lbl_TransactionData', ['fieldName' : 'Amount'])
 		TestObject accBalance = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Transaction Details Section/Transaction Information/lbl_TransactionData', ['fieldName' : 'Balance'])
@@ -276,5 +276,51 @@ public class AccountPage {
 
 		'Verify Account Position Number'
 		WebUI.verifyElementText(accPositionNumber, accData.get(Fields.ACC_NUMBER))
+	}
+	
+	static def fillAccountDetailDoc(Map<Fields, String> accDetailDoc) {
+		
+		'Wait for task drawer to load'
+		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Account Detail Documents/select_DocumentType'), GlobalVariable.TIMEOUT)
+		
+		'Select Document Type'
+		if(StringUtil.isValidData(accDetailDoc, Fields.DOC_TYPE)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Account Detail Documents/select_DocumentType'), accDetailDoc.get(Fields.DOC_TYPE), false)
+		}
+		
+		'Enter Signed By'
+		if(StringUtil.isValidData(accDetailDoc, Fields.DOC_SIGNED_BY)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Account Detail Documents/input_SignedBy'), accDetailDoc.get(Fields.DOC_SIGNED_BY))
+		}
+		
+		'Enter Version'
+		if(StringUtil.isValidData(accDetailDoc, Fields.DOC_VERSION)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Account Detail Documents/input_Version'), accDetailDoc.get(Fields.DOC_VERSION))
+		}
+		
+		'Enter Signed Date'
+		if(StringUtil.isValidData(accDetailDoc, Fields.DOC_SIGNED_DATE)) {
+			new actions.JavaScript().setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Account Detail Documents/input_SignedDate'), accDetailDoc.get(Fields.DOC_SIGNED_DATE))
+		}
+	} 
+	
+	static def verifyAccountDetailDoc(Map<Fields, String> accDetailDoc, int rowNo) {
+		
+		TestObject table = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Document Section/table_Documents')
+		
+		'Move to Doc table in details tab'
+		new actions.Table().moveToCell(table, rowNo, ColumnPos.DOC_TYPE)
+		
+		'Verify Doc Type'
+		new actions.Table().verifyCellValueEquals(table, rowNo, ColumnPos.DOC_TYPE, accDetailDoc.get(Fields.DOC_TYPE))
+		
+		'Verify Doc Signed By'
+		new actions.Table().verifyCellValueEquals(table, rowNo, ColumnPos.DOC_SIGNED_BY, accDetailDoc.get(Fields.DOC_SIGNED_BY))
+
+		'Verify Doc Type'
+		new actions.Table().verifyCellValueEquals(table, rowNo, ColumnPos.DOC_SIGNED_DATE, accDetailDoc.get(Fields.DOC_SIGNED_DATE_VIEW))
+
+		'Verify Doc Type'
+		new actions.Table().verifyCellValueEquals(table, rowNo, ColumnPos.DOC_VERSION, accDetailDoc.get(Fields.DOC_VERSION))
 	}
 }

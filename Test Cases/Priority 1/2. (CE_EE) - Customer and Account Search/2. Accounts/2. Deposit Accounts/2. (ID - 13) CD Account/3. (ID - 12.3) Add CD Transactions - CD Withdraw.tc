@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>(ID - 12.3) Add CD Transactions - CD Withdraw</description>
+   <name>3. (ID - 12.3) Add CD Transactions - CD Withdraw</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>ed2dc804-529f-42eb-8b8d-4c5f0d8fe93a</testCaseGuid>
+</TestCaseEntity>
