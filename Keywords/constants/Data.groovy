@@ -369,16 +369,16 @@ public class Data {
 		CUSTOMER_001_SAVING_ACCOUNT_TXN3.put(Fields.IS_CREATED, 'false')
 	}
 	
-	public static final Map<Fields, String> CUSTOMER_001_DDA_ACCOUNT_ACC_DOC2;
+	public static final Map<Fields, String> CUSTOMER_001_SAVING_ACCOUNT_ACC_DOC2;
 	static {
 		String currentDateTime = DateUtil.getCurrentDateTime(common.dateTimeFormat, common.timezone)
 		
-		CUSTOMER_001_DDA_ACCOUNT_ACC_DOC2 = new HashMap<Fields, String>()
-		CUSTOMER_001_DDA_ACCOUNT_ACC_DOC2.put(Fields.DOC_TYPE, 'Electronic statement consent')
-		CUSTOMER_001_DDA_ACCOUNT_ACC_DOC2.put(Fields.DOC_SIGNED_BY, CUSTOMER_001.get(Fields.CUST_FIRST_NAME)+' '+CUSTOMER_001.get(Fields.CUST_LAST_NAME))
-		CUSTOMER_001_DDA_ACCOUNT_ACC_DOC2.put(Fields.DOC_SIGNED_DATE, currentDateTime)
-		CUSTOMER_001_DDA_ACCOUNT_ACC_DOC2.put(Fields.DOC_SIGNED_DATE_VIEW, DateUtil.convert(currentDateTime, common.dateTimeFormat, common.dateFormat))
-		CUSTOMER_001_DDA_ACCOUNT_ACC_DOC2.put(Fields.DOC_VERSION, '01')
+		CUSTOMER_001_SAVING_ACCOUNT_ACC_DOC2 = new HashMap<Fields, String>()
+		CUSTOMER_001_SAVING_ACCOUNT_ACC_DOC2.put(Fields.DOC_TYPE, 'Electronic statement consent')
+		CUSTOMER_001_SAVING_ACCOUNT_ACC_DOC2.put(Fields.DOC_SIGNED_BY, CUSTOMER_001.get(Fields.CUST_FIRST_NAME)+' '+CUSTOMER_001.get(Fields.CUST_LAST_NAME))
+		CUSTOMER_001_SAVING_ACCOUNT_ACC_DOC2.put(Fields.DOC_SIGNED_DATE, currentDateTime)
+		CUSTOMER_001_SAVING_ACCOUNT_ACC_DOC2.put(Fields.DOC_SIGNED_DATE_VIEW, DateUtil.convert(currentDateTime, common.dateTimeFormat, common.dateFormat))
+		CUSTOMER_001_SAVING_ACCOUNT_ACC_DOC2.put(Fields.DOC_VERSION, '01')
 		
 	}
 

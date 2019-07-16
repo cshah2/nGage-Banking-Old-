@@ -18,8 +18,8 @@ import enums.Fields
 import internal.GlobalVariable as GlobalVariable
 
 //Map<Fields, String> custData = Data.CUSTOMER_001
-Map<Fields, String> accData = Data.CUSTOMER_001_DDA_ACCOUNT
-Map<Fields, String> accDetailDoc = Data.CUSTOMER_001_DDA_ACCOUNT_ACC_DOC2
+Map<Fields, String> accData = Data.CUSTOMER_001_SAVING_ACCOUNT
+Map<Fields, String> accDetailDoc = Data.CUSTOMER_001_SAVING_ACCOUNT_ACC_DOC2
 TestObject table = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Document Section/table_Documents')
 
 //Mark this test as failed if required customer and account is not created
