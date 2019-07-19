@@ -108,4 +108,14 @@ public class ColumnPos {
 	public static int TXN_CREDIT = 7
 	public static int TXN_ENDING_BALANCE = 8
 	public static int TXN_COMMENT = 9
+	
+	//Account Details Page - Overview tab & Holds tab - Holds table
+	public static int HOLD_EXPAND_ICON = 1
+	public static int HOLD_TYPE = 2
+	public static int HOLD_START_DATE = 3
+	public static int HOLD_END_DATE = 4
+	public static int HOLD_DURATION = 5
+	public static int HOLD_AMOUNT = 6
+	public static int HOLD_CANCEL_DATE = 7
+	public static int HOLD_MORE_ICON = 8
 }

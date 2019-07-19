@@ -277,17 +277,34 @@ public class Common {
 	def verifyTransactionInformationInAccordion(Map<Fields, String> accData, Map<Fields, String> txnData) {
 		AccountPage.verifyTransactionInformation(accData, txnData)
 	}
-	
+
 	@Keyword
 	def accountDetailDocFormFill(Map<Fields, String> accDetailDocument) {
 		AccountPage.fillAccountDetailDoc(accDetailDocument)
 	}
-	
+
 	@Keyword
 	def verifyAccountDetailDocInTable(Map<Fields, String> accDetailDoc, int rowNo) {
 		AccountPage.verifyAccountDetailDoc(accDetailDoc, rowNo)
 	}
+
+	@Keyword
+	def holdFormFill(Map<Fields, String> holdData) {
+		AccountPage.fillHoldDetails(holdData)
+	}
+
+	@Keyword
+	def openHoldInformationSection(TestObject table, int rowNo) {
+		AccountPage.expandHoldInformation(table, rowNo)
+	}
 	
-	
-	
+	@Keyword
+	def verifyHoldDetailsInTable() {
+
+	}
+
+	@Keyword
+	def verifyHoldDetailsInAccordion() {
+
+	}
 }

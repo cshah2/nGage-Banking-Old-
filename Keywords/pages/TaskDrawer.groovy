@@ -19,9 +19,9 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable
 
 public class TaskDrawer {
-	
+
 	static def selectTask(String taskName) {
-		
+
 		'Scroll to Tasks button'
 		new actions.Common().moveToElement(findTestObject('Dashboard Page/Customer and Account Search Page/TaskList Drawer/btn_Tasks'))
 

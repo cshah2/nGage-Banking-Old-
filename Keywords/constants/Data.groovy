@@ -163,7 +163,7 @@ public class Data {
 	public static final Map<Fields, String> CUSTOMER_001_DDA_ACCOUNT;
 	static {
 		String currentDateTime = DateUtil.getCurrentDateTime(common.dateTimeFormat, common.timezone)
-		
+
 		CUSTOMER_001_DDA_ACCOUNT = new HashMap<Fields, String>()
 		CUSTOMER_001_DDA_ACCOUNT.put(Fields.ACC_TITLE, CUSTOMER_001.get(Fields.CUST_FIRST_NAME)+' '+CUSTOMER_001.get(Fields.CUST_LAST_NAME))
 		CUSTOMER_001_DDA_ACCOUNT.put(Fields.ACC_OWNERSHIP, 'Primary')
@@ -368,19 +368,35 @@ public class Data {
 		CUSTOMER_001_SAVING_ACCOUNT_TXN3.put(Fields.TXN_TYPE, 'CREDIT')
 		CUSTOMER_001_SAVING_ACCOUNT_TXN3.put(Fields.IS_CREATED, 'false')
 	}
-	
+
 	public static final Map<Fields, String> CUSTOMER_001_SAVING_ACCOUNT_ACC_DOC2;
 	static {
 		String currentDateTime = DateUtil.getCurrentDateTime(common.dateTimeFormat, common.timezone)
-		
+
 		CUSTOMER_001_SAVING_ACCOUNT_ACC_DOC2 = new HashMap<Fields, String>()
 		CUSTOMER_001_SAVING_ACCOUNT_ACC_DOC2.put(Fields.DOC_TYPE, 'Electronic statement consent')
 		CUSTOMER_001_SAVING_ACCOUNT_ACC_DOC2.put(Fields.DOC_SIGNED_BY, CUSTOMER_001.get(Fields.CUST_FIRST_NAME)+' '+CUSTOMER_001.get(Fields.CUST_LAST_NAME))
 		CUSTOMER_001_SAVING_ACCOUNT_ACC_DOC2.put(Fields.DOC_SIGNED_DATE, currentDateTime)
 		CUSTOMER_001_SAVING_ACCOUNT_ACC_DOC2.put(Fields.DOC_SIGNED_DATE_VIEW, DateUtil.convert(currentDateTime, common.dateTimeFormat, common.dateFormat))
 		CUSTOMER_001_SAVING_ACCOUNT_ACC_DOC2.put(Fields.DOC_VERSION, '01')
-		
 	}
+	
+	public static final Map<Fields, String> CUSTOMER_001_SAVING_ACCOUNT_HOLD1;
+	static {
+		String currentDateTime = DateUtil.getCurrentDateTime(common.dateTimeFormat, common.timezone)
+
+		CUSTOMER_001_SAVING_ACCOUNT_HOLD1 = new HashMap<Fields, String>()
+		CUSTOMER_001_SAVING_ACCOUNT_HOLD1.put(Fields.HOLD_TYPE, 'Clearing')
+		CUSTOMER_001_SAVING_ACCOUNT_HOLD1.put(Fields.HOLD_START_DATE, currentDateTime)
+		CUSTOMER_001_SAVING_ACCOUNT_HOLD1.put(Fields.HOLD_START_DATE_VIEW, DateUtil.convert(CUSTOMER_001_SAVING_ACCOUNT_HOLD1.get(Fields.HOLD_START_DATE), common.dateTimeFormat, common.dateFormat))
+		CUSTOMER_001_SAVING_ACCOUNT_HOLD1.put(Fields.HOLD_DURATION, 'One Business Day')
+		CUSTOMER_001_SAVING_ACCOUNT_HOLD1.put(Fields.HOLD_DURATION_VIEW, '1B')
+		CUSTOMER_001_SAVING_ACCOUNT_HOLD1.put(Fields.HOLD_AMOUNT, '500')
+		CUSTOMER_001_SAVING_ACCOUNT_HOLD1.put(Fields.HOLD_AMOUNT, '500.00')
+		CUSTOMER_001_SAVING_ACCOUNT_HOLD1.put(Fields.HOLD_NOTE, 'Clearing Hold')
+		CUSTOMER_001_SAVING_ACCOUNT_HOLD1.put(Fields.HOLD_REASON, 'Reason 01')
+	}
+
 
 
 
