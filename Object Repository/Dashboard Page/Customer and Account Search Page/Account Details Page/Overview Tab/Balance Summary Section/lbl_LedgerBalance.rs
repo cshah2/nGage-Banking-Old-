@@ -6,18 +6,17 @@
    <elementGuidId>2de7f0c6-debb-459d-8631-70f1588481ae</elementGuidId>
    <selectorCollection>
       <entry>
+         <key>CSS</key>
+         <value>div[displayblockname='ACCOUNT_BALANCE_SUMMARY'] label[id*='_wtLedgerBalance_Value']</value>
+      </entry>
+      <entry>
          <key>XPATH</key>
-         <value>//div[@class='AccountSummary']//label[text()='LEDGER BALANCE']/../../div[2]/label</value>
+         <value>div[displayblockname='ACCOUNT_BALANCE_SUMMARY'] label[id*='_wtLedgerBalance_Value']</value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
-      </entry>
-      <entry>
-         <key>CSS</key>
-         <value></value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

@@ -6,16 +6,14 @@
    <elementGuidId>e9f7eb00-d323-40e1-9a02-6c343c3094d5</elementGuidId>
    <selectorCollection>
       <entry>
+         <key>CSS</key>
+         <value>div[displayblockname='ACCOUNT_BALANCE_SUMMARY'] span[id*='_wtBalSummaryHoldsExpr']</value>
+      </entry>
+      <entry>
          <key>XPATH</key>
-         <value></value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
-      </entry>
-      <entry>
-         <key>CSS</key>
-         <value>div[id*='_wtholdTotal']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

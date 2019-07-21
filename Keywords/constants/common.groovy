@@ -29,4 +29,5 @@ public class common {
 	public static String dateFormat = 'MM/dd/yyyy'
 	public static String dateTimeFormat = 'MM/dd/yyyy HH:mm:ss'
 	public static String timezone = 'America/New_York'
+	public static String timezoneUTC = 'UTC'
 }

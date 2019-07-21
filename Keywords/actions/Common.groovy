@@ -297,14 +297,14 @@ public class Common {
 	def openHoldInformationSection(TestObject table, int rowNo) {
 		AccountPage.expandHoldInformation(table, rowNo)
 	}
-	
-	@Keyword
-	def verifyHoldDetailsInTable() {
 
+	@Keyword
+	def verifyHoldDetailsInTable(Map<Fields, String> holdData, TestObject table, int rowNo) {
+		AccountPage.verifyHoldTable(holdData, table, rowNo)
 	}
 
 	@Keyword
-	def verifyHoldDetailsInAccordion() {
-
+	def verifyHoldDetailsInAccordion(Map<Fields, String> accData, Map<Fields, String> holdData) {
+		AccountPage.verifyHoldDetailsExpandedIntable(accData, holdData)
 	}
 }

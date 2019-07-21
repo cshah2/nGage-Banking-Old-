@@ -212,45 +212,46 @@ public class AccountPage {
 
 		'Verify avaialble balance - balance summary section - overview tab'
 		WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Overview Tab/Balance Summary Section/lbl_AvailableBalance'), txnData.get(Fields.ACC_AVAILABLE_BALANCE))
-		
+
 		boolean isPreAuth = StringUtil.isValidData(txnData, Fields.HOLD_PRE_AUTH)
 		boolean isRegCC = StringUtil.isValidData(txnData, Fields.HOLD_REG_CC)
 		boolean isClearing = StringUtil.isValidData(txnData, Fields.HOLD_CLEARING)
 		boolean isReserve = StringUtil.isValidData(txnData, Fields.HOLD_RESERVE)
 		boolean isAdmin = StringUtil.isValidData(txnData, Fields.HOLD_ADMIN)
-		
+
 		if(isPreAuth || isRegCC || isClearing || isReserve || isAdmin) {
-			
+
 			'Click on Icon next to Holds'
 			WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Overview Tab/Balance Summary Section/icon_HoldsLink'))
-			
+
 			'Wait for section to load'
 			new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Overview Tab/Balance Summary Section/lbl_Hold_PreAuth'), GlobalVariable.TIMEOUT)
-			
+
 			'Verify Pre-Auth value'
 			if(isPreAuth) {
-				WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Overview Tab/Balance Summary Section/lbl_Hold_PreAuth'), GlobalVariable.TIMEOUT)
+				WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Overview Tab/Balance Summary Section/lbl_Hold_PreAuth'), txnData.get(Fields.HOLD_PRE_AUTH))
 			}
-			
+
 			'Verify RegCC value'
 			if(isRegCC) {
-				WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Overview Tab/Balance Summary Section/lbl_Hold_RegCC'), GlobalVariable.TIMEOUT)
+				WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Overview Tab/Balance Summary Section/lbl_Hold_RegCC'), txnData.get(Fields.HOLD_REG_CC))
 			}
-			
+
 			'Verify Clearing value'
 			if(isClearing) {
-				WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Overview Tab/Balance Summary Section/lbl_Hold_Clearing'), GlobalVariable.TIMEOUT)
+				WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Overview Tab/Balance Summary Section/lbl_Hold_Clearing'), txnData.get(Fields.HOLD_CLEARING))
 			}
-			
+
 			'Verify Reserve value'
 			if(isReserve) {
-				WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Overview Tab/Balance Summary Section/lbl_Hold_Reserve'), GlobalVariable.TIMEOUT)
+				WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Overview Tab/Balance Summary Section/lbl_Hold_Reserve'), txnData.get(Fields.HOLD_RESERVE))
 			}
 
-
-
+			'Verify Reserve value'
+			if(isAdmin) {
+				WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Overview Tab/Balance Summary Section/lbl_Hold_Admin'), txnData.get(Fields.HOLD_ADMIN))
+			}
 		}
-		
 	}
 
 	static def verifyTransactionTable(Map<Fields, String> txnData, TestObject table, int rowNo) {
@@ -402,20 +403,16 @@ public class AccountPage {
 		new actions.Table().clickCell(table, rowNo, ColumnPos.HOLD_EXPAND_ICON)
 
 		'Wait for Hold infomration section to load'
-
-		TestObject fieldHoldAmount = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Hold Details Section/lbl_HoldData', ['fieldName' : 'Hold Amount'])
+		TestObject fieldHoldAmount = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Hold Details Section/lbl_HoldData', ['fieldName' : 'HOLD AMOUNT'])
 		new actions.WaitFor().elementVisible(fieldHoldAmount, GlobalVariable.TIMEOUT)
 
 	}
 
 	static def verifyHoldTable(Map<Fields, String> holdData, TestObject table, int rowNo) {
-		
-		'Verify Hold Type'
-		new actions.Table().verifyCellValueEquals(table, rowNo, ColumnPos.HOLD_TYPE, holdData.get(Fields.HOLD_TYPE))
 
 		'Verify Hold Type'
 		new actions.Table().verifyCellValueEquals(table, rowNo, ColumnPos.HOLD_TYPE, holdData.get(Fields.HOLD_TYPE))
-		
+
 		'Verify Start Date'
 		new actions.Table().verifyCellValueEquals(table, rowNo, ColumnPos.HOLD_START_DATE, holdData.get(Fields.HOLD_START_DATE_VIEW))
 
@@ -428,20 +425,20 @@ public class AccountPage {
 
 	static def verifyHoldDetailsExpandedIntable(Map<Fields, String> accData, Map<Fields, String> holdData) {
 
-		TestObject holdType = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Hold Details Section/lbl_HoldData', ['fieldName' : 'HOLD TYPE']) 
+		TestObject holdType = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Hold Details Section/lbl_HoldData', ['fieldName' : 'HOLD TYPE'])
 		TestObject holdStartDate = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Hold Details Section/lbl_HoldData', ['fieldName' : 'START DATE'])
 		TestObject holdDuration = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Hold Details Section/lbl_HoldData', ['fieldName' : 'DURATION'])
 		TestObject holdAmount = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Hold Details Section/lbl_HoldData', ['fieldName' : 'HOLD AMOUNT'])
-		
+
 		'Wait for section to load'
 		new actions.WaitFor().elementVisible(holdType, GlobalVariable.TIMEOUT)
-		
+
 		'Verify Hold type value'
 		WebUI.verifyElementText(holdType, holdData.get(Fields.HOLD_TYPE))
-		
+
 		'Verify Hold Start Date'
 		WebUI.verifyElementText(holdStartDate, holdData.get(Fields.HOLD_START_DATE_VIEW))
-		
+
 		'Verify Hold Duration'
 		WebUI.verifyElementText(holdDuration, holdData.get(Fields.HOLD_DURATION_VIEW))
 

@@ -6,16 +6,14 @@
    <elementGuidId>4c464a39-da94-45b9-9f49-d9f5d1ca027e</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
-         <value></value>
-      </entry>
-      <entry>
          <key>CSS</key>
-         <value></value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[@taskblockname='Hold']//label[text()='Duration']/../select</value>
+         <value>//div[@taskblockname='Hold']//label[starts-with(text(),'Duration')]/../select</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
