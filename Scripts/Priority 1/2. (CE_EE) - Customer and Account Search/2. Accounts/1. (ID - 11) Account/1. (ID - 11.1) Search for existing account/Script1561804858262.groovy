@@ -68,8 +68,8 @@ WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Sear
 'Verify Account Available balance'
 WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Position Details Section/lbl_AvailableBalance'), accData.get(Fields.ACC_AVAILABLE_BALANCE))
 
-'Verify Account name'
-WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Position Details Section/lbl_Name'), accData.get(Fields.ACC_POSITION_NAME))
+'Verify Account Position Name/Description'
+WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Position Details Section/lbl_PositionDescription'), accData.get(Fields.ACC_POSITION_NAME))
 
 'Verify Departmnet ID' //TODO: Bug - Department ID value is Department 350 in selection, but in view mode it is shown as 350
 WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Details Tab/Position Details Section/lbl_DepartmentId'), accData.get(Fields.ACC_DEPT_ID_VIEW))

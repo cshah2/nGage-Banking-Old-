@@ -98,10 +98,11 @@ public class AccountPage {
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_CreditLimit'), accData.get(Fields.ACC_CREDIT_LIMIT))
 		}
 
-		//Enter Interest rate
-		if(StringUtil.isValidData(accData, Fields.ACC_INTEREST_RATE)) {
-			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_InterestRate'), accData.get(Fields.ACC_INTEREST_RATE))
-		}
+//		Field has been removed Date - 07 July 2019
+//		//Enter Interest rate
+//		if(StringUtil.isValidData(accData, Fields.ACC_INTEREST_RATE)) {
+//			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_InterestRate'), accData.get(Fields.ACC_INTEREST_RATE))
+//		}
 
 		//Select Document 1 - Terms and Conditions
 		if(StringUtil.isValidData(accData, Fields.DOC_TYPE)) {

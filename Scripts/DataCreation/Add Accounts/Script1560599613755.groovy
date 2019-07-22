@@ -48,7 +48,7 @@ accData.put(Fields.ACC_CURRENCY_CODE, CurrencyCode)
 accData.put(Fields.ACC_VERTICAL, Vertical)
 accData.put(Fields.ACC_DEPT_ID, DepartmentID)
 accData.put(Fields.ACC_CREDIT_LIMIT, CreditLimit)
-accData.put(Fields.ACC_INTEREST_RATE, InterestRate)
+//accData.put(Fields.ACC_INTEREST_RATE, InterestRate) //Field has been removed Date 07 July 2019
 accData.put(Fields.DOC_TYPE, DocType1)
 accData.put(Fields.DOC_SIGNED_BY, DocSignedBy1)
 if(StringUtils.isNotBlank(DocSignedDate1)) {

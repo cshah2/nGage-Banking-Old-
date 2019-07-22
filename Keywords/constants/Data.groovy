@@ -814,7 +814,7 @@ public class Data {
 		ACCOUNT_002.put(Fields.ACC_DEPT_ID, 'Department 350')
 		ACCOUNT_002.put(Fields.ACC_DEPT_ID_VIEW, '350')
 		ACCOUNT_002.put(Fields.ACC_CREDIT_LIMIT, '100000')
-		ACCOUNT_002.put(Fields.ACC_INTEREST_RATE, '8')
+//		ACCOUNT_002.put(Fields.ACC_INTEREST_RATE, '8') Field has been removed Date - 07 July 2019
 		ACCOUNT_002.put(Fields.ACC_OPEN_DATE, DateUtil.getCurrentDateTime(common.dateFormat, common.timezone))
 		ACCOUNT_002.put(Fields.DOC_TYPE, 'Terms and conditions')
 		ACCOUNT_002.put(Fields.DOC_SIGNED_BY, CUSTOMER_002.get(Fields.CUST_FIRST_NAME)+' '+CUSTOMER_002.get(Fields.CUST_LAST_NAME))
