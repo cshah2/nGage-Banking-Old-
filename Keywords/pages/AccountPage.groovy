@@ -98,11 +98,11 @@ public class AccountPage {
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_CreditLimit'), accData.get(Fields.ACC_CREDIT_LIMIT))
 		}
 
-//		Field has been removed Date - 07 July 2019
-//		//Enter Interest rate
-//		if(StringUtil.isValidData(accData, Fields.ACC_INTEREST_RATE)) {
-//			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_InterestRate'), accData.get(Fields.ACC_INTEREST_RATE))
-//		}
+		//		Field has been removed Date - 07 July 2019
+		//		//Enter Interest rate
+		//		if(StringUtil.isValidData(accData, Fields.ACC_INTEREST_RATE)) {
+		//			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_InterestRate'), accData.get(Fields.ACC_INTEREST_RATE))
+		//		}
 
 		//Select Document 1 - Terms and Conditions
 		if(StringUtil.isValidData(accData, Fields.DOC_TYPE)) {
@@ -445,5 +445,26 @@ public class AccountPage {
 
 		'Verify Hold Amount'
 		WebUI.verifyElementText(holdAmount, holdData.get(Fields.HOLD_AMOUNT_VIEW))
+	}
+	
+	static def verifyHoldDetailsInTaskDrawer(Map<Fields, String> holdData) {
+		
+		'Wait for task drawer to load'
+		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Hold/select_HoldType'), GlobalVariable.TIMEOUT)
+		
+		'Verify selected hold type'
+		WebUI.verifyOptionSelectedByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Hold/select_HoldType'), holdData.get(Fields.HOLD_TYPE), false, GlobalVariable.TIMEOUT)
+		
+		'Verify start date'
+		WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Hold/input_StartDate'), 'value', holdData.get(Fields.HOLD_START_DATE), GlobalVariable.TIMEOUT)
+		
+		'Verify Hold amount'
+		WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Hold/input_HoldAmount'), 'value', holdData.get(Fields.HOLD_AMOUNT), GlobalVariable.TIMEOUT)
+		
+		'Verify Hold Notes'
+		WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Hold/input_Note'), 'value', holdData.get(Fields.HOLD_NOTE), GlobalVariable.TIMEOUT)
+		
+		'Verify Hold Reason'
+		WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Hold/input_Reason'), 'value', holdData.get(Fields.HOLD_REASON), GlobalVariable.TIMEOUT)
 	}
 }
