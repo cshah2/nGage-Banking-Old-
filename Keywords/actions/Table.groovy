@@ -281,6 +281,48 @@ public class Table {
 	}
 
 	@Keyword
+	def waitUntilCellValueStartsWith(TestObject to, int rowNo, int colNo, String expText, int timeout, WebTable type = WebTable.DEFAULT) {
+
+		//Set Webtable type
+		this.type = type
+
+		def startTime = System.currentTimeMillis()
+		def endTime = startTime + TimeUnit.SECONDS.toMillis(timeout)
+		def currentTime = System.currentTimeMillis()
+		String actText
+
+		boolean isRefreshed = false
+		while(currentTime < endTime) {
+			try {
+				actText = getCellText(to, rowNo, colNo)
+				println "Actual cell text = "+actText
+			}
+			catch(Exception e) {
+				println "Exception occurred while fetching cell text"+e.toString()
+				WebUI.delay(2)
+				continue
+			}
+
+			if(actText.startsWith(expText)) {
+				isRefreshed = true
+				break
+			}
+			else {
+				WebUI.delay(2)
+				continue
+			}
+		}
+
+		if(isRefreshed) {
+			KeywordUtil.markPassed("Table is refreshed")
+		}
+		else {
+			KeywordUtil.markFailedAndStop('Table is not refreshed withing given time')
+		}
+	}
+
+	
+	@Keyword
 	def moveToCell(TestObject to, int rowNo, int colNo, WebTable type = WebTable.DEFAULT) {
 
 		//Set Webtable type

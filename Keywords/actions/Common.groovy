@@ -307,9 +307,19 @@ public class Common {
 	def verifyHoldDetailsInAccordion(Map<Fields, String> accData, Map<Fields, String> holdData) {
 		AccountPage.verifyHoldDetailsExpandedIntable(accData, holdData)
 	}
-	
+
 	@Keyword
 	def verifyHoldDetailsInTaskDrawer(Map<Fields, String> holdData) {
 		AccountPage.verifyHoldDetailsInTaskDrawer(holdData)
+	}
+	
+	@Keyword
+	def verifyHoldDetailsInCancelHoldTaskDrawer(Map<Fields, String> cancelHoldData) {
+		AccountPage.verifyHoldDetailsInCancelHoldTaskDrawer(cancelHoldData)
+	}
+	
+	@Keyword
+	def cancelHoldFormFill(Map<Fields, String> cancelHoldData) {
+		AccountPage.fillCancelHoldDetails(cancelHoldData)
 	}
 }

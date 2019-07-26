@@ -15,11 +15,12 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import constants.ColumnPos
 import constants.Data
 import enums.Fields
+import enums.RegexOperator
 import internal.GlobalVariable as GlobalVariable
 
-Map<Fields, String> accData = Data.CUSTOMER_001_HOLD_ACCOUNT02
-Map<Fields, String> holdData = Data.CUSTOMER_001_HOLD_ACCOUNT02_HOLD5
-Map<Fields, String> editHoldData = Data.CUSTOMER_001_HOLD_ACCOUNT02_HOLD5_EDIT
+Map<Fields, String> accData = Data.CUSTOMER_001_HOLD_ACCOUNT01
+Map<Fields, String> holdData = Data.CUSTOMER_001_HOLD_ACCOUNT01_HOLD5
+Map<Fields, String> cancelHoldData = Data.CUSTOMER_001_HOLD_ACCOUNT01_HOLD5_CANCEL
 int rowNo = 5
 
 TestObject accTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/table_Accounts')
@@ -34,6 +35,9 @@ CustomKeywords.'actions.Common.shouldFailTest'(holdData)
 'Login into portal'
 CustomKeywords.'actions.Common.login'()
 
+'Login into portal'
+CustomKeywords.'actions.Common.login'()
+
 'Search Account and open account details page'
 CustomKeywords.'actions.Common.searchAccount'(accData)
 
@@ -43,37 +47,38 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Acco
 'Wait for Holds tab to load'
 CustomKeywords.'actions.WaitFor.elementVisible'(tabHolds_holdTable, GlobalVariable.TIMEOUT)
 
-String action = 'Edit Hold'
+String action = 'Cancel Hold'
 'Click on More icon for any Hold and select Cancel Hold Option'
 CustomKeywords.'actions.Table.clickMoreButtonAndSelectOption'(tabHolds_holdTable, rowNo, ColumnPos.HOLD_MORE_ICON, action)
 
-'Verify hold details in task drawer'
-CustomKeywords.'actions.Common.verifyHoldDetailsInTaskDrawer'(holdData)
+'Verify Hold data in cancel hold task drawer'
+CustomKeywords.'actions.Common.verifyHoldDetailsInCancelHoldTaskDrawer'(cancelHoldData)
 
-'Update hold details in task drawer'
-CustomKeywords.'actions.Common.holdFormFill'(editHoldData)
+'Fill Cancel Hold form'
+CustomKeywords.'actions.Common.cancelHoldFormFill'(cancelHoldData)
 
-'Scroll to Submit button'
-CustomKeywords.'actions.Common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Hold/btn_Submit'))
+'Move to Submit button'
+CustomKeywords.'actions.Common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/btn_Submit'))
 
 'Click on Submit button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Hold/btn_Submit'))
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/btn_Submit'))
 
-'Wait for Task drawer to close'
-CustomKeywords.'actions.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Hold/select_HoldType'), GlobalVariable.TIMEOUT)
+'Wait for task drawer to close'
+CustomKeywords.'actions.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/lbl_HoldType'), GlobalVariable.TIMEOUT)
 
-'Wait for hold details to get updated'
-CustomKeywords.'actions.Table.waitUntilCellValueEquals'(tabHolds_holdTable, rowNo, ColumnPos.HOLD_TYPE, editHoldData.get(Fields.HOLD_TYPE), GlobalVariable.TIMEOUT)
+'Wait for hold table to refresh'
+CustomKeywords.'actions.Table.waitUntilCellValueEquals'(tabHolds_holdTable, rowNo, ColumnPos.HOLD_CANCEL_DATE, cancelHoldData.get(Fields.HOLD_CANCEL_DATE_VIEW), GlobalVariable.TIMEOUT)
 
 'Refresh web page' //This is done to ensure no dynamic loading is pending
 WebUI.refresh()
 WebUI.waitForPageLoad(GlobalVariable.TIMEOUT)
 
 'Verify data in Balance summary section'
-CustomKeywords.'actions.Common.verifyBalanceSummary'(editHoldData)
+CustomKeywords.'actions.Common.verifyBalanceSummary'(cancelHoldData)
 
-'Verify data in holds table in overview tab'
-CustomKeywords.'actions.Common.verifyHoldDetailsInTable'(editHoldData, tabOverview_holdTable, rowNo)
+int expRowsCount = 4
+'Verify Cancelled hold record is not present in overview tab'
+CustomKeywords.'actions.Table.verifyRecordsCount'(tabOverview_holdTable, expRowsCount, RegexOperator.EQUALS)
 
 'Click on Holds tab'
 WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Holds'))
@@ -82,7 +87,7 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Acco
 CustomKeywords.'actions.WaitFor.elementVisible'(tabHolds_holdTable, GlobalVariable.TIMEOUT)
 
 'Verify data in Holds table in holds tab'
-CustomKeywords.'actions.Common.verifyHoldDetailsInTable'(editHoldData, tabHolds_holdTable, rowNo)
+CustomKeywords.'actions.Common.verifyHoldDetailsInTable'(cancelHoldData, tabHolds_holdTable, rowNo)
 
 'Set Flag'
-editHoldData.put(Fields.IS_CREATED, 'true')
+cancelHoldData.put(Fields.IS_CREATED, 'true')

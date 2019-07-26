@@ -422,6 +422,11 @@ public class AccountPage {
 
 		'Verify Amount'
 		new actions.Table().verifyCellValueEquals(table, rowNo, ColumnPos.HOLD_AMOUNT, holdData.get(Fields.HOLD_AMOUNT_VIEW))
+		
+		'Verify Cancel Date'
+		if(StringUtil.isValidData(holdData, Fields.HOLD_CANCEL_DATE)) {
+			new actions.Table().verifyCellValueEquals(table, rowNo, ColumnPos.HOLD_CANCEL_DATE, holdData.get(Fields.HOLD_CANCEL_DATE_VIEW))
+		}
 	}
 
 	static def verifyHoldDetailsExpandedIntable(Map<Fields, String> accData, Map<Fields, String> holdData) {
@@ -446,25 +451,57 @@ public class AccountPage {
 		'Verify Hold Amount'
 		WebUI.verifyElementText(holdAmount, holdData.get(Fields.HOLD_AMOUNT_VIEW))
 	}
-	
+
 	static def verifyHoldDetailsInTaskDrawer(Map<Fields, String> holdData) {
-		
+
 		'Wait for task drawer to load'
 		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Hold/select_HoldType'), GlobalVariable.TIMEOUT)
-		
+
 		'Verify selected hold type'
 		WebUI.verifyOptionSelectedByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Hold/select_HoldType'), holdData.get(Fields.HOLD_TYPE), false, GlobalVariable.TIMEOUT)
-		
+
 		'Verify start date'
 		WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Hold/input_StartDate'), 'value', holdData.get(Fields.HOLD_START_DATE), GlobalVariable.TIMEOUT)
-		
+
 		'Verify Hold amount'
 		WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Hold/input_HoldAmount'), 'value', holdData.get(Fields.HOLD_AMOUNT), GlobalVariable.TIMEOUT)
-		
+
 		'Verify Hold Notes'
 		WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Hold/input_Note'), 'value', holdData.get(Fields.HOLD_NOTE), GlobalVariable.TIMEOUT)
-		
+
 		'Verify Hold Reason'
 		WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Hold/input_Reason'), 'value', holdData.get(Fields.HOLD_REASON), GlobalVariable.TIMEOUT)
+	}
+	
+	static def verifyHoldDetailsInCancelHoldTaskDrawer(Map<Fields, String> cancelHoldData) {
+		
+		'Wait for task drawer to load'
+		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/lbl_HoldType'), GlobalVariable.TIMEOUT)
+		
+		'Verify Hold Type'
+		WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/lbl_HoldType'), cancelHoldData.get(Fields.HOLD_TYPE))
+		
+		'Verify Hold Start Date'
+		WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/lbl_StartDate'), cancelHoldData.get(Fields.HOLD_START_DATE))
+
+		'Verify Hold Duration'
+		WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/lbl_HoldDuration'), cancelHoldData.get(Fields.HOLD_DURATION_VIEW))
+
+		'Verify Hold Amount'
+		WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/lbl_HoldAmount'), cancelHoldData.get(Fields.HOLD_AMOUNT_VIEW))
+	}
+	
+	static def fillCancelHoldDetails(Map<Fields, String> cancelHoldData) {
+		
+		'Wait for task drawer to load'
+		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/lbl_HoldType'), GlobalVariable.TIMEOUT)
+		
+		if(StringUtil.isValidData(cancelHoldData, Fields.HOLD_CANCEL_DATE)) {
+			new actions.JavaScript().setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/input_CancelDate'), cancelHoldData.get(Fields.HOLD_CANCEL_DATE))
+		}
+		
+		if(StringUtil.isValidData(cancelHoldData, Fields.HOLD_CANCEL_NOTE)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/input_Note'), cancelHoldData.get(Fields.HOLD_CANCEL_NOTE))
+		}
 	}
 }
