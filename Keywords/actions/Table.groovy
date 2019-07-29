@@ -259,6 +259,7 @@ public class Table {
 			catch(Exception e) {
 				println "Exception occurred while fetching cell text"+e.toString()
 				WebUI.delay(2)
+				currentTime = System.currentTimeMillis()
 				continue
 			}
 
@@ -268,6 +269,7 @@ public class Table {
 			}
 			else {
 				WebUI.delay(2)
+				currentTime = System.currentTimeMillis()
 				continue
 			}
 		}
@@ -300,6 +302,7 @@ public class Table {
 			catch(Exception e) {
 				println "Exception occurred while fetching cell text"+e.toString()
 				WebUI.delay(2)
+				currentTime = System.currentTimeMillis()
 				continue
 			}
 
@@ -309,6 +312,7 @@ public class Table {
 			}
 			else {
 				WebUI.delay(2)
+				currentTime = System.currentTimeMillis()
 				continue
 			}
 		}
