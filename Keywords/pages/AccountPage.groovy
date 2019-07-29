@@ -479,16 +479,16 @@ public class AccountPage {
 		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/lbl_HoldType'), GlobalVariable.TIMEOUT)
 		
 		'Verify Hold Type'
-		WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/lbl_HoldType'), cancelHoldData.get(Fields.HOLD_TYPE))
+		new actions.Common().verifyElementTextContains(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/lbl_HoldType'), cancelHoldData.get(Fields.HOLD_TYPE))
 		
 		'Verify Hold Start Date'
-		WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/lbl_StartDate'), cancelHoldData.get(Fields.HOLD_START_DATE))
+		new actions.Common().verifyElementTextContains(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/lbl_StartDate'), cancelHoldData.get(Fields.HOLD_START_DATE))
 
 		'Verify Hold Duration'
-		WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/lbl_HoldDuration'), cancelHoldData.get(Fields.HOLD_DURATION_VIEW))
+		new actions.Common().verifyElementTextContains(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/lbl_HoldDuration'), cancelHoldData.get(Fields.HOLD_DURATION_VIEW))
 
 		'Verify Hold Amount'
-		WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/lbl_HoldAmount'), cancelHoldData.get(Fields.HOLD_AMOUNT_VIEW))
+		new actions.Common().verifyElementTextContains(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/lbl_HoldAmount'), cancelHoldData.get(Fields.HOLD_AMOUNT_VIEW))
 	}
 	
 	static def fillCancelHoldDetails(Map<Fields, String> cancelHoldData) {
