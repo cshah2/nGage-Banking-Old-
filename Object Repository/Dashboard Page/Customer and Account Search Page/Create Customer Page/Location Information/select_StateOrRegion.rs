@@ -7,17 +7,16 @@
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value></value>
+         <value>select[id*='_wtAddress'][id*='_wtRegion']</value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[contains(@id,'wtAddress') and contains(@id,'wtSectionExpandableArea')]//label[text()='State/Region']/../select</value>
+         <value></value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>select_ResidencyStatus</name>
+   <name>chkbox_SendNow</name>
    <tag></tag>
-   <elementGuidId>ec98aa92-4e86-4edd-9fc4-bde28846fa66</elementGuidId>
+   <elementGuidId>c33f2576-cc82-433b-b9b8-150df25b4662</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>CSS</key>
+         <key>XPATH</key>
+         <value>//div[@taskblockname='Order']//label[contains(normalize-space(text()),'Send Now')]/../input[@type='checkbox']</value>
       </entry>
       <entry>
          <key>BASIC</key>
-      </entry>
-      <entry>
-         <key>XPATH</key>
-         <value>//div[contains(@id,'_wtBasicInformationForm')]//label[normalize-space(text())='Residency Status']/../select</value>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

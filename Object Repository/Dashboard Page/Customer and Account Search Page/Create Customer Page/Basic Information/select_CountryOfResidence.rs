@@ -7,15 +7,13 @@
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value></value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[contains(@id,'wtBasicInformation') and contains(@id,'wtSectionExpandableArea')]//label[text()='Country of Residency']/../select</value>
+         <value>//div[contains(@id,'_wtBasicInformationForm')]//label[normalize-space(text())='Country of Residency']/../select</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

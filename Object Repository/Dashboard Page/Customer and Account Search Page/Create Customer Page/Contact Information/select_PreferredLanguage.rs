@@ -7,15 +7,13 @@
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value></value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[contains(@id,'wtContact') and contains(@id,'wtSectionExpandableArea')]//label[text()='Preferred Language']/../select</value>
+         <value>//div[contains(@id,'wtContact')]//label[text()='Preferred Language']/../select</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

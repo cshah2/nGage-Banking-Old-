@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>select_ResidencyStatus</name>
+   <name>btn_Create</name>
    <tag></tag>
-   <elementGuidId>ec98aa92-4e86-4edd-9fc4-bde28846fa66</elementGuidId>
+   <elementGuidId>3276ab8d-bec1-469b-b886-e78191e52290</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
+         <value>input[id*='_wtContact'][value='Create']</value>
       </entry>
       <entry>
          <key>BASIC</key>
-      </entry>
-      <entry>
-         <key>XPATH</key>
-         <value>//div[contains(@id,'_wtBasicInformationForm')]//label[normalize-space(text())='Residency Status']/../select</value>
+         <value></value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

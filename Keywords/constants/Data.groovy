@@ -17,9 +17,11 @@ public class Data {
 		CUSTOMER_001 = new HashMap<Fields, String>()
 		Map parsedJson = RandomUtil.generateRandomCustomerData()
 
+		CUSTOMER_001.put(Fields.CUST_PREFIX, parsedJson.get("results").get(0).get("name").get("title"))
 		CUSTOMER_001.put(Fields.CUST_FIRST_NAME, parsedJson.get("results").get(0).get("name").get("first"))
 		CUSTOMER_001.put(Fields.CUST_MIDDLE_NAME, RandomStringUtils.randomAlphabetic(1))
 		CUSTOMER_001.put(Fields.CUST_LAST_NAME, parsedJson.get("results").get(0).get("name").get("last"))
+		CUSTOMER_001.put(Fields.CUST_SUFFIX, 'Jr.')
 		CUSTOMER_001.put(Fields.CUST_DOB, DateUtil.convert(parsedJson.get("results").get(0).get("dob").get("date").subSequence(0, 10), 'yyyy-MM-dd', common.dateFormat))
 		CUSTOMER_001.put(Fields.CUST_DOB_MASKED, '**/**/'+CUSTOMER_001.get(Fields.CUST_DOB).substring(6))
 		CUSTOMER_001.put(Fields.CUST_TAX_ID, '9'+RandomStringUtils.randomNumeric(8))
@@ -49,6 +51,7 @@ public class Data {
 		CUSTOMER_001.put(Fields.CUST_CUSTOMER_GROUP, 'Banking Customer')
 
 		CUSTOMER_001.put(Fields.IS_CREATED, 'false')
+		CUSTOMER_001.put(Fields.URL, '')
 	}
 
 	public static final Map<Fields, String> CUSTOMER_001_ADDRESS2;
@@ -788,10 +791,12 @@ public class Data {
 	static {
 		CUSTOMER_002 = new HashMap<Fields, String>()
 		Map parsedJson = RandomUtil.generateRandomCustomerData()
-
+		
+		CUSTOMER_002.put(Fields.CUST_PREFIX, parsedJson.get("results").get(0).get("name").get("title"))
 		CUSTOMER_002.put(Fields.CUST_FIRST_NAME, parsedJson.get("results").get(0).get("name").get("first"))
 		CUSTOMER_002.put(Fields.CUST_MIDDLE_NAME, RandomStringUtils.randomAlphabetic(1))
 		CUSTOMER_002.put(Fields.CUST_LAST_NAME, parsedJson.get("results").get(0).get("name").get("last"))
+		CUSTOMER_002.put(Fields.CUST_SUFFIX, 'Jr.')
 		CUSTOMER_002.put(Fields.CUST_DOB, DateUtil.convert(parsedJson.get("results").get(0).get("dob").get("date").subSequence(0, 10), 'yyyy-MM-dd', common.dateFormat))
 		CUSTOMER_002.put(Fields.CUST_DOB_MASKED, '**/**/'+CUSTOMER_002.get(Fields.CUST_DOB).substring(6))
 		CUSTOMER_002.put(Fields.CUST_TAX_ID, '9'+RandomStringUtils.randomNumeric(8))
@@ -819,7 +824,10 @@ public class Data {
 
 		CUSTOMER_002.put(Fields.CUST_CUSTOMER_ID, 'CID_'+RandomStringUtils.randomNumeric(6))
 		CUSTOMER_002.put(Fields.CUST_CUSTOMER_GROUP, 'Banking Customer')
+		CUSTOMER_002.put(Fields.CUST_CHK_ACCOUNT, 'true')
+		
 		CUSTOMER_002.put(Fields.IS_CREATED, 'false')
+		CUSTOMER_002.put(Fields.URL, '')
 	}
 
 	public static final Map<Fields, String> ACCOUNT_001;
@@ -888,9 +896,11 @@ public class Data {
 	static {
 		CUSTOMER_003 = new HashMap<Fields, String>()
 
+		CUSTOMER_003.put(Fields.CUST_PREFIX, 'Mr.')
 		CUSTOMER_003.put(Fields.CUST_FIRST_NAME, 'Scott')
 		CUSTOMER_003.put(Fields.CUST_MIDDLE_NAME, '')
 		CUSTOMER_003.put(Fields.CUST_LAST_NAME, 'Adkins')
+		CUSTOMER_003.put(Fields.CUST_SUFFIX, 'Jr.')
 		CUSTOMER_003.put(Fields.CUST_DOB, '06/03/2019')
 		CUSTOMER_003.put(Fields.CUST_DOB_MASKED, '**/**/2019')
 		CUSTOMER_003.put(Fields.CUST_TAX_ID, '3215478896')
@@ -918,5 +928,6 @@ public class Data {
 
 		CUSTOMER_003.put(Fields.CUST_CUSTOMER_ID, '9632154897')
 		CUSTOMER_003.put(Fields.CUST_CUSTOMER_GROUP, 'Banking Customer')
+		CUSTOMER_003.put(Fields.URL, '')
 	}
 }

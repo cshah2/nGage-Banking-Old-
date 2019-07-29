@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>select_ResidencyStatus</name>
+   <name>input_OrderInfo</name>
    <tag></tag>
-   <elementGuidId>ec98aa92-4e86-4edd-9fc4-bde28846fa66</elementGuidId>
+   <elementGuidId>8fdd39da-d13b-4326-99d3-1431076a1899</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>CSS</key>
+         <key>XPATH</key>
+         <value>//div[@taskblockname='Order']//label[normalize-space(text())='Order Info']/../input</value>
       </entry>
       <entry>
          <key>BASIC</key>
-      </entry>
-      <entry>
-         <key>XPATH</key>
-         <value>//div[contains(@id,'_wtBasicInformationForm')]//label[normalize-space(text())='Residency Status']/../select</value>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

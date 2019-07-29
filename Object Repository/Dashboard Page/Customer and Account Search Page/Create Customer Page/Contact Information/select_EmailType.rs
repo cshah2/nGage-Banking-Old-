@@ -7,17 +7,16 @@
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value></value>
+         <value>select[id*='_wtContact'][id*='_wtEmailType']</value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[contains(@id,'wtContact') and contains(@id,'wtSectionExpandableArea')]//label[text()='Email Type']/../select</value>
+         <value></value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

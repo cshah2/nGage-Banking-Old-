@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>select_ResidencyStatus</name>
+   <name>lbl_Suffix</name>
    <tag></tag>
-   <elementGuidId>ec98aa92-4e86-4edd-9fc4-bde28846fa66</elementGuidId>
+   <elementGuidId>8f0e1357-40dd-4d7b-a85d-afdbf658fadd</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>CSS</key>
+         <key>XPATH</key>
+         <value>//div[contains(@id,'_wtfinal_review_CN')]//label[text()='Suffix']/..</value>
       </entry>
       <entry>
          <key>BASIC</key>
-      </entry>
-      <entry>
-         <key>XPATH</key>
-         <value>//div[contains(@id,'_wtBasicInformationForm')]//label[normalize-space(text())='Residency Status']/../select</value>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>lblt_ResidencyStatus</name>
+   <name>input_Network</name>
    <tag></tag>
-   <elementGuidId>085e16de-9d40-4bc9-b261-562e69dc0262</elementGuidId>
+   <elementGuidId>2e1e7a80-9bff-4b6c-bfdb-fbff4a66dac3</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//div[contains(@id,'_wtfinal_review_CN')]//label[text()='Residency Status']/..</value>
-      </entry>
-      <entry>
-         <key>CSS</key>
+         <value>//div[@taskblockname='Order']//label[contains(normalize-space(text()),'Network')]/../input</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

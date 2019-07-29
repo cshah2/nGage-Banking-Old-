@@ -20,6 +20,8 @@ import internal.GlobalVariable
 
 public enum Fields {
 
+	CUST_PREFIX,
+	CUST_SUFFIX,
 	CUST_FIRST_NAME,
 	CUST_MIDDLE_NAME,
 	CUST_LAST_NAME,
@@ -33,6 +35,7 @@ public enum Fields {
 	CUST_MARITAL_STATUS,
 	CUST_CUSTOMER_ID,
 	CUST_CUSTOMER_GROUP,
+	CUST_CHK_ACCOUNT,
 	ADDR_STREET,
 	ADDR_CITY,
 	ADDR_COUNTY,
@@ -128,5 +131,6 @@ public enum Fields {
 	HOLD_RESERVE,
 	HOLD_ADMIN,
 
-	IS_CREATED
+	IS_CREATED,
+	URL
 }

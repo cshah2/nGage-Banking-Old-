@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>select_ResidencyStatus</name>
+   <name>input_FromAccount</name>
    <tag></tag>
-   <elementGuidId>ec98aa92-4e86-4edd-9fc4-bde28846fa66</elementGuidId>
+   <elementGuidId>f35da5b2-e85c-4acc-b850-bda0ecd741ef</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>CSS</key>
+         <key>XPATH</key>
+         <value>//div[@taskblockname='Order']//label[contains(normalize-space(text()),'Counterparty (From Account)')]/../input</value>
       </entry>
       <entry>
          <key>BASIC</key>
-      </entry>
-      <entry>
-         <key>XPATH</key>
-         <value>//div[contains(@id,'_wtBasicInformationForm')]//label[normalize-space(text())='Residency Status']/../select</value>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

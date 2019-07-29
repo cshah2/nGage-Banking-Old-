@@ -6,15 +6,14 @@
    <elementGuidId>daa99460-934e-4087-a92f-6650c36ec33b</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//div[contains(@id,'_wtfinal_review_CN')]//label[text()='Tax Id']/..</value>
-      </entry>
-      <entry>
          <key>CSS</key>
-         <value></value>
       </entry>
       <entry>
          <key>BASIC</key>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[contains(@id,'_wtfinal_review_CN')]//label[text()='Tax ID']/..</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

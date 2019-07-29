@@ -9,6 +9,7 @@ import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
 import com.kms.katalon.core.context.TestCaseContext
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
+import com.kms.katalon.core.exception.StepFailedException
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
 import com.kms.katalon.core.model.FailureHandling
 import com.kms.katalon.core.testcase.TestCase
@@ -30,11 +31,13 @@ import pages.AccountPage
 import pages.CustomerPage
 import pages.SearchPage
 import pages.TaskDrawer
+import utils.ExceptionUtil
 import utils.RegexUtil
 
 import static constants.common.*
 
 import org.apache.commons.lang3.StringUtils
+import org.openqa.selenium.ElementClickInterceptedException
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.interactions.Actions
@@ -120,6 +123,28 @@ public class Common {
 	}
 
 	@Keyword
+	def moveToElementAndClick(TestObject element) {
+
+		//Move to Element
+		new actions.Common().moveToElement(element)
+
+		//Click on Element
+		try {
+			WebUI.click(element)
+		}
+		catch(StepFailedException e) {
+			boolean isException = ExceptionUtil.isCause(ElementClickInterceptedException.class, e)
+			if(isException) {
+				new actions.JavaScript().click(element)
+			}
+			else {
+				throw e
+			}
+		}
+	}
+
+
+	@Keyword
 	def verifyElementTextContains(TestObject to, String expectedText) {
 
 		WebUI.verifyMatch(WebUI.getText(to).trim(), RegexUtil.formRegexString(expectedText, RegexOperator.CONTAINS), true)
@@ -151,19 +176,42 @@ public class Common {
 		}
 	}
 
-	//	private boolean isValidData(Map<Fields, String> data, Fields field) {
-	//		if(data.containsKey(field) && StringUtils.isNotBlank(data.get(field))) {
-	//			return true
-	//		}
-	//		else {
-	//			return false
-	//		}
-	//	}
+
+
+
+
+	/* ------------- CREATE CUSTOMER ------------- */
 
 	@Keyword
 	def customerFormFill(Map<Fields, String> custData) {
 		CustomerPage.fillCustomerDetails(custData)
 	}
+
+	@Keyword
+	def verifyCustomerDetailsOnReviewPage(Map<Fields, String> custData) {
+		CustomerPage.verifyCustomerDetailsOnReviewPage(custData)
+	}
+
+	@Keyword
+	def customerIdAndGroupFormFill(Map<Fields, String> custData) {
+		CustomerPage.fillCustomerIdAndGroupDetails(custData)
+	}
+
+	/* ------------- CUSTOMER DETAILS PAGE - SUMMARY SECTION ------------- */
+
+	@Keyword
+	def verifyCustomerDetailsSummarySection(Map<Fields, String> custData) {
+		CustomerPage.verifyCustomerDetailsSummarySection(custData)
+	}
+
+	/* ------------- CUSTOMER DETAILS PAGE - ACCOUNT SECTION ------------- */
+
+	@Keyword
+	def verifyAccountDetailsInTable(Map<Fields, String> accData, int rowNo) {
+		CustomerPage.verifyAccountsTable(accData, rowNo)
+	}
+
+	/* ------------- CREATE ACCOUNT PAGE ------------- */
 
 	@Keyword
 	def accountFormFill(Map<Fields, String> accData) {
@@ -312,12 +360,12 @@ public class Common {
 	def verifyHoldDetailsInTaskDrawer(Map<Fields, String> holdData) {
 		AccountPage.verifyHoldDetailsInTaskDrawer(holdData)
 	}
-	
+
 	@Keyword
 	def verifyHoldDetailsInCancelHoldTaskDrawer(Map<Fields, String> cancelHoldData) {
 		AccountPage.verifyHoldDetailsInCancelHoldTaskDrawer(cancelHoldData)
 	}
-	
+
 	@Keyword
 	def cancelHoldFormFill(Map<Fields, String> cancelHoldData) {
 		AccountPage.fillCancelHoldDetails(cancelHoldData)

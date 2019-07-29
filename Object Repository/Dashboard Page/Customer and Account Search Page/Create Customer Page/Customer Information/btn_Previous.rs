@@ -7,11 +7,10 @@
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>div[id*='wtcust_create_CN'] div[id*='wtSectionExpandableArea'] input[value='Previous']</value>
+         <value>div[id*='wtcust_create_CN'] input[value='Previous']</value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>
