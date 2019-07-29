@@ -67,7 +67,7 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Acco
 CustomKeywords.'actions.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/lbl_HoldType'), GlobalVariable.TIMEOUT)
 
 'Wait for hold table to refresh'
-CustomKeywords.'actions.Table.waitUntilCellValueEquals'(tabHolds_holdTable, rowNo, ColumnPos.HOLD_CANCEL_DATE, cancelHoldData.get(Fields.HOLD_CANCEL_DATE_VIEW), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.Table.waitUntilCellValueStartsWith'(tabHolds_holdTable, rowNo, ColumnPos.HOLD_CANCEL_DATE, cancelHoldData.get(Fields.HOLD_CANCEL_DATE_VIEW), GlobalVariable.TIMEOUT)
 
 'Refresh web page' //This is done to ensure no dynamic loading is pending
 WebUI.refresh()
