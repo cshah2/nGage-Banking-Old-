@@ -217,7 +217,7 @@ public class Table {
 				currentTime = System.currentTimeMillis()
 				continue
 			}
-			
+
 			println "Actual rows count = "+actRowsCount+" and Expected rows count = "+expRowsCount
 
 			if(actRowsCount == expRowsCount) {
@@ -262,9 +262,9 @@ public class Table {
 				currentTime = System.currentTimeMillis()
 				continue
 			}
-			
+
 			println "Actual cell text = "+actText+" and Expected cell text = "+expText
-			
+
 			if(actText.equals(expText)) {
 				isRefreshed = true
 				break
@@ -306,11 +306,11 @@ public class Table {
 				currentTime = System.currentTimeMillis()
 				continue
 			}
-			
+
 			println "Actual cell text = "+actText+" and Expected cell text = "+expText
-			
+
 			if(actText.startsWith(expText)) {
-				
+
 				isRefreshed = true
 				break
 			}
@@ -329,7 +329,7 @@ public class Table {
 		}
 	}
 
-	
+
 	@Keyword
 	def moveToCell(TestObject to, int rowNo, int colNo, WebTable type = WebTable.DEFAULT) {
 

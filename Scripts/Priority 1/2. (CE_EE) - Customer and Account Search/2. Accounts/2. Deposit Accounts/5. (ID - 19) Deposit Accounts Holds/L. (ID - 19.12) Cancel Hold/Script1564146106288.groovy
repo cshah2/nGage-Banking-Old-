@@ -57,11 +57,8 @@ CustomKeywords.'actions.Common.verifyHoldDetailsInCancelHoldTaskDrawer'(cancelHo
 'Fill Cancel Hold form'
 CustomKeywords.'actions.Common.cancelHoldFormFill'(cancelHoldData)
 
-'Move to Submit button'
-CustomKeywords.'actions.Common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/btn_Submit'))
-
 'Click on Submit button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/btn_Submit'))
+CustomKeywords.'actions.Common.moveToElementAndClick'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/btn_Submit'))
 
 'Wait for task drawer to close'
 CustomKeywords.'actions.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/lbl_HoldType'), GlobalVariable.TIMEOUT)
@@ -81,7 +78,7 @@ int expRowsCount = 4
 CustomKeywords.'actions.Table.verifyRecordsCount'(tabOverview_holdTable, expRowsCount, RegexOperator.EQUALS)
 
 'Click on Holds tab'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Holds'))
+CustomKeywords.'actions.Common.moveToElementAndClick'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/tab_Holds'))
 
 'Wait for Holds tab to load'
 CustomKeywords.'actions.WaitFor.elementVisible'(tabHolds_holdTable, GlobalVariable.TIMEOUT)

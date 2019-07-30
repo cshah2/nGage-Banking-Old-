@@ -7,11 +7,10 @@
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value></value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[contains(@id,'_wtLoadCancelHold_block')]//input[@value='Cancel']</value>
+         <value>//div[contains(@id,'_wtLoadCancelHold_block')]//input[@value='Submit']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
