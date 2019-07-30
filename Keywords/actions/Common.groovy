@@ -151,7 +151,7 @@ public class Common {
 
 	@Keyword
 	def verifyMatch(TestObject to, String expText, RegexOperator operator) {
-		String actualText = WebUI.getText(to).trim()
+		String actualText = WebUI.getText(to).replaceAll('(^\\h*)|(\\h*$)', '').trim()
 		println "Actual Text = "+actualText
 		WebUI.verifyMatch(actualText, RegexUtil.formRegexString(expText, operator), true)
 	}
@@ -186,15 +186,15 @@ public class Common {
 		CustomerPage.fillCustomerDetails(custData)
 	}
 
-//	@Keyword
-//	def verifyCustomerDetailsOnReviewPage(Map<Fields, String> custData) {
-//		CustomerPage.verifyCustomerDetailsOnReviewPage(custData)
-//	}
-//
-//	@Keyword
-//	def customerIdAndGroupFormFill(Map<Fields, String> custData) {
-//		CustomerPage.fillCustomerIdAndGroupDetails(custData)
-//	}
+	//	@Keyword
+	//	def verifyCustomerDetailsOnReviewPage(Map<Fields, String> custData) {
+	//		CustomerPage.verifyCustomerDetailsOnReviewPage(custData)
+	//	}
+	//
+	//	@Keyword
+	//	def customerIdAndGroupFormFill(Map<Fields, String> custData) {
+	//		CustomerPage.fillCustomerIdAndGroupDetails(custData)
+	//	}
 
 	/* ------------- CUSTOMER DETAILS PAGE - SUMMARY SECTION ------------- */
 

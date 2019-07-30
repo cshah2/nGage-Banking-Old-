@@ -24,7 +24,7 @@ import enums.Fields
 import internal.GlobalVariable
 
 public class StringUtil {
-	
+
 	public static boolean isValidData(Map<Fields, String> data, Fields field) {
 		if(data.containsKey(field) && StringUtils.isNotBlank(data.get(field))) {
 			return true
