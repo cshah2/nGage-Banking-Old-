@@ -158,7 +158,7 @@ public class Table {
 
 	private String getCellText(TestObject to, int rowNo, int colNo) {
 		WebElement cell = getCell(to, rowNo, colNo)
-		return cell.getText().replaceAll('(^\\h*)|(\\h*$)', '').trim()
+		return cell.getText().replaceAll('(^\\h*)|(\\h*$)', ' ').trim()
 	}
 
 	private int getRowsCount(TestObject to) {

@@ -151,7 +151,7 @@ public class Common {
 
 	@Keyword
 	def verifyMatch(TestObject to, String expText, RegexOperator operator) {
-		String actualText = WebUI.getText(to).replaceAll('(^\\h*)|(\\h*$)', '').trim()
+		String actualText = WebUI.getText(to).replaceAll('(^\\h*)|(\\h*$)', ' ').trim()
 		println "Actual Text = "+actualText
 		WebUI.verifyMatch(actualText, RegexUtil.formRegexString(expText, operator), true)
 	}
