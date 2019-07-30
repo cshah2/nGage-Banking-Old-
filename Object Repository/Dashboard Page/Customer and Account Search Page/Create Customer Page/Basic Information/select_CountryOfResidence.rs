@@ -6,14 +6,14 @@
    <elementGuidId>b89575e9-1fbf-4328-8fb3-a17cb17206ff</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>CSS</key>
-      </entry>
-      <entry>
          <key>BASIC</key>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[contains(@id,'_wtBasicInformationForm')]//label[normalize-space(text())='Country of Residency']/../select</value>
+         <value>//div[contains(@id,'_wtBasicInformationForm')]//label[normalize-space(text())='Country of Residency']/..//select</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

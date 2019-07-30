@@ -143,7 +143,6 @@ public class Common {
 		}
 	}
 
-
 	@Keyword
 	def verifyElementTextContains(TestObject to, String expectedText) {
 
@@ -187,15 +186,15 @@ public class Common {
 		CustomerPage.fillCustomerDetails(custData)
 	}
 
-	@Keyword
-	def verifyCustomerDetailsOnReviewPage(Map<Fields, String> custData) {
-		CustomerPage.verifyCustomerDetailsOnReviewPage(custData)
-	}
-
-	@Keyword
-	def customerIdAndGroupFormFill(Map<Fields, String> custData) {
-		CustomerPage.fillCustomerIdAndGroupDetails(custData)
-	}
+//	@Keyword
+//	def verifyCustomerDetailsOnReviewPage(Map<Fields, String> custData) {
+//		CustomerPage.verifyCustomerDetailsOnReviewPage(custData)
+//	}
+//
+//	@Keyword
+//	def customerIdAndGroupFormFill(Map<Fields, String> custData) {
+//		CustomerPage.fillCustomerIdAndGroupDetails(custData)
+//	}
 
 	/* ------------- CUSTOMER DETAILS PAGE - SUMMARY SECTION ------------- */
 

@@ -7,11 +7,10 @@
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value></value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value>div[id*='_wtcustSearch_CN'] div[id*='wtAddNewCustomerAction'] a[id*='wtADDNEWCUSTOMER']</value>
+         <value>a[id*='wtADDNEWCUSTOMER'] svg</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

@@ -158,8 +158,33 @@ public class CustomerPage {
 		if(StringUtil.isValidData(custData, Fields.CT_PREFERRED_CONTACT_METHOD)) {
 			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/select_PreferredContactMethod'), custData.get(Fields.CT_PREFERRED_CONTACT_METHOD), false)
 		}
+		
+		//Click on Next button
+		new actions.Common().moveToElementAndClick(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/btn_Next'))
+		
+		//Wait for Customer ID and Group field to load
+		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Customer Information/input_CustomerId'), GlobalVariable.TIMEOUT)
+
+		//Enter Customer ID
+		if(StringUtil.isValidData(custData, Fields.CUST_CUSTOMER_ID)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Customer Information/input_CustomerId'), custData.get(Fields.CUST_CUSTOMER_ID))
+		}
+
+		//Select Party or Customer Group
+		if(StringUtil.isValidData(custData, Fields.CUST_CUSTOMER_GROUP)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Customer Information/select_PartyorCustomerGroup'), custData.get(Fields.CUST_CUSTOMER_GROUP), false)
+		}
+
+		//Wait for Create new account checkbox to be visible
+		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Customer Information/chkbox_CreateNewAccount'), GlobalVariable.TIMEOUT)
+
+		//Click on Create Account checkbox
+		if(StringUtil.isValidData(custData, Fields.CUST_CHK_ACCOUNT)) {
+			WebUI.check(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Customer Information/chkbox_CreateNewAccount'))
+		}
 	}
 
+	@Deprecated //Function no longer required as Page is not being shown
 	static def verifyCustomerDetailsOnReviewPage(Map<Fields, String> data) {
 
 		//Wait for review page to load
@@ -235,6 +260,7 @@ public class CustomerPage {
 		new actions.Common().verifyElementTextContains(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Contact Information/lbl_PreferredContactMethod'), data.get(Fields.CT_PREFERRED_CONTACT_METHOD))
 	}
 
+	@Deprecated //Function no longer required as Steps are moved to Create customer function
 	static def fillCustomerIdAndGroupDetails(Map<Fields, String> data) {
 
 		//Wait for Customer ID and Group field to load
@@ -260,24 +286,24 @@ public class CustomerPage {
 	}
 
 	static def verifyCustomerDetailsSummarySection(Map<Fields, String> data) {
-		
+
 		//Wait for Customer details page to load
 		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/lbl_CustomerName'), GlobalVariable.TIMEOUT)
-		
+
 		//Verify Customer name is displayed correctly
 		WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/lbl_CustomerName'), data.get(Fields.CUST_NAME_VIEW))
-		
+
 		//Verify Customer phone is displayed correctly
 		WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/lbl_PhoneNumber'), data.get(Fields.CT_PHONE_NUMBER))
-		
+
 		//Verify Customer email is displayed correctly
 		WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/lbl_Email'), data.get(Fields.CT_EMAIL))
-		
+
 		//Verify Customer address is displayed correctly
 		WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/lbl_Address'), data.get(Fields.ADDR_VIEW))
 	}
-	
-	
+
+
 	static def fillAddressDetails(Map<Fields, String> addressData) {
 
 		'Wait for Add address task drawer to load'
@@ -514,27 +540,27 @@ public class CustomerPage {
 	}
 
 	static def verifyAccountsTable(Map<Fields, String> accData, int rowNo) {
-		
+
 		TestObject table = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/table_Accounts')
-		
+
 		//'Wait for table to be visible'
 		new actions.WaitFor().elementVisible(table, GlobalVariable.TIMEOUT)
-		
+
 		//Verify Correct account number is displayed in grid
 		new actions.Table().verifyCellValueEquals(table, rowNo, ColumnPos.ACC_NUMBER, accData.get(Fields.ACC_NUMBER))
-		
+
 		//Verify Correct account title is displayed in grid
 		new actions.Table().verifyCellValueEquals(table, rowNo, ColumnPos.ACC_TITLE, accData.get(Fields.ACC_TITLE))
-		
+
 		//Verify Correct account open date is displayed in grid
 		new actions.Table().verifyCellValueEquals(table, rowNo, ColumnPos.ACC_OPEN_DATE, accData.get(Fields.ACC_OPEN_DATE))
-		
+
 		//Verify Correct account description is displayed in grid
 		new actions.Table().verifyCellValueEquals(table, rowNo, ColumnPos.ACC_DESCRIPTION, accData.get(Fields.ACC_DESCRIPTION))
-		
+
 		//Verify Correct account ledger balance is displayed in grid
 		new actions.Table().verifyCellValueEquals(table, rowNo, ColumnPos.ACC_LEDGER_BALANCE, accData.get(Fields.ACC_LEDGER_BALANCE))
-		
+
 		//Verify Correct account availble balance is displayed in grid
 		new actions.Table().verifyCellValueEquals(table, rowNo, ColumnPos.ACC_AVAILABLE_BALANCE, accData.get(Fields.ACC_AVAILABLE_BALANCE))
 	}

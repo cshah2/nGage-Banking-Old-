@@ -210,7 +210,6 @@ public class Table {
 
 			try {
 				actRowsCount = getRowsCount(to)
-				println "Actual records count = "+actRowsCount
 			}
 			catch(Exception e) {
 				println "Exception occurred while fetching records count"+e.toString()
@@ -218,6 +217,8 @@ public class Table {
 				currentTime = System.currentTimeMillis()
 				continue
 			}
+			
+			println "Actual rows count = "+actRowsCount+" and Expected rows count = "+expRowsCount
 
 			if(actRowsCount == expRowsCount) {
 				isRefreshed = true
@@ -254,7 +255,6 @@ public class Table {
 		while(currentTime < endTime) {
 			try {
 				actText = getCellText(to, rowNo, colNo)
-				println "Actual cell text = "+actText
 			}
 			catch(Exception e) {
 				println "Exception occurred while fetching cell text"+e.toString()
@@ -262,7 +262,9 @@ public class Table {
 				currentTime = System.currentTimeMillis()
 				continue
 			}
-
+			
+			println "Actual cell text = "+actText+" and Expected cell text = "+expText
+			
 			if(actText.equals(expText)) {
 				isRefreshed = true
 				break
@@ -297,7 +299,6 @@ public class Table {
 		while(currentTime < endTime) {
 			try {
 				actText = getCellText(to, rowNo, colNo)
-				println "Actual cell text = "+actText
 			}
 			catch(Exception e) {
 				println "Exception occurred while fetching cell text"+e.toString()
@@ -305,8 +306,11 @@ public class Table {
 				currentTime = System.currentTimeMillis()
 				continue
 			}
-
+			
+			println "Actual cell text = "+actText+" and Expected cell text = "+expText
+			
 			if(actText.startsWith(expText)) {
+				
 				isRefreshed = true
 				break
 			}
