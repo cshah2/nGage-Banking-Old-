@@ -286,6 +286,9 @@ public class AccountPage {
 		'Wait for section to load'
 		TestObject accordionTranactionInfo = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Transaction Details Section/accordion',['accordionName' : 'Transaction Information'])
 		new actions.WaitFor().elementVisible(accordionTranactionInfo, GlobalVariable.TIMEOUT)
+		
+		'Wait for 2 seconds'
+		WebUI.delay(2)
 
 		'Click on Accordion'
 		WebUI.click(accordionTranactionInfo)
