@@ -369,4 +369,19 @@ public class Common {
 	def cancelHoldFormFill(Map<Fields, String> cancelHoldData) {
 		AccountPage.fillCancelHoldDetails(cancelHoldData)
 	}
+
+	@Keyword
+	def orderFormFill(Map<Fields, String> orderData) {
+		AccountPage.fillOrderDetails(orderData)
+	}
+
+	@Keyword
+	def reviewOrderDetails(Map<Fields, String> orderData) {
+		AccountPage.reviewOrderDetails(orderData)
+	}
+	
+	@Keyword
+	def verifyOrderDetailsInTable(Map<Fields, String> orderData, int rowNo) {
+		AccountPage.verifyOrdersTable(orderData, rowNo)
+	}
 }

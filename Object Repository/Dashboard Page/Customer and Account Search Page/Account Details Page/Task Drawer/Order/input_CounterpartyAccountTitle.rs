@@ -6,14 +6,17 @@
    <elementGuidId>8965fd73-1df8-4d21-b489-2016238ebe8d</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//div[@taskblockname='Order']//label[contains(normalize-space(text()),'Counterparty Account Title')]/../input</value>
+         <key>BASIC</key>
       </entry>
       <entry>
-         <key>BASIC</key>
-         <value></value>
+         <key>XPATH</key>
+         <value>//div[@taskblockname='Order']//label[contains(normalize-space(text()),'Account Title')]/../input</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>div[taskblockname='Order'] input[id*='_wtAcctTitle'],input[id*='_wtPmtActTitle'],input[id*='wtColOrdActTtl']</value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

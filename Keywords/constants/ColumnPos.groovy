@@ -118,4 +118,18 @@ public class ColumnPos {
 	public static int HOLD_AMOUNT = 6
 	public static int HOLD_CANCEL_DATE = 7
 	public static int HOLD_MORE_ICON = 8
+	
+	//Account Details Page - Orders tab - Orders table
+	public static int ORDER_EXPAND_ICON = 1
+	public static int ORDER_TYPE = 2
+	public static int ORDER_CREATE_DATE = 3
+	public static int ORDER_ORDER_DATE = 4
+	public static int ORDER_FROM_ACCOUNT = 5
+	public static int ORDER_TO_ACCOUNT = 6
+	public static int ORDER_COUNTERPARTY_INSTITUTION = 7
+	public static int ORDER_TRANSFER_AMOUNT = 8
+	public static int ORDER_STATUS = 9
+	public static int ORDER_MORE_ICON = 10
+
+	
 }

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>input_FromAccount</name>
+   <name>btn_Cancel</name>
    <tag></tag>
-   <elementGuidId>f35da5b2-e85c-4acc-b850-bda0ecd741ef</elementGuidId>
+   <elementGuidId>02534bdb-0b24-4f1a-8bb6-f0ae68bb0244</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//div[@taskblockname='Order']//label[contains(normalize-space(text()),'Counterparty (From Account)')]/../input</value>
+         <key>CSS</key>
+         <value>div[taskblockname='Order'] input[value='Cancel']</value>
       </entry>
       <entry>
          <key>BASIC</key>
          <value></value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

@@ -18,9 +18,11 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import constants.ColumnPos
+import constants.common
 import enums.Fields
 import enums.RegexOperator
 import internal.GlobalVariable
+import utils.DateUtil
 import utils.StringUtil
 
 public class AccountPage {
@@ -286,7 +288,7 @@ public class AccountPage {
 		'Wait for section to load'
 		TestObject accordionTranactionInfo = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Transaction Details Section/accordion',['accordionName' : 'Transaction Information'])
 		new actions.WaitFor().elementVisible(accordionTranactionInfo, GlobalVariable.TIMEOUT)
-		
+
 		'Wait for 2 seconds'
 		WebUI.delay(2)
 
@@ -425,7 +427,7 @@ public class AccountPage {
 
 		'Verify Amount'
 		new actions.Table().verifyCellValueEquals(table, rowNo, ColumnPos.HOLD_AMOUNT, holdData.get(Fields.HOLD_AMOUNT_VIEW))
-		
+
 		'Verify Cancel Date'
 		if(StringUtil.isValidData(holdData, Fields.HOLD_CANCEL_DATE)) {
 			new actions.Table().verifyCellValueEquals(table, rowNo, ColumnPos.HOLD_CANCEL_DATE, holdData.get(Fields.HOLD_CANCEL_DATE_VIEW))
@@ -475,15 +477,15 @@ public class AccountPage {
 		'Verify Hold Reason'
 		WebUI.verifyElementAttributeValue(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Hold/input_Reason'), 'value', holdData.get(Fields.HOLD_REASON), GlobalVariable.TIMEOUT)
 	}
-	
+
 	static def verifyHoldDetailsInCancelHoldTaskDrawer(Map<Fields, String> cancelHoldData) {
-		
+
 		'Wait for task drawer to load'
 		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/lbl_HoldType'), GlobalVariable.TIMEOUT)
-		
+
 		'Verify Hold Type'
 		new actions.Common().verifyElementTextContains(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/lbl_HoldType'), cancelHoldData.get(Fields.HOLD_TYPE))
-		
+
 		'Verify Hold Start Date'
 		new actions.Common().verifyElementTextContains(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/lbl_StartDate'), cancelHoldData.get(Fields.HOLD_START_DATE))
 
@@ -493,18 +495,190 @@ public class AccountPage {
 		'Verify Hold Amount'
 		new actions.Common().verifyElementTextContains(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/lbl_HoldAmount'), cancelHoldData.get(Fields.HOLD_AMOUNT_VIEW))
 	}
-	
+
 	static def fillCancelHoldDetails(Map<Fields, String> cancelHoldData) {
-		
+
 		'Wait for task drawer to load'
 		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/lbl_HoldType'), GlobalVariable.TIMEOUT)
-		
+
 		if(StringUtil.isValidData(cancelHoldData, Fields.HOLD_CANCEL_DATE)) {
 			new actions.JavaScript().setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/input_CancelDate'), cancelHoldData.get(Fields.HOLD_CANCEL_DATE))
 		}
-		
+
 		if(StringUtil.isValidData(cancelHoldData, Fields.HOLD_CANCEL_NOTE)) {
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Hold/input_Note'), cancelHoldData.get(Fields.HOLD_CANCEL_NOTE))
+		}
+	}
+
+	static def fillOrderDetails(Map<Fields, String> orderData) {
+
+		'Wait for taske drawer to load'
+		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/select_OrderType'), GlobalVariable.TIMEOUT)
+
+		if(StringUtil.isValidData(orderData, Fields.ORDER_TYPE)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/select_OrderType'), orderData.get(Fields.ORDER_TYPE), false)
+
+			new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/select_OrderSource'), GlobalVariable.TIMEOUT)
+		}
+
+		if(StringUtil.isValidData(orderData, Fields.ORDER_SOURCE)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/select_OrderSource'), orderData.get(Fields.ORDER_SOURCE), false)
+		}
+
+		if(StringUtil.isValidData(orderData, Fields.ORDER_INFO)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/input_OrderInfo'), orderData.get(Fields.ORDER_INFO))
+		}
+
+		if(StringUtil.isValidData(orderData, Fields.ORDER_ORIGIN_SOURCE)) {
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/select_OriginSource'), orderData.get(Fields.ORDER_ORIGIN_SOURCE), false)
+		}
+
+		orderData.put(Fields.ORDER_NETWORK, WebUI.getAttribute(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/input_Network'), 'value'))
+		
+		if(StringUtil.isValidData(orderData, Fields.ORDER_COUNTERPARTY_ACCOUNT_TITLE)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/input_CounterpartyAccountTitle'), orderData.get(Fields.ORDER_COUNTERPARTY_ACCOUNT_TITLE))
+		}
+
+		if('Book transfer'.equalsIgnoreCase(orderData.get(Fields.ORDER_TYPE))) {
+			
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/select_CounterpartyAccountGroup'), orderData.get(Fields.ORDER_COUNTERPARTY_ACCOUNT_GROUP), false)
+			
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/input_CounterpartyToAccountNumber'), orderData.get(Fields.ORDER_COUNTERPARTY_TO_ACCOUNT_NUMBER))
+			
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/select_CounterpartyToAccountType'), orderData.get(Fields.ORDER_COUNTERPARTY_TO_ACCOUNT_TYPE), false)
+		}
+		
+		if('Payment order'.equalsIgnoreCase(orderData.get(Fields.ORDER_TYPE))) {
+			
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/input_RecipientInstitutionRountingNumber'), orderData.get(Fields.ORDER_ROUTING_NUMBER))
+			
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/input_CounterpartyToAccountNumber'), orderData.get(Fields.ORDER_COUNTERPARTY_TO_ACCOUNT_NUMBER))
+			
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/select_CounterpartyToAccountType'), orderData.get(Fields.ORDER_COUNTERPARTY_TO_ACCOUNT_TYPE), false)
+		}
+		
+		if('Collection order'.equalsIgnoreCase(orderData.get(Fields.ORDER_TYPE))) {
+			
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/input_FromInstitutionRountingNumber'), orderData.get(Fields.ORDER_ROUTING_NUMBER))
+			
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/input_CounterpartyFromAccountNumber'), orderData.get(Fields.ORDER_COUNTERPARTY_FROM_ACCOUNT_NUMBER))
+			
+			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/select_CounterpartyFromAccountType'), orderData.get(Fields.ORDER_COUNTERPARTY_FROM_ACCOUNT_TYPE), false)
+		}
+
+		if(StringUtil.isValidData(orderData, Fields.ORDER_TRANSFER_DATE)) {
+			WebUI.uncheck(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/chkbox_SendNow'))
+
+			new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/input_TransferDate'), GlobalVariable.TIMEOUT)
+
+			new actions.JavaScript().setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/input_TransferDate'), orderData.get(Fields.ORDER_TRANSFER_DATE))
+		}
+		else {
+			WebUI.check(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/chkbox_SendNow'))
+
+			new actions.WaitFor().elementNotPresent(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/input_TransferDate'), GlobalVariable.TIMEOUT)
+		}
+
+		if(StringUtil.isValidData(orderData, Fields.ORDER_ISRECURRING)) {
+			WebUI.check(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/chkbox_RecurringOrder'))
+		}
+		else {
+			WebUI.uncheck(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/chkbox_RecurringOrder'))
+		}
+
+		if(StringUtil.isValidData(orderData, Fields.ORDER_TRANSFER_AMOUNT)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/input_TransferAmount'), orderData.get(Fields.ORDER_TRANSFER_AMOUNT))
+		}
+	}
+
+	static def reviewOrderDetails(Map<Fields, String> orderData) {
+
+		//String defaultTransferDate = 'Immediate'
+		String defaultReccurringNo = 'No'
+		String defaultReccurringYes = 'Yes'
+
+		'Wait for review page to load'
+		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_OrderSource'), GlobalVariable.TIMEOUT)
+
+		new actions.Common().moveToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_OrderType'))
+
+		new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_OrderType'), orderData.get(Fields.ORDER_TYPE), RegexOperator.CONTAINS)
+
+		new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_OrderSource'), orderData.get(Fields.ORDER_SOURCE), RegexOperator.CONTAINS)
+
+		new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_OrderInfo'), orderData.get(Fields.ORDER_INFO), RegexOperator.CONTAINS)
+
+		new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_OriginSource'), orderData.get(Fields.ORDER_ORIGIN_SOURCE), RegexOperator.CONTAINS)
+
+		new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_Network'), orderData.get(Fields.ORDER_NETWORK), RegexOperator.CONTAINS)
+		
+		new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_CounterpartyAccountTitle'), orderData.get(Fields.ORDER_COUNTERPARTY_ACCOUNT_TITLE), RegexOperator.CONTAINS)
+		
+		if('Book transfer'.equalsIgnoreCase(orderData.get(Fields.ORDER_TYPE))) {
+		
+			new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_CounterpartyToAccount'), orderData.get(Fields.ORDER_COUNTERPARTY_TO_ACCOUNT_NUMBER), RegexOperator.CONTAINS)
+			
+			new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_AccountType'), orderData.get(Fields.ORDER_COUNTERPARTY_TO_ACCOUNT_TYPE), RegexOperator.CONTAINS)
+		}
+		
+		if('Payment order'.equalsIgnoreCase(orderData.get(Fields.ORDER_TYPE))) {
+			
+			new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_RecipientInstitutionRountingNumber'), orderData.get(Fields.ORDER_ROUTING_NUMBER), RegexOperator.CONTAINS)
+			
+			new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_CounterpartyToAccount'), orderData.get(Fields.ORDER_COUNTERPARTY_TO_ACCOUNT_NUMBER), RegexOperator.CONTAINS)
+			
+			new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_AccountType'), orderData.get(Fields.ORDER_COUNTERPARTY_TO_ACCOUNT_TYPE), RegexOperator.CONTAINS)
+		}
+		
+		if('Collection order'.equalsIgnoreCase(orderData.get(Fields.ORDER_TYPE))) {
+
+			new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_FromInstitutionRountingNumber'), orderData.get(Fields.ORDER_ROUTING_NUMBER), RegexOperator.CONTAINS)
+
+			new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_CounterpartyFromAccount'), orderData.get(Fields.ORDER_COUNTERPARTY_FROM_ACCOUNT_NUMBER), RegexOperator.CONTAINS)
+			
+			new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_AccountType'), orderData.get(Fields.ORDER_COUNTERPARTY_FROM_ACCOUNT_TYPE), RegexOperator.CONTAINS)
+		}
+
+		new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_TransferDate'), orderData.get(Fields.ORDER_TRANSFER_DATE_VIEW), RegexOperator.CONTAINS)
+
+		if(StringUtil.isValidData(orderData, Fields.ORDER_ISRECURRING)) {
+			new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_Recurring'), defaultReccurringYes, RegexOperator.CONTAINS)
+		}
+		else {
+			new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_Recurring'), defaultReccurringNo, RegexOperator.CONTAINS)
+		}
+
+		//TODO: Need to enable this check once DOM issue is fixed by Dev team.
+		//new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_OrderAmount'), orderData.get(Fields.ORDER_TRANSFER_AMOUNT_VIEW), RegexOperator.CONTAINS)
+	}
+	
+	static def verifyOrdersTable(Map<Fields, String> orderData, int rowNo) {
+		
+		TestObject orderTable = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Orders Tab/Orders Section/table_Orders')
+		String currDateUTC = DateUtil.getCurrentDateTime(common.dateFormat, common.timezoneUTC)
+		
+		
+		new actions.Table().verifyCellValueEquals(orderTable, rowNo, ColumnPos.ORDER_TYPE, orderData.get(Fields.ORDER_TYPE))
+		
+		new actions.Table().verifyCellValueEquals(orderTable, rowNo, ColumnPos.ORDER_CREATE_DATE, currDateUTC)
+		
+		if(StringUtil.isValidData(orderData, Fields.ORDER_TRANSFER_DATE)) {
+			new actions.Table().verifyCellValueEquals(orderTable, rowNo, ColumnPos.ORDER_ORDER_DATE, orderData.get(Fields.ORDER_TRANSFER_DATE_VIEW))
+		}
+		else {
+			new actions.Table().verifyCellValueEquals(orderTable, rowNo, ColumnPos.ORDER_ORDER_DATE, currDateUTC)
+		}
+		
+		new actions.Table().verifyCellValueEquals(orderTable, rowNo, ColumnPos.ORDER_FROM_ACCOUNT, orderData.get(Fields.ORDER_COUNTERPARTY_FROM_ACCOUNT_NUMBER))
+		
+		new actions.Table().verifyCellValueEquals(orderTable, rowNo, ColumnPos.ORDER_TO_ACCOUNT, orderData.get(Fields.ORDER_COUNTERPARTY_TO_ACCOUNT_NUMBER))
+		
+		if(StringUtil.isValidData(orderData, Fields.ORDER_ROUTING_NUMBER)) {
+			new actions.Table().verifyCellValueEquals(orderTable, rowNo, ColumnPos.ORDER_COUNTERPARTY_INSTITUTION, orderData.get(Fields.ORDER_ROUTING_NUMBER))
+		}
+		
+		if(StringUtil.isValidData(orderData, Fields.ORDER_STATUS)) {
+			new actions.Table().verifyCellValueEquals(orderTable, rowNo, ColumnPos.ORDER_STATUS, orderData.get(Fields.ORDER_STATUS))
 		}
 	}
 }

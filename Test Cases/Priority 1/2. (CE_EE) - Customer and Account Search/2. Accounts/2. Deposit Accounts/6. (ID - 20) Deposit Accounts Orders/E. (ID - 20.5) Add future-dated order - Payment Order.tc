@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>(ID - 20.5) Add future-dated order - Payment Order</description>
+   <name>E. (ID - 20.5) Add future-dated order - Payment Order</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>d8a006cd-456e-4017-af34-dd7e9e6b3ffd</testCaseGuid>
+</TestCaseEntity>

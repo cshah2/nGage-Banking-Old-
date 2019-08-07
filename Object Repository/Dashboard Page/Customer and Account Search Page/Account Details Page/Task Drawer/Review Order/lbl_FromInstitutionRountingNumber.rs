@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>input_FromInstitution</name>
+   <name>lbl_FromInstitutionRountingNumber</name>
    <tag></tag>
-   <elementGuidId>1fff0317-7d38-41f4-9206-05429fd906b6</elementGuidId>
+   <elementGuidId>57de24d7-9ecf-493a-9da7-0856dd07b072</elementGuidId>
    <selectorCollection>
-      <entry>
-         <key>XPATH</key>
-         <value>//div[@taskblockname='Order']//label[contains(normalize-space(text()),'From Institution (Routing Number)')]/../input</value>
-      </entry>
       <entry>
          <key>BASIC</key>
          <value></value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@taskblockname='Order']//div[contains(@id,'_wtcontentConfirm')]//label[normalize-space(text())='From Institution (Routing Number)']/..</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

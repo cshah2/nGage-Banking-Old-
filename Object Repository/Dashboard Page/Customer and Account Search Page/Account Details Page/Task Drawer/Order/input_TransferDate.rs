@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>input_Amount</name>
+   <name>input_TransferDate</name>
    <tag></tag>
-   <elementGuidId>e5b0c1a2-e023-40b6-a879-a3a1b10386f5</elementGuidId>
+   <elementGuidId>eae1f4f0-266c-4477-ae29-9d6ea0271b49</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//div[@taskblockname='Order']//input[contains(@id,'_wtOrderAmt')]</value>
+         <key>BASIC</key>
       </entry>
       <entry>
-         <key>BASIC</key>
-         <value></value>
+         <key>XPATH</key>
+         <value>//div[@taskblockname='Order']//input[contains(@id,'_wtOrderDt')]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

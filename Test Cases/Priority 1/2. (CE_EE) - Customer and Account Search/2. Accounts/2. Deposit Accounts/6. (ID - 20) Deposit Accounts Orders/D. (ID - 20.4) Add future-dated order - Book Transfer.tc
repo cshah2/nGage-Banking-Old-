@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>(ID - 20.4) Add future-dated order - Book Transfer</description>
+   <name>D. (ID - 20.4) Add future-dated order - Book Transfer</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>b471d2b9-6c4e-4d8e-afd8-a9f1bf1f6cc5</testCaseGuid>
+</TestCaseEntity>

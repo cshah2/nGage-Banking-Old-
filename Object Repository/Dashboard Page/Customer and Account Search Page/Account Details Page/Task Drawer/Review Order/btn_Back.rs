@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>select_AccountType</name>
+   <name>btn_Back</name>
    <tag></tag>
-   <elementGuidId>efee8f00-2bc2-438f-a3ac-9125c0e9bc1a</elementGuidId>
+   <elementGuidId>dffe23fd-b12f-45bf-a4b5-d5ffa6e45ffe</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//div[@taskblockname='Order']//label[contains(normalize-space(text()),'Account Type')]/../select</value>
+         <key>CSS</key>
+         <value>div[taskblockname='Order'] input[value='Back']</value>
       </entry>
       <entry>
          <key>BASIC</key>
          <value></value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

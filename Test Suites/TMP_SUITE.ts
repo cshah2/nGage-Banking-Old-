@@ -17,15 +17,39 @@
       <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/1. Customers/1. (ID - 2) Customer/1. (ID - 2.3) Add new customer</testCaseId>
    </testCaseLink>
    <testCaseLink>
-      <guid>959543c8-d336-451d-b433-d05386eb5a48</guid>
+      <guid>6e65cf86-5353-48b4-b765-0b37e5dfd2eb</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/5. (ID - 19) Deposit Accounts Holds/F. (ID - 19.6) Add Future Hold - Clearing</testCaseId>
+      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/6. (ID - 20) Deposit Accounts Orders/A. (ID - 20.1) Add Orders - Book Transfer</testCaseId>
    </testCaseLink>
    <testCaseLink>
-      <guid>1e6baf4f-5043-4053-a7f7-c248752bf309</guid>
+      <guid>df78fda2-ce1b-4db0-85b2-ec0302fb480e</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/5. (ID - 19) Deposit Accounts Holds/K. (ID - 19.11) Edit Hold</testCaseId>
+      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/6. (ID - 20) Deposit Accounts Orders/B. (ID - 20.2) Add Orders - Payment Order</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>039227bf-2cec-4c60-8fcf-fa85cb7474ad</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/6. (ID - 20) Deposit Accounts Orders/C. (ID - 20.3) Add Orders - Collection Order</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>f9d3743a-c8f0-4907-bbd3-f767366edace</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/6. (ID - 20) Deposit Accounts Orders/D. (ID - 20.4) Add future-dated order - Book Transfer</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e2d23d4d-99dd-4ea3-8583-b0d04d66712d</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/6. (ID - 20) Deposit Accounts Orders/E. (ID - 20.5) Add future-dated order - Payment Order</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>37a1c260-eba6-4503-a607-f431d28607bf</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/6. (ID - 20) Deposit Accounts Orders/F. (ID - 20.6) Add future-dated order - Collection Order</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>
