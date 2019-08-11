@@ -379,7 +379,7 @@ public class Common {
 	def reviewOrderDetails(Map<Fields, String> orderData) {
 		AccountPage.reviewOrderDetails(orderData)
 	}
-	
+
 	@Keyword
 	def verifyOrderDetailsInTable(Map<Fields, String> orderData, int rowNo) {
 		AccountPage.verifyOrdersTable(orderData, rowNo)

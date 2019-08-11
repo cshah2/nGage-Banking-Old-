@@ -158,10 +158,10 @@ public class CustomerPage {
 		if(StringUtil.isValidData(custData, Fields.CT_PREFERRED_CONTACT_METHOD)) {
 			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/select_PreferredContactMethod'), custData.get(Fields.CT_PREFERRED_CONTACT_METHOD), false)
 		}
-		
+
 		//Click on Next button
 		new actions.Common().moveToElementAndClick(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/btn_Next'))
-		
+
 		//Wait for Customer ID and Group field to load
 		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Customer Information/input_CustomerId'), GlobalVariable.TIMEOUT)
 

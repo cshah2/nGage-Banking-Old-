@@ -51,10 +51,17 @@ public class AccountPage {
 		//Wait for Product section to be visible
 		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_ProductType'),GlobalVariable.TIMEOUT)
 
-		//Enter account number
-		if(StringUtil.isValidData(accData, Fields.ACC_NUMBER)) {
-			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountNumber'), accData.get(Fields.ACC_NUMBER))
-		}
+		//		//Enter account number
+		//		if(StringUtil.isValidData(accData, Fields.ACC_NUMBER)) {
+		//			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountNumber'), accData.get(Fields.ACC_NUMBER))
+		//		}
+
+		//Store account number value in a variable
+		//WebUI.delay(2) //TODO: Wait for account number value to populate.
+		new actions.WaitFor().attributeValueChange(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountNumber'), "value", '')
+		String accNumber = WebUI.getAttribute(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountNumber'), 'value')
+		println "Account Number is "+accNumber
+		accData.put(Fields.ACC_NUMBER, accNumber)
 
 		//Select timezone
 		if(StringUtil.isValidData(accData, Fields.ACC_TIMEZONE)) {
@@ -534,35 +541,35 @@ public class AccountPage {
 		}
 
 		orderData.put(Fields.ORDER_NETWORK, WebUI.getAttribute(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/input_Network'), 'value'))
-		
+
 		if(StringUtil.isValidData(orderData, Fields.ORDER_COUNTERPARTY_ACCOUNT_TITLE)) {
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/input_CounterpartyAccountTitle'), orderData.get(Fields.ORDER_COUNTERPARTY_ACCOUNT_TITLE))
 		}
 
 		if('Book transfer'.equalsIgnoreCase(orderData.get(Fields.ORDER_TYPE))) {
-			
+
 			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/select_CounterpartyAccountGroup'), orderData.get(Fields.ORDER_COUNTERPARTY_ACCOUNT_GROUP), false)
-			
+
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/input_CounterpartyToAccountNumber'), orderData.get(Fields.ORDER_COUNTERPARTY_TO_ACCOUNT_NUMBER))
-			
+
 			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/select_CounterpartyToAccountType'), orderData.get(Fields.ORDER_COUNTERPARTY_TO_ACCOUNT_TYPE), false)
 		}
-		
+
 		if('Payment order'.equalsIgnoreCase(orderData.get(Fields.ORDER_TYPE))) {
-			
+
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/input_RecipientInstitutionRountingNumber'), orderData.get(Fields.ORDER_ROUTING_NUMBER))
-			
+
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/input_CounterpartyToAccountNumber'), orderData.get(Fields.ORDER_COUNTERPARTY_TO_ACCOUNT_NUMBER))
-			
+
 			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/select_CounterpartyToAccountType'), orderData.get(Fields.ORDER_COUNTERPARTY_TO_ACCOUNT_TYPE), false)
 		}
-		
+
 		if('Collection order'.equalsIgnoreCase(orderData.get(Fields.ORDER_TYPE))) {
-			
+
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/input_FromInstitutionRountingNumber'), orderData.get(Fields.ORDER_ROUTING_NUMBER))
-			
+
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/input_CounterpartyFromAccountNumber'), orderData.get(Fields.ORDER_COUNTERPARTY_FROM_ACCOUNT_NUMBER))
-			
+
 			WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/select_CounterpartyFromAccountType'), orderData.get(Fields.ORDER_COUNTERPARTY_FROM_ACCOUNT_TYPE), false)
 		}
 
@@ -611,31 +618,31 @@ public class AccountPage {
 		new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_OriginSource'), orderData.get(Fields.ORDER_ORIGIN_SOURCE), RegexOperator.CONTAINS)
 
 		new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_Network'), orderData.get(Fields.ORDER_NETWORK), RegexOperator.CONTAINS)
-		
+
 		new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_CounterpartyAccountTitle'), orderData.get(Fields.ORDER_COUNTERPARTY_ACCOUNT_TITLE), RegexOperator.CONTAINS)
-		
+
 		if('Book transfer'.equalsIgnoreCase(orderData.get(Fields.ORDER_TYPE))) {
-		
+
 			new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_CounterpartyToAccount'), orderData.get(Fields.ORDER_COUNTERPARTY_TO_ACCOUNT_NUMBER), RegexOperator.CONTAINS)
-			
+
 			new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_AccountType'), orderData.get(Fields.ORDER_COUNTERPARTY_TO_ACCOUNT_TYPE), RegexOperator.CONTAINS)
 		}
-		
+
 		if('Payment order'.equalsIgnoreCase(orderData.get(Fields.ORDER_TYPE))) {
-			
+
 			new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_RecipientInstitutionRountingNumber'), orderData.get(Fields.ORDER_ROUTING_NUMBER), RegexOperator.CONTAINS)
-			
+
 			new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_CounterpartyToAccount'), orderData.get(Fields.ORDER_COUNTERPARTY_TO_ACCOUNT_NUMBER), RegexOperator.CONTAINS)
-			
+
 			new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_AccountType'), orderData.get(Fields.ORDER_COUNTERPARTY_TO_ACCOUNT_TYPE), RegexOperator.CONTAINS)
 		}
-		
+
 		if('Collection order'.equalsIgnoreCase(orderData.get(Fields.ORDER_TYPE))) {
 
 			new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_FromInstitutionRountingNumber'), orderData.get(Fields.ORDER_ROUTING_NUMBER), RegexOperator.CONTAINS)
 
 			new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_CounterpartyFromAccount'), orderData.get(Fields.ORDER_COUNTERPARTY_FROM_ACCOUNT_NUMBER), RegexOperator.CONTAINS)
-			
+
 			new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_AccountType'), orderData.get(Fields.ORDER_COUNTERPARTY_FROM_ACCOUNT_TYPE), RegexOperator.CONTAINS)
 		}
 
@@ -651,32 +658,32 @@ public class AccountPage {
 		//TODO: Need to enable this check once DOM issue is fixed by Dev team.
 		//new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_OrderAmount'), orderData.get(Fields.ORDER_TRANSFER_AMOUNT_VIEW), RegexOperator.CONTAINS)
 	}
-	
+
 	static def verifyOrdersTable(Map<Fields, String> orderData, int rowNo) {
-		
+
 		TestObject orderTable = findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Orders Tab/Orders Section/table_Orders')
 		String currDateUTC = DateUtil.getCurrentDateTime(common.dateFormat, common.timezoneUTC)
-		
-		
+
+
 		new actions.Table().verifyCellValueEquals(orderTable, rowNo, ColumnPos.ORDER_TYPE, orderData.get(Fields.ORDER_TYPE))
-		
+
 		new actions.Table().verifyCellValueEquals(orderTable, rowNo, ColumnPos.ORDER_CREATE_DATE, currDateUTC)
-		
+
 		if(StringUtil.isValidData(orderData, Fields.ORDER_TRANSFER_DATE)) {
 			new actions.Table().verifyCellValueEquals(orderTable, rowNo, ColumnPos.ORDER_ORDER_DATE, orderData.get(Fields.ORDER_TRANSFER_DATE_VIEW))
 		}
 		else {
 			new actions.Table().verifyCellValueEquals(orderTable, rowNo, ColumnPos.ORDER_ORDER_DATE, currDateUTC)
 		}
-		
+
 		new actions.Table().verifyCellValueEquals(orderTable, rowNo, ColumnPos.ORDER_FROM_ACCOUNT, orderData.get(Fields.ORDER_COUNTERPARTY_FROM_ACCOUNT_NUMBER))
-		
+
 		new actions.Table().verifyCellValueEquals(orderTable, rowNo, ColumnPos.ORDER_TO_ACCOUNT, orderData.get(Fields.ORDER_COUNTERPARTY_TO_ACCOUNT_NUMBER))
-		
+
 		if(StringUtil.isValidData(orderData, Fields.ORDER_ROUTING_NUMBER)) {
 			new actions.Table().verifyCellValueEquals(orderTable, rowNo, ColumnPos.ORDER_COUNTERPARTY_INSTITUTION, orderData.get(Fields.ORDER_ROUTING_NUMBER))
 		}
-		
+
 		if(StringUtil.isValidData(orderData, Fields.ORDER_STATUS)) {
 			new actions.Table().verifyCellValueEquals(orderTable, rowNo, ColumnPos.ORDER_STATUS, orderData.get(Fields.ORDER_STATUS))
 		}
