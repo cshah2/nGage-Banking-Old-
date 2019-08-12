@@ -371,17 +371,17 @@ public class Common {
 	}
 
 	@Keyword
-	def orderFormFill(Map<Fields, String> orderData) {
-		AccountPage.fillOrderDetails(orderData)
+	def orderFormFill(Map<Fields, String> orderData, Map<Fields, String> fromAcc, Map<Fields, String> toAcc) {
+		AccountPage.fillOrderDetails(orderData, fromAcc, toAcc)
 	}
 
 	@Keyword
-	def reviewOrderDetails(Map<Fields, String> orderData) {
-		AccountPage.reviewOrderDetails(orderData)
+	def reviewOrderDetails(Map<Fields, String> orderData, Map<Fields, String> fromAcc, Map<Fields, String> toAcc) {
+		AccountPage.reviewOrderDetails(orderData, fromAcc, toAcc)
 	}
 
 	@Keyword
-	def verifyOrderDetailsInTable(Map<Fields, String> orderData, int rowNo) {
-		AccountPage.verifyOrdersTable(orderData, rowNo)
+	def verifyOrderDetailsInTable(Map<Fields, String> orderData, Map<Fields, String> fromAcc, Map<Fields, String> toAcc, int rowNo) {
+		AccountPage.verifyOrdersTable(orderData, fromAcc, toAcc, rowNo)
 	}
 }

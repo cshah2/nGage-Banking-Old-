@@ -48,13 +48,13 @@ String taskNameOrder = 'Add Order'
 CustomKeywords.'actions.Common.selectTaskFromTaskList'(taskNameOrder)
 
 'Fill order details'
-CustomKeywords.'actions.Common.orderFormFill'(orderData)
+CustomKeywords.'actions.Common.orderFormFill'(orderData, accDataFrom, accDataTo)
 
 'Click on Submit button'
 CustomKeywords.'actions.Common.moveToElementAndClick'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/btn_Submit'))
 
 'Verify data on order review page'
-CustomKeywords.'actions.Common.reviewOrderDetails'(orderData)
+CustomKeywords.'actions.Common.reviewOrderDetails'(orderData, accDataFrom, accDataTo)
 
 'Click on Confirm button'
 CustomKeywords.'actions.Common.moveToElementAndClick'(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/btn_Confirm'))
@@ -68,7 +68,7 @@ CustomKeywords.'actions.Table.waitUntilRecordsCountEquals'(tabOrders_orderTable,
 
 int orderTableRowNo = 6
 'Verify Order data in table'
-CustomKeywords.'actions.Common.verifyOrderDetailsInTable'(orderData, orderTableRowNo)
+CustomKeywords.'actions.Common.verifyOrderDetailsInTable'(orderData, accDataFrom, accDataTo, orderTableRowNo)
 
 'Set Order flag as True'
 orderData.put(Fields.IS_CREATED, 'true')
