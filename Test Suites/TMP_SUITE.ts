@@ -23,25 +23,31 @@
       <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/6. (ID - 20) Deposit Accounts Orders/A. (ID - 20.1) Add Orders - Book Transfer</testCaseId>
    </testCaseLink>
    <testCaseLink>
-      <guid>c20ed5f2-eac6-4d15-9495-674b2b129260</guid>
+      <guid>b6e3332f-a99d-4413-8dea-15dcffa4d293</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/6. (ID - 20) Deposit Accounts Orders/B. (ID - 20.2) Add Orders - Payment Order</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>15a2aac4-f044-4db4-9751-13e153e96448</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/6. (ID - 20) Deposit Accounts Orders/C. (ID - 20.3) Add Orders - Collection Order</testCaseId>
    </testCaseLink>
    <testCaseLink>
-      <guid>4a9292d3-88a9-49e4-8223-e5fe75ceeb77</guid>
+      <guid>daebf410-8e06-487e-93ef-06e661383f91</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/6. (ID - 20) Deposit Accounts Orders/D. (ID - 20.4) Add future-dated order - Book Transfer</testCaseId>
    </testCaseLink>
    <testCaseLink>
-      <guid>1c7fc73d-1f5b-4a6f-abf0-ef54ea68c625</guid>
+      <guid>d3b066d6-55cc-42f2-8553-bbbe7a898331</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/6. (ID - 20) Deposit Accounts Orders/E. (ID - 20.5) Add future-dated order - Payment Order</testCaseId>
    </testCaseLink>
    <testCaseLink>
-      <guid>58868441-6461-4488-9cf5-4de00762c9d1</guid>
+      <guid>8fd71f7c-0dde-40bf-a4f6-7d9ae081ac94</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/6. (ID - 20) Deposit Accounts Orders/F. (ID - 20.6) Add future-dated order - Collection Order</testCaseId>

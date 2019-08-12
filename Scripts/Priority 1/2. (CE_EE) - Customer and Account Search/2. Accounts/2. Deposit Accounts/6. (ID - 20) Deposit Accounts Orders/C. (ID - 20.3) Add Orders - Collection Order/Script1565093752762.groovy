@@ -18,8 +18,8 @@ import enums.Fields
 import internal.GlobalVariable as GlobalVariable
 
 Map<Fields, String> custData = Data.CUSTOMER_001
-Map<Fields, String> accDataFrom = Data.CUSTOMER_001_ORDER_FROM_ACC01
-Map<Fields, String> accDataTo = Data.CUSTOMER_001_ORDER_TO_ACC01
+Map<Fields, String> accDataTo = Data.CUSTOMER_001_ORDER_FROM_ACC01
+Map<Fields, String> accDataFrom = Data.CUSTOMER_001_ORDER_TO_ACC01
 Map<Fields, String> previousOrderData = Data.CUSTOMER_001_ORDER_FROM_ACC01_ORDER02
 Map<Fields, String> orderData = Data.CUSTOMER_001_ORDER_FROM_ACC01_ORDER03
 Map<Fields, String> accBalanceFrom = Data.CUSTOMER_001_ORDER_FROM_ACC01_ORDER03_BAL
@@ -37,7 +37,7 @@ CustomKeywords.'actions.Common.shouldFailTest'(previousOrderData)
 CustomKeywords.'actions.Common.login'()
 
 'Open From Account'
-CustomKeywords.'actions.Common.searchAccount'(accDataFrom)
+CustomKeywords.'actions.Common.searchAccount'(accDataTo)
 
 //Perform Purchase Order operation
 'Click on Orders tab'
