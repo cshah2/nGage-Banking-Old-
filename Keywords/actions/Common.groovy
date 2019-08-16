@@ -384,4 +384,14 @@ public class Common {
 	def verifyOrderDetailsInTable(Map<Fields, String> orderData, Map<Fields, String> fromAcc, Map<Fields, String> toAcc, int rowNo) {
 		AccountPage.verifyOrdersTable(orderData, fromAcc, toAcc, rowNo)
 	}
+	
+	@Keyword
+	def editOrderFormFill(Map<Fields, String> orderData) {
+		AccountPage.editOrderDetails(orderData)
+	}
+
+	@Keyword
+	def cancelOrderFormFill(Map<Fields, String> orderData) {
+		AccountPage.fillCancelOrderDetails(orderData)
+	}
 }

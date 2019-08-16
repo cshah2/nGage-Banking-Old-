@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Test for JIRA Integration 1</description>
+   <name>JIRA Test Cases 1</name>
+   <tag>jira-integration</tag>
+   <comment></comment>
+   <testCaseGuid>f1e9f34a-653c-4131-afed-795fd83d3140</testCaseGuid>
+</TestCaseEntity>

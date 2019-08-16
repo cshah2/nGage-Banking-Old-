@@ -688,4 +688,42 @@ public class AccountPage {
 			new actions.Table().verifyCellValueEquals(orderTable, rowNo, ColumnPos.ORDER_STATUS, orderData.get(Fields.ORDER_STATUS))
 		}
 	}
+
+	static def editOrderDetails(Map<Fields, String> orderData) {
+
+		if(StringUtil.isValidData(orderData, Fields.ORDER_TRANSFER_DATE)) {
+			WebUI.uncheck(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/chkbox_SendNow'))
+
+			new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/input_TransferDate'), GlobalVariable.TIMEOUT)
+
+			new actions.JavaScript().setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/input_TransferDate'), orderData.get(Fields.ORDER_TRANSFER_DATE))
+		}
+		else {
+			WebUI.check(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/chkbox_SendNow'))
+
+			new actions.WaitFor().elementNotPresent(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/input_TransferDate'), GlobalVariable.TIMEOUT)
+		}
+
+		if(StringUtil.isValidData(orderData, Fields.ORDER_ISRECURRING)) {
+			WebUI.check(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/chkbox_RecurringOrder'))
+		}
+		else {
+			WebUI.uncheck(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/chkbox_RecurringOrder'))
+		}
+
+		if(StringUtil.isValidData(orderData, Fields.ORDER_TRANSFER_AMOUNT)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Order/input_TransferAmount'), orderData.get(Fields.ORDER_TRANSFER_AMOUNT))
+		}
+	}
+
+	static def fillCancelOrderDetails(Map<Fields, String> orderData) {
+
+		new actions.Common().verifyElementTextContains(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Order/lbl_OrderType'), orderData.get(Fields.ORDER_TYPE))
+
+		new actions.Common().verifyElementTextContains(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Order/lbl_OrderDate'), orderData.get(Fields.ORDER_TRANSFER_DATE))
+
+		new actions.Common().verifyElementTextContains(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Order/lbl_OrderAmount'), orderData.get(Fields.ORDER_TRANSFER_AMOUNT_VIEW))
+
+		new actions.Common().verifyElementTextContains(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Order/lbl_OrderStatus'), orderData.get(Fields.ORDER_STATUS))
+	}
 }
