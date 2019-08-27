@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>btn_Next</name>
+   <name>input_WebAddress</name>
    <tag></tag>
-   <elementGuidId>c69089eb-5204-4c9f-90ce-94bc47656acc</elementGuidId>
+   <elementGuidId>9e0edd8e-39bc-470b-abcc-d4d0a3bc3bc5</elementGuidId>
    <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>input[id*='_wtWebAddress']</value>
+      </entry>
       <entry>
          <key>BASIC</key>
          <value></value>
-      </entry>
-      <entry>
-         <key>CSS</key>
-         <value>div[id*='_wtparty_create_CN'] input[value='Next']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

@@ -3,15 +3,15 @@
    <description></description>
    <name>input_MothersMaidenName</name>
    <tag></tag>
-   <elementGuidId>69eedfae-4c41-408b-9be9-2bd90ce3660c</elementGuidId>
+   <elementGuidId>5b09d749-12f3-464f-8747-27e7826fc325</elementGuidId>
    <selectorCollection>
-      <entry>
-         <key>BASIC</key>
-         <value></value>
-      </entry>
       <entry>
          <key>CSS</key>
          <value>input[id*='_wtMotherMaidenName']</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

@@ -3,15 +3,15 @@
    <description></description>
    <name>input_TotalHouseholdMembers</name>
    <tag></tag>
-   <elementGuidId>3ca805a8-402d-4d72-bcca-31ae4b3e8795</elementGuidId>
+   <elementGuidId>139df4dd-87f0-4e60-abce-69e6df90a9cb</elementGuidId>
    <selectorCollection>
-      <entry>
-         <key>BASIC</key>
-         <value></value>
-      </entry>
       <entry>
          <key>CSS</key>
          <value>input[id*='_wtNumberHousehold']</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

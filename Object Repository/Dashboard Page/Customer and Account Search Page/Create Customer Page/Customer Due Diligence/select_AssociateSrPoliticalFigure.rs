@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>btn_Previous</name>
+   <name>select_AssociateSrPoliticalFigure</name>
    <tag></tag>
-   <elementGuidId>35685258-5a76-46fc-8d4b-2ca63dc5d293</elementGuidId>
+   <elementGuidId>ce7d04ef-0a8f-4fd0-92ac-d031a1f67662</elementGuidId>
    <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>select[id*='_wtAssocSrPoiticalFigure']</value>
+      </entry>
       <entry>
          <key>BASIC</key>
          <value></value>
-      </entry>
-      <entry>
-         <key>CSS</key>
-         <value>input[id*='_wtBasicInformation'][value='Previous']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

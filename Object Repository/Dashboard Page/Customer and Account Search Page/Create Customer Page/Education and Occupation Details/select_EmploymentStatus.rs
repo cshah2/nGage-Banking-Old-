@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>btn_Next</name>
+   <name>select_EmploymentStatus</name>
    <tag></tag>
-   <elementGuidId>a968e644-0bed-4487-982c-97fe1501a46d</elementGuidId>
+   <elementGuidId>a1339002-9250-4162-bd5d-d389100d2d54</elementGuidId>
    <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>select[id*='_wtEmploymentStatus']</value>
+      </entry>
       <entry>
          <key>BASIC</key>
          <value></value>
-      </entry>
-      <entry>
-         <key>CSS</key>
-         <value>input[id*='_wtContact'][value='Next']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

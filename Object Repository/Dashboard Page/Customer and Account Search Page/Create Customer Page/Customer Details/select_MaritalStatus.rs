@@ -3,15 +3,15 @@
    <description></description>
    <name>select_MaritalStatus</name>
    <tag></tag>
-   <elementGuidId>516cbee7-6e1e-4369-971d-e329a7fe0ee1</elementGuidId>
+   <elementGuidId>d65cffba-7d44-4f79-bd87-8c60ca71234c</elementGuidId>
    <selectorCollection>
-      <entry>
-         <key>BASIC</key>
-         <value></value>
-      </entry>
       <entry>
          <key>CSS</key>
          <value>select[id*='_wtMaritalStatus']</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

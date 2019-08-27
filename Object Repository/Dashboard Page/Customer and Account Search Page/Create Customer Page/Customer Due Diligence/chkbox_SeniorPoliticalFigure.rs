@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>link_SetPhoneDates</name>
+   <name>chkbox_SeniorPoliticalFigure</name>
    <tag></tag>
-   <elementGuidId>645ca0e9-9c10-446b-aea2-cb9c36c68020</elementGuidId>
+   <elementGuidId>ee966ab8-7763-4b88-9a5f-b9eb135b742f</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value></value>
-      </entry>
-      <entry>
          <key>CSS</key>
-         <value>div[id*='_wtValidPhoneDT'] > a > span</value>
+         <value>input[id*='_wtSrtPoliticalFigure']</value>
       </entry>
       <entry>
          <key>BASIC</key>

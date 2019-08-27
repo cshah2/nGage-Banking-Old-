@@ -22,9 +22,9 @@ import enums.RegexOperator
 import internal.GlobalVariable
 
 public class SearchPage {
-	
+
 	static def searchCustomer(Map<Fields, String> custData) {
-		
+
 		//Click on Search All drop down
 		WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search'))
 
@@ -66,23 +66,23 @@ public class SearchPage {
 		//Verify column values are matching - first name
 		new actions.Table().verifyCellValueEquals(resultTable, rowNo, ColumnPos.CUST_FIRST_NAME, custData.get(Fields.CUST_FIRST_NAME))
 	}
-	
+
 	static def selectCustomer(Map<Fields, String> custData, int rowNo) {
-		
+
 		TestObject resultTable = findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult')
-		
+
 		//Click on Last name link in a first row of search result table
 		new actions.Table().clickCell(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), rowNo, ColumnPos.CUST_LAST_NAME)
-		
+
 		//Wait for Customer details page to load
 		WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/lbl_CustomerName'), GlobalVariable.TIMEOUT)
-		
+
 		//Verify Customer name is displayed correctly
 		WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/lbl_CustomerName'), custData.get(Fields.CUST_NAME_VIEW))
 	}
-	
+
 	static def searchAccount(Map<Fields, String> accData) {
-		
+
 		//Click on Search All drop down
 		WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search'))
 

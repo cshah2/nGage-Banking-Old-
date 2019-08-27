@@ -56,10 +56,10 @@ WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account 
 CustomKeywords.'actions.Common.customerFormFill'(custData)
 
 'Scroll to next button'
-WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/btn_Next'), GlobalVariable.TIMEOUT)
+WebUI.scrollToElement(findTestObject('null'), GlobalVariable.TIMEOUT)
 
 'Click on Next button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/btn_Next'))
+WebUI.click(findTestObject('null'))
 
 'Wait for review page to load'
 CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Contact Information/btn_Next'), GlobalVariable.TIMEOUT)
@@ -87,7 +87,7 @@ WebUI.selectOptionByLabel(findTestObject('Dashboard Page/Customer and Account Se
 CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Customer Information/chkbox_CreateNewAccount'), GlobalVariable.TIMEOUT)
 
 'Click on Create button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Customer Information/btn_Create'))
+WebUI.click(findTestObject('null'))
 
 'Wait for Customer details page to load'
 WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/lbl_CustomerName'), GlobalVariable.TIMEOUT)

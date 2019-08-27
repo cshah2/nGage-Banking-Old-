@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>btn_Create</name>
+   <name>input_EmailVerifiedDate</name>
    <tag></tag>
-   <elementGuidId>3276ab8d-bec1-469b-b886-e78191e52290</elementGuidId>
+   <elementGuidId>ff3c9cfd-d223-4575-af62-fb534e463c24</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>CSS</key>
-         <value>input[id*='_wtContact'][value='Create']</value>
+         <key>XPATH</key>
+         <value>//label[text()='Verified Date (Email)']/..//input</value>
       </entry>
       <entry>
          <key>BASIC</key>
          <value></value>
       </entry>
    </selectorCollection>
-   <selectorMethod>CSS</selectorMethod>
+   <selectorMethod>XPATH</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

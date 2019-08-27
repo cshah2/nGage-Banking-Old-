@@ -3,15 +3,15 @@
    <description></description>
    <name>select_PreferredLanguage</name>
    <tag></tag>
-   <elementGuidId>f91b9ea6-6dd8-4b10-bb49-ab679487ef9a</elementGuidId>
+   <elementGuidId>5c49598f-182f-48c7-a1a5-a73963619bcc</elementGuidId>
    <selectorCollection>
-      <entry>
-         <key>BASIC</key>
-         <value></value>
-      </entry>
       <entry>
          <key>CSS</key>
          <value>select[id*='_wtPreferredLanguage']</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

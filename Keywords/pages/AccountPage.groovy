@@ -51,17 +51,17 @@ public class AccountPage {
 		//Wait for Product section to be visible
 		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_ProductType'),GlobalVariable.TIMEOUT)
 
-		//		//Enter account number
-		//		if(StringUtil.isValidData(accData, Fields.ACC_NUMBER)) {
-		//			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountNumber'), accData.get(Fields.ACC_NUMBER))
-		//		}
+		//Enter account number
+		if(StringUtil.isValidData(accData, Fields.ACC_NUMBER)) {
+			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountNumber'), accData.get(Fields.ACC_NUMBER))
+		}
 
-		//Store account number value in a variable
-		//WebUI.delay(2) //TODO: Wait for account number value to populate.
-		new actions.WaitFor().attributeValueChange(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountNumber'), "value", '')
-		String accNumber = WebUI.getAttribute(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountNumber'), 'value')
-		println "Account Number is "+accNumber
-		accData.put(Fields.ACC_NUMBER, accNumber)
+//		//Store account number value in a variable
+//		//WebUI.delay(2) //TODO: Wait for account number value to populate.
+//		new actions.WaitFor().attributeValueChange(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountNumber'), "value", '')
+//		String accNumber = WebUI.getAttribute(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountNumber'), 'value')
+//		println "Account Number is "+accNumber
+//		accData.put(Fields.ACC_NUMBER, accNumber)
 
 		//Select timezone
 		if(StringUtil.isValidData(accData, Fields.ACC_TIMEZONE)) {

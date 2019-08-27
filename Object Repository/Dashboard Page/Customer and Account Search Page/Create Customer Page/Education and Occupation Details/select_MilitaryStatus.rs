@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>link_SetPhoneDates</name>
+   <name>select_MilitaryStatus</name>
    <tag></tag>
-   <elementGuidId>645ca0e9-9c10-446b-aea2-cb9c36c68020</elementGuidId>
+   <elementGuidId>0a74e42d-9c3b-4455-8638-28ee0b55cbae</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value></value>
-      </entry>
-      <entry>
-         <key>CSS</key>
-         <value>div[id*='_wtValidPhoneDT'] > a > span</value>
+         <value>//label[text()='Military Status']/../div/select</value>
       </entry>
       <entry>
          <key>BASIC</key>
          <value></value>
       </entry>
    </selectorCollection>
-   <selectorMethod>CSS</selectorMethod>
+   <selectorMethod>XPATH</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

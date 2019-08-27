@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>btn_Create</name>
+   <name>input_FamiliarName</name>
    <tag></tag>
-   <elementGuidId>0906d022-8589-448e-b548-192d9a31fce5</elementGuidId>
+   <elementGuidId>89d528d1-b1ee-4f83-96d1-607cdc87957a</elementGuidId>
    <selectorCollection>
       <entry>
+         <key>XPATH</key>
+         <value>input[id*='_wtFamiliarName']</value>
+      </entry>
+      <entry>
          <key>CSS</key>
-         <value>div[id*='wtcust_create_CN'] input[value='Create']</value>
+         <value>input[id*='_wtFamiliarName']</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

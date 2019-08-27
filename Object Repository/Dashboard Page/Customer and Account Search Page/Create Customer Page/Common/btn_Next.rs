@@ -6,12 +6,11 @@
    <elementGuidId>045bfbb0-c951-416e-aafd-13d7bf7b822f</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
-         <value></value>
+         <key>CSS</key>
+         <value>input[value='Next'][id*='_wtText']</value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value>input[id*='_wtBasicInformation'][value='Next']</value>
+         <key>BASIC</key>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

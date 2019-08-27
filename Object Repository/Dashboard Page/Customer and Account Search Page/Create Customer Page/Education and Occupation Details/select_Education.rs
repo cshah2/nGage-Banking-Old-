@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>link_SetPhoneDates</name>
+   <name>select_Education</name>
    <tag></tag>
-   <elementGuidId>645ca0e9-9c10-446b-aea2-cb9c36c68020</elementGuidId>
+   <elementGuidId>b5abaf95-6537-45bd-b9e2-68848c156bcb</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value></value>
-      </entry>
-      <entry>
          <key>CSS</key>
-         <value>div[id*='_wtValidPhoneDT'] > a > span</value>
+         <value>select[id*='_wtText_wtEducation']</value>
       </entry>
       <entry>
          <key>BASIC</key>

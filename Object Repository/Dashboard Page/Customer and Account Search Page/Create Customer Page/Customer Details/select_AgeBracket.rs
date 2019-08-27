@@ -3,15 +3,15 @@
    <description></description>
    <name>select_AgeBracket</name>
    <tag></tag>
-   <elementGuidId>63ce3722-1096-4e57-bd1f-776da30a38b3</elementGuidId>
+   <elementGuidId>41decb6a-d78c-49df-b0f2-9e934a36ac98</elementGuidId>
    <selectorCollection>
-      <entry>
-         <key>BASIC</key>
-         <value></value>
-      </entry>
       <entry>
          <key>CSS</key>
          <value>select[id*='_wtAgeBracket']</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>btn_Previous</name>
+   <name>input_MonthlyGrossIncome</name>
    <tag></tag>
-   <elementGuidId>e0af9106-788b-4755-9d3a-21064dfd0cf5</elementGuidId>
+   <elementGuidId>ef81c3b9-3e89-45d9-a9f6-0939ce958ac6</elementGuidId>
    <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>input[id*='_wtMonthlyGrossIncome']</value>
+      </entry>
       <entry>
          <key>BASIC</key>
          <value></value>
-      </entry>
-      <entry>
-         <key>CSS</key>
-         <value>input[id*='_wtContact'][value='Previous']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

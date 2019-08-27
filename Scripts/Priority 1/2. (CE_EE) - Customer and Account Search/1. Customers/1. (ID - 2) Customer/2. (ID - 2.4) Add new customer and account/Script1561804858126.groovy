@@ -49,9 +49,6 @@ WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account 
 'Fill customer form'
 CustomKeywords.'actions.Common.customerFormFill'(custData)
 
-'Click on Create button'
-CustomKeywords.'actions.Common.moveToElementAndClick'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Customer Information/btn_Create'))
-
 'Verify Customer Details on Summary Section'
 CustomKeywords.'actions.Common.verifyCustomerDetailsSummarySection'(custData)
 

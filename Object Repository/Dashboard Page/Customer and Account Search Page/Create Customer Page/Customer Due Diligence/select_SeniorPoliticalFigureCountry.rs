@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>link_SetPhoneDates</name>
+   <name>select_SeniorPoliticalFigureCountry</name>
    <tag></tag>
-   <elementGuidId>645ca0e9-9c10-446b-aea2-cb9c36c68020</elementGuidId>
+   <elementGuidId>cbb5f8d1-fc97-4887-b76b-a948baeb131c</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value></value>
-      </entry>
-      <entry>
          <key>CSS</key>
-         <value>div[id*='_wtValidPhoneDT'] > a > span</value>
+         <value>select[id*='_wtSrPoliticalFigureCountryDD']</value>
       </entry>
       <entry>
          <key>BASIC</key>

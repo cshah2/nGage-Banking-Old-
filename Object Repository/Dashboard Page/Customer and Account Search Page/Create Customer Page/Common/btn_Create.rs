@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>btn_Next</name>
+   <name>btn_Create</name>
    <tag></tag>
-   <elementGuidId>82c3dd2d-52ad-43a2-9ab8-7a4dfb06769e</elementGuidId>
+   <elementGuidId>3276ab8d-bec1-469b-b886-e78191e52290</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
-         <value></value>
+         <key>CSS</key>
+         <value>input[value='Create'][id*='_wtText']</value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value>input[id*='_wtAddress'][value='Next']</value>
+         <key>BASIC</key>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

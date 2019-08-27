@@ -33,6 +33,7 @@ import pages.SearchPage
 import pages.TaskDrawer
 import utils.ExceptionUtil
 import utils.RegexUtil
+import utils.StringUtil
 
 import static constants.common.*
 
@@ -174,7 +175,35 @@ public class Common {
 			KeywordUtil.markFailedAndStop('Cannot execute test cases as required data is not created.')
 		}
 	}
+	
+	@Keyword
+	def setTextIfNotEmpty(TestObject element, Map<Fields, String> data, Fields field) {
+		if(StringUtil.isValidData(data, field)) {
+			WebUI.setText(element, data.get(field))
+		}
+	}
+	
+	@Keyword
+	def setTextJQueryIfNotEmpty(TestObject element, Map<Fields, String> data, Fields field) {
+		if(StringUtil.isValidData(data, field)) {
+			new actions.JavaScript().setText(element, data.get(field))
+		}
+	}
 
+
+	@Keyword
+	def selectOptionByLabelIfNotEmpty(TestObject element, Map<Fields, String> data, Fields field) {
+		if(StringUtil.isValidData(data, field)) {
+			WebUI.selectOptionByLabel(element, data.get(field), false)
+		}
+	}
+
+	@Keyword
+	def checkElementIfNotEmpty(TestObject element, Map<Fields, String> data, Fields field) {
+		if(StringUtil.isValidData(data, field)) {
+			WebUI.check(element)
+		}
+	}
 
 
 
@@ -384,7 +413,7 @@ public class Common {
 	def verifyOrderDetailsInTable(Map<Fields, String> orderData, Map<Fields, String> fromAcc, Map<Fields, String> toAcc, int rowNo) {
 		AccountPage.verifyOrdersTable(orderData, fromAcc, toAcc, rowNo)
 	}
-	
+
 	@Keyword
 	def editOrderFormFill(Map<Fields, String> orderData) {
 		AccountPage.editOrderDetails(orderData)
@@ -394,4 +423,6 @@ public class Common {
 	def cancelOrderFormFill(Map<Fields, String> orderData) {
 		AccountPage.fillCancelOrderDetails(orderData)
 	}
+	
+
 }

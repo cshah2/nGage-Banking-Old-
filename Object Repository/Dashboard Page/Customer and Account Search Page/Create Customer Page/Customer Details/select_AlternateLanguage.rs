@@ -3,15 +3,15 @@
    <description></description>
    <name>select_AlternateLanguage</name>
    <tag></tag>
-   <elementGuidId>2b5e8e01-1839-4dcf-b271-07578520849e</elementGuidId>
+   <elementGuidId>164fd4e8-16a3-463e-b39e-dc0fa710406b</elementGuidId>
    <selectorCollection>
-      <entry>
-         <key>BASIC</key>
-         <value></value>
-      </entry>
       <entry>
          <key>CSS</key>
          <value>select[id*='_wtAlternateLanguage']</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

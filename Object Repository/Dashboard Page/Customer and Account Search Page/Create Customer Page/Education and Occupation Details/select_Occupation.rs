@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>btn_Previous</name>
+   <name>select_Occupation</name>
    <tag></tag>
-   <elementGuidId>c6d35fdf-9f9d-4308-ace0-63a16d6a952e</elementGuidId>
+   <elementGuidId>648455fa-c3f2-45a6-8d24-57d614dca903</elementGuidId>
    <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>select[id*='_wtOccupation']</value>
+      </entry>
       <entry>
          <key>BASIC</key>
          <value></value>
-      </entry>
-      <entry>
-         <key>CSS</key>
-         <value>div[id*='_wtparty_create_CN'] input[value='Previous']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

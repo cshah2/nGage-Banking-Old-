@@ -3,11 +3,11 @@
    <description></description>
    <name>btn_Previous</name>
    <tag></tag>
-   <elementGuidId>71f4da30-b2f1-4103-85ec-1207c36bfef0</elementGuidId>
+   <elementGuidId>35685258-5a76-46fc-8d4b-2ca63dc5d293</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>div[id*='wtcust_create_CN'] input[value='Previous']</value>
+         <value>input[value='Previous'][id*='_wtText']</value>
       </entry>
       <entry>
          <key>BASIC</key>

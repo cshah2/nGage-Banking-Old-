@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>btn_Previous</name>
+   <name>input_VerifiedDate</name>
    <tag></tag>
-   <elementGuidId>b46562db-7595-46ed-9620-cae514ecd506</elementGuidId>
+   <elementGuidId>32ddd9d0-aefa-4148-8600-52a8a87f1577</elementGuidId>
    <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>input[id*='_wtVerifiedDate']</value>
+      </entry>
       <entry>
          <key>BASIC</key>
          <value></value>
-      </entry>
-      <entry>
-         <key>CSS</key>
-         <value>input[id*='_wtAddress'][value='Previous']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

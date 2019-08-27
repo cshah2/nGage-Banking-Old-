@@ -44,21 +44,6 @@ WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account 
 'Fill customer form'
 CustomKeywords.'actions.Common.customerFormFill'(data)
 
-//'Click on Create button'
-//CustomKeywords.'actions.Common.moveToElementAndClick'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/btn_Create'))
-//
-//'Verify Customer Details on Review Page and click on Next button'
-//CustomKeywords.'actions.Common.verifyCustomerDetailsOnReviewPage'(data)
-//
-//'Click on Next button'
-//CustomKeywords.'actions.Common.moveToElementAndClick'(findTestObject('Dashboard Page/Customer and Account Search Page/Review Customer Page/Contact Information/btn_Next'))
-//
-//'Fill Customer ID and Group details'
-//CustomKeywords.'actions.Common.customerIdAndGroupFormFill'(data)
-
-'Click on Create button'
-CustomKeywords.'actions.Common.moveToElementAndClick'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Customer Information/btn_Create'))
-
 'Verify Customer Details on Summary Section'
 CustomKeywords.'actions.Common.verifyCustomerDetailsSummarySection'(data)
 
