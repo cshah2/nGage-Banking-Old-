@@ -125,7 +125,7 @@ public class CustomerPage {
 		new actions.WaitFor().elementVisible(e_PhoneNumber, GlobalVariable.TIMEOUT)
 		
 		new actions.Common().setTextJQueryIfNotEmpty(e_PhoneNumber, custData, Fields.CT_PHONE_NUMBER)
-		new actions.Common().setTextJQueryIfNotEmpty(e_PhoneType, custData, Fields.CT_PHONE_TYPE)
+		new actions.Common().selectOptionByLabelIfNotEmpty(e_PhoneType, custData, Fields.CT_PHONE_TYPE)
 		new actions.Common().setTextJQueryIfNotEmpty(e_PhoneVerifiedDate, custData, Fields.CT_PHONE_VERIFIED_DATE)
 		if(StringUtil.isValidData(custData, Fields.CT_PHONE_VALID_FROM) || StringUtil.isValidData(custData, Fields.CT_PHONE_VALID_UNTIL)) {
 			WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/link_SetPhoneDates'))
@@ -135,7 +135,7 @@ public class CustomerPage {
 		new actions.Common().setTextJQueryIfNotEmpty(e_PhoneValidUntil, custData, Fields.CT_PHONE_VALID_UNTIL)
 
 		new actions.Common().setTextJQueryIfNotEmpty(e_Email, custData, Fields.CT_EMAIL)
-		new actions.Common().setTextJQueryIfNotEmpty(e_EmailType, custData, Fields.CT_EMAIL_TYPE)
+		new actions.Common().selectOptionByLabelIfNotEmpty(e_EmailType, custData, Fields.CT_EMAIL_TYPE)
 		new actions.Common().setTextJQueryIfNotEmpty(e_EmailVerifiedDate, custData, Fields.CT_EMAIL_VERIFIED_DATE)
 		if(StringUtil.isValidData(custData, Fields.CT_EMAIL_VALID_FROM) || StringUtil.isValidData(custData, Fields.CT_EMAIL_VALID_UNTIL)) {
 			WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/link_SetEmailDates'))

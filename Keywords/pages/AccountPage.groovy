@@ -50,6 +50,7 @@ public class AccountPage {
 
 		//Wait for Product section to be visible
 		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/select_ProductType'),GlobalVariable.TIMEOUT)
+		WebUI.delay(2) //TODO: Need to add proper wait condition
 
 		//Enter account number
 		if(StringUtil.isValidData(accData, Fields.ACC_NUMBER)) {
