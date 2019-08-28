@@ -422,6 +422,37 @@ public class Data {
 		CUSTOMER_001_SAVING_ACCOUNT_ACC_DOC2.put(Fields.DOC_SIGNED_DATE_VIEW, DateUtil.convert(currentDateTime, common.dateTimeFormat, common.dateFormat))
 		CUSTOMER_001_SAVING_ACCOUNT_ACC_DOC2.put(Fields.DOC_VERSION, '01')
 	}
+	
+	public static final Map<Fields, String> CUSTOMER_001_SAVING_ACC_DOCUMENT1;
+	static {
+		CUSTOMER_001_SAVING_ACC_DOCUMENT1 = new HashMap<Fields, String>()
+		CUSTOMER_001_SAVING_ACC_DOCUMENT1.put(Fields.DOCUMENT_FILEPATH, RunConfiguration.getProjectDir().replace('/', '\\')+'\\Data Files\\UploadFiles\\AccountrDocument-Notices.pdf')
+		CUSTOMER_001_SAVING_ACC_DOCUMENT1.put(Fields.DOCUMENT_CLASS, 'Account Notices')
+		CUSTOMER_001_SAVING_ACC_DOCUMENT1.put(Fields.DOCUMENT_TYPE, 'Return Mail Notice')
+		CUSTOMER_001_SAVING_ACC_DOCUMENT1.put(Fields.DOCUMENT_START_DATE, DateUtil.getCurrentDateTime(common.dateFormat, common.timezone))
+		CUSTOMER_001_SAVING_ACC_DOCUMENT1.put(Fields.DOCUMENT_END_DATE, DateUtil.getCurrentDateTime(common.dateFormat, common.timezone))
+		CUSTOMER_001_SAVING_ACC_DOCUMENT1.put(Fields.DOCUMENT_RECEIVED_DATE, DateUtil.getCurrentDateTime(common.dateFormat, common.timezone))
+		CUSTOMER_001_SAVING_ACC_DOCUMENT1.put(Fields.DOCUMENT_STATUS, 'New')
+		CUSTOMER_001_SAVING_ACC_DOCUMENT1.put(Fields.DOCUMENT_DESCRIPTION, 'This is account document - notice')
+		CUSTOMER_001_SAVING_ACC_DOCUMENT1.put(Fields.DOCUMENT_TITLE, CUSTOMER_001_SAVING_ACC_DOCUMENT1.get(Fields.DOCUMENT_TYPE)+' Cust # '+CUSTOMER_001.get(Fields.CUST_CUSTOMER_ID)+' - Recvd '+CUSTOMER_001_DOCUMENT1.get(Fields.DOCUMENT_RECEIVED_DATE))
+		CUSTOMER_001_SAVING_ACC_DOCUMENT1.put(Fields.IS_CREATED, 'false')
+	}
+
+	public static final Map<Fields, String> CUSTOMER_001_SAVING_ACC_DOCUMENT1_EDIT;
+	static {
+		CUSTOMER_001_SAVING_ACC_DOCUMENT1_EDIT = new HashMap<Fields, String>()
+		CUSTOMER_001_SAVING_ACC_DOCUMENT1_EDIT.put(Fields.DOCUMENT_FILEPATH, RunConfiguration.getProjectDir().replace('/', '\\')+'\\Data Files\\UploadFiles\\AccountrDocument-Notices.pdf')
+		CUSTOMER_001_SAVING_ACC_DOCUMENT1_EDIT.put(Fields.DOCUMENT_CLASS, 'Account Notices')
+		CUSTOMER_001_SAVING_ACC_DOCUMENT1_EDIT.put(Fields.DOCUMENT_TYPE, 'Account Declination')
+		CUSTOMER_001_SAVING_ACC_DOCUMENT1_EDIT.put(Fields.DOCUMENT_START_DATE, DateUtil.getCurrentDateTimeMinusDays(3, common.dateFormat, common.timezone))
+		CUSTOMER_001_SAVING_ACC_DOCUMENT1_EDIT.put(Fields.DOCUMENT_END_DATE, DateUtil.getCurrentDateTimeMinusDays(1, common.dateFormat, common.timezone))
+		CUSTOMER_001_SAVING_ACC_DOCUMENT1_EDIT.put(Fields.DOCUMENT_RECEIVED_DATE, DateUtil.getCurrentDateTimeMinusDays(2, common.dateFormat, common.timezone))
+		CUSTOMER_001_SAVING_ACC_DOCUMENT1_EDIT.put(Fields.DOCUMENT_STATUS, 'In Review')
+		CUSTOMER_001_SAVING_ACC_DOCUMENT1_EDIT.put(Fields.DOCUMENT_DESCRIPTION, 'This is account document - Declination')
+		CUSTOMER_001_SAVING_ACC_DOCUMENT1_EDIT.put(Fields.DOCUMENT_TITLE, CUSTOMER_001_SAVING_ACC_DOCUMENT1_EDIT.get(Fields.DOCUMENT_TYPE)+' Cust # '+CUSTOMER_001.get(Fields.CUST_CUSTOMER_ID)+' - Recvd '+CUSTOMER_001_DOCUMENT1_EDIT.get(Fields.DOCUMENT_RECEIVED_DATE))
+		CUSTOMER_001_SAVING_ACC_DOCUMENT1_EDIT.put(Fields.IS_CREATED, 'false')
+	}
+
 
 	public static final Map<Fields, String> CUSTOMER_001_HOLD_ACCOUNT01;
 	static {

@@ -17,33 +17,15 @@
       <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/1. Customers/1. (ID - 2) Customer/1. (ID - 2.3) Add new customer</testCaseId>
    </testCaseLink>
    <testCaseLink>
-      <guid>74b6d4f5-e143-4281-be30-dee68d8bfdbb</guid>
+      <guid>36817866-00cc-4d2b-bb67-1e760eaeae2b</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/5. (ID - 19) Deposit Accounts Holds/A. (ID - 19.1) Add Hold - Clearing</testCaseId>
+      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/3. (ID - 14) Savings Account/1. (ID - 14.1) Add Savings Account</testCaseId>
    </testCaseLink>
    <testCaseLink>
-      <guid>8cd3c9e8-b101-466b-913d-d1f21eb0cafe</guid>
+      <guid>9be5a8a2-f10b-4bb6-ac16-3300c3e8dc26</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/5. (ID - 19) Deposit Accounts Holds/B. (ID - 19.2) Add Hold - PreAuth</testCaseId>
-   </testCaseLink>
-   <testCaseLink>
-      <guid>99d4eb93-9a81-4444-a3e7-781f22748f77</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
-      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/5. (ID - 19) Deposit Accounts Holds/C. (ID - 19.3) Add Hold - RegCC</testCaseId>
-   </testCaseLink>
-   <testCaseLink>
-      <guid>18c9afdd-c753-40c6-9609-64eca23bd94e</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
-      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/5. (ID - 19) Deposit Accounts Holds/D. (ID - 19.4) Add Hold - Reserve</testCaseId>
-   </testCaseLink>
-   <testCaseLink>
-      <guid>6e424518-5f8d-4401-b8a8-c9db505fdd38</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
-      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/5. (ID - 19) Deposit Accounts Holds/E. (ID - 19.5) Add Hold - Admin</testCaseId>
+      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/7. (ID - 21) Account Notes/1. (ID - 21.1) Add Account Note</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>

@@ -5,6 +5,8 @@ import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
+import java.util.Map
+
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
@@ -57,12 +59,12 @@ public class AccountPage {
 			WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountNumber'), accData.get(Fields.ACC_NUMBER))
 		}
 
-//		//Store account number value in a variable
-//		//WebUI.delay(2) //TODO: Wait for account number value to populate.
-//		new actions.WaitFor().attributeValueChange(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountNumber'), "value", '')
-//		String accNumber = WebUI.getAttribute(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountNumber'), 'value')
-//		println "Account Number is "+accNumber
-//		accData.put(Fields.ACC_NUMBER, accNumber)
+		//		//Store account number value in a variable
+		//		//WebUI.delay(2) //TODO: Wait for account number value to populate.
+		//		new actions.WaitFor().attributeValueChange(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountNumber'), "value", '')
+		//		String accNumber = WebUI.getAttribute(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountNumber'), 'value')
+		//		println "Account Number is "+accNumber
+		//		accData.put(Fields.ACC_NUMBER, accNumber)
 
 		//Select timezone
 		if(StringUtil.isValidData(accData, Fields.ACC_TIMEZONE)) {
@@ -727,4 +729,51 @@ public class AccountPage {
 
 		new actions.Common().verifyElementTextContains(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Order/lbl_OrderStatus'), orderData.get(Fields.ORDER_STATUS))
 	}
+
+//	static def fillDocumentDetails(Map<Fields, String> documentData) {
+//
+//		TestObject e_FileUpload = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_FileUpload')
+//		TestObject e_DocClass = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/select_DocClass')
+//		TestObject e_FileAfterUpload = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/lbl_FileNameAfterUpload')
+//		TestObject e_DocType = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/select_DocType')
+//		TestObject e_StartDate = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_StartDate')
+//		TestObject e_EndDate = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_EndDate')
+//		TestObject e_ReceivedDate = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_ReceivedDate')
+//		TestObject e_Status = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/select_Status')
+//		TestObject e_Description = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_Description')
+//
+//		'Wait for Task drawer to load'
+//		new actions.WaitFor().elementVisible(e_DocClass, GlobalVariable.TIMEOUT)
+//
+//		'Upload file'
+//		//CustomKeywords.'actions.File.upload'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_FileUpload'), docData.get(Fields.DOCUMENT_FILEPATH))
+//		new actions.File().uploadAutoIt(e_FileUpload, documentData.get(Fields.DOCUMENT_FILEPATH))
+//
+//		'Wait for Uploaded file name to be visible'
+//		new actions.WaitFor().elementVisible(e_FileAfterUpload, GlobalVariable.TIMEOUT)
+//
+//		'Select doc class'
+//		new actions.Common().selectOptionByLabelIfNotEmpty(e_DocClass, documentData, Fields.DOCUMENT_CLASS)
+//
+//		'Wait for doc type field to be editable'
+//		new actions.WaitFor().elementClickable(e_DocType, GlobalVariable.TIMEOUT)
+//
+//		'Select doc type'
+//		new actions.Common().selectOptionByLabelIfNotEmpty(e_DocType, documentData, Fields.DOCUMENT_TYPE)
+//
+//		'Enter start date'
+//		new actions.Common().setTextJQueryIfNotEmpty(e_StartDate, documentData, Fields.DOCUMENT_START_DATE)
+//
+//		'Enter end date'
+//		new actions.Common().setTextJQueryIfNotEmpty(e_EndDate, documentData, Fields.DOCUMENT_END_DATE)
+//
+//		'Enter received date'
+//		new actions.Common().setTextJQueryIfNotEmpty(e_ReceivedDate, documentData, Fields.DOCUMENT_RECEIVED_DATE)
+//
+//		'Select status'
+//		new actions.Common().selectOptionByLabelIfNotEmpty(e_Status, documentData, Fields.DOCUMENT_STATUS)
+//
+//		'Enter description'
+//		new actions.Common().setTextIfNotEmpty(e_Description, documentData, Fields.ACC_AVAILABLE_BALANCE)
+//	}
 }

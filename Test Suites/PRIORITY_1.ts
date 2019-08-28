@@ -316,4 +316,16 @@
       <isRun>true</isRun>
       <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/6. (ID - 20) Deposit Accounts Orders/F. (ID - 20.6) Add future-dated order - Collection Order</testCaseId>
    </testCaseLink>
+   <testCaseLink>
+      <guid>69e5cfdf-9a74-4ab8-9a78-147b088e16d3</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/6. (ID - 20) Deposit Accounts Orders/G. (ID - 20.7) Edit Order</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>4709196c-205f-48e5-a7b3-c103290a654e</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/6. (ID - 20) Deposit Accounts Orders/H. (ID - 20.8) Cancel Order</testCaseId>
+   </testCaseLink>
 </TestSuiteEntity>
