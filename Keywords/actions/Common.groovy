@@ -39,6 +39,7 @@ import static constants.common.*
 
 import org.apache.commons.lang3.StringUtils
 import org.openqa.selenium.ElementClickInterceptedException
+import org.openqa.selenium.ElementNotInteractableException
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.interactions.Actions
@@ -134,7 +135,7 @@ public class Common {
 			WebUI.click(element)
 		}
 		catch(StepFailedException e) {
-			boolean isException = ExceptionUtil.isCause(ElementClickInterceptedException.class, e)
+			boolean isException = (ExceptionUtil.isCause(ElementClickInterceptedException.class, e) || ExceptionUtil.isCause(ElementNotInteractableException.class, e))
 			if(isException) {
 				new actions.JavaScript().click(element)
 			}
