@@ -104,7 +104,7 @@ public class Common {
 	@Keyword
 	def moveToElement(TestObject to) {
 
-		WebUI.waitForElementPresent(to, GlobalVariable.TIMEOUT)
+		WebUI.waitForElementPresent(to, GlobalVariable.TIMEOUT, FailureHandling.STOP_ON_FAILURE)
 		new actions.JavaScript().scrollToElement(to)
 		WebUI.delay(1)
 

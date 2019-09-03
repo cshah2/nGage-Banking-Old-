@@ -328,4 +328,10 @@
       <isRun>true</isRun>
       <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/6. (ID - 20) Deposit Accounts Orders/H. (ID - 20.8) Cancel Order</testCaseId>
    </testCaseLink>
+   <testCaseLink>
+      <guid>f78fd033-8648-42c2-bb4a-e8b4d7ffa304</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/2. Accounts/2. Deposit Accounts/7. (ID - 21) Account Notes/1. (ID - 21.1) Add Account Note</testCaseId>
+   </testCaseLink>
 </TestSuiteEntity>
