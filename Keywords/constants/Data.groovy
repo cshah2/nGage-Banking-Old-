@@ -28,6 +28,7 @@ public class Data {
 		CUSTOMER_001.put(Fields.CUST_DOB_MASKED, '**/**/'+CUSTOMER_001.get(Fields.CUST_DOB).substring(6))
 		CUSTOMER_001.put(Fields.CUST_TAX_ID, '9'+RandomUtil.getRandomNumeric(8))
 		CUSTOMER_001.put(Fields.CUST_TAX_ID_MASKED, '*****'+CUSTOMER_001.get(Fields.CUST_TAX_ID).substring(5))
+		CUSTOMER_001.put(Fields.CUST_TAX_ID_TYPE, 'SSN')
 		CUSTOMER_001.put(Fields.CUST_COUNTRY_OF_RESIDENCE, 'United States of America')
 		CUSTOMER_001.put(Fields.CUST_RESIDENCY_STATUS, 'Resident')
 
@@ -422,7 +423,7 @@ public class Data {
 		CUSTOMER_001_SAVING_ACCOUNT_ACC_DOC2.put(Fields.DOC_SIGNED_DATE_VIEW, DateUtil.convert(currentDateTime, common.dateTimeFormat, common.dateFormat))
 		CUSTOMER_001_SAVING_ACCOUNT_ACC_DOC2.put(Fields.DOC_VERSION, '01')
 	}
-	
+
 	public static final Map<Fields, String> CUSTOMER_001_SAVING_ACC_DOCUMENT1;
 	static {
 		CUSTOMER_001_SAVING_ACC_DOCUMENT1 = new HashMap<Fields, String>()
@@ -1168,6 +1169,7 @@ public class Data {
 		CUSTOMER_002.put(Fields.CUST_DOB_MASKED, '**/**/'+CUSTOMER_002.get(Fields.CUST_DOB).substring(6))
 		CUSTOMER_002.put(Fields.CUST_TAX_ID, '9'+RandomUtil.getRandomNumeric(8))
 		CUSTOMER_002.put(Fields.CUST_TAX_ID_MASKED, '*****'+CUSTOMER_002.get(Fields.CUST_TAX_ID).substring(5))
+		CUSTOMER_002.put(Fields.CUST_TAX_ID_TYPE, 'SSN')
 		CUSTOMER_002.put(Fields.CUST_COUNTRY_OF_RESIDENCE, 'United States of America')
 		CUSTOMER_002.put(Fields.CUST_RESIDENCY_STATUS, 'Non-Resident')
 		CUSTOMER_002.put(Fields.CUST_MARITAL_STATUS, 'Married')
@@ -1284,6 +1286,7 @@ public class Data {
 		CUSTOMER_003.put(Fields.CUST_DOB_MASKED, '**/**/2019')
 		CUSTOMER_003.put(Fields.CUST_TAX_ID, '3215478896')
 		CUSTOMER_003.put(Fields.CUST_TAX_ID_MASKED, '******8896')
+		CUSTOMER_003.put(Fields.CUST_TAX_ID_TYPE, 'SSN')
 		CUSTOMER_003.put(Fields.CUST_COUNTRY_OF_RESIDENCE, 'United States of America')
 		CUSTOMER_003.put(Fields.CUST_RESIDENCY_STATUS, 'Unknown')
 		CUSTOMER_003.put(Fields.CUST_MARITAL_STATUS, 'Unknown')

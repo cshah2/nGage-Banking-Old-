@@ -730,50 +730,50 @@ public class AccountPage {
 		new actions.Common().verifyElementTextContains(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Cancel Order/lbl_OrderStatus'), orderData.get(Fields.ORDER_STATUS))
 	}
 
-//	static def fillDocumentDetails(Map<Fields, String> documentData) {
-//
-//		TestObject e_FileUpload = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_FileUpload')
-//		TestObject e_DocClass = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/select_DocClass')
-//		TestObject e_FileAfterUpload = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/lbl_FileNameAfterUpload')
-//		TestObject e_DocType = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/select_DocType')
-//		TestObject e_StartDate = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_StartDate')
-//		TestObject e_EndDate = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_EndDate')
-//		TestObject e_ReceivedDate = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_ReceivedDate')
-//		TestObject e_Status = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/select_Status')
-//		TestObject e_Description = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_Description')
-//
-//		'Wait for Task drawer to load'
-//		new actions.WaitFor().elementVisible(e_DocClass, GlobalVariable.TIMEOUT)
-//
-//		'Upload file'
-//		//CustomKeywords.'actions.File.upload'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_FileUpload'), docData.get(Fields.DOCUMENT_FILEPATH))
-//		new actions.File().uploadAutoIt(e_FileUpload, documentData.get(Fields.DOCUMENT_FILEPATH))
-//
-//		'Wait for Uploaded file name to be visible'
-//		new actions.WaitFor().elementVisible(e_FileAfterUpload, GlobalVariable.TIMEOUT)
-//
-//		'Select doc class'
-//		new actions.Common().selectOptionByLabelIfNotEmpty(e_DocClass, documentData, Fields.DOCUMENT_CLASS)
-//
-//		'Wait for doc type field to be editable'
-//		new actions.WaitFor().elementClickable(e_DocType, GlobalVariable.TIMEOUT)
-//
-//		'Select doc type'
-//		new actions.Common().selectOptionByLabelIfNotEmpty(e_DocType, documentData, Fields.DOCUMENT_TYPE)
-//
-//		'Enter start date'
-//		new actions.Common().setTextJQueryIfNotEmpty(e_StartDate, documentData, Fields.DOCUMENT_START_DATE)
-//
-//		'Enter end date'
-//		new actions.Common().setTextJQueryIfNotEmpty(e_EndDate, documentData, Fields.DOCUMENT_END_DATE)
-//
-//		'Enter received date'
-//		new actions.Common().setTextJQueryIfNotEmpty(e_ReceivedDate, documentData, Fields.DOCUMENT_RECEIVED_DATE)
-//
-//		'Select status'
-//		new actions.Common().selectOptionByLabelIfNotEmpty(e_Status, documentData, Fields.DOCUMENT_STATUS)
-//
-//		'Enter description'
-//		new actions.Common().setTextIfNotEmpty(e_Description, documentData, Fields.ACC_AVAILABLE_BALANCE)
-//	}
+	//	static def fillDocumentDetails(Map<Fields, String> documentData) {
+	//
+	//		TestObject e_FileUpload = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_FileUpload')
+	//		TestObject e_DocClass = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/select_DocClass')
+	//		TestObject e_FileAfterUpload = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/lbl_FileNameAfterUpload')
+	//		TestObject e_DocType = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/select_DocType')
+	//		TestObject e_StartDate = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_StartDate')
+	//		TestObject e_EndDate = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_EndDate')
+	//		TestObject e_ReceivedDate = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_ReceivedDate')
+	//		TestObject e_Status = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/select_Status')
+	//		TestObject e_Description = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_Description')
+	//
+	//		'Wait for Task drawer to load'
+	//		new actions.WaitFor().elementVisible(e_DocClass, GlobalVariable.TIMEOUT)
+	//
+	//		'Upload file'
+	//		//CustomKeywords.'actions.File.upload'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Documents/input_FileUpload'), docData.get(Fields.DOCUMENT_FILEPATH))
+	//		new actions.File().uploadAutoIt(e_FileUpload, documentData.get(Fields.DOCUMENT_FILEPATH))
+	//
+	//		'Wait for Uploaded file name to be visible'
+	//		new actions.WaitFor().elementVisible(e_FileAfterUpload, GlobalVariable.TIMEOUT)
+	//
+	//		'Select doc class'
+	//		new actions.Common().selectOptionByLabelIfNotEmpty(e_DocClass, documentData, Fields.DOCUMENT_CLASS)
+	//
+	//		'Wait for doc type field to be editable'
+	//		new actions.WaitFor().elementClickable(e_DocType, GlobalVariable.TIMEOUT)
+	//
+	//		'Select doc type'
+	//		new actions.Common().selectOptionByLabelIfNotEmpty(e_DocType, documentData, Fields.DOCUMENT_TYPE)
+	//
+	//		'Enter start date'
+	//		new actions.Common().setTextJQueryIfNotEmpty(e_StartDate, documentData, Fields.DOCUMENT_START_DATE)
+	//
+	//		'Enter end date'
+	//		new actions.Common().setTextJQueryIfNotEmpty(e_EndDate, documentData, Fields.DOCUMENT_END_DATE)
+	//
+	//		'Enter received date'
+	//		new actions.Common().setTextJQueryIfNotEmpty(e_ReceivedDate, documentData, Fields.DOCUMENT_RECEIVED_DATE)
+	//
+	//		'Select status'
+	//		new actions.Common().selectOptionByLabelIfNotEmpty(e_Status, documentData, Fields.DOCUMENT_STATUS)
+	//
+	//		'Enter description'
+	//		new actions.Common().setTextIfNotEmpty(e_Description, documentData, Fields.ACC_AVAILABLE_BALANCE)
+	//	}
 }

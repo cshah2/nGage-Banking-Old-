@@ -18,6 +18,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import constants.ColumnPos
 import enums.Fields
+import enums.RegexOperator
 import enums.WebTable
 import internal.GlobalVariable
 import utils.StringUtil
@@ -33,9 +34,10 @@ public class CustomerPage {
 		TestObject e_Suffix = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_Suffix')
 		TestObject e_DateOfBirth = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_DOB')
 		TestObject e_TaxID = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_TaxID')
+		TestObject e_TaxIDType = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_TaxIDType')
 		TestObject e_CountryOfResidency = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/select_CountryOfResidence')
 		TestObject e_ResidencyStatus = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/select_ResidencyStatus')
-		
+
 		//Wait for page elements to load
 		new actions.WaitFor().elementVisible(e_Prefix, GlobalVariable.TIMEOUT)
 
@@ -46,6 +48,7 @@ public class CustomerPage {
 		new actions.Common().setTextIfNotEmpty(e_Suffix, custData, Fields.CUST_SUFFIX)
 		new actions.Common().setTextJQueryIfNotEmpty(e_DateOfBirth, custData, Fields.CUST_DOB)
 		new actions.Common().setTextIfNotEmpty(e_TaxID, custData, Fields.CUST_TAX_ID)
+		new actions.Common().selectOptionByLabelIfNotEmpty(e_TaxIDType, custData, Fields.CUST_TAX_ID_TYPE)
 		new actions.Common().selectOptionByLabelIfNotEmpty(e_CountryOfResidency, custData, Fields.CUST_COUNTRY_OF_RESIDENCE)
 		new actions.Common().selectOptionByLabelIfNotEmpty(e_ResidencyStatus, custData, Fields.CUST_RESIDENCY_STATUS)
 	}
@@ -90,7 +93,7 @@ public class CustomerPage {
 
 		//Wait for Location information fields to be visible
 		new actions.WaitFor().elementVisible(e_Street, GlobalVariable.TIMEOUT)
-		
+
 		new actions.Common().setTextIfNotEmpty(e_Street, custData, Fields.ADDR_STREET)
 		new actions.Common().setTextIfNotEmpty(e_City, custData, Fields.ADDR_CITY)
 		new actions.Common().selectOptionByLabelIfNotEmpty(e_Country, custData, Fields.ADDR_COUNTY)
@@ -123,7 +126,7 @@ public class CustomerPage {
 
 		//Wait for Contact information fields to be visible
 		new actions.WaitFor().elementVisible(e_PhoneNumber, GlobalVariable.TIMEOUT)
-		
+
 		new actions.Common().setTextJQueryIfNotEmpty(e_PhoneNumber, custData, Fields.CT_PHONE_NUMBER)
 		new actions.Common().selectOptionByLabelIfNotEmpty(e_PhoneType, custData, Fields.CT_PHONE_TYPE)
 		new actions.Common().setTextJQueryIfNotEmpty(e_PhoneVerifiedDate, custData, Fields.CT_PHONE_VERIFIED_DATE)
@@ -190,20 +193,24 @@ public class CustomerPage {
 		TestObject e_CustomerID = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Customer Information/input_CustomerId')
 		TestObject e_CustomerGroup = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Customer Information/select_PartyorCustomerGroup')
 		TestObject e_CheckAccount = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Customer Information/chkbox_CreateNewAccount')
-		
+
 		//Wait for Customer ID and Group field to load
 		new actions.WaitFor().elementVisible(e_CustomerID, GlobalVariable.TIMEOUT)
-		
+
 		new actions.Common().setTextIfNotEmpty(e_CustomerID, custData, Fields.CUST_CUSTOMER_ID)
 		new actions.Common().selectOptionByLabelIfNotEmpty(e_CustomerGroup, custData, Fields.CUST_CUSTOMER_GROUP)
-		new actions.WaitFor().elementVisible(e_CheckAccount, GlobalVariable.TIMEOUT)
-		new actions.Common().checkElementIfNotEmpty(e_CheckAccount, custData, Fields.CUST_CHK_ACCOUNT)
+		//new actions.WaitFor().elementVisible(e_CheckAccount, GlobalVariable.TIMEOUT)
+		//new actions.Common().checkElementIfNotEmpty(e_CheckAccount, custData, Fields.CUST_CHK_ACCOUNT)
 	}
 
 	static def fillCustomerDetails(Map<Fields, String> custData) {
 
 		TestObject e_next = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Common/btn_Next')
 		TestObject e_Create = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Common/btn_Create')
+		
+		TestObject e_Dialog_Msg = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Customer Information/Confirmation dialog/lbl_Message')
+		TestObject e_Dialog_Yes = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Customer Information/Confirmation dialog/btn_Yes')
+		TestObject e_Dialog_No = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Customer Information/Confirmation dialog/btn_No')
 
 		enterBasicInformation(custData)
 		new actions.Common().moveToElementAndClick(e_next)
@@ -225,6 +232,17 @@ public class CustomerPage {
 
 		enterCustomerInformation(custData)
 		new actions.Common().moveToElementAndClick(e_Create)
+		
+		//handle popup dialog
+		new actions.WaitFor().elementVisible(e_Dialog_Msg, GlobalVariable.TIMEOUT)
+		new actions.Common().verifyMatch(e_Dialog_Msg, 'Customer has been created', RegexOperator.CONTAINS)
+		
+		if(StringUtil.isValidData(custData, Fields.CUST_CHK_ACCOUNT) && 'true'.equalsIgnoreCase(custData.get(Fields.CUST_CHK_ACCOUNT))) {
+			WebUI.click(e_Dialog_Yes)	
+		}
+		else {
+			WebUI.click(e_Dialog_No)
+		}
 	}
 
 	@Deprecated //Function no longer required as Page is not being shown
