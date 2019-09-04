@@ -207,7 +207,7 @@ public class CustomerPage {
 
 		TestObject e_next = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Common/btn_Next')
 		TestObject e_Create = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Common/btn_Create')
-		
+
 		TestObject e_Dialog_Msg = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Customer Information/Confirmation dialog/lbl_Message')
 		TestObject e_Dialog_Yes = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Customer Information/Confirmation dialog/btn_Yes')
 		TestObject e_Dialog_No = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Customer Information/Confirmation dialog/btn_No')
@@ -232,13 +232,13 @@ public class CustomerPage {
 
 		enterCustomerInformation(custData)
 		new actions.Common().moveToElementAndClick(e_Create)
-		
+
 		//handle popup dialog
 		new actions.WaitFor().elementVisible(e_Dialog_Msg, GlobalVariable.TIMEOUT)
 		new actions.Common().verifyMatch(e_Dialog_Msg, 'Customer has been created', RegexOperator.CONTAINS)
-		
+
 		if(StringUtil.isValidData(custData, Fields.CUST_CHK_ACCOUNT) && 'true'.equalsIgnoreCase(custData.get(Fields.CUST_CHK_ACCOUNT))) {
-			WebUI.click(e_Dialog_Yes)	
+			WebUI.click(e_Dialog_Yes)
 		}
 		else {
 			WebUI.click(e_Dialog_No)

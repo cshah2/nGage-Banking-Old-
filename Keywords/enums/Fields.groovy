@@ -91,6 +91,7 @@ public enum Fields {
 	ORG_DBA_NAME,
 	ORG_ESTABLISHED_DATE,
 	ORG_TAX_ID,
+	ORG_TAX_ID_MASKED,
 	ORG_TAX_ID_TYPE,
 	
 	//Organization - Organization details
@@ -134,8 +135,12 @@ public enum Fields {
 	ORG_CHK_TRANSFER_CUSTOMERS,
 	ORG_CHK_VIRTUAL_CURRENCY,
 
-	
-	
+	//Organization - Customer Information
+	ORG_CUSTOMER_ID,
+	ORG_CUSTOMER_GROUP,
+	ORG_CHK_ACCOUNT,
+
+		
 	CT_PREFERRED_LANGUAGE,
 	ACC_TITLE,
 	ACC_DESCRIPTION,

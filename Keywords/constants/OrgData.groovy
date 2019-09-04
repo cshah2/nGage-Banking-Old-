@@ -22,7 +22,7 @@ import utils.DateUtil
 import utils.RandomUtil
 
 public class OrgData {
-	
+
 	public static final Map<Fields, String> ORG1;
 	static {
 		ORG1 = new HashMap<Fields, String>()
@@ -32,13 +32,13 @@ public class OrgData {
 		String orgName = "The "+parsedJson.get("results").get(0).get("name").get("first") + parsedJson.get("results").get(0).get("name").get("last") +" Inc"
 		String dbaName = parsedJson.get("results").get(0).get("name").get("title") + parsedJson.get("results").get(0).get("name").get("last") +" & Sons"
 		String establishedDate = DateUtil.convert(parsedJson.get("results").get(0).get("dob").get("date").subSequence(0, 10), 'yyyy-MM-dd', common.dateFormat)
-		
+
 		ORG1.put(Fields.ORG_NAME, orgName)
 		ORG1.put(Fields.ORG_DBA_NAME, dbaName)
 		ORG1.put(Fields.ORG_ESTABLISHED_DATE, establishedDate)
-		ORG1.put(Fields.CUST_TAX_ID, '9'+RandomUtil.getRandomNumeric(8))
-		ORG1.put(Fields.CUST_TAX_ID_MASKED, '*****'+ORG1.get(Fields.CUST_TAX_ID).substring(5))
-		ORG1.put(Fields.CUST_TAX_ID_TYPE, 'SSN')
+		ORG1.put(Fields.ORG_TAX_ID, '9'+RandomUtil.getRandomNumeric(8))
+		ORG1.put(Fields.ORG_TAX_ID_MASKED, '*****'+ORG1.get(Fields.ORG_TAX_ID).substring(5))
+		ORG1.put(Fields.ORG_TAX_ID_TYPE, 'SSN')
 
 		//Organization Details
 		String tradeName = parsedJson.get("results").get(0).get("name").get("title") + parsedJson.get("results").get(0).get("name").get("first") +" PLC"
@@ -85,7 +85,7 @@ public class OrgData {
 		ORG1.put(Fields.ORG_BUSINESS_STRUCTURE, 'LLC')
 		ORG1.put(Fields.ORG_COUNTRY_OPERATIONS, 'United States of America')
 		ORG1.put(Fields.ORG_COUNTRY_HEADQUARTERS, 'India')
-		ORG1.put(Fields.ORG_INDUSTRY, 'Agriculture')
+		ORG1.put(Fields.ORG_INDUSTRY, 'Agriculature')
 		ORG1.put(Fields.ORG_YEARS_OWNED, '3 Years')
 		ORG1.put(Fields.ORG_EST_ANNUAL_REVENUE, 'Under 1 Million')
 		ORG1.put(Fields.ORG_NUMBER_LOCATIONS, '1 to 10 Locations')
@@ -107,15 +107,14 @@ public class OrgData {
 		ORG1.put(Fields.ORG_CHK_THIRD_PARTY_BENEFIT, 'true')
 		ORG1.put(Fields.ORG_CHK_TRANSFER_CUSTOMERS, 'true')
 		ORG1.put(Fields.ORG_CHK_VIRTUAL_CURRENCY, 'true')
-		
+
 		//Customer Information
-		ORG1.put(Fields.CUST_CUSTOMER_ID, 'OID_'+RandomUtil.getRandomNumeric(6))
-		ORG1.put(Fields.CUST_CUSTOMER_GROUP, 'Banking Customer')
+		ORG1.put(Fields.ORG_CUSTOMER_ID, 'OID_'+RandomUtil.getRandomNumeric(6))
+		ORG1.put(Fields.ORG_CUSTOMER_GROUP, 'Banking Customer')
+		ORG1.put(Fields.ORG_CHK_ACCOUNT, 'false')
 
 		//Script data
 		ORG1.put(Fields.IS_CREATED, 'false')
 		ORG1.put(Fields.URL, '')
 	}
-
-	
 }

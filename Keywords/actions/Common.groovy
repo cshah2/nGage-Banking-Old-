@@ -29,6 +29,7 @@ import enums.WebTable
 import internal.GlobalVariable
 import pages.AccountPage
 import pages.CustomerPage
+import pages.OrganizationPage
 import pages.SearchPage
 import pages.TaskDrawer
 import utils.ExceptionUtil
@@ -176,14 +177,14 @@ public class Common {
 			KeywordUtil.markFailedAndStop('Cannot execute test cases as required data is not created.')
 		}
 	}
-	
+
 	@Keyword
 	def setTextIfNotEmpty(TestObject element, Map<Fields, String> data, Fields field) {
 		if(StringUtil.isValidData(data, field)) {
 			WebUI.setText(element, data.get(field))
 		}
 	}
-	
+
 	@Keyword
 	def setTextJQueryIfNotEmpty(TestObject element, Map<Fields, String> data, Fields field) {
 		if(StringUtil.isValidData(data, field)) {
@@ -205,9 +206,14 @@ public class Common {
 			WebUI.check(element)
 		}
 	}
-
-
-
+	
+	
+	/* ------------- SEARCH PAGE ------------- */
+	
+	@Keyword
+	def searchPageSelectOrganization() {
+		SearchPage.selectEntity('Organization')
+	}
 
 	/* ------------- CREATE CUSTOMER ------------- */
 
@@ -425,5 +431,13 @@ public class Common {
 		AccountPage.fillCancelOrderDetails(orderData)
 	}
 	
+	/* ------------- CREATE ORGANIZATION ------------- */
+	
+	@Keyword
+	def organizationFormFill(Map<Fields, String> orgData) {
+		OrganizationPage.fillOrganizationDetails(orgData)
+	}
+	
+
 
 }

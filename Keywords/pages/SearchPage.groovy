@@ -13,6 +13,7 @@ import com.kms.katalon.core.model.FailureHandling
 import com.kms.katalon.core.testcase.TestCase
 import com.kms.katalon.core.testdata.TestData
 import com.kms.katalon.core.testobject.TestObject
+import com.kms.katalon.core.util.KeywordUtil
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
@@ -131,5 +132,39 @@ public class SearchPage {
 
 		//Verify Account title contains correct account number
 		new actions.Common().verifyElementTextContains(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Summary Section/lbl_AccountTitle'), accData.get(Fields.ACC_NUMBER))
+	}
+	
+	static def selectEntity(String entityType) {
+		
+		'Click on Search All drop down'
+		WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search'))
+		
+		'Wait for Menus to be visible'
+		WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Menu'), GlobalVariable.TIMEOUT)
+		
+		if('Organization'.equalsIgnoreCase(entityType)) {
+			
+			'Click on Organization option'
+			WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Organization'))
+			
+			'Wait for Create customer icon to be visible'
+			WebUI.delay(3) //TODO: Need to identify propert wait condition
+			new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_OrganizationName'), GlobalVariable.TIMEOUT)
+		}
+		else if('Customer'.equalsIgnoreCase(entityType)) {
+			
+			'Click on Customer option'
+			WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Customer'))
+			
+			'Wait for Create customer icon to be visible'
+			WebUI.delay(3) //TODO: Need to identify propert wait condition
+			new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/icon_CreateCustomer'), GlobalVariable.TIMEOUT)
+		}
+		else if('Account'.equalsIgnoreCase(entityType)) {
+			
+		}
+		else {
+			KeywordUtil.markFailedAndStop('Incorrect entity type provided for selection on search page : '+entityType)
+		}
 	}
 }
