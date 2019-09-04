@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>input_PhoneNumber</name>
+   <name>table_OrgSearchResult</name>
    <tag></tag>
-   <elementGuidId>9fb9c345-f2b1-475b-b6a8-208d21a88b62</elementGuidId>
+   <elementGuidId>afd43478-4188-40f1-a336-0b7bc51492fe</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value>input[placeholder='Phone Number']</value>
+         <value>table[id*='_wtPartyOrgTable']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

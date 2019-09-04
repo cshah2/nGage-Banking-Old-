@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>input_PhoneNumber</name>
+   <name>select_Country</name>
    <tag></tag>
-   <elementGuidId>9fb9c345-f2b1-475b-b6a8-208d21a88b62</elementGuidId>
+   <elementGuidId>b15acfed-cec1-46ff-b521-0cbe6a8af90f</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value>input[placeholder='Phone Number']</value>
+         <value>select[title='Country']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

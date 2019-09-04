@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>input_PhoneNumber</name>
+   <name>input_DunAndBradstreetId</name>
    <tag></tag>
-   <elementGuidId>9fb9c345-f2b1-475b-b6a8-208d21a88b62</elementGuidId>
+   <elementGuidId>932f565c-f1a6-4a97-b27e-3f31ca4e133c</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value>input[placeholder='Phone Number']</value>
+         <value>input[placeholder='Dun &amp; Bradstreet ID']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

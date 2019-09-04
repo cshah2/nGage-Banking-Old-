@@ -7,11 +7,10 @@
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value></value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value>div[id*='_wtcustSearch_CN'] input[placeholder='Tax ID']</value>
+         <value>input[placeholder='Tax ID']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

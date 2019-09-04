@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>input_PhoneNumber</name>
+   <name>icon_CreateOrganization</name>
    <tag></tag>
-   <elementGuidId>9fb9c345-f2b1-475b-b6a8-208d21a88b62</elementGuidId>
+   <elementGuidId>5ef9c41f-8578-4345-a4af-f5d528df5822</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value>input[placeholder='Phone Number']</value>
+         <value>a[id*='_wtADDNEWORGANIZATION'] svg</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

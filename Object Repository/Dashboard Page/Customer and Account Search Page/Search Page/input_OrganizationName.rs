@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>input_PhoneNumber</name>
+   <name>input_OrganizationName</name>
    <tag></tag>
-   <elementGuidId>9fb9c345-f2b1-475b-b6a8-208d21a88b62</elementGuidId>
+   <elementGuidId>19f53943-90a2-4991-9c35-bf18ccde1c56</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value>input[placeholder='Phone Number']</value>
+         <value>input[id*='_wtOrganizationName']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>
