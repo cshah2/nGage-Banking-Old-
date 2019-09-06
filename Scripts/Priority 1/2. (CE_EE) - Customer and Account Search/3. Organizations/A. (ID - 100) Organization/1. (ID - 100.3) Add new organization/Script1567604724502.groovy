@@ -31,11 +31,11 @@ CustomKeywords.'actions.Common.moveToElementAndClick'(findTestObject('Dashboard 
 'Fill organization form'
 CustomKeywords.'actions.Common.organizationFormFill'(data)
 
-//'Verify Organization Details on Summary Section'
-//CustomKeywords.'actions.Common.verifyCustomerDetailsSummarySection'(data)
+'Verify Organization Details on Summary Section'
+CustomKeywords.'actions.Common.verifyOrganizationDetailsSummarySection'(data)
 
-//'Verify customer details page URL'
-//CustomKeywords.'actions.Common.verifyUrlContains'('CustomerMainFlow.CustomerDetail.aspx')
+'Verify organization details page URL'
+CustomKeywords.'actions.Common.verifyUrlContains'('CustomerMainFlow.CustomerDetail.aspx')
 
 'Set data flag'
 data.put(Fields.IS_CREATED, 'true')

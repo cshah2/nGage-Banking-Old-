@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>section_Body</name>
+   <name>lbl_TaxId</name>
    <tag></tag>
-   <elementGuidId>d8b48b4e-0ebb-487b-94ce-8ec92828d651</elementGuidId>
+   <elementGuidId>a9b4e875-681a-41bc-8b2c-348590c435a7</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>CSS</key>
-         <value>div[displayblockname='Customer Information']</value>
+         <key>XPATH</key>
+         <value>//div[contains(@id,'_wtOrgDetailContainer')]//label[text()='Tax ID']/../span[@class='CustomerProfile_data']</value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
       </entry>
    </selectorCollection>
-   <selectorMethod>CSS</selectorMethod>
+   <selectorMethod>XPATH</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

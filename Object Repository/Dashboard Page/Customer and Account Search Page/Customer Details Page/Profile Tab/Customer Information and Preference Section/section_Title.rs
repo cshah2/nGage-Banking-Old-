@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>tab_ContactDetails</name>
+   <name>section_Title</name>
    <tag></tag>
-   <elementGuidId>589bd24b-ba7b-4edf-94ec-85ede128f38d</elementGuidId>
+   <elementGuidId>23b55b3b-2156-412a-902c-2b029f3fd236</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//div[contains(@id,'_wtTabs_Header')]//span[text()='Contact Details']/..</value>
-      </entry>
-      <entry>
          <key>CSS</key>
-         <value>div[id*='_wtTabs_Header'] span[tabname = 'Contact Details']</value>
+         <value>div[displayblockname='Customer Information'] div[class='CustomPanelExpandable_title']</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

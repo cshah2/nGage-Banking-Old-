@@ -206,10 +206,10 @@ public class Common {
 			WebUI.check(element)
 		}
 	}
-	
-	
+
+
 	/* ------------- SEARCH PAGE ------------- */
-	
+
 	@Keyword
 	def searchPageSelectOrganization() {
 		SearchPage.selectEntity('Organization')
@@ -430,14 +430,21 @@ public class Common {
 	def cancelOrderFormFill(Map<Fields, String> orderData) {
 		AccountPage.fillCancelOrderDetails(orderData)
 	}
-	
+
 	/* ------------- CREATE ORGANIZATION ------------- */
-	
+
 	@Keyword
 	def organizationFormFill(Map<Fields, String> orgData) {
 		OrganizationPage.fillOrganizationDetails(orgData)
 	}
-	
+
+	/* ------------- ORGANIZATION DETAILS PAGE ------------- */
+
+	@Keyword
+	def verifyOrganizationDetailsSummarySection(Map<Fields, String> orgData) {
+		OrganizationPage.verifyOrganizationDetailsSummarySection(orgData)
+	}
+
 
 
 }

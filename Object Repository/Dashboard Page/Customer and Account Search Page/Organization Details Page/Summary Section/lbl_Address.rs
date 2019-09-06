@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>section_Body</name>
+   <name>lbl_Address</name>
    <tag></tag>
-   <elementGuidId>d8b48b4e-0ebb-487b-94ce-8ec92828d651</elementGuidId>
+   <elementGuidId>456002e8-fe96-49ae-ac7e-e720dfe8e251</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>CSS</key>
-         <value>div[displayblockname='Customer Information']</value>
+         <key>XPATH</key>
+         <value>//div[contains(@id,'_wtOrgDetailContainer')]//label[text()='Address']/../span[@class='CustomerProfile_data']</value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
       </entry>
    </selectorCollection>
-   <selectorMethod>CSS</selectorMethod>
+   <selectorMethod>XPATH</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

@@ -26,7 +26,7 @@ public class ColumnPos {
 	public static int CUST_PHONE_NUMBER = 7
 	public static int CUST_TAX_ID = 5
 	public static int CUST_DOB = 4
-
+	
 	//Accounts Table - Customer Details page
 	public static int ACC_NUMBER = 1
 	public static int ACC_TITLE = 2
@@ -131,5 +131,17 @@ public class ColumnPos {
 	public static int ORDER_STATUS = 9
 	public static int ORDER_MORE_ICON = 10
 
-	
+	//Organization Table - Search Page
+	public static int ORG_SEARCH_NAME = 1
+	public static int ORG_SEARCH_CUSTOMER_GROUP = 2
+	public static int ORG_SEARCH_ESTABLISHED_DATE = 3
+	public static int ORG_SEARCH_COUNTRY = 4
+	public static int ORG_SEARCH_DUN_BRADSTREET = 5
+	public static int ORG_SEARCH_PHONE_NUMBER = 6
+	public static int ORG_SEARCH_ADDRESS = 7
+	public static int ORG_SEARCH_TAX_ID = 8
+
+
+
+		
 }

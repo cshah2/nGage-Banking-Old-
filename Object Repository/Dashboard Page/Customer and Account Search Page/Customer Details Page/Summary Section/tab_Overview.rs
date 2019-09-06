@@ -10,10 +10,13 @@
          <value>//div[contains(@id,'_wtTabs_Header')]//span[text()='Overview']/..</value>
       </entry>
       <entry>
+         <key>CSS</key>
+         <value>div[id*='_wtTabs_Header'] span[tabname = 'Overview']</value>
+      </entry>
+      <entry>
          <key>BASIC</key>
-         <value></value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

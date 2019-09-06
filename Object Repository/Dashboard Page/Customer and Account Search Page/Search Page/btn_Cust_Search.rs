@@ -6,11 +6,11 @@
    <elementGuidId>30b15357-bdac-4096-a895-fd4e45e0f494</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
+         <key>CSS</key>
+         <value>input[value='Search']</value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value>div[id*='_wtcustSearch_CN'] div[data-intro='Submit search'] input[value='Search']</value>
+         <key>BASIC</key>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

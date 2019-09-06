@@ -63,14 +63,18 @@ public class OrganizationPage {
 
 		new actions.Common().setTextIfNotEmpty(e_Description, orgData, Fields.ORG_DESCRIPTION)
 		new actions.Common().setTextIfNotEmpty(e_DunAndBradSteetNo, orgData, Fields.ORG_DUN_BRADSTEET_NO)
-		new actions.Common().checkElementIfNotEmpty(e_PubliclyHeld, orgData, Fields.ORG_CHK_PUBLICLY_HELD)
-		new actions.WaitFor().elementVisible(e_TradeName, GlobalVariable.TIMEOUT)
+		if(StringUtil.isValidData(orgData, Fields.ORG_CHK_PUBLICLY_HELD) && 'true'.equalsIgnoreCase(orgData.get(Fields.ORG_CHK_PUBLICLY_HELD))) {
+			new actions.Common().checkElementIfNotEmpty(e_PubliclyHeld, orgData, Fields.ORG_CHK_PUBLICLY_HELD)
+			new actions.WaitFor().elementVisible(e_TradeName, GlobalVariable.TIMEOUT)
+		}
 		new actions.Common().setTextIfNotEmpty(e_TradeName, orgData, Fields.ORG_TRADE_NAME)
 		new actions.Common().checkElementIfNotEmpty(e_InternationalCompany, orgData, Fields.ORG_CHK_INTERNATIONAL_COMPANY)
 		new actions.Common().checkElementIfNotEmpty(e_GovernmentOwned, orgData, Fields.ORG_CHK_GOVERNMENT_OWNED)
 		new actions.Common().checkElementIfNotEmpty(e_SmallBusiness, orgData, Fields.ORG_CHK_SMALL_BUSINESS)
-		new actions.Common().checkElementIfNotEmpty(e_TaxExempt, orgData, Fields.ORG_CHK_TAX_EXEMPT)
-		new actions.WaitFor().elementVisible(e_TaxExemptType, GlobalVariable.TIMEOUT)
+		if(StringUtil.isValidData(orgData, Fields.ORG_CHK_TAX_EXEMPT) && 'true'.equalsIgnoreCase(orgData.get(Fields.ORG_CHK_TAX_EXEMPT))) {
+			new actions.Common().checkElementIfNotEmpty(e_TaxExempt, orgData, Fields.ORG_CHK_TAX_EXEMPT)
+			new actions.WaitFor().elementVisible(e_TaxExemptType, GlobalVariable.TIMEOUT)
+		}
 		new actions.Common().selectOptionByLabelIfNotEmpty(e_TaxExemptType, orgData, Fields.ORG_TAX_EXEMPT_TYPE)
 		new actions.Common().selectOptionByLabelIfNotEmpty(e_RegistrationCountry, orgData, Fields.ORG_REGISTRATION_COUNTRY)
 		new actions.Common().selectOptionByLabelIfNotEmpty(e_RegistrationRegion, orgData, Fields.ORG_REGISTRATION_REGION)
@@ -102,7 +106,8 @@ public class OrganizationPage {
 		new actions.Common().selectOptionByLabelIfNotEmpty(e_AddressType, orgData, Fields.ADDR_ADDRESS_TYPE)
 		new actions.Common().setTextIfNotEmpty(e_AddressLabel, orgData, Fields.ADDR_ADDRESS_LABEL)
 		new actions.Common().setTextJQueryIfNotEmpty(e_VerifiedDate, orgData, Fields.ADDR_VERIFIED_DATE)
-		if(StringUtil.isValidData(orgData, Fields.ADDR_VALID_FROM) || StringUtil.isValidData(orgData, Fields.ADDR_VALID_UNTIL)) {
+		if((StringUtil.isValidData(orgData, Fields.ADDR_VALID_FROM) && 'true'.equalsIgnoreCase(orgData.get(Fields.ADDR_VALID_FROM)))
+			|| (StringUtil.isValidData(orgData, Fields.ADDR_VALID_UNTIL) && 'true'.equalsIgnoreCase(orgData.get(Fields.ADDR_VALID_UNTIL)))) {
 			WebUI.click(e_AddressValidLink)
 			new actions.WaitFor().elementVisible(e_ValidFrom, GlobalVariable.TIMEOUT)
 		}
@@ -130,7 +135,8 @@ public class OrganizationPage {
 		new actions.Common().setTextJQueryIfNotEmpty(e_PhoneNumber, orgData, Fields.CT_PHONE_NUMBER)
 		new actions.Common().selectOptionByLabelIfNotEmpty(e_PhoneType, orgData, Fields.CT_PHONE_TYPE)
 		new actions.Common().setTextJQueryIfNotEmpty(e_PhoneVerifiedDate, orgData, Fields.CT_PHONE_VERIFIED_DATE)
-		if(StringUtil.isValidData(orgData, Fields.CT_PHONE_VALID_FROM) || StringUtil.isValidData(orgData, Fields.CT_PHONE_VALID_UNTIL)) {
+		if((StringUtil.isValidData(orgData, Fields.CT_PHONE_VALID_FROM) && 'true'.equalsIgnoreCase(orgData.get(Fields.CT_PHONE_VALID_FROM)))
+			|| (StringUtil.isValidData(orgData, Fields.CT_PHONE_VALID_UNTIL) && 'true'.equalsIgnoreCase(orgData.get(Fields.CT_PHONE_VALID_UNTIL)))) {
 			WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/link_SetPhoneDates'))
 			new actions.WaitFor().elementVisible(e_PhoneValidFrom, GlobalVariable.TIMEOUT)
 		}
@@ -140,7 +146,8 @@ public class OrganizationPage {
 		new actions.Common().setTextJQueryIfNotEmpty(e_Email, orgData, Fields.CT_EMAIL)
 		new actions.Common().selectOptionByLabelIfNotEmpty(e_EmailType, orgData, Fields.CT_EMAIL_TYPE)
 		new actions.Common().setTextJQueryIfNotEmpty(e_EmailVerifiedDate, orgData, Fields.CT_EMAIL_VERIFIED_DATE)
-		if(StringUtil.isValidData(orgData, Fields.CT_EMAIL_VALID_FROM) || StringUtil.isValidData(orgData, Fields.CT_EMAIL_VALID_UNTIL)) {
+		if((StringUtil.isValidData(orgData, Fields.CT_EMAIL_VALID_FROM) && 'true'.equalsIgnoreCase(orgData.get(Fields.CT_EMAIL_VALID_FROM)))
+			|| (StringUtil.isValidData(orgData, Fields.CT_EMAIL_VALID_UNTIL) && 'true'.equalsIgnoreCase(orgData.get(Fields.CT_EMAIL_VALID_UNTIL)))) {
 			WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/link_SetEmailDates'))
 			new actions.WaitFor().elementVisible(e_EmailValidFrom, GlobalVariable.TIMEOUT)
 		}
@@ -258,4 +265,34 @@ public class OrganizationPage {
 			WebUI.click(e_Dialog_No)
 		}
 	}
+
+	static def verifyOrganizationDetailsSummarySection(Map<Fields, String> data) {
+
+		TestObject e_OrgName = findTestObject('Dashboard Page/Customer and Account Search Page/Organization Details Page/Summary Section/lbl_OrganizationName')
+		TestObject e_DbagName = findTestObject('Dashboard Page/Customer and Account Search Page/Organization Details Page/Summary Section/lbl_DbaName')
+		TestObject e_TaxID = findTestObject('Dashboard Page/Customer and Account Search Page/Organization Details Page/Summary Section/lbl_TaxId')
+		TestObject e_EstablishedDate= findTestObject('Dashboard Page/Customer and Account Search Page/Organization Details Page/Summary Section/lbl_EstablishedDate')
+		TestObject e_Address = findTestObject('Dashboard Page/Customer and Account Search Page/Organization Details Page/Summary Section/lbl_Address')
+
+		//Wait for Organization details page to load
+		new actions.WaitFor().elementVisible(e_OrgName, GlobalVariable.TIMEOUT)
+
+		//Verify Organization name is displayed correctly
+		WebUI.verifyElementText(e_OrgName, data.get(Fields.ORG_NAME))
+
+		//Verify Organization Dba Name is displayed correctly
+		WebUI.verifyElementText(e_DbagName, data.get(Fields.ORG_DBA_NAME))
+
+		//Verify Organization Tax ID is displayed correctly
+		WebUI.verifyElementText(e_TaxID, data.get(Fields.ORG_TAX_ID_MASKED))
+
+		//Verify Organization Established Date is displayed correctly
+		WebUI.verifyElementText(e_EstablishedDate, data.get(Fields.ORG_ESTABLISHED_DATE))
+
+		//Verify Organization Address is displayed correctly
+		WebUI.verifyElementText(e_Address, data.get(Fields.ADDR_VIEW))
+	}
+
+
+
 }
