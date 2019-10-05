@@ -6,14 +6,14 @@
    <elementGuidId>d92dee2c-b64a-4a1b-a895-877dc68dbd89</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
+         <key>CSS</key>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[contains(@id,'_wtSearchBar')]//div[contains(@class,'DropdownMenu') and contains(@id,'_wtMenu')]//a[text()='Customer']</value>
+         <value>//div[contains(@id,'_wtSearchBar')]//div[contains(@class,'DropdownMenu') and contains(@id,'_wtMenu')]//a[text()='Consumer']</value>
       </entry>
       <entry>
-         <key>CSS</key>
+         <key>BASIC</key>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

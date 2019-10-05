@@ -103,7 +103,8 @@ public class CustomerPage {
 		new actions.Common().setTextIfNotEmpty(e_AddressLabel, custData, Fields.ADDR_ADDRESS_LABEL)
 		new actions.Common().setTextJQueryIfNotEmpty(e_VerifiedDate, custData, Fields.ADDR_VERIFIED_DATE)
 		if(StringUtil.isValidData(custData, Fields.ADDR_VALID_FROM) || StringUtil.isValidData(custData, Fields.ADDR_VALID_UNTIL)) {
-			WebUI.click(e_AddressValidLink)
+			new actions.Common().moveToElementAndClick(e_AddressValidLink)
+			//WebUI.click(e_AddressValidLink)
 			new actions.WaitFor().elementVisible(e_ValidFrom, GlobalVariable.TIMEOUT)
 		}
 		new actions.Common().setTextJQueryIfNotEmpty(e_ValidFrom, custData, Fields.ADDR_VALID_FROM)
@@ -117,12 +118,14 @@ public class CustomerPage {
 		TestObject e_PhoneVerifiedDate = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/input_PhoneVerifiedDate')
 		TestObject e_PhoneValidFrom = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/input_PhoneValidFrom')
 		TestObject e_PhoneValidUntil = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/input_PhoneValidUntil')
+		TestObject e_PhoneValidLink = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/link_SetPhoneDates')
 		TestObject e_Email = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/input_Email')
 		TestObject e_EmailType = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/select_EmailType')
 		TestObject e_EmailVerifiedDate = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/input_EmailVerifiedDate')
 		TestObject e_EmailValidFrom = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/input_EmailValidFrom')
 		TestObject e_EmailValidUntil = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/input_EmailValidUntil')
 		TestObject e_PreferredContact = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/select_PreferredContactMethod')
+		TestObject e_EmailValidLink = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/link_SetEmailDates')
 
 		//Wait for Contact information fields to be visible
 		new actions.WaitFor().elementVisible(e_PhoneNumber, GlobalVariable.TIMEOUT)
@@ -131,7 +134,7 @@ public class CustomerPage {
 		new actions.Common().selectOptionByLabelIfNotEmpty(e_PhoneType, custData, Fields.CT_PHONE_TYPE)
 		new actions.Common().setTextJQueryIfNotEmpty(e_PhoneVerifiedDate, custData, Fields.CT_PHONE_VERIFIED_DATE)
 		if(StringUtil.isValidData(custData, Fields.CT_PHONE_VALID_FROM) || StringUtil.isValidData(custData, Fields.CT_PHONE_VALID_UNTIL)) {
-			WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/link_SetPhoneDates'))
+			new actions.Common().moveToElementAndClick(e_PhoneValidLink)
 			new actions.WaitFor().elementVisible(e_PhoneValidFrom, GlobalVariable.TIMEOUT)
 		}
 		new actions.Common().setTextJQueryIfNotEmpty(e_PhoneValidFrom, custData, Fields.CT_PHONE_VALID_FROM)
@@ -141,7 +144,7 @@ public class CustomerPage {
 		new actions.Common().selectOptionByLabelIfNotEmpty(e_EmailType, custData, Fields.CT_EMAIL_TYPE)
 		new actions.Common().setTextJQueryIfNotEmpty(e_EmailVerifiedDate, custData, Fields.CT_EMAIL_VERIFIED_DATE)
 		if(StringUtil.isValidData(custData, Fields.CT_EMAIL_VALID_FROM) || StringUtil.isValidData(custData, Fields.CT_EMAIL_VALID_UNTIL)) {
-			WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Contact Information/link_SetEmailDates'))
+			new actions.Common().moveToElementAndClick(e_EmailValidLink)
 			new actions.WaitFor().elementVisible(e_EmailValidFrom, GlobalVariable.TIMEOUT)
 		}
 		new actions.Common().setTextJQueryIfNotEmpty(e_EmailValidFrom, custData, Fields.CT_EMAIL_VALID_FROM)

@@ -164,6 +164,7 @@ public class SearchPage {
 			
 		}
 		else {
+			WebUI.takeScreenshot()
 			KeywordUtil.markFailedAndStop('Incorrect entity type provided for selection on search page : '+entityType)
 		}
 	}

@@ -280,6 +280,7 @@ public class AccountPage {
 			new actions.Table().verifyCellValueEquals(table, rowNo, ColumnPos.TXN_DEBIT, txnData.get(Fields.TXN_AMOUNT_VIEW))
 		}
 		else {
+			WebUI.takeScreenshot()
 			KeywordUtil.markFailedAndStop('Credit or Debit indicator not provided to verify transaction details')
 		}
 

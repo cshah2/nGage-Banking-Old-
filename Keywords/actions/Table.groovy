@@ -236,6 +236,7 @@ public class Table {
 			WebUI.delay(2)
 		}
 		else {
+			WebUI.takeScreenshot()
 			KeywordUtil.markFailedAndStop('Table is not refreshed withing given time')
 		}
 	}
@@ -280,6 +281,7 @@ public class Table {
 			KeywordUtil.markPassed("Table is refreshed")
 		}
 		else {
+			WebUI.takeScreenshot()
 			KeywordUtil.markFailedAndStop('Table is not refreshed withing given time')
 		}
 	}
@@ -325,6 +327,7 @@ public class Table {
 			KeywordUtil.markPassed("Table is refreshed")
 		}
 		else {
+			WebUI.takeScreenshot()
 			KeywordUtil.markFailedAndStop('Table is not refreshed withing given time')
 		}
 	}
