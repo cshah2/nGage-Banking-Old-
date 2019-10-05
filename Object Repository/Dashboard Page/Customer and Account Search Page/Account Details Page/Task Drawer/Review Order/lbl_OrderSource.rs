@@ -7,17 +7,16 @@
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>div[taskblockname='Order'] div[id*='_wtsources_CNCFR']</value>
-      </entry>
-      <entry>
-         <key>BASIC</key>
-         <value></value>
+         <value>div[taskblockname='Order'] span[id*='_wtOrderSourceValue']</value>
       </entry>
       <entry>
          <key>XPATH</key>
          <value>//div[@taskblockname='Order']//div[contains(@id,'_wtcontentConfirm')]//label[normalize-space(text())='Order Source']/..</value>
       </entry>
+      <entry>
+         <key>BASIC</key>
+      </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

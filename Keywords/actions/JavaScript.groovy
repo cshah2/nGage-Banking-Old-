@@ -16,6 +16,7 @@ import com.kms.katalon.core.model.FailureHandling
 import com.kms.katalon.core.testcase.TestCase
 import com.kms.katalon.core.testdata.TestData
 import com.kms.katalon.core.testobject.TestObject
+import com.kms.katalon.core.util.KeywordUtil
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.common.WebUiCommonHelper
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
@@ -53,17 +54,29 @@ public class JavaScript {
 
 	@Keyword
 	def scrollToElement(TestObject to) {
-		WebElement e = WebUiCommonHelper.findWebElement(to, GlobalVariable.TIMEOUT)
-		List<WebElement> list = new ArrayList<WebElement>()
-		list.add(e)
-		WebUI.executeJavaScript('arguments[0].scrollIntoViewIfNeeded()', list)
+		try {
+			WebElement e = WebUiCommonHelper.findWebElement(to, GlobalVariable.TIMEOUT)
+			List<WebElement> list = new ArrayList<WebElement>()
+			list.add(e)
+			WebUI.executeJavaScript('arguments[0].scrollIntoViewIfNeeded()', list)
+		}
+		catch(Exception e1) {
+			WebUI.takeScreenshot()
+			KeywordUtil.markFailedAndStop('Unable to scroll to element')
+		}
 	}
 
 	@Keyword
 	def scrollToElement(WebElement e) {
-		//WebElement e = WebUiCommonHelper.findWebElement(to, GlobalVariable.TIMEOUT)
-		List<WebElement> list = new ArrayList<WebElement>()
-		list.add(e)
-		WebUI.executeJavaScript('arguments[0].scrollIntoViewIfNeeded()', list)
+		try {
+			//WebElement e = WebUiCommonHelper.findWebElement(to, GlobalVariable.TIMEOUT)
+			List<WebElement> list = new ArrayList<WebElement>()
+			list.add(e)
+			WebUI.executeJavaScript('arguments[0].scrollIntoViewIfNeeded()', list)
+		}
+		catch(Exception e1) {
+			WebUI.takeScreenshot()
+			KeywordUtil.markFailedAndStop('Unable to scroll to element')
+		}
 	}
 }

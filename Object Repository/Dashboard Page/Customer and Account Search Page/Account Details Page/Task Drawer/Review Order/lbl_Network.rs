@@ -7,17 +7,16 @@
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value></value>
-      </entry>
-      <entry>
-         <key>BASIC</key>
-         <value></value>
+         <value>div[taskblockname='Order'] span[id*='_wtOrderNetworkValue']</value>
       </entry>
       <entry>
          <key>XPATH</key>
          <value>//div[@taskblockname='Order']//div[contains(@id,'_wtcontentConfirm')]//label[normalize-space(text())='Network']/..</value>
       </entry>
+      <entry>
+         <key>BASIC</key>
+      </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>
