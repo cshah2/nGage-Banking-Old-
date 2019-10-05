@@ -145,6 +145,21 @@ public class Common {
 			}
 		}
 	}
+	
+	@Keyword
+	def moveToElementAndClick(WebElement element) {
+
+		//Move to Element
+		new actions.Common().moveToElement(element)
+
+		//Click on Element
+		try {
+			element.click()
+		}
+		catch(ElementClickInterceptedException | ElementNotInteractableException e) {
+			new actions.JavaScript().click(element)
+		}
+	}
 
 	@Keyword
 	def verifyElementTextContains(TestObject to, String expectedText) {

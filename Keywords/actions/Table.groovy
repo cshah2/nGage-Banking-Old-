@@ -8,6 +8,7 @@ import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 import java.util.concurrent.TimeUnit
 
 import org.openqa.selenium.By
+import org.openqa.selenium.ElementClickInterceptedException
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.interactions.Actions
 
@@ -781,11 +782,13 @@ public class Table {
 		this.type = type
 
 		WebElement table = getTable(to)
+		WebElement el;
 		try {
-			moveToCell(to, rowNo, colNo, type)
-			WebElement e = table.findElement(singleRow(rowNo)).findElement(singleCell(colNo)).findElement(clickElement())
-			e.click()
-			//new javaScript().click(e)
+			//moveToCell(to, rowNo, colNo, type)
+			el = table.findElement(singleRow(rowNo)).findElement(singleCell(colNo)).findElement(clickElement())
+//			el.click()
+//			//new javaScript().click(el)
+			new actions.Common().moveToElementAndClick(el)
 		}
 		catch(Exception e) {
 			WebUI.takeScreenshot()

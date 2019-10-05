@@ -7,11 +7,10 @@
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value></value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value>div[id*='_wtacctSearch_CN'] input[id*='_wtaccountNumberInput']</value>
+         <value>div[id*='_wtcustSearch_CN'] input[id*='_wtaccountNumberInput']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

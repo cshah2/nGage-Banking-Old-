@@ -168,7 +168,7 @@ WebUI.refresh()
 WebUI.waitForPageLoad(GlobalVariable.TIMEOUT)
 
 'Wait for Customer details page to load'
-WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/lbl_CustomerName'), GlobalVariable.TIMEOUT)
+WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/lbl_CustomerName'), GlobalVariable.TIMEOUT, FailureHandling.STOP_ON_FAILURE)
 
 'Verify Customer name is displayed correctly'
 WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/lbl_CustomerName'), custData.get(Fields.CUST_NAME_VIEW))

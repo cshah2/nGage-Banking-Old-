@@ -6,11 +6,11 @@
    <elementGuidId>12dabb17-adf1-4706-b579-1a82cc40c66b</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>CSS</key>
-         <value>div[id*='_wtSearchBar'] div[id*='_wtacctSearch_CN'] div[id*='_wtButton']</value>
+         <key>BASIC</key>
       </entry>
       <entry>
-         <key>BASIC</key>
+         <key>CSS</key>
+         <value>div[id*='_wtSearchBar'] div[id*='_wtcustSearch_CN'] div[id*='_wtButton']  div[class*='ButtonDropdown_text']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

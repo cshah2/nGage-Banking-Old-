@@ -53,9 +53,9 @@ public class ColumnPos {
 	public static int ADDR_ADDRESS_LABEL = 2
 	public static int ADDR_STREET = 3
 	public static int ADDR_CITY = 4
-	public static int ADDR_COUNTY = 5
-	public static int ADDR_STATE = 6
-	public static int ADDR_ZIPCODE = 7
+	public static int ADDR_STATE = 5
+	public static int ADDR_ZIPCODE = 6
+	public static int ADDR_COUNTY = 7
 	public static int ADDR_VALID_FROM = 8
 	public static int ADDR_VALID_UNTIL = 9
 	public static int ADDR_VERIFIED_DATE = 10
@@ -95,8 +95,9 @@ public class ColumnPos {
 	public static int DOCUMENT_DESCRIPTION = 5
 	public static int DOCUMENT_CUSTOMER_ID = 6
 	public static int DOCUMENT_ACCOUNT_NUMBER = 7
-	public static int DOCUMENT_CREATED_BY = 8
-	public static int DOCUMENT_STATUS= 9
+	public static int DOCUMENT_POSITION_ACCOUNT_NUMBER = 8
+	public static int DOCUMENT_CREATED_BY = 9
+	public static int DOCUMENT_STATUS= 10
 	
 	//Account Details Page - Overview tab & Transaction tab - Transaction table
 	public static int TXN_EXPAND_ICON = 1
