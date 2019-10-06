@@ -69,7 +69,6 @@ public class JavaScript {
 	@Keyword
 	def scrollToElement(WebElement e) {
 		try {
-			//WebElement e = WebUiCommonHelper.findWebElement(to, GlobalVariable.TIMEOUT)
 			List<WebElement> list = new ArrayList<WebElement>()
 			list.add(e)
 			WebUI.executeJavaScript('arguments[0].scrollIntoViewIfNeeded()', list)

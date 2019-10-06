@@ -129,7 +129,12 @@ public class Common {
 	def moveToElementAndClick(TestObject element) {
 
 		//Move to Element
-		new actions.Common().moveToElement(element)
+		try {
+			new actions.Common().moveToElement(element)
+		}
+		catch(Exception e) {
+			//DO nothing if move operation fails.
+		}
 
 		//Click on Element
 		try {
@@ -141,7 +146,9 @@ public class Common {
 				new actions.JavaScript().click(element)
 			}
 			else {
-				throw e
+				//throw e
+				WebUI.takeScreenshot()
+				KeywordUtil.markFailedAndStop("Unable to move to element and click on it."+e.toString())
 			}
 		}
 	}
@@ -150,14 +157,25 @@ public class Common {
 	def moveToElementAndClick(WebElement element) {
 
 		//Move to Element
-		new actions.Common().moveToElement(element)
+		try {
+			new actions.Common().moveToElement(element)
+		}
+		catch(Exception e) {
+			//DO nothing if move operation fails.
+		}
 
 		//Click on Element
 		try {
 			element.click()
 		}
-		catch(ElementClickInterceptedException | ElementNotInteractableException e) {
-			new actions.JavaScript().click(element)
+		catch(Exception e) {
+			if(e instanceof ElementClickInterceptedException || e instanceof ElementNotInteractableException) {
+				new actions.JavaScript().click(element)
+			}
+			else {
+				WebUI.takeScreenshot()
+				KeywordUtil.markFailedAndStop("Unable to move to element and click on it."+e.toString())
+			}
 		}
 	}
 
