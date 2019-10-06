@@ -62,7 +62,7 @@ public class JavaScript {
 		}
 		catch(Exception e1) {
 			WebUI.takeScreenshot()
-			KeywordUtil.markFailedAndStop('Unable to scroll to element')
+			KeywordUtil.markFailedAndStop('Unable to scroll to element'+e1.toString())
 		}
 	}
 
@@ -76,7 +76,7 @@ public class JavaScript {
 		}
 		catch(Exception e1) {
 			WebUI.takeScreenshot()
-			KeywordUtil.markFailedAndStop('Unable to scroll to element')
+			KeywordUtil.markFailedAndStop('Unable to scroll to element'+e1.toString())
 		}
 	}
 }

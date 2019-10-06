@@ -76,7 +76,7 @@ rowNo = 1 //TODO: Record gets added to the top of the row if user logins in agai
 'Verify Notes'
 CustomKeywords.'actions.Table.verifyCellValueEquals'(accounts_notesTable, rowNo, ColumnPos.NOTE_TEXT, note)
 
-'Verify Address Label'
+'Verify Notes Created By'
 CustomKeywords.'actions.Table.verifyCellValueEquals'(accounts_notesTable, rowNo, ColumnPos.NOTE_CREATED_BY, noteCreatedBy)
 
 'Go back to search page'
@@ -94,8 +94,10 @@ CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/C
 'Move to Notes table'
 CustomKeywords.'actions.Common.moveToElement'(customerOverview_notesTable)
 
-'Verify Notes'
-CustomKeywords.'actions.Table.verifyCellValueEquals'(customerOverview_notesTable, rowNo, ColumnPos.NOTE_TEXT, note)
+int customerNotesrowNo = 2
 
-'Verify Address Label'
-CustomKeywords.'actions.Table.verifyCellValueEquals'(customerOverview_notesTable, rowNo, ColumnPos.NOTE_CREATED_BY, noteCreatedBy)
+'Verify Notes'
+CustomKeywords.'actions.Table.verifyCellValueEquals'(customerOverview_notesTable, customerNotesrowNo, ColumnPos.NOTE_TEXT, note)
+
+'Verify Notes created by'
+CustomKeywords.'actions.Table.verifyCellValueEquals'(customerOverview_notesTable, customerNotesrowNo, ColumnPos.NOTE_CREATED_BY, noteCreatedBy)
