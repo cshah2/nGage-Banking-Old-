@@ -619,6 +619,10 @@ public class AccountPage {
 		//
 		//		new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_OrderType'), orderData.get(Fields.ORDER_TYPE), RegexOperator.CONTAINS)
 
+		new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_OrderSource'), GlobalVariable.TIMEOUT)
+
+		new actions.Common().moveToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_OrderSource'))
+
 		new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_OrderSource'), orderData.get(Fields.ORDER_SOURCE), RegexOperator.CONTAINS)
 
 		new actions.Common().verifyMatch(findTestObject('Dashboard Page/Customer and Account Search Page/Account Details Page/Task Drawer/Review Order/lbl_OrderInfo'), orderData.get(Fields.ORDER_INFO), RegexOperator.CONTAINS)
