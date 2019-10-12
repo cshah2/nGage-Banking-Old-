@@ -56,7 +56,7 @@ public class Common {
 			WebUI.openBrowser(null)
 		}
 	}
-
+ 
 	@Keyword
 	def login() {
 
@@ -152,7 +152,7 @@ public class Common {
 			}
 		}
 	}
-	
+
 	@Keyword
 	def moveToElementAndClick(WebElement element) {
 
