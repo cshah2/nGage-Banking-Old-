@@ -786,8 +786,8 @@ public class Table {
 		try {
 			//moveToCell(to, rowNo, colNo, type)
 			el = table.findElement(singleRow(rowNo)).findElement(singleCell(colNo)).findElement(clickElement())
-//			el.click()
-//			//new javaScript().click(el)
+			//			el.click()
+			//			//new javaScript().click(el)
 			new actions.Common().moveToElementAndClick(el)
 		}
 		catch(Exception e) {

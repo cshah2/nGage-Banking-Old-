@@ -183,15 +183,15 @@ public class WaitFor {
 			KeywordUtil.markFailedAndStop('Exception occured while waiting for element'+e.toString())
 		}
 	}
-	
+
 	@Keyword
 	def attributeValueChange(TestObject to, String attr, String initialValue) {
-		
+
 		setDriver()
 
 		jsWait.pollingEvery(100, TimeUnit.MILLISECONDS)
 		jsWait.ignoring(StaleElementReferenceException.class)
-		
+
 		By locator = getLocator(to)
 		try {
 			if(locator != null)

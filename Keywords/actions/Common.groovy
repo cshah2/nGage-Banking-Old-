@@ -56,7 +56,7 @@ public class Common {
 			WebUI.openBrowser(null)
 		}
 	}
- 
+
 	@Keyword
 	def login() {
 

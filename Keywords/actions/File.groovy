@@ -74,22 +74,22 @@ public class File {
 			KeywordUtil.markFailedAndStop("File upload operation failed."+e.message)
 		}
 	}
-	
+
 	@Keyword
 	def uploadAutoIt(TestObject to, String filePath) {
-		
+
 		String autoItExe = RunConfiguration.getProjectDir().replace('/', '\\')+'\\Data Files\\UploadFiles\\FileUpload.exe'
 		String cmdLine1 = ' "'+'Open'+'"'
 		String cmdLine2 = ' "'+filePath+'"'
 		String cmd = autoItExe+cmdLine1+cmdLine2
 		println "Auto it command is "+cmd
-		
+
 		//Click on File upload element
 		WebUI.click(to)
 
 		//Wait for File upload dialog to load
 		WebUI.delay(3)
-		
+
 		try {
 			Runtime.getRuntime().exec(cmd)
 		}
