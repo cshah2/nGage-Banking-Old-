@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>input_FirstName</name>
+   <name>tab_More</name>
    <tag></tag>
-   <elementGuidId>3a1badf4-e418-45d3-9c02-26666845514a</elementGuidId>
+   <elementGuidId>bdd01a11-5111-4597-b56d-7c06b0a1115b</elementGuidId>
    <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>div[id*='_wtMoreIcon']</value>
+      </entry>
       <entry>
          <key>BASIC</key>
          <value></value>
-      </entry>
-      <entry>
-         <key>CSS</key>
-         <value>div[id*='_wtcustSearch_CN'] input[placeholder='First Name']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

@@ -152,7 +152,7 @@ public class Common {
 			}
 		}
 	}
-	
+
 	@Keyword
 	def moveToElementAndClick(WebElement element) {
 
@@ -179,17 +179,35 @@ public class Common {
 		}
 	}
 
-	@Keyword
-	def verifyElementTextContains(TestObject to, String expectedText) {
+	//	@Keyword
+	//	def verifyElementTextContains(TestObject to, String expectedText) {
+	//		String elementText = WebUI.getText(to).replaceAll('(^\\h*)|(\\h*$)', ' ').trim()
+	//		verifyMatch(elementText, RegexUtil.formRegexString(expectedText), RegexOperator.CONTAINS)
+	//	}
 
-		WebUI.verifyMatch(WebUI.getText(to).trim(), RegexUtil.formRegexString(expectedText, RegexOperator.CONTAINS), true)
+	//	@Keyword
+	//	def verifyMatch(TestObject to, String expText, RegexOperator operator) {
+	//		String actualText = WebUI.getText(to).replaceAll('(^\\h*)|(\\h*$)', ' ').trim()
+	//		verifyMatch(actualText, RegexUtil.formRegexString(expText, operator), true)
+	//	}
+
+	@Keyword
+	def verifyElementTextMatches(TestObject to, String expText, RegexOperator operator) {
+		String elementText = WebUI.getText(to).replaceAll('(^\\h*)|(\\h*$)', ' ').trim()
+		verifyMatch(elementText, expText, operator)
 	}
 
 	@Keyword
-	def verifyMatch(TestObject to, String expText, RegexOperator operator) {
-		String actualText = WebUI.getText(to).replaceAll('(^\\h*)|(\\h*$)', ' ').trim()
-		println "Actual Text = "+actualText
-		WebUI.verifyMatch(actualText, RegexUtil.formRegexString(expText, operator), true)
+	def verifyMatch(String actText, String expText, RegexOperator operator) {
+		try {
+			println "Actual text = "+actText+", Expected text = "+expText+", Operator = "+operator.toString()
+			WebUI.verifyMatch(actText, RegexUtil.formRegexString(expText, operator), true)
+		}
+		catch(Exception e) {
+			WebUI.takeScreenshot()
+			throw e
+		}
+
 	}
 
 	@Keyword

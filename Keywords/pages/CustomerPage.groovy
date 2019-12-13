@@ -79,7 +79,8 @@ public class CustomerPage {
 
 	private static void enterLocationInformation(Map<Fields, String> custData) {
 
-		TestObject e_Street = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_Street')
+		//TestObject e_Street = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_Street')
+		TestObject e_AddressLine1 = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_AddressLine1')
 		TestObject e_City = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_City')
 		TestObject e_Country = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/select_Country')
 		TestObject e_StateOrRegion = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/select_StateOrRegion')
@@ -92,9 +93,9 @@ public class CustomerPage {
 		TestObject e_ValidUntil = findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Location Information/input_AddressValidUntil')
 
 		//Wait for Location information fields to be visible
-		new actions.WaitFor().elementVisible(e_Street, GlobalVariable.TIMEOUT)
+		new actions.WaitFor().elementVisible(e_AddressLine1, GlobalVariable.TIMEOUT)
 
-		new actions.Common().setTextIfNotEmpty(e_Street, custData, Fields.ADDR_STREET)
+		new actions.Common().setTextIfNotEmpty(e_AddressLine1, custData, Fields.ADDR_LINE1)
 		new actions.Common().setTextIfNotEmpty(e_City, custData, Fields.ADDR_CITY)
 		new actions.Common().selectOptionByLabelIfNotEmpty(e_Country, custData, Fields.ADDR_COUNTY)
 		new actions.Common().selectOptionByLabelIfNotEmpty(e_StateOrRegion, custData, Fields.ADDR_STATE)
@@ -238,6 +239,9 @@ public class CustomerPage {
 
 		//handle popup dialog
 		new actions.WaitFor().elementVisible(e_Dialog_Msg, GlobalVariable.TIMEOUT)
+		WebUI.delay(2)
+		new actions.WaitFor().elementVisible(e_Dialog_No, GlobalVariable.TIMEOUT)
+
 		new actions.Common().verifyMatch(e_Dialog_Msg, 'Customer has been created', RegexOperator.CONTAINS)
 
 		if(StringUtil.isValidData(custData, Fields.CUST_CHK_ACCOUNT) && 'true'.equalsIgnoreCase(custData.get(Fields.CUST_CHK_ACCOUNT))) {

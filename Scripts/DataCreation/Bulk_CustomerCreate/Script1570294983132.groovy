@@ -21,7 +21,7 @@ import utils.RandomUtil
 
 Map<Fields, String> data
 
-for(int i = 0; i < 50; i++) {
+for(int i = 0; i < 15; i++) {
 	
 data = new HashMap<Fields, String>()
 Map parsedJson = RandomUtil.generateRandomCustomerData()
@@ -59,9 +59,9 @@ data.put(Fields.ADDR_STATE, 'Pennsylvania')
 data.put(Fields.ADDR_ZIPCODE, '1'+RandomUtil.getRandomNumeric(4))
 data.put(Fields.ADDR_ADDRESS_TYPE, 'Residence')
 data.put(Fields.ADDR_ADDRESS_LABEL, 'HOME')
-data.put(Fields.ADDR_VERIFIED_DATE, DateUtil.getCurrentDateTimeMinusDays(1, common.dateFormat, common.timezoneUTC))
-data.put(Fields.ADDR_VALID_FROM, DateUtil.getCurrentDateTimeMinusDays(10, common.dateFormat, common.timezoneUTC))
-data.put(Fields.ADDR_VALID_UNTIL, DateUtil.getCurrentDateTimeMinusDays(-10, common.dateFormat, common.timezoneUTC))
+//data.put(Fields.ADDR_VERIFIED_DATE, DateUtil.getCurrentDateTimeMinusDays(1, common.dateFormat, common.timezoneUTC))
+//data.put(Fields.ADDR_VALID_FROM, DateUtil.getCurrentDateTimeMinusDays(10, common.dateFormat, common.timezoneUTC))
+//data.put(Fields.ADDR_VALID_UNTIL, DateUtil.getCurrentDateTimeMinusDays(-10, common.dateFormat, common.timezoneUTC))
 data.put(Fields.ADDR_VIEW, data.get(Fields.ADDR_STREET)+', '+data.get(Fields.ADDR_CITY)+', PA '+data.get(Fields.ADDR_ZIPCODE))
 
 //Contact Information
@@ -72,24 +72,24 @@ data.put(Fields.CT_PHONE_VALID_FROM, DateUtil.getCurrentDateTimeMinusDays(8, com
 data.put(Fields.CT_PHONE_VALID_UNTIL, DateUtil.getCurrentDateTimeMinusDays(-8, common.dateFormat, common.timezoneUTC))
 data.put(Fields.CT_EMAIL, parsedJson.get("results").get(0).get("email"))
 data.put(Fields.CT_EMAIL_TYPE, 'Personal')
-data.put(Fields.CT_EMAIL_VERIFIED_DATE, DateUtil.getCurrentDateTimeMinusDays(2, common.dateFormat, common.timezoneUTC))
-data.put(Fields.CT_EMAIL_VALID_FROM, DateUtil.getCurrentDateTimeMinusDays(9, common.dateFormat, common.timezoneUTC))
-data.put(Fields.CT_EMAIL_VALID_UNTIL, DateUtil.getCurrentDateTimeMinusDays(-9, common.dateFormat, common.timezoneUTC))
+//data.put(Fields.CT_EMAIL_VERIFIED_DATE, DateUtil.getCurrentDateTimeMinusDays(2, common.dateFormat, common.timezoneUTC))
+//data.put(Fields.CT_EMAIL_VALID_FROM, DateUtil.getCurrentDateTimeMinusDays(9, common.dateFormat, common.timezoneUTC))
+//data.put(Fields.CT_EMAIL_VALID_UNTIL, DateUtil.getCurrentDateTimeMinusDays(-9, common.dateFormat, common.timezoneUTC))
 data.put(Fields.CT_PREFERRED_CONTACT_METHOD, 'Email')
 
 //Customer Due diligence
-data.put(Fields.CUST_CHK_SENIOR_POLITICAL_FIGURE, 'true')
-data.put(Fields.CUST_SENIOR_POLITICAL_FIGURE_COUNTRY, 'India')
-data.put(Fields.CUST_ASSOCIATE_SR_POLITICAL_FIGURE, 'Family Member')
+//data.put(Fields.CUST_CHK_SENIOR_POLITICAL_FIGURE, 'true')
+//data.put(Fields.CUST_SENIOR_POLITICAL_FIGURE_COUNTRY, 'India')
+//data.put(Fields.CUST_ASSOCIATE_SR_POLITICAL_FIGURE, 'Family Member')
 
 //Education and Occupation details
-data.put(Fields.CUST_EMPLOYMENT_STATUS, 'Part-time')
-data.put(Fields.CUST_OCCUPATION, 'Computer and Mathmatical')
-data.put(Fields.CUST_MONTHLY_GROSS_INCOME, '30000')
-data.put(Fields.CUST_MILITARY_STATUS, 'Inactive')
-data.put(Fields.CUST_EDUCATION, 'High school or GED')
-data.put(Fields.CUST_STUDENT_TYPE, 'Full Time on campus')
-data.put(Fields.CUST_WEB_ADDRESS, 'http://www.savanainc.com')
+//data.put(Fields.CUST_EMPLOYMENT_STATUS, 'Part-time')
+//data.put(Fields.CUST_OCCUPATION, 'Computer and Mathmatical')
+//data.put(Fields.CUST_MONTHLY_GROSS_INCOME, '30000')
+//data.put(Fields.CUST_MILITARY_STATUS, 'Inactive')
+//data.put(Fields.CUST_EDUCATION, 'High school or GED')
+//data.put(Fields.CUST_STUDENT_TYPE, 'Full Time on campus')
+//data.put(Fields.CUST_WEB_ADDRESS, 'http://www.savanainc.com')
 
 //Customer Information
 data.put(Fields.CUST_CUSTOMER_ID, 'CID_'+RandomUtil.getRandomNumeric(6))
@@ -109,14 +109,14 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Sear
 WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Menu'), GlobalVariable.TIMEOUT, FailureHandling.STOP_ON_FAILURE)
 
 'Click on Customer option'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Customer'))
+WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Consumer'))
 
 'Wait for Create customer icon to be visible'
 WebUI.delay(3) //TODO: Need to identify propert wait condition
-CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/icon_CreateCustomer'), GlobalVariable.TIMEOUT)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/icon_CreateConsumer'), GlobalVariable.TIMEOUT)
 
 'Click on Create customer icon'
-CustomKeywords.'actions.Common.moveToElementAndClick'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/icon_CreateCustomer'))
+CustomKeywords.'actions.Common.moveToElementAndClick'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/icon_CreateConsumer'))
 
 'Wait for Create customer page to be visible'
 WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_FirstName'), GlobalVariable.TIMEOUT, FailureHandling.STOP_ON_FAILURE)

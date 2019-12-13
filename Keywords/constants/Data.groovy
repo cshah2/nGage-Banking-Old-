@@ -20,7 +20,7 @@ public class Data {
 		//Basic Information
 		CUSTOMER_001.put(Fields.CUST_PREFIX, parsedJson.get("results").get(0).get("name").get("title"))
 		CUSTOMER_001.put(Fields.CUST_FIRST_NAME, parsedJson.get("results").get(0).get("name").get("first"))
-		CUSTOMER_001.put(Fields.CUST_MIDDLE_NAME, RandomUtil.getRandomAlphabets(1))
+		CUSTOMER_001.put(Fields.CUST_MIDDLE_NAME, RandomUtil.getRandomAlphabets(4))
 		CUSTOMER_001.put(Fields.CUST_LAST_NAME, parsedJson.get("results").get(0).get("name").get("last"))
 		CUSTOMER_001.put(Fields.CUST_NAME_VIEW, CUSTOMER_001.get(Fields.CUST_FIRST_NAME)+' '+CUSTOMER_001.get(Fields.CUST_LAST_NAME))
 		CUSTOMER_001.put(Fields.CUST_SUFFIX, 'Jr.')
@@ -43,7 +43,10 @@ public class Data {
 		CUSTOMER_001.put(Fields.CUST_AGE_BRACKET, '21 - 30')
 
 		//Location Information
-		CUSTOMER_001.put(Fields.ADDR_STREET, DateUtil.getCurrentDateTime('dd MMMM', common.timezone)+' Street')
+		CUSTOMER_001.put(Fields.ADDR_LINE1, DateUtil.getCurrentDateTime('dd MMMM', common.timezone)+' Street')
+		CUSTOMER_001.put(Fields.ADDR_LINE2, 'Broadway')
+		CUSTOMER_001.put(Fields.ADDR_LINE3, 'Corona Ave')
+		CUSTOMER_001.put(Fields.ADDR_LINE4, 'New Philadelphia')
 		CUSTOMER_001.put(Fields.ADDR_CITY, 'Philadelphia')
 		CUSTOMER_001.put(Fields.ADDR_COUNTY, 'United States of America')
 		CUSTOMER_001.put(Fields.ADDR_STATE, 'Pennsylvania')
@@ -53,7 +56,7 @@ public class Data {
 		CUSTOMER_001.put(Fields.ADDR_VERIFIED_DATE, DateUtil.getCurrentDateTimeMinusDays(1, common.dateFormat, common.timezoneUTC))
 		CUSTOMER_001.put(Fields.ADDR_VALID_FROM, DateUtil.getCurrentDateTimeMinusDays(10, common.dateFormat, common.timezoneUTC))
 		CUSTOMER_001.put(Fields.ADDR_VALID_UNTIL, DateUtil.getCurrentDateTimeMinusDays(-10, common.dateFormat, common.timezoneUTC))
-		CUSTOMER_001.put(Fields.ADDR_VIEW, CUSTOMER_001.get(Fields.ADDR_STREET)+', '+CUSTOMER_001.get(Fields.ADDR_CITY)+', PA '+CUSTOMER_001.get(Fields.ADDR_ZIPCODE))
+		CUSTOMER_001.put(Fields.ADDR_VIEW, CUSTOMER_001.get(Fields.ADDR_LINE1)+', '+CUSTOMER_001.get(Fields.ADDR_LINE2)+', '+CUSTOMER_001.get(Fields.ADDR_CITY)+', PA '+CUSTOMER_001.get(Fields.ADDR_ZIPCODE))
 
 		//Contact Information
 		CUSTOMER_001.put(Fields.CT_PHONE_NUMBER, '+1'+RandomUtil.getRandomNumeric(10))
@@ -83,7 +86,7 @@ public class Data {
 		CUSTOMER_001.put(Fields.CUST_WEB_ADDRESS, 'http://www.savanainc.com')
 
 		//Customer Information
-		CUSTOMER_001.put(Fields.CUST_CUSTOMER_ID, 'CID_'+RandomUtil.getRandomNumeric(6))
+		CUSTOMER_001.put(Fields.CUST_CUSTOMER_ID, 'CID'+RandomUtil.getRandomNumeric(6))
 		CUSTOMER_001.put(Fields.CUST_CUSTOMER_GROUP, 'Banking Customer')
 
 		//Script data
@@ -1173,13 +1176,12 @@ public class Data {
 		//Basic Information
 		CUSTOMER_002.put(Fields.CUST_PREFIX, parsedJson.get("results").get(0).get("name").get("title"))
 		CUSTOMER_002.put(Fields.CUST_FIRST_NAME, parsedJson.get("results").get(0).get("name").get("first"))
-		CUSTOMER_002.put(Fields.CUST_MIDDLE_NAME, RandomUtil.getRandomAlphabets(1))
 		CUSTOMER_002.put(Fields.CUST_LAST_NAME, parsedJson.get("results").get(0).get("name").get("last"))
 		CUSTOMER_002.put(Fields.CUST_SUFFIX, 'Jr.')
 		CUSTOMER_002.put(Fields.CUST_DOB, DateUtil.convert(parsedJson.get("results").get(0).get("dob").get("date").subSequence(0, 10), 'yyyy-MM-dd', common.dateFormat))
 		CUSTOMER_002.put(Fields.CUST_DOB_MASKED, '**/**/'+CUSTOMER_002.get(Fields.CUST_DOB).substring(6))
 		CUSTOMER_002.put(Fields.CUST_TAX_ID, '9'+RandomUtil.getRandomNumeric(8))
-		CUSTOMER_002.put(Fields.CUST_TAX_ID_MASKED, '*****'+CUSTOMER_002.get(Fields.CUST_TAX_ID).substring(5))
+		CUSTOMER_002.put(Fields.CUST_TAX_ID_MASKED, '******'+CUSTOMER_002.get(Fields.CUST_TAX_ID).substring(5))
 		CUSTOMER_002.put(Fields.CUST_TAX_ID_TYPE, 'SSN')
 		CUSTOMER_002.put(Fields.CUST_COUNTRY_OF_RESIDENCE, 'United States of America')
 		CUSTOMER_002.put(Fields.CUST_RESIDENCY_STATUS, 'Non-Resident')
@@ -1190,14 +1192,14 @@ public class Data {
 		CUSTOMER_002.put(Fields.CUST_MOTHERS_MAIDEN_NAME, 'DOSHI')
 
 		//Location Information
-		CUSTOMER_002.put(Fields.ADDR_STREET, DateUtil.getCurrentDateTime('dd MMMM', common.timezone)+' Street')
+		CUSTOMER_002.put(Fields.ADDR_LINE1, DateUtil.getCurrentDateTime('dd MMMM', common.timezone)+' Street')
 		CUSTOMER_002.put(Fields.ADDR_CITY, 'Philadelphia')
 		CUSTOMER_002.put(Fields.ADDR_COUNTY, 'United States of America')
 		CUSTOMER_002.put(Fields.ADDR_STATE, 'Pennsylvania')
 		CUSTOMER_002.put(Fields.ADDR_ZIPCODE, '1'+RandomUtil.getRandomNumeric(4))
 		CUSTOMER_002.put(Fields.ADDR_ADDRESS_TYPE, 'Work/Office')
 		CUSTOMER_002.put(Fields.ADDR_ADDRESS_LABEL, 'OFFICE')
-		CUSTOMER_002.put(Fields.ADDR_VIEW, CUSTOMER_002.get(Fields.ADDR_STREET)+', '+CUSTOMER_002.get(Fields.ADDR_CITY)+', PA '+CUSTOMER_002.get(Fields.ADDR_ZIPCODE))
+		CUSTOMER_002.put(Fields.ADDR_VIEW, CUSTOMER_002.get(Fields.ADDR_LINE1)+', '+CUSTOMER_002.get(Fields.ADDR_CITY)+', PA '+CUSTOMER_002.get(Fields.ADDR_ZIPCODE))
 
 		//Contact Information
 		CUSTOMER_002.put(Fields.CT_PHONE_NUMBER, '+1'+RandomUtil.getRandomNumeric(10))
@@ -1211,7 +1213,7 @@ public class Data {
 		//Education and Occupation details
 
 		//Customer Information
-		CUSTOMER_002.put(Fields.CUST_CUSTOMER_ID, 'CID_'+RandomUtil.getRandomNumeric(6))
+		CUSTOMER_002.put(Fields.CUST_CUSTOMER_ID, 'CID'+RandomUtil.getRandomNumeric(6))
 		CUSTOMER_002.put(Fields.CUST_CUSTOMER_GROUP, 'Banking Customer')
 		CUSTOMER_002.put(Fields.CUST_CHK_ACCOUNT, 'true')
 

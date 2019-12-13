@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>btn_No</name>
+   <name>icon_CreateConsumer</name>
    <tag></tag>
-   <elementGuidId>56588901-b5d6-4fb3-a151-8613af4dbc9f</elementGuidId>
+   <elementGuidId>4d790bdb-ee74-492c-817d-e07158fbff11</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
       </entry>
       <entry>
          <key>CSS</key>
-         <value>div[id*='_wtChangeModeConfirmationModal'][id*='wtActions'] a</value>
+         <value>div[id*='_wtSearchBar'] a[id*='wtADDNEWCUSTOMER'] svg</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

@@ -27,6 +27,9 @@ public class RegexUtil {
 
 		text = text.replaceAll('\\+', '\\\\+')
 		text = text.replaceAll('\\*', '\\\\*')
+		text = text.replaceAll('\\?', '\\\\?')
+		text = text.replaceAll('\\.', '\\\\.')
+		text = text.replaceAll('\\/', '\\\\/')
 		return text
 	}
 

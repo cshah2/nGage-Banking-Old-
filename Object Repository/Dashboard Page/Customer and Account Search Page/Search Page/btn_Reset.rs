@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>select_DeptId</name>
+   <name>btn_Reset</name>
    <tag></tag>
-   <elementGuidId>03cd5037-b523-497d-ba96-5152f24c2647</elementGuidId>
+   <elementGuidId>87fe95d5-c318-4ada-b3d7-6ca083cf5c22</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//div[contains(@id,'_wtAddPositionDetails_CN')]//div[text()='Department Id']/div/select</value>
+         <key>CSS</key>
+         <value>div[id*='_wtAdvancedSearchModal_block_wtFooter'] input[value='Reset']</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

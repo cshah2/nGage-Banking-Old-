@@ -18,56 +18,42 @@ import enums.Fields
 import enums.RegexOperator
 import internal.GlobalVariable as GlobalVariable
 import utils.DateUtil
+import utils.StringUtil
 
 Map<Fields, String> custData = Data.CUSTOMER_002
 Map<Fields, String> accData1 = Data.ACCOUNT_001
 Map<Fields, String> accData2 = Data.ACCOUNT_002
-println "Customer002 = "+custData.toMapString()
-println "Account001 = "+accData1.toMapString()
-println "Account002 = "+accData2.toMapString()
+StringUtil.printMap(custData)
+StringUtil.printMap(accData1)
+StringUtil.printMap(accData2)
 
 //Mark this test as failed if required customer and account is not created
 CustomKeywords.'actions.Common.shouldFailTest'(custData)
 CustomKeywords.'actions.Common.shouldFailTest'(accData1)
 
-int expRowsCount = 1
-
 'Login into portal'
 CustomKeywords.'actions.Common.login'()
 
-'Search customer and open Customer details page'
-CustomKeywords.'actions.Common.searchCustomerAndOpen'(custData)
+'Load customer profile'
+WebUI.navigateToUrl(custData.get(Fields.URL))
 
-'Click on Accounts tab'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/tab_Accounts'))
+'Wait for Customer details page to load'
+WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/lbl_CustomerName'), GlobalVariable.TIMEOUT, FailureHandling.STOP_ON_FAILURE)
 
-'Wait for Create Account icon to be visible'
-CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/icon_CreateAccount'), GlobalVariable.TIMEOUT)
+'Verify Customer name is displayed correctly'
+WebUI.verifyElementText(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/lbl_CustomerName'), custData.get(Fields.CUST_NAME_VIEW))
 
 //Verify Account created previously is displayed in the list
-'Verify accounts list table is visible'
-WebUI.verifyElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/table_Accounts'))
+'Click on Accounts tab'
+CustomKeywords.'pages.consumer.ConsumerDashboardPage.selectTab'('Accounts', false)
 
+int expRowsCount = 1
 'Verify accounts list table contains only 1 record'
-CustomKeywords.'actions.Table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/table_Accounts'), 1, RegexOperator.EQUALS)
+CustomKeywords.'actions.Table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/table_Accounts'), expRowsCount, RegexOperator.EQUALS)
 
-'Verify Correct account number is displayed in grid'
-CustomKeywords.'actions.Table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/table_Accounts'), 1, ColumnPos.ACC_NUMBER, accData1.get(Fields.ACC_NUMBER))
-
-'Verify Correct account title is displayed in grid'
-CustomKeywords.'actions.Table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/table_Accounts'), 1, ColumnPos.ACC_TITLE, accData1.get(Fields.ACC_TITLE))
-
-'Verify Correct account open date is displayed in grid'
-CustomKeywords.'actions.Table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/table_Accounts'), 1, ColumnPos.ACC_OPEN_DATE, accData1.get(Fields.ACC_OPEN_DATE))
-
-'Verify Correct account description is displayed in grid'
-CustomKeywords.'actions.Table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/table_Accounts'), 1, ColumnPos.ACC_DESCRIPTION, accData1.get(Fields.ACC_DESCRIPTION))
-
-'Verify Correct account ledger balance is displayed in grid'
-CustomKeywords.'actions.Table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/table_Accounts'), 1, ColumnPos.ACC_LEDGER_BALANCE, accData1.get(Fields.ACC_LEDGER_BALANCE))
-
-'Verify Correct account availble balance is displayed in grid'
-CustomKeywords.'actions.Table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/table_Accounts'), 1, ColumnPos.ACC_AVAILABLE_BALANCE, accData1.get(Fields.ACC_AVAILABLE_BALANCE))
+int rowNo = 1
+'Verify Account details in table'
+CustomKeywords.'pages.consumer.ConsumerDashboardPage.verifyAccountsDataInTable'(accData1, rowNo)
 
 //Add new account
 'Click on Create Account icon'
@@ -76,14 +62,8 @@ WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Cust
 'Wait for Create accounts page to load'
 CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/input_AccountTitle'), GlobalVariable.TIMEOUT)
 
-'Fill up accounts page'
-CustomKeywords.'actions.Common.accountFormFill'(accData2)
-
-'Scroll to OK button'
-WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/btn_Submit'), GlobalVariable.TIMEOUT)
-
-'Click on OK button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Create Account Page/btn_Submit'))
+'Add account information'
+CustomKeywords.'pages.accounts.CreateAccountPage.fillAccountDetails'(accData2)
 
 'Wait for Customer details page to load'
 CustomKeywords.'actions.WaitFor.titleContains'('Customer Details', GlobalVariable.TIMEOUT)
@@ -91,35 +71,23 @@ CustomKeywords.'actions.WaitFor.titleContains'('Customer Details', GlobalVariabl
 'Wait for Page load'
 WebUI.waitForPageLoad(GlobalVariable.TIMEOUT)
 
-'Verify customer details page is loaded'
-CustomKeywords.'actions.Common.verifyUrlContains'('CustomerMainFlow.CustomerDetail.aspx')
+'Verify Customer Details on Summary Section'
+CustomKeywords.'pages.consumer.ConsumerDashboardPage.verifyConsumerDetailsSummarySection'(custData)
 
-'Click on Accounts tab'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/tab_Accounts'))
-
-'Wait for accounts list table to be visible'
-CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/table_Accounts'), GlobalVariable.TIMEOUT)
-
-'Verify accounts list table contains only 1 record'
-CustomKeywords.'actions.Table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/table_Accounts'), 2, RegexOperator.EQUALS)
-
-'Verify Correct account number is displayed in grid'
-CustomKeywords.'actions.Table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/table_Accounts'), 2, ColumnPos.ACC_NUMBER, accData2.get(Fields.ACC_NUMBER))
-
-'Verify Correct account title is displayed in grid'
-CustomKeywords.'actions.Table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/table_Accounts'), 2, ColumnPos.ACC_TITLE, accData2.get(Fields.ACC_TITLE))
-
-'Verify Correct account open date is displayed in grid'
-CustomKeywords.'actions.Table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/table_Accounts'), 2, ColumnPos.ACC_OPEN_DATE, accData2.get(Fields.ACC_OPEN_DATE))
-
-'Verify Correct account description is displayed in grid'
-CustomKeywords.'actions.Table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/table_Accounts'), 2, ColumnPos.ACC_DESCRIPTION, accData2.get(Fields.ACC_DESCRIPTION))
-
-'Verify Correct account ledger balance is displayed in grid'
-CustomKeywords.'actions.Table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/table_Accounts'), 2, ColumnPos.ACC_LEDGER_BALANCE, accData2.get(Fields.ACC_LEDGER_BALANCE))
-
-'Verify Correct account availble balance is displayed in grid'
-CustomKeywords.'actions.Table.verifyCellValueEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/table_Accounts'), 2, ColumnPos.ACC_AVAILABLE_BALANCE, accData2.get(Fields.ACC_AVAILABLE_BALANCE))
+'Verify customer details page URL'
+CustomKeywords.'actions.Common.verifyMatch'(WebUI.getUrl(), 'CustomerMainFlow.CustomerDetail.aspx', RegexOperator.CONTAINS)
 
 'Set data flag'
 Data.ACCOUNT_002.put(Fields.IS_CREATED, 'true')
+
+//Verify second account details are displayed in the accounts tab
+'Click on Accounts tab'
+CustomKeywords.'pages.consumer.ConsumerDashboardPage.selectTab'('Accounts', false)
+
+expRowsCount = 2
+'Verify accounts list table contains only 2 record'
+CustomKeywords.'actions.Table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/table_Accounts'), expRowsCount, RegexOperator.EQUALS)
+
+rowNo = 2
+'Verify Account details in table'
+CustomKeywords.'pages.consumer.ConsumerDashboardPage.verifyAccountsDataInTable'(accData2, rowNo)

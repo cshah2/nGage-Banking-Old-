@@ -437,6 +437,7 @@ public class Table {
 
 		//TODO:
 	}
+	
 
 	@Keyword
 	def verifyCellValueEquals(TestObject to, int rowNo, int colNo, String expText, WebTable type = WebTable.DEFAULT) {
@@ -459,6 +460,20 @@ public class Table {
 	}
 
 	//Column values comparison
+	
+	@Keyword
+	def verifyAllValuesInColumnMatches(TestObject to, int colNo, String expText, RegexOperator operator, WebTable type = WebTable.DEFAULT) {
+		
+		//Set Webtable type
+		this.type = type
+
+		List<String> cellsText = getAllTextFromColumn(to, colNo)
+		for(String cellText in cellsText) {
+			println "Cell Text = "+cellText
+			new actions.Common().verifyMatch(cellText, expText, operator)
+		}
+	}
+	
 
 	@Keyword
 	def verifyAllValuesInColumnEquals(TestObject to, int colNo, String expText, WebTable type = WebTable.DEFAULT) {
@@ -786,8 +801,8 @@ public class Table {
 		try {
 			//moveToCell(to, rowNo, colNo, type)
 			el = table.findElement(singleRow(rowNo)).findElement(singleCell(colNo)).findElement(clickElement())
-//			el.click()
-//			//new javaScript().click(el)
+			//			el.click()
+			//			//new javaScript().click(el)
 			new actions.Common().moveToElementAndClick(el)
 		}
 		catch(Exception e) {

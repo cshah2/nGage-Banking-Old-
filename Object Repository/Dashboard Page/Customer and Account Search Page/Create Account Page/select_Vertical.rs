@@ -6,11 +6,11 @@
    <elementGuidId>2b65386b-ee40-4b95-bc48-7d202329b95e</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
+         <key>XPATH</key>
+         <value>//div[contains(@id,'_wtAddPositionDetails_CN')]//div[text()='Vertical']/div/select</value>
       </entry>
       <entry>
-         <key>XPATH</key>
-         <value>//div[contains(@id,'_wtPositionListCN')]/div[not(contains(@style,'display:none'))]//select[contains(@id,'_wtVertical')]</value>
+         <key>BASIC</key>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

@@ -39,4 +39,9 @@
       <initValue>'CE'</initValue>
       <name>ENVIRONMENT</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>false</initValue>
+      <name>AUTO_ACCOUNT_NO</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

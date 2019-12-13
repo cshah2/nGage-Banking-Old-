@@ -14,14 +14,28 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import constants.ColumnPos
 import constants.Data
+import constants.URL
 import enums.Fields
 import enums.RegexOperator
 import internal.GlobalVariable as GlobalVariable
+import utils.StringUtil
 
 Map<Fields, String> custData = Data.CUSTOMER_002
-println "Customer002 = "+custData.toMapString()
+StringUtil.printMap(custData)
+Map<Fields, String> searchCriteria
+TestObject e_ResultTable = findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult')
 
-int expRowsCount = 1
+String expCustomerGroup = custData.get(Fields.CUST_CUSTOMER_GROUP)
+String expLastName = custData.get(Fields.CUST_LAST_NAME)
+String expFirstName = custData.get(Fields.CUST_FIRST_NAME)
+String expTaxId = custData.get(Fields.CUST_TAX_ID)
+String expTaxIdMasked = custData.get(Fields.CUST_TAX_ID_MASKED)
+String expPhoneNumber = custData.get(Fields.CT_PHONE_NUMBER)
+String expEmail = custData.get(Fields.CT_EMAIL)
+String expDOB = custData.get(Fields.CUST_DOB)
+String expDOBMasked = custData.get(Fields.CUST_DOB_MASKED)
+String expCustomerId = custData.get(Fields.CUST_CUSTOMER_ID)
+String expUrl = custData.get(Fields.URL)
 
 //Mark this test as failed if required customer is not created
 CustomKeywords.'actions.Common.shouldFailTest'(custData)
@@ -29,162 +43,151 @@ CustomKeywords.'actions.Common.shouldFailTest'(custData)
 'Login into portal'
 CustomKeywords.'actions.Common.login'()
 
-//Search for - last name
-'Click on Search All drop down'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search'))
+'Verify user is on search page'
+CustomKeywords.'actions.Common.verifyMatch'(WebUI.getUrl(), URL.SearchPage, RegexOperator.EQUALS)
 
-'Wait for Menus to be visible'
-WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Menu'), GlobalVariable.TIMEOUT, FailureHandling.STOP_ON_FAILURE)
+'Select Search type as Consumer'
+CustomKeywords.'pages.SearchPage.selectSearchEntity'('Consumer')
 
-'Click on Customer option'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Customer'))
+'Wait for search dialog to load'
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/ConsumerSearch/select_CustomerGroup'), GlobalVariable.TIMEOUT)
 
-'Wait for Search button to be visible'
-WebUI.delay(2) //TODO: Need to find correct wait condition.
-CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'), GlobalVariable.TIMEOUT)
+//Set Search criteria - Last name
+searchCriteria = new HashMap<Fields, String>()
+searchCriteria.put(Fields.CUST_CUSTOMER_GROUP, expCustomerGroup)
+searchCriteria.put(Fields.CUST_LAST_NAME, expLastName)
 
-'Enter Search Criteria in last name field'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_LastName'), custData.get(Fields.CUST_LAST_NAME))
+'Enter search criteria'
+CustomKeywords.'pages.SearchPage.searchCustomer'(searchCriteria)
 
-'Click on Search button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'))
+'Wait for result table to load'
+CustomKeywords.'actions.WaitFor.elementVisible'(e_ResultTable, GlobalVariable.TIMEOUT)
 
-'Wait for table to be visible'
-CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), GlobalVariable.TIMEOUT)
+'Verify result grid contains atleast 1 record'
+CustomKeywords.'actions.Table.verifyRecordsCount'(e_ResultTable, 1, RegexOperator.GREATER_THAN_OR_EQUAL)
 
-'Verify result table contains atleast 1 record'
-CustomKeywords.'actions.Table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), expRowsCount, RegexOperator.GREATER_THAN_OR_EQUAL)
+'Verify all records matching the filter criteria are listed in result table'
+CustomKeywords.'actions.Table.verifyAllValuesInColumnMatches'(e_ResultTable, ColumnPos.CUST_LAST_NAME, expLastName, RegexOperator.CONTAINS_IGNORE_CASE)
+CustomKeywords.'actions.Table.verifyAllValuesInColumnMatches'(e_ResultTable, ColumnPos.CUST_CUSTOMER_GROUP, expCustomerGroup, RegexOperator.EQUALS)
 
-'Verify all values in column are matching the values'
-CustomKeywords.'actions.Table.verifyAllValuesInColumnEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), ColumnPos.CUST_LAST_NAME, custData.get(Fields.CUST_LAST_NAME))
+//Set Search criteria - First name
+'Select Search type as Consumer'
+CustomKeywords.'pages.SearchPage.selectSearchEntity'('Consumer')
 
-'Click on Clear Filter button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_ClearFilters'))
+searchCriteria = new HashMap<Fields, String>()
+searchCriteria.put(Fields.CUST_CUSTOMER_GROUP, expCustomerGroup)
+searchCriteria.put(Fields.CUST_FIRST_NAME, expFirstName)
 
-//Search for - first name
-'Click on Search All drop down'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search'))
+'Enter search criteria'
+CustomKeywords.'pages.SearchPage.searchCustomer'(searchCriteria)
 
-'Wait for Menus to be visible'
-WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Menu'), GlobalVariable.TIMEOUT, FailureHandling.STOP_ON_FAILURE)
+'Wait for result table to load'
+CustomKeywords.'actions.WaitFor.elementVisible'(e_ResultTable, GlobalVariable.TIMEOUT)
 
-'Click on Customer option'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Customer'))
+'Verify result grid contains atleast 1 record'
+CustomKeywords.'actions.Table.verifyRecordsCount'(e_ResultTable, 1, RegexOperator.GREATER_THAN_OR_EQUAL)
 
-'Wait for Search button to be visible'
-WebUI.delay(2) //TODO: Need to find correct wait condition.
-CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'), GlobalVariable.TIMEOUT)
+'Verify all records matching the filter criteria are listed in result table'
+CustomKeywords.'actions.Table.verifyAllValuesInColumnMatches'(e_ResultTable, ColumnPos.CUST_FIRST_NAME, expFirstName, RegexOperator.CONTAINS_IGNORE_CASE)
+CustomKeywords.'actions.Table.verifyAllValuesInColumnMatches'(e_ResultTable, ColumnPos.CUST_CUSTOMER_GROUP, expCustomerGroup, RegexOperator.EQUALS)
 
-'Enter Search Criteria in First name field'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_FirstName'), custData.get(Fields.CUST_FIRST_NAME))
+//Set Search criteria - Tax ID
+'Select Search type as Consumer'
+CustomKeywords.'pages.SearchPage.selectSearchEntity'('Consumer')
 
-'Click on Search button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'))
+searchCriteria = new HashMap<Fields, String>()
+searchCriteria.put(Fields.CUST_CUSTOMER_GROUP, expCustomerGroup)
+searchCriteria.put(Fields.CUST_TAX_ID, expTaxId)
 
-'Wait for table to be visible'
-CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), GlobalVariable.TIMEOUT)
+'Enter search criteria'
+CustomKeywords.'pages.SearchPage.searchCustomer'(searchCriteria)
 
-'Verify result table contains atleast 1 record'
-CustomKeywords.'actions.Table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), expRowsCount, RegexOperator.GREATER_THAN_OR_EQUAL)
+'Wait for result table to load'
+CustomKeywords.'actions.WaitFor.elementVisible'(e_ResultTable, GlobalVariable.TIMEOUT)
 
-'Verify all values in column are matching the values'
-CustomKeywords.'actions.Table.verifyAllValuesInColumnEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), ColumnPos.CUST_FIRST_NAME, custData.get(Fields.CUST_FIRST_NAME))
+'Verify result grid contains atleast 1 record'
+CustomKeywords.'actions.Table.verifyRecordsCount'(e_ResultTable, 1, RegexOperator.EQUALS)
 
-'Click on Clear Filter button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_ClearFilters'))
+'Verify all records matching the filter criteria are listed in result table'
+CustomKeywords.'actions.Table.verifyAllValuesInColumnMatches'(e_ResultTable, ColumnPos.CUST_TAX_ID, expTaxIdMasked, RegexOperator.EQUALS)
+CustomKeywords.'actions.Table.verifyAllValuesInColumnMatches'(e_ResultTable, ColumnPos.CUST_CUSTOMER_GROUP, expCustomerGroup, RegexOperator.EQUALS)
 
-//Search for - phone number
-'Click on Search All drop down'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search'))
+//Set Search criteria - Phone Number
+'Select Search type as Consumer'
+CustomKeywords.'pages.SearchPage.selectSearchEntity'('Consumer')
 
-'Wait for Menus to be visible'
-WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Menu'), GlobalVariable.TIMEOUT, FailureHandling.STOP_ON_FAILURE)
+searchCriteria = new HashMap<Fields, String>()
+searchCriteria.put(Fields.CUST_CUSTOMER_GROUP, expCustomerGroup)
+searchCriteria.put(Fields.CT_PHONE_NUMBER, expPhoneNumber)
 
-'Click on Customer option'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Customer'))
+'Enter search criteria'
+CustomKeywords.'pages.SearchPage.searchCustomer'(searchCriteria)
 
-'Wait for Search button to be visible'
-WebUI.delay(2) //TODO: Need to find correct wait condition.
-CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'), GlobalVariable.TIMEOUT)
+'Wait for result table to load'
+CustomKeywords.'actions.WaitFor.elementVisible'(e_ResultTable, GlobalVariable.TIMEOUT)
 
-'Enter Search Criteria in phone number field'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_PhoneNumber'), custData.get(Fields.CT_PHONE_NUMBER))
+'Verify result grid contains atleast 1 record'
+CustomKeywords.'actions.Table.verifyRecordsCount'(e_ResultTable, 1, RegexOperator.GREATER_THAN_OR_EQUAL)
 
-'Click on Search button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'))
+'Verify all records matching the filter criteria are listed in result table'
+CustomKeywords.'actions.Table.verifyAllValuesInColumnMatches'(e_ResultTable, ColumnPos.CUST_PHONE_NUMBER, expPhoneNumber, RegexOperator.EQUALS)
+CustomKeywords.'actions.Table.verifyAllValuesInColumnMatches'(e_ResultTable, ColumnPos.CUST_CUSTOMER_GROUP, expCustomerGroup, RegexOperator.EQUALS)
 
-'Wait for table to be visible'
-CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), GlobalVariable.TIMEOUT)
+//Set Search criteria - Email
+'Select Search type as Consumer'
+CustomKeywords.'pages.SearchPage.selectSearchEntity'('Consumer')
 
-'Verify result table contains atleast 1 record'
-CustomKeywords.'actions.Table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), expRowsCount, RegexOperator.GREATER_THAN_OR_EQUAL)
+searchCriteria = new HashMap<Fields, String>()
+searchCriteria.put(Fields.CUST_CUSTOMER_GROUP, expCustomerGroup)
+searchCriteria.put(Fields.CT_EMAIL, expEmail)
 
-'Verify all values in column are matching the values'
-CustomKeywords.'actions.Table.verifyAllValuesInColumnEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), ColumnPos.CUST_PHONE_NUMBER, custData.get(Fields.CT_PHONE_NUMBER))
+'Enter search criteria'
+CustomKeywords.'pages.SearchPage.searchCustomer'(searchCriteria)
 
-'Click on Clear Filter button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_ClearFilters'))
+'Wait for result table to load'
+CustomKeywords.'actions.WaitFor.elementVisible'(e_ResultTable, GlobalVariable.TIMEOUT)
 
-//Search for - Tax ID
-'Click on Search All drop down'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search'))
+'Verify result grid contains atleast 1 record'
+CustomKeywords.'actions.Table.verifyRecordsCount'(e_ResultTable, 1, RegexOperator.GREATER_THAN_OR_EQUAL)
 
-'Wait for Menus to be visible'
-CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Menu'), GlobalVariable.TIMEOUT)
+'Verify all records matching the filter criteria are listed in result table'
+CustomKeywords.'actions.Table.verifyAllValuesInColumnMatches'(e_ResultTable, ColumnPos.CUST_EMAIL, expEmail, RegexOperator.EQUALS)
+CustomKeywords.'actions.Table.verifyAllValuesInColumnMatches'(e_ResultTable, ColumnPos.CUST_CUSTOMER_GROUP, expCustomerGroup, RegexOperator.EQUALS)
 
-'Click on Customer option'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Customer'))
+//Set Search criteria - DOB
+'Select Search type as Consumer'
+CustomKeywords.'pages.SearchPage.selectSearchEntity'('Consumer')
 
-'Wait for Search button to be visible'
-WebUI.delay(2) //TODO: Need to find correct wait condition.
-CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'), GlobalVariable.TIMEOUT)
+searchCriteria = new HashMap<Fields, String>()
+searchCriteria.put(Fields.CUST_CUSTOMER_GROUP, expCustomerGroup)
+searchCriteria.put(Fields.CUST_DOB, expDOB)
 
-'Enter Search Criteria in Tax ID field'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_TaxID'), custData.get(Fields.CUST_TAX_ID))
+'Enter search criteria'
+CustomKeywords.'pages.SearchPage.searchCustomer'(searchCriteria)
 
-'Click on Search button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'))
+'Wait for result table to load'
+CustomKeywords.'actions.WaitFor.elementVisible'(e_ResultTable, GlobalVariable.TIMEOUT)
 
-'Wait for table to be visible'
-CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), GlobalVariable.TIMEOUT)
+'Verify result grid contains atleast 1 record'
+CustomKeywords.'actions.Table.verifyRecordsCount'(e_ResultTable, 1, RegexOperator.GREATER_THAN_OR_EQUAL)
 
-'Verify result table contains atleast 1 record'
-CustomKeywords.'actions.Table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), expRowsCount, RegexOperator.EQUALS)
+'Verify all records matching the filter criteria are listed in result table'
+CustomKeywords.'actions.Table.verifyAllValuesInColumnMatches'(e_ResultTable, ColumnPos.CUST_DOB, expDOBMasked, RegexOperator.EQUALS)
+CustomKeywords.'actions.Table.verifyAllValuesInColumnMatches'(e_ResultTable, ColumnPos.CUST_CUSTOMER_GROUP, expCustomerGroup, RegexOperator.EQUALS)
 
-'Verify all values in column are matching the values'
-CustomKeywords.'actions.Table.verifyAllValuesInColumnEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), ColumnPos.CUST_TAX_ID, custData.get(Fields.CUST_TAX_ID_MASKED))
+//Set Search criteria - Customer ID
+'Select Search type as Consumer'
+CustomKeywords.'pages.SearchPage.selectSearchEntity'('Consumer')
 
-'Click on Clear Filter button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_ClearFilters'))
+searchCriteria = new HashMap<Fields, String>()
+searchCriteria.put(Fields.CUST_CUSTOMER_GROUP, expCustomerGroup)
+searchCriteria.put(Fields.CUST_CUSTOMER_ID, expCustomerId)
 
-//Search for - DOB
-'Click on Search All drop down'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search'))
+'Enter search criteria'
+CustomKeywords.'pages.SearchPage.searchCustomer'(searchCriteria)
 
-'Wait for Menus to be visible'
-WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Menu'), GlobalVariable.TIMEOUT, FailureHandling.STOP_ON_FAILURE)
+'Verify Customer Details on Summary Section'
+CustomKeywords.'pages.consumer.ConsumerDashboardPage.verifyConsumerDetailsSummarySection'(custData)
 
-'Click on Customer option'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Customer'))
-
-'Wait for Search button to be visible'
-WebUI.delay(2) //TODO: Need to find correct wait condition.
-CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'), GlobalVariable.TIMEOUT)
-
-'Enter Search Criteria in DOB field'
-WebUI.setText(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_DOB'), custData.get(Fields.CUST_DOB))
-
-'Click on Search button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_Search'))
-
-'Wait for table to be visible'
-CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), GlobalVariable.TIMEOUT)
-
-'Verify result table contains atleast 1 record'
-CustomKeywords.'actions.Table.verifyRecordsCount'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), expRowsCount, RegexOperator.GREATER_THAN_OR_EQUAL)
-
-'Verify all values in column are matching the values'
-CustomKeywords.'actions.Table.verifyAllValuesInColumnEquals'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_SearchResult'), ColumnPos.CUST_DOB, custData.get(Fields.CUST_DOB_MASKED))
-
-'Click on Clear Filter button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/btn_Cust_ClearFilters'))
+'Verify customer details page URL'
+CustomKeywords.'actions.Common.verifyMatch'(WebUI.getUrl(), 'CustomerMainFlow.CustomerDetail.aspx', RegexOperator.CONTAINS)

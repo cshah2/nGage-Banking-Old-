@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>dd_Search_Option_Menu</name>
+   <name>input_AddressLine4</name>
    <tag></tag>
-   <elementGuidId>8307d52d-51dc-461b-a335-5394b2d6311a</elementGuidId>
+   <elementGuidId>2a33458c-357c-4ab2-af02-d61ee5384fe4</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//div[contains(@id,'_wtSearchBar')]//div[contains(@class,'DropdownMenu') and contains(@id,'_wtMenu')]</value>
+         <value>//div[contains(@id,'_wtLocationInfoForm')]//label[text()='Address Line 4']/../div/input</value>
       </entry>
       <entry>
          <key>BASIC</key>
       </entry>
       <entry>
          <key>CSS</key>
-         <value>div[id*='_wtSearchBar'] div[id*='_wtMenu'][class=DropdownMenu]</value>
+         <value>input[id*='_wtAddress'][id$='_wtStreet']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

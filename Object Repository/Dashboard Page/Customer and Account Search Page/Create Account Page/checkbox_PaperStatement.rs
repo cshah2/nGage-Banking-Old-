@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>input_LastName</name>
+   <name>checkbox_PaperStatement</name>
    <tag></tag>
-   <elementGuidId>279d3e67-58f5-419c-bdb7-b8876b1b8803</elementGuidId>
+   <elementGuidId>ae328d50-66e9-4aea-890c-b35ac3d64131</elementGuidId>
    <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>input[id*='_wtPaperStmtValue']</value>
+      </entry>
       <entry>
          <key>BASIC</key>
          <value></value>
-      </entry>
-      <entry>
-         <key>CSS</key>
-         <value>div[id*='_wtcustSearch_CN'] input[placeholder='Last Name']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

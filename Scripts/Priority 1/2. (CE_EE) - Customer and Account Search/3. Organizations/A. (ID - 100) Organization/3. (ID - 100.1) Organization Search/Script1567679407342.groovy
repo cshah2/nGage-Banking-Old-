@@ -30,8 +30,8 @@ int rowNo = 1
 
 TestObject e_ResultTable = findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/table_OrgSearchResult')
 TestObject e_OrgName = findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_OrganizationName')
-TestObject e_TaxId = findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_TaxID')
-TestObject e_PhoneNumber = findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_PhoneNumber')
+TestObject e_TaxId = findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/ConsumerSearch/input_TaxID')
+TestObject e_PhoneNumber = findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/ConsumerSearch/input_PhoneNumber')
 TestObject e_DbaName = findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_DBAName')
 TestObject e_DunAndBradStreet = findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/input_DunAndBradstreetId')
 TestObject e_Country = findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/select_Country')

@@ -33,12 +33,6 @@
       <variableLink>
          <testDataLinkId>7f3b0675-39bc-45e4-bc2f-9d0b93a39b18</testDataLinkId>
          <type>DATA_COLUMN</type>
-         <value>MiddleName</value>
-         <variableId>192bfec6-ef03-4ea6-a656-848effda1059</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId>7f3b0675-39bc-45e4-bc2f-9d0b93a39b18</testDataLinkId>
-         <type>DATA_COLUMN</type>
          <value>LastName</value>
          <variableId>6f69a978-2748-42ab-a02f-841ab872f8ac</variableId>
       </variableLink>
@@ -105,26 +99,8 @@
       <variableLink>
          <testDataLinkId>7f3b0675-39bc-45e4-bc2f-9d0b93a39b18</testDataLinkId>
          <type>DATA_COLUMN</type>
-         <value>AddType</value>
-         <variableId>2a5b1976-e347-4ed4-b7b6-185540b59ac1</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId>7f3b0675-39bc-45e4-bc2f-9d0b93a39b18</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>AddLabel</value>
-         <variableId>63ab8d97-fd9d-4923-9d05-5143f7409bfb</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId>7f3b0675-39bc-45e4-bc2f-9d0b93a39b18</testDataLinkId>
-         <type>DATA_COLUMN</type>
          <value>PhoneNumber</value>
          <variableId>eb99c24b-6448-48ab-a2df-04e59e5e7a19</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId>7f3b0675-39bc-45e4-bc2f-9d0b93a39b18</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>PhoneType</value>
-         <variableId>5615a5bf-2664-4413-8ede-846e31c77318</variableId>
       </variableLink>
       <variableLink>
          <testDataLinkId>7f3b0675-39bc-45e4-bc2f-9d0b93a39b18</testDataLinkId>
@@ -133,34 +109,10 @@
          <variableId>7c2c8e4b-376b-48ad-a557-a846c4e9bab4</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>7f3b0675-39bc-45e4-bc2f-9d0b93a39b18</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>EmailType</value>
-         <variableId>7888c3a5-dbc4-478d-8f0b-ccf410768dda</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId>7f3b0675-39bc-45e4-bc2f-9d0b93a39b18</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>PreferredLanguage</value>
-         <variableId>ba91dd64-8037-424b-a469-5d6726a06465</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId>7f3b0675-39bc-45e4-bc2f-9d0b93a39b18</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>PreferredContactMethod</value>
-         <variableId>e09e71bf-9ba4-4973-81c6-dda21fa45463</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId>7f3b0675-39bc-45e4-bc2f-9d0b93a39b18</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>MemberID</value>
-         <variableId>7e26e3e2-8872-49b6-ac31-7326d387d576</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId>7f3b0675-39bc-45e4-bc2f-9d0b93a39b18</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>CustomerGroup</value>
-         <variableId>f6cd192f-775c-4392-9337-d939806c4741</variableId>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>ef5ae338-223b-4c39-96a6-3afa462bab10</variableId>
       </variableLink>
    </testCaseLink>
    <testCaseLink>

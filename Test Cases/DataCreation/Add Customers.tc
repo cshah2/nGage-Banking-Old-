@@ -15,13 +15,6 @@
    <variable>
       <defaultValue>''</defaultValue>
       <description></description>
-      <id>192bfec6-ef03-4ea6-a656-848effda1059</id>
-      <masked>false</masked>
-      <name>MiddleName</name>
-   </variable>
-   <variable>
-      <defaultValue>''</defaultValue>
-      <description></description>
       <id>6f69a978-2748-42ab-a02f-841ab872f8ac</id>
       <masked>false</masked>
       <name>LastName</name>
@@ -59,14 +52,14 @@
       <description></description>
       <id>8813ecf7-3b7f-4289-9e85-e67b92454be3</id>
       <masked>false</masked>
-      <name>MaritalStatus</name>
+      <name>MotherMaidenName</name>
    </variable>
    <variable>
       <defaultValue>''</defaultValue>
       <description></description>
       <id>2225bf54-3f06-4669-a649-82df62017270</id>
       <masked>false</masked>
-      <name>Street</name>
+      <name>AddressLine1</name>
    </variable>
    <variable>
       <defaultValue>''</defaultValue>
@@ -99,30 +92,9 @@
    <variable>
       <defaultValue>''</defaultValue>
       <description></description>
-      <id>2a5b1976-e347-4ed4-b7b6-185540b59ac1</id>
-      <masked>false</masked>
-      <name>AddType</name>
-   </variable>
-   <variable>
-      <defaultValue>''</defaultValue>
-      <description></description>
-      <id>63ab8d97-fd9d-4923-9d05-5143f7409bfb</id>
-      <masked>false</masked>
-      <name>AddLabel</name>
-   </variable>
-   <variable>
-      <defaultValue>''</defaultValue>
-      <description></description>
       <id>eb99c24b-6448-48ab-a2df-04e59e5e7a19</id>
       <masked>false</masked>
       <name>PhoneNumber</name>
-   </variable>
-   <variable>
-      <defaultValue>''</defaultValue>
-      <description></description>
-      <id>5615a5bf-2664-4413-8ede-846e31c77318</id>
-      <masked>false</masked>
-      <name>PhoneType</name>
    </variable>
    <variable>
       <defaultValue>''</defaultValue>
@@ -134,36 +106,8 @@
    <variable>
       <defaultValue>''</defaultValue>
       <description></description>
-      <id>7888c3a5-dbc4-478d-8f0b-ccf410768dda</id>
+      <id>ef5ae338-223b-4c39-96a6-3afa462bab10</id>
       <masked>false</masked>
-      <name>EmailType</name>
-   </variable>
-   <variable>
-      <defaultValue>''</defaultValue>
-      <description></description>
-      <id>ba91dd64-8037-424b-a469-5d6726a06465</id>
-      <masked>false</masked>
-      <name>PreferredLanguage</name>
-   </variable>
-   <variable>
-      <defaultValue>''</defaultValue>
-      <description></description>
-      <id>e09e71bf-9ba4-4973-81c6-dda21fa45463</id>
-      <masked>false</masked>
-      <name>PreferredContactMethod</name>
-   </variable>
-   <variable>
-      <defaultValue>''</defaultValue>
-      <description></description>
-      <id>7e26e3e2-8872-49b6-ac31-7326d387d576</id>
-      <masked>false</masked>
-      <name>MemberID</name>
-   </variable>
-   <variable>
-      <defaultValue>''</defaultValue>
-      <description></description>
-      <id>f6cd192f-775c-4392-9337-d939806c4741</id>
-      <masked>false</masked>
-      <name>CustomerGroup</name>
+      <name>CustomerID</name>
    </variable>
 </TestCaseEntity>

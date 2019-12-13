@@ -11,15 +11,21 @@
    <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
    <testSuiteGuid>1a2184d7-23b8-48bb-9598-e3e53dabb042</testSuiteGuid>
    <testCaseLink>
-      <guid>bb4b9c0f-ebd8-42cb-820e-18c396a98abe</guid>
+      <guid>9562823e-996d-4620-bedc-177d96d28c6b</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/3. Organizations/A. (ID - 100) Organization/1. (ID - 100.3) Add new organization</testCaseId>
+      <testCaseId>Test Cases/Priority 1/1. (CE_EE) - General/1. (ID - 1.1) Validate log in</testCaseId>
    </testCaseLink>
    <testCaseLink>
-      <guid>727c1456-18aa-4dd4-aed5-8c3ee205753d</guid>
+      <guid>9956651b-f7d2-472c-a6b0-2b919bcbd147</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/3. Organizations/A. (ID - 100) Organization/3. (ID - 100.1) Organization Search</testCaseId>
+      <testCaseId>Test Cases/Priority 1/1. (CE_EE) - General/2. (ID - 1.2) Finxact Version check</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>8a7a970f-4c6e-4b92-86ac-3dc02070aae9</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Priority 1/1. (CE_EE) - General/3. (ID - 1.3) Outsystems tenant check</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>

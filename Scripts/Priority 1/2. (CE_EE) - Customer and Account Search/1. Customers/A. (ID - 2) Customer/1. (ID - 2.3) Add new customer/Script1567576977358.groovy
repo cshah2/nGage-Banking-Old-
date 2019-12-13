@@ -12,43 +12,45 @@ import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
+import utils.StringUtil
 import constants.Data
+import constants.URL
 import enums.Fields
+import enums.RegexOperator
 import internal.GlobalVariable as GlobalVariable
+import pages.SearchPage
+import pages.consumer.CreateConsumerPage
 
+//Data setup
 Map<Fields, String> data = Data.CUSTOMER_001
-println "Customer = "+data.toMapString()
+StringUtil.printMap(data)
 
 'Login into portal'
 CustomKeywords.'actions.Common.login'()
 
-'Click on Search All drop down'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search'))
+'Verify user is on search page'
+CustomKeywords.'actions.Common.verifyMatch'(WebUI.getUrl(), URL.SearchPage, RegexOperator.EQUALS)
 
-'Wait for Menus to be visible'
-WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Menu'), GlobalVariable.TIMEOUT, FailureHandling.STOP_ON_FAILURE)
-
-'Click on Customer option'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/dd_Search_Option_Customer'))
-
-'Wait for Create customer icon to be visible'
-WebUI.delay(3) //TODO: Need to identify propert wait condition
-CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/icon_CreateCustomer'), GlobalVariable.TIMEOUT)
+'Select Search type as Consumer'
+CustomKeywords.'pages.SearchPage.selectSearchEntity'('Consumer')
 
 'Click on Create customer icon'
-CustomKeywords.'actions.Common.moveToElementAndClick'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/icon_CreateCustomer'))
+CustomKeywords.'actions.Common.moveToElementAndClick'(findTestObject('Dashboard Page/Customer and Account Search Page/Search Page/icon_CreateConsumer'))
 
 'Wait for Create customer page to be visible'
-WebUI.waitForElementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_FirstName'), GlobalVariable.TIMEOUT, FailureHandling.STOP_ON_FAILURE)
+CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Create Customer Page/Basic Information/input_FirstName'), GlobalVariable.TIMEOUT)
+
+'Verify user is on create customer page'
+CustomKeywords.'actions.Common.verifyMatch'(WebUI.getUrl(), URL.ConsumerCreatePage, RegexOperator.EQUALS)
 
 'Fill customer form'
-CustomKeywords.'actions.Common.customerFormFill'(data)
+CustomKeywords.'pages.consumer.CreateConsumerPage.fillCustomerDetails'(data)
 
 'Verify Customer Details on Summary Section'
-CustomKeywords.'actions.Common.verifyCustomerDetailsSummarySection'(data)
+CustomKeywords.'pages.consumer.ConsumerDashboardPage.verifyConsumerDetailsSummarySection'(data)
 
 'Verify customer details page URL'
-CustomKeywords.'actions.Common.verifyUrlContains'('CustomerMainFlow.CustomerDetail.aspx')
+CustomKeywords.'actions.Common.verifyMatch'(WebUI.getUrl(), 'CustomerMainFlow.CustomerDetail.aspx', RegexOperator.CONTAINS)
 
 'Set data flag'
 data.put(Fields.IS_CREATED, 'true')

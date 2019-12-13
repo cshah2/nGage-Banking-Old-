@@ -23,9 +23,13 @@ public class ColumnPos {
 	//Customer Table - Search Page
 	public static int CUST_LAST_NAME = 1
 	public static int CUST_FIRST_NAME = 2
-	public static int CUST_PHONE_NUMBER = 7
-	public static int CUST_TAX_ID = 5
-	public static int CUST_DOB = 4
+	public static int CUST_CUSTOMER_GROUP = 3
+	public static int CUST_CUSTOMER_ID = 4
+	public static int CUST_DOB = 6
+	public static int CUST_EMAIL = 5
+	public static int CUST_TAX_ID = 7
+	public static int CUST_DRIVER_LICENSE = 8
+	public static int CUST_PHONE_NUMBER = 9
 	
 	//Accounts Table - Customer Details page
 	public static int ACC_NUMBER = 1
@@ -34,11 +38,12 @@ public class ColumnPos {
 	public static int ACC_OWNERSHIP = 4
 	public static int ACC_PRODUCT_NAME = 5
 	public static int ACC_DESCRIPTION = 6
-	public static int ACC_POSITION_NAME = 7
-	public static int ACC_INTEREST_RATE = 8
-	public static int ACC_CURRENCY_CODE = 9
-	public static int ACC_LEDGER_BALANCE = 10
-	public static int ACC_AVAILABLE_BALANCE = 11
+	public static int ACC_STATUS = 7
+	public static int ACC_POSITION_NAME = 8
+	public static int ACC_INTEREST_RATE = 9
+	public static int ACC_CURRENCY_CODE = 10
+	public static int ACC_LEDGER_BALANCE = 11
+	public static int ACC_AVAILABLE_BALANCE = 12
 
 	//Documents Table - Account Details page
 	public static int DOC_TYPE = 1
