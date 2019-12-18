@@ -97,14 +97,22 @@ public class Data {
 	public static final Map<Fields, String> CUSTOMER_001_ADDRESS2;
 	static {
 		CUSTOMER_001_ADDRESS2 = new HashMap<Fields, String>()
-		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_STREET, DateUtil.getCurrentDateTime('dd MMMM', common.timezone)+' Street')
-		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_CITY, 'Austin')
+		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_LINE1, DateUtil.getCurrentDateTime('dd MMMM', common.timezone)+' Street')
+		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_LINE2, 'Wagon Lane')
+		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_LINE3, 'Pheasant Road')
+		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_LINE4, 'Pineknoll Drive')
+		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_CITY, 'Romeoville')
 		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_COUNTY, 'United States of America')
-		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_STATE, 'Texas')
+		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_STATE, 'Illinois')
 		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_ZIPCODE, '2'+RandomStringUtils.randomNumeric(4))
 		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_ADDRESS_TYPE, 'Work/Office')
+		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_YEARS_AT_ADDRESS, '3 Years')
 		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_ADDRESS_LABEL, 'OFFICE')
-		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_VIEW, CUSTOMER_001_ADDRESS2.get(Fields.ADDR_STREET)+', '+CUSTOMER_001_ADDRESS2.get(Fields.ADDR_CITY)+', TX '+CUSTOMER_001_ADDRESS2.get(Fields.ADDR_ZIPCODE))
+		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_PREMISE, 'Broadway Park Building')
+		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_VERIFIED_DATE, DateUtil.getCurrentDateTimeMinusDays(2, common.dateFormat, common.timezoneUTC))
+		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_VALID_FROM, DateUtil.getCurrentDateTimeMinusDays(15, common.dateFormat, common.timezoneUTC))
+		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_VALID_UNTIL, DateUtil.getCurrentDateTimeMinusDays(-15, common.dateFormat, common.timezoneUTC))
+		CUSTOMER_001_ADDRESS2.put(Fields.ADDR_VIEW, CUSTOMER_001_ADDRESS2.get(Fields.ADDR_LINE1)+', '+CUSTOMER_001_ADDRESS2.get(Fields.ADDR_LINE2)+', '+CUSTOMER_001_ADDRESS2.get(Fields.ADDR_CITY)+', PA '+CUSTOMER_001_ADDRESS2.get(Fields.ADDR_ZIPCODE))
 		CUSTOMER_001_ADDRESS2.put(Fields.IS_CREATED, 'false')
 	}
 
@@ -128,6 +136,9 @@ public class Data {
 		CUSTOMER_001_PHONE2.put(Fields.CT_PHONE_TYPE, 'Home')
 		CUSTOMER_001_PHONE2.put(Fields.CT_PHONE_LABEL, 'HOME')
 		CUSTOMER_001_PHONE2.put(Fields.CT_PHONE_NUMBER, '+1'+RandomStringUtils.randomNumeric(10))
+		CUSTOMER_001_PHONE2.put(Fields.CT_PHONE_VERIFIED_DATE, DateUtil.getCurrentDateTimeMinusDays(2, common.dateFormat, common.timezoneUTC))
+		CUSTOMER_001_PHONE2.put(Fields.CT_PHONE_VALID_FROM, DateUtil.getCurrentDateTimeMinusDays(15, common.dateFormat, common.timezoneUTC))
+		CUSTOMER_001_PHONE2.put(Fields.CT_PHONE_VALID_UNTIL, DateUtil.getCurrentDateTimeMinusDays(-15, common.dateFormat, common.timezoneUTC))
 		CUSTOMER_001_PHONE2.put(Fields.IS_CREATED, 'false')
 	}
 
@@ -146,6 +157,9 @@ public class Data {
 		CUSTOMER_001_EMAIL2.put(Fields.CT_EMAIL_TYPE, 'Personal')
 		CUSTOMER_001_EMAIL2.put(Fields.CT_EMAIL_LABEL, 'SELF')
 		CUSTOMER_001_EMAIL2.put(Fields.CT_EMAIL, 'my.emaila@exmaple.com')
+		CUSTOMER_001_EMAIL2.put(Fields.CT_EMAIL_VERIFIED_DATE, DateUtil.getCurrentDateTimeMinusDays(2, common.dateFormat, common.timezoneUTC))
+		CUSTOMER_001_EMAIL2.put(Fields.CT_EMAIL_VALID_FROM, DateUtil.getCurrentDateTimeMinusDays(15, common.dateFormat, common.timezoneUTC))
+		CUSTOMER_001_EMAIL2.put(Fields.CT_EMAIL_VALID_UNTIL, DateUtil.getCurrentDateTimeMinusDays(-15, common.dateFormat, common.timezoneUTC))
 		CUSTOMER_001_EMAIL2.put(Fields.IS_CREATED, 'false')
 	}
 

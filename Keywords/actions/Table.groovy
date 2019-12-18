@@ -40,7 +40,7 @@ public class Table {
 		By locator
 		switch(type) {
 			case WebTable.DEFAULT:
-				locator = By.xpath(".//tbody/tr[not(contains(@class,'TableRowExpandable'))]")
+				locator = By.xpath("./tbody/tr[not(contains(@class,'TableRowExpandable'))]")
 				break
 			case WebTable.DOCUMENT:
 				locator = By.xpath(".//div[@class='bodyRow']/span/div")

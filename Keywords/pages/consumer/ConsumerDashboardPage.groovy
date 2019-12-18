@@ -48,15 +48,15 @@ public class ConsumerDashboardPage {
 
 		TestObject e_tabName = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/tab_Common',[('tabName'):tabName])
 		TestObject e_MoreTab = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/tab_More')
-		
+
 		if(isHidden) {
 			new actions.Common().moveToElementAndClick(e_MoreTab)
 			WebUI.delay(2) //TODO:Need to add wait condition for hidden menus to be displayed.
 		}
 		new actions.Common().moveToElementAndClick(e_tabName)
-		
+
 		switch(tabName.toLowerCase()) {
-			
+
 			case "accounts":
 				new actions.WaitFor().elementVisible(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Accounts Tab/icon_CreateAccount'), GlobalVariable.TIMEOUT)
 				break;
@@ -82,7 +82,7 @@ public class ConsumerDashboardPage {
 				break;
 		}
 	}
-	
+
 	@Keyword
 	def verifyAccountsDataInTable(Map<Fields, String> accData, int rowNo) {
 

@@ -18,11 +18,12 @@ import enums.Fields
 import enums.RegexOperator
 import internal.GlobalVariable as GlobalVariable
 import utils.DateUtil
+import utils.StringUtil
 
 Map<Fields, String> custData = Data.CUSTOMER_001
 Map<Fields, String> custDataAddress2 = Data.CUSTOMER_001_ADDRESS2
-println "Customer001 = "+custData.toMapString()
-println "Customer001 Address 2 = "+custDataAddress2.toMapString()
+StringUtil.printMap(custData)
+StringUtil.printMap(custDataAddress2)
 
 TestObject addressTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/table_Addresses')
 
@@ -32,11 +33,11 @@ CustomKeywords.'actions.Common.shouldFailTest'(custData)
 'Login into portal'
 CustomKeywords.'actions.Common.login'()
 
-'Search customer and open Customer details page'
-CustomKeywords.'actions.Common.searchCustomerAndOpen'(custData)
+'Load customer profile'
+WebUI.navigateToUrl(custData.get(Fields.URL))
 
 'Click on Contact Details tab'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/tab_ContactDetails'))
+CustomKeywords.'pages.consumer.ConsumerDashboardPage.selectTab'('Contact Details', false)
 
 'Wait for contact details section to load'
 CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/section_Body'), GlobalVariable.TIMEOUT)
@@ -48,24 +49,13 @@ CustomKeywords.'actions.Table.verifyRecordsCount'(addressTable, 1, RegexOperator
 int rowNo = 1 
 
 'Verify Address details in table'
-CustomKeywords.'actions.Common.verifyAddressDetailsInTable'(custData, rowNo)
+CustomKeywords.'pages.consumer.tabs.ContactDetailsTab.verifyConsumerAddressDataInTable'(custData, rowNo)
 
-'Scroll to Add new address icon'
-WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/icon_AddNewAddress'), GlobalVariable.TIMEOUT)
-
-'Click on Add new addres icon'
-//WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/icon_AddNewAddress'))
-//TODO: Cannot perform scroll to element - Horizontal scroll does not work
-CustomKeywords.'actions.JavaScript.click'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/icon_AddNewAddress'))
+'Scroll to and click Add new address icon'
+CustomKeywords.'actions.Common.moveToElementAndClick'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/icon_AddNewAddress'))
 
 'Fill Address details'
-CustomKeywords.'actions.Common.addressFormFill'(custDataAddress2)
-
-'Scroll to submit button'
-WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/btn_Submit'), GlobalVariable.TIMEOUT)
-
-'Click on Submit button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/btn_Submit'))
+CustomKeywords.'pages.consumer.ConsumerTaskDrawer.addAddressTask'(custDataAddress2)
 
 'Wait for elements from task drawer to be not present'
 CustomKeywords.'actions.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Address/input_Street'), GlobalVariable.TIMEOUT)
@@ -77,7 +67,7 @@ CustomKeywords.'actions.Table.waitUntilRecordsCountEquals'(addressTable, 2, Glob
 //Verify address details of second row
 rowNo = 2
 'Verify Address details in table'
-CustomKeywords.'actions.Common.verifyAddressDetailsInTable'(custDataAddress2, rowNo)
+CustomKeywords.'pages.consumer.tabs.ContactDetailsTab.verifyConsumerAddressDataInTable'(custDataAddress2, rowNo)
 
 'Set data flag'
 custDataAddress2.put(Fields.IS_CREATED, 'true')

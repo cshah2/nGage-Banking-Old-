@@ -18,11 +18,13 @@ import enums.Fields
 import enums.RegexOperator
 import internal.GlobalVariable as GlobalVariable
 import utils.DateUtil
+import utils.StringUtil
 
 Map<Fields, String> custData = Data.CUSTOMER_001
 Map<Fields, String> custDataPhone2 = Data.CUSTOMER_001_PHONE2
-println "Customer001 = "+custData.toMapString()
-println "Customer001 Phone 2 = "+custDataPhone2.toMapString()
+StringUtil.printMap(custData)
+StringUtil.printMap(custDataPhone2)
+
 TestObject phoneTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/table_Phones')
 
 //Mark this test as failed if required customer and account is not created
@@ -31,11 +33,11 @@ CustomKeywords.'actions.Common.shouldFailTest'(custData)
 'Login into portal'
 CustomKeywords.'actions.Common.login'()
 
-'Search customer and open Customer details page'
-CustomKeywords.'actions.Common.searchCustomerAndOpen'(custData)
+'Load customer profile'
+WebUI.navigateToUrl(custData.get(Fields.URL))
 
 'Click on Contact Details tab'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/tab_ContactDetails'))
+CustomKeywords.'pages.consumer.ConsumerDashboardPage.selectTab'('Contact Details', false)
 
 'Wait for contact details section to load'
 CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/section_Body'), GlobalVariable.TIMEOUT)
@@ -45,37 +47,25 @@ CustomKeywords.'actions.Table.verifyRecordsCount'(phoneTable, 1, RegexOperator.E
 
 //Verify Primary Phone Details
 int rowNo = 1 
-
 'Verify phone data in table'
-CustomKeywords.'actions.Common.verifyPhoneDetailsInTable'(custData, rowNo)
+CustomKeywords.'pages.consumer.tabs.ContactDetailsTab.verifyConsumerPhoneDataInTable'(custData, rowNo)
 
-'Move to add new phones button'
-CustomKeywords.'actions.Common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/icon_AddNewPhone'))
-
-'Click on Add new phone icon'
-CustomKeywords.'actions.JavaScript.click'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/icon_AddNewPhone'))
+'Scroll to and click Add new phone icon'
+CustomKeywords.'actions.Common.moveToElementAndClick'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Phone Section/icon_AddNewPhone'))
 
 'Add phone details in form'
-CustomKeywords.'actions.Common.phoneFormFill'(custDataPhone2)
-
-'Scroll to submit button'
-WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/btn_Submit'), GlobalVariable.TIMEOUT)
-
-'Click on Submit button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/btn_Submit'))
+CustomKeywords.'pages.consumer.ConsumerTaskDrawer.addPhoneTask'(custDataPhone2)
 
 'Wait for elements from task drawer to be not present'
 CustomKeywords.'actions.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Phones/input_PhoneNumber'), GlobalVariable.TIMEOUT)
 
 'Wait for phones to get added in table'
-//TODO: There is no success message displayed on completion of task.
 CustomKeywords.'actions.Table.waitUntilRecordsCountEquals'(phoneTable, 2, GlobalVariable.TIMEOUT)
 
 //Verify phones details of second row
 rowNo = 2 
-
 'Verify phone details in a table'
-CustomKeywords.'actions.Common.verifyPhoneDetailsInTable'(custDataPhone2, rowNo)
+CustomKeywords.'pages.consumer.tabs.ContactDetailsTab.verifyConsumerPhoneDataInTable'(custDataPhone2, rowNo)
 
 'Set data flag'
 custDataPhone2.put(Fields.IS_CREATED, 'true')

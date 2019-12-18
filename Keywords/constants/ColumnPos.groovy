@@ -54,18 +54,19 @@ public class ColumnPos {
 	public static int DOC_RECISION_DATE = 6
 
 	//Address Table - Contact Details tab - Customer Details Page
-	public static int ADDR_ADDRESS_TYPE = 1
-	public static int ADDR_ADDRESS_LABEL = 2
-	public static int ADDR_STREET = 3
-	public static int ADDR_CITY = 4
-	public static int ADDR_STATE = 5
-	public static int ADDR_ZIPCODE = 6
-	public static int ADDR_COUNTY = 7
-	public static int ADDR_VALID_FROM = 8
-	public static int ADDR_VALID_UNTIL = 9
-	public static int ADDR_VERIFIED_DATE = 10
-	public static int ADDR_PREFERRED = 11
-	public static int ADDR_MOREICON = 12
+	public static int ADDR_ADDRESS_TYPE = 2
+	public static int ADDR_ADDRESS_LABEL = 3
+	public static int ADDR_LINE1 = 4
+	public static int ADDR_LINE2 = 5
+	public static int ADDR_CITY = 6
+	public static int ADDR_STATE = 7
+	public static int ADDR_ZIPCODE = 8
+	public static int ADDR_COUNTY = 9
+	public static int ADDR_VALID_FROM = 10
+	public static int ADDR_VALID_UNTIL = 11
+	public static int ADDR_VERIFIED_DATE = 12
+	public static int ADDR_TAX_ADDRESS = 13
+	public static int ADDR_MOREICON = 14
 
 	//Customer Phone Table - Contact Details tab - Customer Details Page
 	public static int CT_PHONE_TYPE = 1

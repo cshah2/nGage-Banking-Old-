@@ -11,21 +11,15 @@
    <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
    <testSuiteGuid>1a2184d7-23b8-48bb-9598-e3e53dabb042</testSuiteGuid>
    <testCaseLink>
-      <guid>9562823e-996d-4620-bedc-177d96d28c6b</guid>
+      <guid>8fefc11f-b63c-4ce2-82c8-d06279151e1c</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Priority 1/1. (CE_EE) - General/1. (ID - 1.1) Validate log in</testCaseId>
+      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/1. Customers/A. (ID - 2) Customer/1. (ID - 2.3) Add new customer</testCaseId>
    </testCaseLink>
    <testCaseLink>
-      <guid>9956651b-f7d2-472c-a6b0-2b919bcbd147</guid>
+      <guid>4948854c-0668-4c25-8112-c388e5c765bc</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Priority 1/1. (CE_EE) - General/2. (ID - 1.2) Finxact Version check</testCaseId>
-   </testCaseLink>
-   <testCaseLink>
-      <guid>8a7a970f-4c6e-4b92-86ac-3dc02070aae9</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
-      <testCaseId>Test Cases/Priority 1/1. (CE_EE) - General/3. (ID - 1.3) Outsystems tenant check</testCaseId>
+      <testCaseId>Test Cases/Priority 1/2. (CE_EE) - Customer and Account Search/1. Customers/D. (ID - 6) Customer Contact Details/5. (ID - 6.5) Add Customer Email</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>

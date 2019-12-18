@@ -18,11 +18,13 @@ import enums.Fields
 import enums.RegexOperator
 import internal.GlobalVariable as GlobalVariable
 import utils.DateUtil
+import utils.StringUtil
 
 Map<Fields, String> custData = Data.CUSTOMER_001
 Map<Fields, String> custDataEmail2 = Data.CUSTOMER_001_EMAIL2
-println "Customer001 = "+custData.toMapString()
-println "Customer001 Email 2 = "+custDataEmail2.toMapString()
+StringUtil.printMap(custData)
+StringUtil.printMap(custDataEmail2)
+
 TestObject emailTable = findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/table_Emails')
 
 //Mark this test as failed if required customer and account is not created
@@ -31,36 +33,27 @@ CustomKeywords.'actions.Common.shouldFailTest'(custData)
 'Login into portal'
 CustomKeywords.'actions.Common.login'()
 
-'Search customer and open Customer details page'
-CustomKeywords.'actions.Common.searchCustomerAndOpen'(custData)
+'Load customer profile'
+WebUI.navigateToUrl(custData.get(Fields.URL))
 
 'Click on Contact Details tab'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Summary Section/tab_ContactDetails'))
+CustomKeywords.'pages.consumer.ConsumerDashboardPage.selectTab'('Contact Details', false)
 
 'Wait for contact details section to load'
 CustomKeywords.'actions.WaitFor.elementVisible'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Address Section/section_Body'), GlobalVariable.TIMEOUT)
 
-'Verify Phones table contains only one row'
+'Verify email table contains only one row'
 CustomKeywords.'actions.Table.verifyRecordsCount'(emailTable, 1, RegexOperator.EQUALS)
 
 int rowNo = 1 
 'Verify email details of primary record'
 CustomKeywords.'actions.Common.verifyEmailDetailsInTable'(custData, rowNo)
 
-'Move to add new phones button'
-CustomKeywords.'actions.Common.moveToElement'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/icon_AddNewEmail'))
+'Scroll to and click Add new email icon'
+CustomKeywords.'actions.Common.moveToElementAndClick'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/icon_AddNewEmail'))
 
-'Click on Add new email icon'
-CustomKeywords.'actions.JavaScript.click'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Contact Details Tab/Customer Email Section/icon_AddNewEmail'))
-
-'Fill email data in form'
-CustomKeywords.'actions.Common.emailFormFill'(custDataEmail2)
-
-'Scroll to submit button'
-WebUI.scrollToElement(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/btn_Submit'), GlobalVariable.TIMEOUT)
-
-'Click on Submit button'
-WebUI.click(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/btn_Submit'))
+'Add email details in form'
+CustomKeywords.'pages.consumer.ConsumerTaskDrawer.addEmailTask'(custDataEmail2)
 
 'Wait for elements from task drawer to be not present'
 CustomKeywords.'actions.WaitFor.elementNotPresent'(findTestObject('Dashboard Page/Customer and Account Search Page/Customer Details Page/Task Drawer/Customer Email/input_Email'), GlobalVariable.TIMEOUT)

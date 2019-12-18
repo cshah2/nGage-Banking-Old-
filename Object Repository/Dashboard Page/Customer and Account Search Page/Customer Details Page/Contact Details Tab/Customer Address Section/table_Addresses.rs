@@ -6,14 +6,17 @@
    <elementGuidId>737d1b13-99b1-44ac-a08e-d9018868454c</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>CSS</key>
-         <value>table[id*='_wtAddressTable']</value>
+         <key>XPATH</key>
+         <value>//div[contains(@id,'Blocks_wtcustAddresses')]/table[contains(@id,'_wtAddressTable')]</value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>table[id$='_wtAddressTable']</value>
       </entry>
    </selectorCollection>
-   <selectorMethod>CSS</selectorMethod>
+   <selectorMethod>XPATH</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>
